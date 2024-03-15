@@ -33,7 +33,10 @@ public:
 	void free();
 	Ennemies();
 	~Ennemies();
-	void checkvacham();
+	bool checkImpact(Bullet a);
+	bool checkLazer();
+	void checkHit();
+
 };
 
 #endif

@@ -82,3 +82,74 @@ void Ennemies::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point
 		exist = true;
 	}
 }
+void Ennemies::checkHit() {
+	for (int i=0; i < 1000; i++) {
+		for (int j=0; j < 1; j++) {
+			if (player.bullet_simple[i][j].exist == true) {
+				if (checkImpact(player.bullet_simple[i][j])) {
+					health -= player.bullet_simple[i][j].damage;
+					player.bullet_simple[i][j].exist = false;
+				}
+			}
+		}
+	}
+	for (int i=0; i < 1000; i++) {
+		for (int j=0; j < 5; j++) {
+			if (player.bullet_x5[i][j].exist == true) {
+				if (checkImpact(player.bullet_x5[i][j])) {
+					health -= player.bullet_x5[i][j].damage;
+					player.bullet_x5[i][j].exist = false;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < 1000; i++) {
+		for (int j = 0; j < 7; j++) {
+			if (player.bullet_x7[i][j].exist == true) {
+				if (checkImpact(player.bullet_x7[i][j])) {
+					health -= player.bullet_x7[i][j].damage;
+					player.bullet_x7[i][j].exist = false;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < 1000; i++) {
+			if (player.bullet_support_1[i].exist == true) {
+				if (checkImpact(player.bullet_support_1[i])) {
+					health -= player.bullet_support_1[i].damage;
+					player.bullet_support_1[i].exist = false;
+				}
+			}
+			if (player.bullet_support_2[i].exist == true) {
+				if (checkImpact(player.bullet_support_2[i])) {
+					health -= player.bullet_support_2[i].damage;
+					player.bullet_support_2[i].exist = false;
+				}
+			}
+	}
+	if (checkLazer()){
+		health -= player.lazer.damage;
+	}
+}
+bool Ennemies :: checkImpact(Bullet a) {
+	int impact = true;
+	int x = a.B_x + a.B_Width/ 2;
+	int y = a.B_y + a.B_Height / 2;
+	if (x<E_x || x>(E_x + E_Width)) {
+		impact = false;
+	}
+	if (x<E_y || x>(E_y + E_Height)) {
+		impact = false;
+	}
+	return impact;
+}
+bool Ennemies::checkLazer() {
+	int impact = true;
+	if (E_x>(player.lazer.O_x+ player.lazer.O_Width) || player.lazer.O_x>(E_x + E_Width)) {
+		impact = false;
+	}
+	if ( E_x< player.P_x) {
+		impact = false;
+	}
+	return impact;
+}

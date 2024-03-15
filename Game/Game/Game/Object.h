@@ -6,6 +6,8 @@
 class Object
 {
 public:
+	//
+	int damage = 0;
 	bool exist = false;
 	//
 	double start_x;
