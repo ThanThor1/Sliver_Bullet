@@ -145,7 +145,6 @@ bool Ennemies :: checkImpact(Bullet &a) {
 }
 bool Ennemies::checkLazer() {
 	if (E_x>(player.lazer.O_x+ player.lazer.O_Width/12) || player.lazer.O_x>(E_x + E_Width)) {
-		
 		return false;
 	}
 	if ( E_y > player.P_y) {
