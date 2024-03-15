@@ -23,9 +23,9 @@ int main(int argc, char* args[]) {
 			}
 			checkEvent(e);
 		}
-		Wave1();
 		SDL_RenderClear(gRenderer);
 		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+		Wave1();
 		SDL_GetMouseState(&x, &y);
 		player.loadFrame(x, y);
 		Wave1();

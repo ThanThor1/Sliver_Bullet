@@ -1,27 +1,2 @@
 ﻿  Ennemies.cpp
-  Event.cpp
-  LoadAll.cpp
-  Main.cpp
-  Declaration.cpp
-  Object.cpp
-  Player.cpp
-D:\Game\Game\Game\Player.cpp(258,33): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(259,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(270,33): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(271,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(297,111): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(298,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(302,109): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(303,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(307,111): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(308,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(333,111): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(334,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(338,109): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(339,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(343,111): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(344,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  P_Bullet.cpp
-  Wave1.cpp
-  Generating Code...
-  Game.vcxproj -> D:\Game\Game\x64\Debug\Game.exe
+  Game.vcxproj -> D:\Game\Game\Game\x64\Debug\Game.exe

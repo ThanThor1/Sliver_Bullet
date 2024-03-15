@@ -6,7 +6,7 @@ class Bullet
 {
 public:
 	//damage
-	int damage;
+	int damage=2;
 	//
 	double denta_x = 0;
 	double denta_y = 0;

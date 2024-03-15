@@ -7,7 +7,7 @@ class Object
 {
 public:
 	//
-	int damage = 0;
+	int damage = 5;
 	bool exist = false;
 	//
 	double start_x;

@@ -147,8 +147,8 @@ void Player::loadShoot(int x1, int y1, int bullet_type) {
 	}
 	if (lazer_bool == true) {
 		lazer.exist = true;
-		lazer.O_x = x1;
-		lazer.O_y = y1;
+		lazer.O_x = x1-72;
+		lazer.O_y = y1-1325;
 		loadLazer();
 	}
 	if (support_bool == true) {
@@ -165,7 +165,7 @@ void Player::loadLazer() {
 	for (int i = 0; i <= 11; i++) {
 		cutLazer[i] = { i * 145,0,145,1300 };
 	}
-	lazer.render(lazer.O_x - 72, lazer.O_y - 1325, &cutLazer[load_lazer_time / 5]);
+	lazer.render(lazer.O_x, lazer.O_y, &cutLazer[load_lazer_time / 5]);
 	load_lazer_time++;
 	if (load_lazer_time == 61)
 	{

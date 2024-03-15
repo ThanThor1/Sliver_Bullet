@@ -24,7 +24,7 @@ public:
 	SDL_Texture* E_Texture = NULL;
 	int photostatus = 0;
 	int dem = 0;
-	int health = 0;
+	int health = 10;
 	// hàm 
 	void loadFrame(int x, int y, SDL_Rect* clip = NULL,
 		double angle = 0.0, SDL_Point* center = NULL,
@@ -33,7 +33,7 @@ public:
 	void free();
 	Ennemies();
 	~Ennemies();
-	bool checkImpact(Bullet a);
+	bool checkImpact(Bullet &a);
 	bool checkLazer();
 	void checkHit();
 
