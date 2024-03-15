@@ -23,6 +23,7 @@ int main(int argc, char* args[]) {
 			}
 			checkEvent(e);
 		}
+		cout << "lol";
 		Wave1();
 		SDL_RenderClear(gRenderer);
 		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -32,4 +33,5 @@ int main(int argc, char* args[]) {
 		SDL_RenderPresent(gRenderer);
 	}
 	return 0;
+	
 }
