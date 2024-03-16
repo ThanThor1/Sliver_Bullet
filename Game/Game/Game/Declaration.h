@@ -4,6 +4,7 @@
 #define DECLARATION
 #include "IncludeAll.h"
 
+extern Object BackGround;
 extern SDL_Window* gWindow;
 extern SDL_Renderer* gRenderer;
 extern Player player;

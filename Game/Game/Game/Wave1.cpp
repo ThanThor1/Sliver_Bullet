@@ -3,6 +3,7 @@
 #include "Declaration.h"
 void Wave1() {
 
-	ennemies_1[1].loadFrame(900, 0);
-	ennemies_1[3].loadFrame(900, 1000);
+	ennemies_1[1].loadFrame(300, 100);
+	ennemies_1[3].loadFrame(100, 100);
+	ennemies_1[2].loadFrame(500, 500);
 }

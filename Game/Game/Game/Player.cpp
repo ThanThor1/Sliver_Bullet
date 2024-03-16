@@ -42,7 +42,7 @@ bool Player::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			P_Width = loadedSurface->w / 4;
+			P_Width = loadedSurface->w;
 			P_Height = loadedSurface->h;
 		}
 
@@ -56,24 +56,13 @@ bool Player::loadFromFile(string path) {
 }
 
 void Player::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
-	SDL_Rect cutPlayer[4];
-	for (int i = 0; i <= 3; i++) {
-		cutPlayer[i] = { i * 102,0,102,124 };
-	}
 	P_x = x1 - P_Width / 2;
 	P_y = y1 - P_Height / 2;
-	dem = (dem + 1) % 16;
-	photostatus = (photostatus + (dem) / 15) % 4;
 	SDL_Rect renderQuad = { P_x, P_y , P_Width, P_Height };
-	if (clip != NULL)
-	{
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
-	}
-	exist = true;
-	SDL_RenderCopyEx(gRenderer, P_Texture, &cutPlayer[photostatus], &renderQuad, angle, center, flip);
+	SDL_RenderCopyEx(gRenderer, P_Texture, NULL , &renderQuad, angle, center, flip);
 	loadShoot(x1, y1, bullet_type);
 	shoot();
+	exist = true;
 }
 void Player::loadShoot(int x1, int y1, int bullet_type) {
 	if (bullet_type == BULLET_SIMPLE) {
@@ -175,21 +164,12 @@ void Player::loadLazer() {
 	}
 }
 void Player::loadSupport() {
-
-	SDL_Rect cutSupport[4];
-	for (int i = 0; i <= 3; i++) {
-		cutSupport[i] = { i * 72,0,72,92 };
-	}
-	support_1.render(support_1.O_x, support_1.O_y, &cutSupport[load_support_time / 5]);
-	support_2.render(support_2.O_x, support_2.O_y, &cutSupport[load_support_time / 5]);
-	load_support_time++;
-	if (load_support_time == 16) {
-		load_support_time = 0;
-	}
-	support_1.O_x = P_x + 51 - 72 / 2 + dis_player_support;
-	support_2.O_x = P_x + 51 - 72 / 2 - dis_player_support;
-	support_1.O_y = P_y + 62 - 30;
-	support_2.O_y = P_y + 62 - 30;
+	support_1.render(support_1.O_x, support_1.O_y);
+	support_2.render(support_2.O_x, support_2.O_y);
+	support_1.O_x = P_x + player.P_Width/2  - support_1.O_Width/2 + dis_player_support;
+	support_2.O_x = P_x + player.P_Width/2  - support_2.O_Width/2 - dis_player_support;
+	support_1.O_y = P_y + player.P_Height/2 - support_1.O_Height/2;
+	support_2.O_y = P_y + player.P_Height/2 - support_2.O_Height/2;
 	if (dis_player_support < 100) {
 		dis_player_support += 1;
 	}
@@ -206,11 +186,12 @@ void Player::loadBulletSupport() {
 		thbullet_support = 0;
 	}
 	load_bullet_support_time = (load_bullet_support_time + 1) % 31;
+	cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
 	if (load_bullet_support_time == 30) {
-		if (!(x1 < 0 && y1 < 0 && x2 < 0 && y2 < 0)) {
-			bullet_support_1[thbullet_support].B_x = support_1.O_x + (support_1.O_Width / 4 - bullet_support_1[thbullet_support].B_Width) / 2;
+		if (x1 > 0 && y1 > 0 && x2 > 0 && y2 > 0) {
+			bullet_support_1[thbullet_support].B_x = support_1.O_x + (support_1.O_Width - bullet_support_1[thbullet_support].B_Width) / 2;
 			bullet_support_1[thbullet_support].B_y = support_1.O_y - bullet_support_1[thbullet_support].B_Height;
-			bullet_support_1[thbullet_support].start_x = support_1.O_x + (support_1.O_Width / 4 - bullet_support_1[thbullet_support].B_Width) / 2;
+			bullet_support_1[thbullet_support].start_x = support_1.O_x + (support_1.O_Width - bullet_support_1[thbullet_support].B_Width) / 2;
 			bullet_support_1[thbullet_support].start_y = support_1.O_y - bullet_support_1[thbullet_support].B_Height;
 			bullet_support_1[thbullet_support].denta_x = 1.00000000 * (x1 - (bullet_support_1[thbullet_support].start_x + bullet_support_1[thbullet_support].B_Width / 2));
 			bullet_support_1[thbullet_support].denta_y = 1.00000000 * (y1 - (bullet_support_1[thbullet_support].start_y + bullet_support_1[thbullet_support].B_Height / 2));
@@ -220,10 +201,9 @@ void Player::loadBulletSupport() {
 			else bullet_support_1[thbullet_support].angle = -(180.0000 + (1.00000000 * atan(1.00000 / bullet_support_1[thbullet_support].slope) * 180 / PI));
 			bullet_support_1[thbullet_support].exist = true;
 			/////
-
-			bullet_support_2[thbullet_support].B_x = support_2.O_x + (support_2.O_Width / 4 - bullet_support_2[thbullet_support].B_Width) / 2;
+			bullet_support_2[thbullet_support].B_x = support_2.O_x + (support_2.O_Width - bullet_support_2[thbullet_support].B_Width) / 2;
 			bullet_support_2[thbullet_support].B_y = support_2.O_y - bullet_support_2[thbullet_support].B_Height;
-			bullet_support_2[thbullet_support].start_x = support_2.O_x + (support_2.O_Width / 4 - bullet_support_2[thbullet_support].B_Width) / 2;
+			bullet_support_2[thbullet_support].start_x = support_2.O_x + (support_2.O_Width - bullet_support_2[thbullet_support].B_Width) / 2;
 			bullet_support_2[thbullet_support].start_y = support_2.O_y - bullet_support_2[thbullet_support].B_Height;
 			bullet_support_2[thbullet_support].denta_x = 1.00000000 * (x2 - (bullet_support_2[thbullet_support].start_x + bullet_support_2[thbullet_support].B_Width / 2));
 			bullet_support_2[thbullet_support].denta_y = 1.00000000 * (y2 - (bullet_support_2[thbullet_support].start_y + bullet_support_2[thbullet_support].B_Height / 2));
@@ -349,27 +329,26 @@ void Player::shoot1() {
 }
 void Player::determineTheTarget(int& x1, int& y1, int& x2, int& y2) {
 	double min1 = 1000000000;
-	for (int i = 0; i < 4; i++) {
-		if ((((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 8) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 8) +
-			(ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_1.O_y - support_1.O_Height / 2) * (ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_1.O_y - support_1.O_Height / 2)) <= min1)
-			&& ennemies_1[i].exist == true)
+	for (int i = 0; i < 1000; i++) {
+		if ((calculateDis(ennemies_1[i], support_1) <= min1)&& ennemies_1[i].exist == true)
 		{
-			min1 = ((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 8) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 8) +
+			min1 = ((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 2) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_1.O_x - support_1.O_Width / 2) +
 				(ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_1.O_y - support_1.O_Height / 2) * (ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_1.O_y - support_1.O_Height / 2));
 			x1 = ennemies_1[i].E_x + ennemies_1[i].E_Width / 2;
 			y1 = ennemies_1[i].E_y + ennemies_1[i].E_Width / 2;
 		}
 	}
 	double min2 = 1000000000;
-	for (int i = 0; i < 4; i++) {
-		if ((((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 8) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 8) +
-			(ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_2.O_y - support_2.O_Height / 2) * (ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_2.O_y - support_2.O_Height / 2)) <= min2)
-			&& ennemies_1[i].exist == true)
+	for (int i = 0; i < 1000; i++) {
+		if ((calculateDis(ennemies_1[i], support_2) <= min2)  && ennemies_1[i].exist == true)
 		{
-			min2 = ((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 8) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 8) +
+			min2 = ((ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 2) * (ennemies_1[i].E_x + ennemies_1[i].E_Width / 2 - support_2.O_x - support_2.O_Width / 2) +
 				(ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_2.O_y - support_2.O_Height / 2) * (ennemies_1[i].E_y + ennemies_1[i].E_Height / 2 - support_2.O_y - support_2.O_Height / 2));
 			x2 = ennemies_1[i].E_x + ennemies_1[i].E_Width / 2;
 			y2 = ennemies_1[i].E_y + ennemies_1[i].E_Width / 2;
 		}
 	}
+}
+double Player :: calculateDis(Ennemies &a, Object &b) {
+	return ((a.E_x + a.E_Width / 2 - b.O_x - b.O_Width / 2) * (a.E_x + a.E_Width / 2 - b.O_x - b.O_Width / 2) + (a.E_y + a.E_Height / 2 - b.O_y - b.O_Height / 2) * (a.E_y + a.E_Height / 2 - b.O_y - b.O_Height / 2));
 }

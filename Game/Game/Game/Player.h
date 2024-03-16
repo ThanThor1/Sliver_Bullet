@@ -5,6 +5,7 @@
 #include "Library.h"
 #include"SomeConst.h"
 #include "Bullet.h"
+#include "Ennemies.h"
 class Player
 {
 public:
@@ -59,6 +60,7 @@ public:
 	// máu
 	int health = 10;
 	// hàm 
+	double calculateDis(Ennemies &a, Object &b);
 	void shoot1();
 	void determineTheTarget(int& x1, int& y1, int& x2, int& y2);
 	void loadBulletSupport();
@@ -70,6 +72,7 @@ public:
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);
+
 	~Player();
 	void free();
 };

@@ -1,5 +1,6 @@
 ﻿#include "Declaration.h"
 
+Object BackGround;
 SDL_Window* gWindow;
 SDL_Renderer* gRenderer;
 Player player;

@@ -70,7 +70,7 @@ bool Ennemies::loadFromFile(string path) {
 }
 void Ennemies::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
 	checkHit();
-	if (type == ENNEMIES_1 && health > 0) {
+	if (type == ENNEMIES_1 && health>0) {
 		E_x = x1;
 		E_y = y1;
 		SDL_Rect renderQuad = { E_x, E_y , E_Width, E_Height };
@@ -130,12 +130,12 @@ void Ennemies::checkHit() {
 			}
 		}
 		if (player.lazer.exist == true) {
-			cout << E_y << " " << player.P_y << " ";
 			if (checkLazer()) {
 				health -= player.lazer.damage;
 			}
 		}
 	}
+	if (health == 0) exist = false;
 }
 bool Ennemies :: checkImpact(Bullet &a) {
 	if ((a.B_x + a.B_Width / 2 )>E_x && (a.B_x + a.B_Width / 2)<(E_x + E_Width) && (a.B_y + a.B_Height / 2) > E_y && (a.B_y + a.B_Height / 2) < (E_y + E_Height)) {
@@ -145,7 +145,6 @@ bool Ennemies :: checkImpact(Bullet &a) {
 }
 bool Ennemies::checkLazer() {
 	if (E_x>(player.lazer.O_x+ player.lazer.O_Width/12) || player.lazer.O_x>(E_x + E_Width)) {
-		
 		return false;
 	}
 	if ( E_y > player.P_y) {

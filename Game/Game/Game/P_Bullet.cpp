@@ -70,7 +70,6 @@ bool Bullet::loadFromFile(string path) {
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
-
 	//Return success
 	B_Texture = newTexture;
 	return B_Texture != NULL;

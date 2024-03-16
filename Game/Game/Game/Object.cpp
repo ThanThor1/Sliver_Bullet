@@ -84,3 +84,11 @@ void Object::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* cente
 	}
 	SDL_RenderCopyEx(gRenderer, O_Texture, clip, &renderQuad, angle, center, flip);
 }
+void Object::renderbackground()
+{
+	dem = (dem + 1) % 3;
+	photo = (photo + dem / 2) % 1000;
+	SDL_Rect renderQuad = { 0, 0 , SCREEN_WIDTH , SCREEN_HEIGHT };
+	SDL_Rect cut ={0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
+	SDL_RenderCopy(gRenderer, O_Texture, &cut, &renderQuad);
+}
