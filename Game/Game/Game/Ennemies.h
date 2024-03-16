@@ -8,6 +8,15 @@ class Ennemies
 {
 public:
 	//
+	Bullet bullet_simple[1000];
+	int thbullet_simple = 0;
+	int load_bullet_simple_time = 0;
+	//
+	int thu = 1;
+	//
+	double slope = 0;
+	double angle = 0;
+	//
 	bool exist = false;
 	// d?a ch? trên màn hình lúc render ra
 	int E_x = 0;
@@ -26,9 +35,7 @@ public:
 	int dem = 0;
 	int health = 10;
 	// hàm 
-	void loadFrame(int x, int y, SDL_Rect* clip = NULL,
-		double angle = 0.0, SDL_Point* center = NULL,
-		SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void loadFrame(int x, int y);
 	bool loadFromFile(string path);
 	void free();
 	Ennemies();
@@ -36,7 +43,8 @@ public:
 	bool checkImpact(Bullet &a);
 	bool checkLazer();
 	void checkHit();
-
+	void loadShoot();
+	void shoot();
 };
 
 #endif

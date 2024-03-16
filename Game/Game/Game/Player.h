@@ -54,14 +54,12 @@ public:
 	bool lazer_bool = false;
 	// trang thai anh
 	int photostatus = 0;
-	int dem = 0;
+	int number_of_hearts = 3;
 	//
 	bool exist = false;
-	// máu
-	int health = 10;
 	// hàm 
 	double calculateDis(Ennemies &a, Object &b);
-	void shoot1();
+	void shootSupport();
 	void determineTheTarget(int& x1, int& y1, int& x2, int& y2);
 	void loadBulletSupport();
 	void loadSupport();
@@ -72,7 +70,8 @@ public:
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);
-
+	void checkHit();
+	bool checkImpact(Bullet& a);
 	~Player();
 	void free();
 };

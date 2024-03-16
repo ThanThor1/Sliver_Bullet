@@ -1,4 +1,5 @@
 #pragma once
 #include "IncludeAll.h"
 #include "Declaration.h"
-void loadall();
+void loadAllImage();
+void loadBackGround();

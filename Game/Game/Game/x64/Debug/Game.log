@@ -1,27 +1,2 @@
-﻿  Ennemies.cpp
-  Event.cpp
-  LoadAll.cpp
-  Main.cpp
-  Declaration.cpp
-  Object.cpp
-  Player.cpp
-D:\Game\Game\Game\Game\Player.cpp(238,33): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(239,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(250,33): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(251,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(277,111): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(278,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(282,109): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(283,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(287,111): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(288,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(313,111): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(314,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(318,109): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(319,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(323,111): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Game\Player.cpp(324,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  P_Bullet.cpp
-  Wave1.cpp
-  Generating Code...
+﻿  LoadAll.cpp
   Game.vcxproj -> D:\Game\Game\Game\x64\Debug\Game.exe

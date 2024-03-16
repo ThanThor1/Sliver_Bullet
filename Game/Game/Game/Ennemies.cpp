@@ -68,19 +68,21 @@ bool Ennemies::loadFromFile(string path) {
 	E_Texture = newTexture;
 	return E_Texture != NULL;
 }
-void Ennemies::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
+void Ennemies::loadFrame(int x1, int y1) {
 	checkHit();
 	if (type == ENNEMIES_1 && health>0) {
+	
 		E_x = x1;
 		E_y = y1;
-		SDL_Rect renderQuad = { E_x, E_y , E_Width, E_Height };
-		if (clip != NULL)
-		{
-			renderQuad.w = clip->w;
-			renderQuad.h = clip->h;
-		}
-		SDL_RenderCopyEx(gRenderer, E_Texture, clip, &renderQuad, angle, center, flip);
+		SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
+		SDL_Point center    = { E_Width/2 ,0 };
+		if (angle >= 15) { thu = -1; }
+		if (angle <=-15) { thu =  1; }
+		angle += 0.1 * thu;
 		exist = true;
+		SDL_RenderCopyEx(gRenderer, E_Texture, NULL , &renderQuad, angle, &center, SDL_FLIP_NONE);
+		loadShoot();
+		shoot();
 	}
 }
 void Ennemies::checkHit() {
@@ -144,11 +146,46 @@ bool Ennemies :: checkImpact(Bullet &a) {
 	return false;
 }
 bool Ennemies::checkLazer() {
-	if (E_x>(player.lazer.O_x+ player.lazer.O_Width/12) || player.lazer.O_x>(E_x + E_Width)) {
+	if (E_x>(player.lazer.O_x+ player.lazer.O_Width/12 -39) || player.lazer.O_x+39>(E_x + E_Width)) {
 		return false;
 	}
 	if ( E_y > player.P_y) {
 		return false;
 	}
 	return true;
+}
+void Ennemies::loadShoot() {
+	if (type == ENNEMIES_1) {
+		load_bullet_simple_time = (load_bullet_simple_time + 1) % 1001;
+		if (thbullet_simple == 300) {
+			thbullet_simple = 0;
+		}
+		if (load_bullet_simple_time == 1000) {
+			bullet_simple[thbullet_simple].start_x = bullet_simple[thbullet_simple].B_x = E_x + E_Width / 2 + (E_Height+10)*sin(-angle*PI/180) - bullet_simple[thbullet_simple].B_Width / 2;
+			bullet_simple[thbullet_simple].start_y = bullet_simple[thbullet_simple].B_y = E_y + ( E_Height + 10) * cos(-angle * PI / 180);
+			bullet_simple[thbullet_simple].angle = angle;
+			bullet_simple[thbullet_simple].slope = tan((bullet_simple[thbullet_simple].angle) * PI / 180);
+			bullet_simple[thbullet_simple].exist = true;
+			thbullet_simple++;
+		}
+	}
+}
+void Ennemies::shoot() {
+	SDL_Point PointBulletPlayer;
+	for (int i = 0; i < 300; i++) {
+		if (bullet_simple[i].exist == true)
+		{
+			PointBulletPlayer = { bullet_simple[i].B_Width / 2, 0 };
+			bullet_simple[i].render(bullet_simple[i].B_x, bullet_simple[i].B_y, NULL, bullet_simple[i].angle, &PointBulletPlayer);
+		}
+	}
+	if (load_bullet_simple_time%5 == 0) {
+		for (int i = 0; i < 300; i++) {
+			if (bullet_simple[i].exist == true)
+			{
+				bullet_simple[i].B_y += round((1) / sqrt(1 + 1.00 * (bullet_simple[i].slope * bullet_simple[i].slope)));
+				bullet_simple[i].B_x = round(bullet_simple[i].start_x + (1.000 * bullet_simple[i].start_y * bullet_simple[i].slope - bullet_simple[i].B_y * 1.000 * bullet_simple[i].slope));
+			}
+		}
+	}
 }

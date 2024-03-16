@@ -54,15 +54,17 @@ bool Player::loadFromFile(string path) {
 	P_Texture = newTexture;
 	return P_Texture != NULL;
 }
-
 void Player::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
-	P_x = x1 - P_Width / 2;
-	P_y = y1 - P_Height / 2;
-	SDL_Rect renderQuad = { P_x, P_y , P_Width, P_Height };
-	SDL_RenderCopyEx(gRenderer, P_Texture, NULL , &renderQuad, angle, center, flip);
-	loadShoot(x1, y1, bullet_type);
-	shoot();
-	exist = true;
+	checkHit();
+	if (number_of_hearts > 0) {
+			P_x = x1 - P_Width / 2;
+			P_y = y1 - P_Height / 2;
+			SDL_Rect renderQuad = { P_x, P_y , P_Width, P_Height };
+			SDL_RenderCopyEx(gRenderer, P_Texture, NULL, &renderQuad, angle, center, flip);
+			loadShoot(x1, y1, bullet_type);
+			shoot();
+			exist = true;
+	}
 }
 void Player::loadShoot(int x1, int y1, int bullet_type) {
 	if (bullet_type == BULLET_SIMPLE) {
@@ -92,15 +94,22 @@ void Player::loadShoot(int x1, int y1, int bullet_type) {
 		}
 		if (load_bullet_x7_time == 30) {
 			int a = -30;
+			int b = -30;
+			int c = 0;
 			for (int i = 0; i <= 6; i++) {
-				bullet_x7[thbullet_x7][i].B_x = P_x + (P_Width - bullet_x7[thbullet_x7][i].B_Width) / 2;
-				bullet_x7[thbullet_x7][i].B_y = P_y - bullet_x7[thbullet_x7][i].B_Height + 50;
-				bullet_x7[thbullet_x7][i].start_x = P_x + (P_Width - bullet_x7[thbullet_x7][i].B_Width) / 2;
-				bullet_x7[thbullet_x7][i].start_y = P_y - bullet_x7[thbullet_x7][i].B_Height + 50;
+				bullet_x7[thbullet_x7][i].B_x = P_x + (P_Width - bullet_x7[thbullet_x7][i].B_Width) / 2 +b;
+				bullet_x7[thbullet_x7][i].B_y = P_y - bullet_x7[thbullet_x7][i].B_Height + 50 +c;
+				bullet_x7[thbullet_x7][i].start_x = P_x + (P_Width - bullet_x7[thbullet_x7][i].B_Width) / 2+b;
+				bullet_x7[thbullet_x7][i].start_y = P_y - bullet_x7[thbullet_x7][i].B_Height + 50+c;
 				bullet_x7[thbullet_x7][i].exist = true;
 				bullet_x7[thbullet_x7][i].angle = a;
 				bullet_x7[thbullet_x7][i].slope = tan((bullet_x7[thbullet_x7][i].angle) * PI / 180);
 				a += 10;
+				b += 10;
+				if (i >= 3) {
+					c += 15;
+				}
+				else c -= 15;
 			}
 			thbullet_x7++;
 		}
@@ -113,7 +122,7 @@ void Player::loadShoot(int x1, int y1, int bullet_type) {
 			thbullet_x5 = 0;
 		}
 		if (load_bullet_x5_time == 30) {
-			int a = -4;
+			int a = -10;
 			int b = -20;
 			int c = 0;
 			for (int i = 0; i <= 4; i++) {
@@ -124,7 +133,7 @@ void Player::loadShoot(int x1, int y1, int bullet_type) {
 				bullet_x5[thbullet_x5][i].exist = true;
 				bullet_x5[thbullet_x5][i].angle = a;
 				bullet_x5[thbullet_x5][i].slope = tan((bullet_x5[thbullet_x5][i].angle) * PI / 180);
-				a += 2;
+				a += 5;
 				b += 10;
 				if (i >= 2) {
 					c += 10;
@@ -175,7 +184,7 @@ void Player::loadSupport() {
 	}
 	else {
 		loadBulletSupport();
-		shoot1();
+		shootSupport();
 	}
 }
 void Player::loadBulletSupport() {
@@ -186,7 +195,6 @@ void Player::loadBulletSupport() {
 		thbullet_support = 0;
 	}
 	load_bullet_support_time = (load_bullet_support_time + 1) % 31;
-	cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
 	if (load_bullet_support_time == 30) {
 		if (x1 > 0 && y1 > 0 && x2 > 0 && y2 > 0) {
 			bullet_support_1[thbullet_support].B_x = support_1.O_x + (support_1.O_Width - bullet_support_1[thbullet_support].B_Width) / 2;
@@ -253,37 +261,37 @@ void Player::shoot() {
 		}
 	}
 }
-void Player::shoot1() {
+void Player::shootSupport() {
 	for (int i = 0; i < 300; i++)
 	{
 		if (bullet_support_1[i].exist == true)
 		{
 			bullet_support_1[i].render(bullet_support_1[i].B_x, bullet_support_1[i].B_y, NULL, bullet_support_1[i].angle);
 			if (bullet_support_1[i].denta_y == 0 && bullet_support_1[i].denta_x > 0) {
-				bullet_support_1[i].B_x += BULLET_SPEED_RIVAL;
+				bullet_support_1[i].B_x += BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_1[i].denta_y == 0 && bullet_support_1[i].denta_x < 0) {
-				bullet_support_1[i].B_x -= BULLET_SPEED_RIVAL;
+				bullet_support_1[i].B_x -= BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_1[i].denta_y > 0 && bullet_support_1[i].denta_x == 0) {
-				bullet_support_1[i].B_y += BULLET_SPEED_RIVAL;
+				bullet_support_1[i].B_y += BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_1[i].denta_y < 0 && bullet_support_1[i].denta_x == 0) {
-				bullet_support_1[i].B_y -= BULLET_SPEED_RIVAL;
+				bullet_support_1[i].B_y -= BULLET_SPEED_SUPPORT;
 			}
 			else {
 				if (bullet_support_1[i].slope >= 1) {
-					bullet_support_1[i].B_y += round((BULLET_SPEED_RIVAL) /
+					bullet_support_1[i].B_y += round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 / (bullet_support_1[i].slope * bullet_support_1[i].slope))) * bullet_support_1[i].denta_x / abs(bullet_support_1[i].denta_x);
 					bullet_support_1[i].B_x = round((bullet_support_1[i].B_y + 1.000 * bullet_support_1[i].start_x * bullet_support_1[i].slope - bullet_support_1[i].start_y * 1.000) / bullet_support_1[i].slope);
 				}
 				else if ((bullet_support_1[i].slope <= 1) && (bullet_support_1[i].slope >= -1)) {
-					bullet_support_1[i].B_x += round((BULLET_SPEED_RIVAL) /
+					bullet_support_1[i].B_x += round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 * bullet_support_1[i].slope * bullet_support_1[i].slope)) * bullet_support_1[i].denta_x / abs(bullet_support_1[i].denta_x);
 					bullet_support_1[i].B_y = round((bullet_support_1[i].B_x) * bullet_support_1[i].slope + bullet_support_1[i].start_y * 1.000 - 1.000 * bullet_support_1[i].start_x * bullet_support_1[i].slope);
 				}
 				else if ((bullet_support_1[i].slope <= -1)) {
-					bullet_support_1[i].B_y -= round((BULLET_SPEED_RIVAL) /
+					bullet_support_1[i].B_y -= round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 / (bullet_support_1[i].slope * bullet_support_1[i].slope))) * bullet_support_1[i].denta_x / abs(bullet_support_1[i].denta_x);
 					bullet_support_1[i].B_x = round((bullet_support_1[i].B_y + 1.000 * bullet_support_1[i].start_x * bullet_support_1[i].slope - bullet_support_1[i].start_y * 1.000) / bullet_support_1[i].slope);
 				}
@@ -296,30 +304,30 @@ void Player::shoot1() {
 		{
 			bullet_support_2[i].render(bullet_support_2[i].B_x, bullet_support_2[i].B_y, NULL, bullet_support_2[i].angle);
 			if (bullet_support_2[i].denta_y == 0 && bullet_support_2[i].denta_x > 0) {
-				bullet_support_2[i].B_x += BULLET_SPEED_RIVAL;
+				bullet_support_2[i].B_x += BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_2[i].denta_y == 0 && bullet_support_2[i].denta_x < 0) {
-				bullet_support_2[i].B_x -= BULLET_SPEED_RIVAL;
+				bullet_support_2[i].B_x -= BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_2[i].denta_y > 0 && bullet_support_2[i].denta_x == 0) {
-				bullet_support_2[i].B_y += BULLET_SPEED_RIVAL;
+				bullet_support_2[i].B_y += BULLET_SPEED_SUPPORT;
 			}
 			else if (bullet_support_2[i].denta_y < 0 && bullet_support_2[i].denta_x == 0) {
-				bullet_support_2[i].B_y -= BULLET_SPEED_RIVAL;
+				bullet_support_2[i].B_y -= BULLET_SPEED_SUPPORT;
 			}
 			else {
 				if (bullet_support_2[i].slope >= 1) {
-					bullet_support_2[i].B_y += round((BULLET_SPEED_RIVAL) /
+					bullet_support_2[i].B_y += round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 / (bullet_support_2[i].slope * bullet_support_2[i].slope))) * bullet_support_2[i].denta_x / abs(bullet_support_2[i].denta_x);
 					bullet_support_2[i].B_x = round((bullet_support_2[i].B_y + 1.000 * bullet_support_2[i].start_x * bullet_support_2[i].slope - bullet_support_2[i].start_y * 1.000) / bullet_support_2[i].slope);
 				}
 				else if ((bullet_support_2[i].slope <= 1) && (bullet_support_2[i].slope >= -1)) {
-					bullet_support_2[i].B_x += round((BULLET_SPEED_RIVAL) /
+					bullet_support_2[i].B_x += round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 * bullet_support_2[i].slope * bullet_support_2[i].slope)) * bullet_support_2[i].denta_x / abs(bullet_support_2[i].denta_x);
 					bullet_support_2[i].B_y = round((bullet_support_2[i].B_x) * bullet_support_2[i].slope + bullet_support_2[i].start_y * 1.000 - 1.000 * bullet_support_2[i].start_x * bullet_support_2[i].slope);
 				}
 				else if ((bullet_support_2[i].slope <= -1)) {
-					bullet_support_2[i].B_y -= round((BULLET_SPEED_RIVAL) /
+					bullet_support_2[i].B_y -= round((BULLET_SPEED_SUPPORT) /
 						sqrt(1 + 1.00 / (bullet_support_2[i].slope * bullet_support_2[i].slope))) * bullet_support_2[i].denta_x / abs(bullet_support_2[i].denta_x);
 					bullet_support_2[i].B_x = round((bullet_support_2[i].B_y + 1.000 * bullet_support_2[i].start_x * bullet_support_2[i].slope - bullet_support_2[i].start_y * 1.000) / bullet_support_2[i].slope);
 				}
@@ -351,4 +359,27 @@ void Player::determineTheTarget(int& x1, int& y1, int& x2, int& y2) {
 }
 double Player :: calculateDis(Ennemies &a, Object &b) {
 	return ((a.E_x + a.E_Width / 2 - b.O_x - b.O_Width / 2) * (a.E_x + a.E_Width / 2 - b.O_x - b.O_Width / 2) + (a.E_y + a.E_Height / 2 - b.O_y - b.O_Height / 2) * (a.E_y + a.E_Height / 2 - b.O_y - b.O_Height / 2));
+}
+void Player::checkHit() {
+	if (number_of_hearts > 0) {
+		for (int i = 0; i < 1000; i++) {
+			for (int j = 0; j < 1000; j++) {
+				if (ennemies_1[i].bullet_simple[j].exist == true) {
+					if (checkImpact(ennemies_1[i].bullet_simple[j])) {
+					
+						ennemies_1[i].bullet_simple[j].exist = false;
+						cout << number_of_hearts - 1;
+						Heart[number_of_hearts-1].setAlpha(100);
+						number_of_hearts--;
+					}
+				}
+			}
+		}
+	}
+}
+bool Player::checkImpact(Bullet& a) {
+	if ((a.B_x + a.B_Width / 2) > P_x && (a.B_x + a.B_Width / 2) < (P_x + P_Width) && (a.B_y + a.B_Height / 2) > P_y && (a.B_y + a.B_Height / 2) < (P_y + P_Height)) {
+		return true;
+	}
+	return false;
 }

@@ -6,6 +6,8 @@
 #include "Wave1.h"
 
 int main(int argc, char* args[]) {
+	int x = 0;
+	int y = 0;
 	gWindow = SDL_CreateWindow("taplamgame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
 		cout << "Window could not be created!" << SDL_GetError();
@@ -14,9 +16,7 @@ int main(int argc, char* args[]) {
 	if (gWindow == NULL) {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
-	int x = 0;
-	int y = 0;
-	loadall();
+	loadAllImage();
 	bool quit = false;
 	SDL_Event e;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -35,7 +35,7 @@ int main(int argc, char* args[]) {
 			}
 			SDL_RenderClear(gRenderer);
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-			BackGround.renderbackground();
+			loadBackGround();
 			Wave1();
 			SDL_GetMouseState(&x, &y);
 			player.loadFrame(x, y);
