@@ -24,4 +24,10 @@ void checkEvent(SDL_Event e) {
 			break;
 		}
 	}
+	if (e.type == SDL_MOUSEBUTTONDOWN) {
+		nhanchuot = true;
+	}
+	if (e.type == SDL_MOUSEBUTTONUP) {
+		nhanchuot = false;
+	}
 }

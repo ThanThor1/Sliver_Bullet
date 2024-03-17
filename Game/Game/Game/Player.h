@@ -9,6 +9,7 @@
 class Player
 {
 public:
+	double sensitivity=1;
 	//support
 	Object support_1;
 	Object support_2;
@@ -36,8 +37,8 @@ public:
 	//loại đạn
 	int bullet_type = 10;
 	// địa chỉ trên màn hình lúc render ra
-	int P_x;
-	int P_y;
+	int P_x=350;
+	int P_y=700;
 	// địa chỉ điểm bắt đầu (chưa cần dùng) (có thể là địa chỉ tâm)
 	double P_Start_x = 0;
 	double P_Start_y = 0;
@@ -64,9 +65,9 @@ public:
 	void loadBulletSupport();
 	void loadSupport();
 	void loadLazer();
-	void loadShoot(int x, int y, int bullet_type);
+	void loadShoot(int bullet_type);
 	void shoot();
-	void loadFrame(int x, int y, SDL_Rect* clip = NULL,
+	void loadFrame( SDL_Rect* clip = NULL,
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);

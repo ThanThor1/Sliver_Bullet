@@ -54,19 +54,42 @@ bool Player::loadFromFile(string path) {
 	P_Texture = newTexture;
 	return P_Texture != NULL;
 }
-void Player::loadFrame(int x1, int y1, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
+void Player::loadFrame( SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
 	checkHit();
+	if (nhanchuot == true) {
+		SDL_GetMouseState(&x, &y);
+		if (P_x <= (SCREEN_WIDTH - P_Width) && P_x >= 0 && P_y >= 0 && P_y <= (SCREEN_HEIGHT - P_Height)) {
+			P_x += round((x - pre_x) * sensitivity);
+			P_y += round((y - pre_y) * sensitivity);
+			if (P_x <= 0) {
+				P_x = 0;
+			}
+			if (P_x >= (SCREEN_WIDTH - P_Width)) {
+				P_x = (SCREEN_WIDTH - P_Width);
+			}
+			if (P_y <= 0) {
+				P_y = 0;
+			}
+			if (P_y >= (SCREEN_HEIGHT - P_Height)) {
+				P_y = (SCREEN_HEIGHT - P_Height);
+			}
+		}
+		pre_x = x;
+		pre_y = y;
+		cout << P_x;
+	}
+	else {
+		SDL_GetMouseState(&pre_x, &pre_y);
+	}
 	if (number_of_hearts > 0) {
-			P_x = x1 - P_Width / 2;
-			P_y = y1 - P_Height / 2;
 			SDL_Rect renderQuad = { P_x, P_y , P_Width, P_Height };
 			SDL_RenderCopyEx(gRenderer, P_Texture, NULL, &renderQuad, angle, center, flip);
-			loadShoot(x1, y1, bullet_type);
+			loadShoot( bullet_type);
 			shoot();
 			exist = true;
 	}
 }
-void Player::loadShoot(int x1, int y1, int bullet_type) {
+void Player::loadShoot( int bullet_type) {
 	if (bullet_type == BULLET_SIMPLE) {
 		load_bullet_simple_time = (load_bullet_simple_time + 1) % 31;
 		load_bullet_x7_time = 0;
@@ -145,8 +168,8 @@ void Player::loadShoot(int x1, int y1, int bullet_type) {
 	}
 	if (lazer_bool == true) {
 		lazer.exist = true;
-		lazer.O_x = x1-72;
-		lazer.O_y = y1-1325;
+		lazer.O_x = P_x + P_Width / 2  -72;
+		lazer.O_y = P_y + P_Height / 2 -1325;
 		loadLazer();
 	}
 	if (support_bool == true) {
@@ -366,9 +389,7 @@ void Player::checkHit() {
 			for (int j = 0; j < 1000; j++) {
 				if (ennemies_1[i].bullet_simple[j].exist == true) {
 					if (checkImpact(ennemies_1[i].bullet_simple[j])) {
-					
 						ennemies_1[i].bullet_simple[j].exist = false;
-						cout << number_of_hearts - 1;
 						Heart[number_of_hearts-1].setAlpha(100);
 						number_of_hearts--;
 					}

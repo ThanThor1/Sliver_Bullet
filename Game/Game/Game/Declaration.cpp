@@ -1,7 +1,9 @@
 ﻿#include "Declaration.h"
-
-
-
+bool nhanchuot = false;
+int x = 0;
+int y = 0;
+int pre_x;
+int pre_y;
 Object Heart[3];
 Object BackGround;
 SDL_Window* gWindow;

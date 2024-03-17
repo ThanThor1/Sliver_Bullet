@@ -3,7 +3,11 @@
 #ifndef DECLARATION
 #define DECLARATION
 #include "IncludeAll.h"
-
+extern bool nhanchuot;
+extern 	int x;
+extern  int y;
+extern 	int pre_x;
+extern  int pre_y;
 extern Object Heart[3];
 extern Object BackGround;
 extern SDL_Window* gWindow;

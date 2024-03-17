@@ -179,7 +179,7 @@ void Ennemies::shoot() {
 			bullet_simple[i].render(bullet_simple[i].B_x, bullet_simple[i].B_y, NULL, bullet_simple[i].angle, &PointBulletPlayer);
 		}
 	}
-	if (load_bullet_simple_time%5 == 0) {
+	if (load_bullet_simple_time%2 == 0) {
 		for (int i = 0; i < 300; i++) {
 			if (bullet_simple[i].exist == true)
 			{
