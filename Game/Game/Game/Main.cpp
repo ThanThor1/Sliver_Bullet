@@ -11,6 +11,8 @@ int main(int argc, char* args[]) {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	
+	SDL_Renderer* pauseRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
 	if (gWindow == NULL) {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
@@ -23,21 +25,26 @@ int main(int argc, char* args[]) {
 	else {
 		while (!quit)
 		{
-			SDL_RenderClear(gRenderer);
-			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
 				{
 					quit = true;
 				}
-				checkEvent(e);
+			    checkEvent(e);
 			}
-			loadBackGround();
-			Wave1();
-			player.loadFrame();
-			Wave1();
-			SDL_RenderPresent(gRenderer);
+			if (pause ==true){
+				loadPauseMenu();
+			}
+			else {
+				SDL_RenderClear(gRenderer);
+				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+				loadBackGround();
+				loadPause();
+				Wave1();
+				player.loadFrame();
+				SDL_RenderPresent(gRenderer);
+			}
 		}
 	}
 	SDL_DestroyRenderer(gRenderer);

@@ -9,7 +9,8 @@
 class Player
 {
 public:
-	double sensitivity=1;
+	double sensitivity[3];
+	int sensitivity_index = 0;
 	//support
 	Object support_1;
 	Object support_2;
@@ -73,6 +74,7 @@ public:
 	bool loadFromFile(string path);
 	void checkHit();
 	bool checkImpact(Bullet& a);
+	Player();
 	~Player();
 	void free();
 };

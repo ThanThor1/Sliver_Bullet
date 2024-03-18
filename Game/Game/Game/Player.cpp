@@ -16,6 +16,11 @@ Player::~Player()
 {
 	free();
 }
+Player::Player(){
+	sensitivity[0] = 0.7;
+	sensitivity[1] = 1;
+	sensitivity[2] = 1.3;
+ }
 bool Player::loadFromFile(string path) {
 	//Get rid of preexisting texture
 	free();
@@ -59,8 +64,12 @@ void Player::loadFrame( SDL_Rect* clip, double angle, SDL_Point* center, SDL_Ren
 	if (nhanchuot == true) {
 		SDL_GetMouseState(&x, &y);
 		if (P_x <= (SCREEN_WIDTH - P_Width) && P_x >= 0 && P_y >= 0 && P_y <= (SCREEN_HEIGHT - P_Height)) {
-			P_x += round((x - pre_x) * sensitivity);
-			P_y += round((y - pre_y) * sensitivity);
+			if (x <= (SCREEN_WIDTH) && x >= 0) {
+				P_x += round((x - pre_x) * sensitivity[sensitivity_index]);
+			}
+			if (y <= (SCREEN_HEIGHT) && y >= 0) {
+				P_y += round((y - pre_y) * sensitivity[sensitivity_index]);
+			}
 			if (P_x <= 0) {
 				P_x = 0;
 			}
@@ -76,7 +85,6 @@ void Player::loadFrame( SDL_Rect* clip, double angle, SDL_Point* center, SDL_Ren
 		}
 		pre_x = x;
 		pre_y = y;
-		cout << P_x;
 	}
 	else {
 		SDL_GetMouseState(&pre_x, &pre_y);

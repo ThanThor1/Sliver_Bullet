@@ -28,7 +28,6 @@ void Object::setColor(Uint8 red, Uint8 green, Uint8 blue)
 }
 void Object::setBlendMode(SDL_BlendMode blending)
 {
-
 	SDL_SetTextureBlendMode(O_Texture, blending);
 }
 void Object::setAlpha(Uint8 alpha)
@@ -36,45 +35,48 @@ void Object::setAlpha(Uint8 alpha)
 	SDL_SetTextureAlphaMod(O_Texture, alpha);
 }
 bool Object::loadFromFile(string path) {
-	//Get rid of preexisting texture
-	free();
+		//Get rid of preexisting texture
+		free();
 
-	//The final texture
-	SDL_Texture* newTexture = NULL;
+		//The final texture
+		SDL_Texture* newTexture = NULL;
 
-	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-	if (loadedSurface == NULL)
-	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
-	}
-	else
-	{
-		//Color key image
-		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 180, 180, 180));
-		//Create texture from surface pixels
-		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-		if (newTexture == NULL)
+		//Load image at specified path
+		SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+		if (loadedSurface == NULL)
 		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+			printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
 		}
 		else
 		{
-			//Get image dimensions
-			O_Width = loadedSurface->w;
-			O_Height = loadedSurface->h;
+			//Color key image
+			SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 180, 180, 180));
+			//Create texture from surface pixels
+			newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+			if (newTexture == NULL)
+			{
+				printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+			}
+			else
+			{
+				//Get image dimensions
+				O_Width = loadedSurface->w;
+				O_Height = loadedSurface->h;
+			}
+
+			//Get rid of old loaded surface
+			SDL_FreeSurface(loadedSurface);
 		}
 
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedSurface);
-	}
-
-	//Return success
-	O_Texture = newTexture;
-	return O_Texture != NULL;
+		//Return success
+		O_Texture = newTexture;
+		return O_Texture != NULL;
+	
 }
 void Object::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
+	O_x = x;
+	O_y = y;
 	exist = true;
 	SDL_Rect renderQuad = { x, y , O_Width, O_Height };
 	if (clip != NULL)
