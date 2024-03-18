@@ -137,7 +137,7 @@
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="P_Bullet.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Wave1.cpp" />
   </ItemGroup>
   <ItemGroup>

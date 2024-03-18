@@ -1,7 +1,8 @@
 #include "Event.h"
 #include "Declaration.h"
+#include "LoadAll.h"
 void checkEvent(SDL_Event e) {
-	if (pause == false) {
+	if (screen_status == FIGHT) {
 		if (e.type == SDL_KEYDOWN)
 		{
 			switch (e.key.keysym.sym) {
@@ -25,8 +26,8 @@ void checkEvent(SDL_Event e) {
 				break;
 			}
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN && pre_x >= pause_button.O_x && pre_y >= pause_button.O_y && pre_x <= (pause_button.O_x + pause_button.O_Width) && pre_y <= (pause_button.O_y + pause_button.O_Height)) {
-			pause = true;
+		if (checkClickObject(e, pause_button, pre_x, pre_y)) {
+			screen_status = PAUSE;
 			surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, 0, 0, 0, 0);
 			SDL_RenderReadPixels(gRenderer, NULL, SDL_PIXELFORMAT_RGB888, surface->pixels, surface->pitch);
 			texture = SDL_CreateTextureFromSurface(gRenderer, surface);
@@ -34,35 +35,49 @@ void checkEvent(SDL_Event e) {
 		else if (e.type == SDL_MOUSEBUTTONDOWN) {
 			nhanchuot = true;
 		}
-		if (e.type == SDL_MOUSEBUTTONUP) {
+		else if (e.type == SDL_MOUSEBUTTONUP) {
 			nhanchuot = false;
 		}
 	}
-	else{
+	else if (screen_status == PAUSE) {
 		SDL_GetMouseState(&pause_x, &pause_y);
-		if (e.type == SDL_MOUSEBUTTONDOWN && pause_x >= sound.O_x && pause_y >= sound.O_y && pause_x <= (sound.O_x + sound.O_Width) && pause_y <= (sound.O_y + sound.O_Height)) {
+		if (checkClickObject(e, sound_pause, pause_x, pause_y)) {
 			if (sound_bool)
 				sound_bool = false;
 			else sound_bool = true;
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN && pause_x >= music.O_x && pause_y >= music.O_y && pause_x <= (music.O_x + music.O_Width) && pause_y <= (music.O_y + music.O_Height)) {
+		if (checkClickObject(e, music_pause, pause_x, pause_y)) {
 			if (music_bool)
 				music_bool = false;
 			else music_bool = true;
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN && pause_x >= (490+pause_menu.O_x) && pause_y >=(662+pause_menu.O_y)  && pause_x <= (490 + 128+pause_menu.O_x) && pause_y <= (662 + 148 + pause_menu.O_y)) {
-			pause = false;
+		if (checkClickObject(e, continue_pause, pause_x, pause_y)) {
+			screen_status = FIGHT;
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN && pause_x >= (210-18-45+ pause_menu.O_x) && pause_y >= (445+ pause_menu.O_y) && pause_x <= (210-18+ pause_menu.O_x) && pause_y <= (445 +45 + pause_menu.O_y)) {
+		if (checkClickObject(e, home_pause, pause_x, pause_y)) {
+			screen_status = HOME;
+		}
+		if (checkClickObject(e, sensitivity_down_pause, pause_x, pause_y)) {
 			if (player.sensitivity_index >= 1) {
 				player.sensitivity_index--;
 			}
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN && pause_x >= (210 + pause_menu.O_x + 252 +18 ) && pause_y >= (445 + pause_menu.O_y) && pause_x <= (210 + 18 + pause_menu.O_x + 252+ 45) && pause_y <= (445 + 45 + pause_menu.O_y)) {
+		if (checkClickObject(e, sensitivity_up_pause, pause_x, pause_y)) {
 			if (player.sensitivity_index <= 1) {
 				player.sensitivity_index++;
 			}
 		}
 	}
-	
+	else if (screen_status == HOME) {
+		SDL_GetMouseState(&home_x, &home_y);
+		if (e.type == SDL_MOUSEBUTTONDOWN) {
+			screen_status = FIGHT;
+			renew();
+			loadAllImage();
+		}
+
+	}
+}
+bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
+	return  (e.type == SDL_MOUSEBUTTONDOWN && x >= a.O_x && y >= a.O_y && x <= (a.O_x + a.O_Width) && y <= (a.O_y + a.O_Height));
 }

@@ -13,11 +13,11 @@ public:
 	//
 	bool exist = false;
 	//
-	double start_x;
-	double start_y;
+	double start_x=0;
+	double start_y=0;
 	// dia chi trên màn hình lúc render ra
-	int B_x;
-	int B_y;
+	int B_x=0;
+	int B_y=0;
 	// dia chi diem bat dau (chua can dùng)
 	//chieu ngang và doc
 	int B_Width = 0;

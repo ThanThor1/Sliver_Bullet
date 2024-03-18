@@ -5,14 +5,24 @@
 #include"Declaration.h"
 void Ennemies::free()
 {
-	//Free texture if it exists
-	if (E_Texture != NULL)
-	{
 		SDL_DestroyTexture(E_Texture);
 		E_Texture = NULL;
 		E_Width = 0;
 		E_Height = 0;
-	}
+		thbullet_simple = 0;
+		load_bullet_simple_time = 0;
+		thu = 1;
+		slope = 0;
+		angle = 0;
+		exist = false;
+		E_x = 0;
+		E_y = 0;
+		E_Start_x = 0;
+		E_Start_y = 0;
+		int type=0;
+		photostatus = 0;
+		dem = 0;
+		health = 10;
 }
 Ennemies::Ennemies()
 {

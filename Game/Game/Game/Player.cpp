@@ -1,16 +1,53 @@
-#pragma once
+﻿#pragma once
 #include"Player.h"
 #include"Declaration.h"
 void Player::free()
 {
-	//Free texture if it exists
-	if (P_Texture != NULL)
-	{
+	    //Free texture if it exists
 		SDL_DestroyTexture(P_Texture);
 		P_Texture = NULL;
 		P_Width = 0;
 		P_Height = 0;
-	}
+		//support
+		support_1;
+		support_2;
+		load_support_time = 0;
+		load_bullet_support_time = 0;
+		thbullet_support = 0;
+		dis_player_support = 0;
+		//lazer
+		lazer;
+		load_lazer_time = 0;
+		//bullet
+		thbullet_simple = 0;
+		load_bullet_simple_time = 0;
+		//
+		thbullet_x7 = 0;
+		load_bullet_x7_time = 0;
+		//
+		thbullet_x5 = 0;
+		load_bullet_x5_time = 0;
+		//loại đạn
+		bullet_type = 10;
+		// địa chỉ trên màn hình lúc render ra
+		P_x = 350;
+		P_y = 700;
+		// địa chỉ điểm bắt đầu (chưa cần dùng) (có thể là địa chỉ tâm)
+		P_Start_x = 0;
+		P_Start_y = 0;
+		//Texture
+		P_Texture = NULL;
+		// khiên
+		shield_bool = false;
+		// hỗ trợ
+		support_bool = false;
+		// lazer
+		lazer_bool = false;
+		// trang thai anh
+		photostatus = 0;
+		number_of_hearts = 3;
+		//
+		exist = false;
 }
 Player::~Player()
 {
@@ -20,7 +57,7 @@ Player::Player(){
 	sensitivity[0] = 0.7;
 	sensitivity[1] = 1;
 	sensitivity[2] = 1.3;
- }
+}
 bool Player::loadFromFile(string path) {
 	//Get rid of preexisting texture
 	free();
@@ -398,7 +435,6 @@ void Player::checkHit() {
 				if (ennemies_1[i].bullet_simple[j].exist == true) {
 					if (checkImpact(ennemies_1[i].bullet_simple[j])) {
 						ennemies_1[i].bullet_simple[j].exist = false;
-						Heart[number_of_hearts-1].setAlpha(100);
 						number_of_hearts--;
 					}
 				}

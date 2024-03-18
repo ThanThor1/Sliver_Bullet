@@ -7,6 +7,9 @@ class Object
 {
 public:
 	//
+	int dem1=0;
+	int dem2 = 0;
+	//
 	int damage = 5;
 	bool exist = false;
 	//

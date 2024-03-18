@@ -13,10 +13,14 @@
 #define PI 3.141592
 
 const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 1000;
+const int SCREEN_HEIGHT = 1050;
 
 
-
+enum screenstatus {
+	PAUSE,
+	HOME,
+	FIGHT,
+};
 enum bullet {
 	BULLET_SIMPLE,
 	BULLET_X5,

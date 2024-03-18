@@ -11,6 +11,7 @@ class Player
 public:
 	double sensitivity[3];
 	int sensitivity_index = 0;
+	
 	//support
 	Object support_1;
 	Object support_2;

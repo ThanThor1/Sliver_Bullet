@@ -4,13 +4,22 @@
 void Object::free()
 {
 	//Free texture if it exists
-	if (O_Texture != NULL)
-	{
 		SDL_DestroyTexture(O_Texture);
 		O_Texture = NULL;
 		O_Width = 0;
 		O_Height = 0;
-	}
+		dem1 = 0;
+		dem2 = 0;
+		damage = 5;
+		exist = false;
+		start_x;
+		start_y;
+		O_x = 0;
+		O_y = 0;
+		dem = 0;
+		photo = 0;
+		slope = 0;
+		angle = 0;
 }
 Object::Object()
 {
@@ -89,7 +98,7 @@ void Object::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* cente
 void Object::renderbackground()
 {
 	dem = (dem + 1) % 3;
-	photo = (photo + dem / 2) % 1000;
+	photo = (photo + dem / 2) % (SCREEN_HEIGHT + 1);
 	SDL_Rect renderQuad = { 0, 0 , SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_Rect cut ={0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_RenderCopy(gRenderer, O_Texture, &cut, &renderQuad);

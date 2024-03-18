@@ -3,11 +3,10 @@
 #ifndef DECLARATION
 #define DECLARATION
 #include "IncludeAll.h"
-
 extern bool sound_bool;
 extern bool music_bool;
 extern bool nhanchuot;
-extern bool pause;
+extern int screen_status;
 extern bool prepare_to_press_pause;
 /// <summary>
 /// 
@@ -19,18 +18,27 @@ extern 	int x;
 extern  int y;
 extern 	int pre_x;
 extern  int pre_y;
+extern int home_x;
+extern int home_y;
 /// <summary>
 /// 
 /// </summary>
 extern Object sensitivity[3];
-extern Object SOUND;
-extern Object MUSIC;
-extern Object sound;
-extern Object unsound;
-extern Object unmusic;
-extern Object music;
+extern Object home;
+extern Object press_start;
+extern Object continue_pause;
+extern Object home_pause;
+extern Object sensitivity_down_pause;
+extern Object sensitivity_up_pause;
+extern Object sound_pause;
+extern Object unsound_pause;
+extern Object unmusic_pause;
+extern Object music_pause;
 extern Object pause_menu;
 extern Object pause_button;
+/// <summary>
+/// 
+/// </summary>
 extern Object Heart[3];
 extern Object BackGround;
 /// <summary>
@@ -54,4 +62,8 @@ extern Ennemies ennemies_4[1000];
 /// </summary>
 extern bool wave_1;
 extern bool wave_2;
+///
+//
+///
+
 #endif

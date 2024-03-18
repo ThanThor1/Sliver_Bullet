@@ -2,7 +2,7 @@
 
 bool sound_bool = true;
 bool music_bool = true;
-bool pause = false;
+int screen_status = FIGHT;
 bool prepare_to_press_pause = false;
 bool nhanchuot = false;
 /// <summary>
@@ -14,16 +14,23 @@ int pre_x=0;
 int pre_y=0;
 int pause_x = 0;
 int pause_y = 0;
+int home_x = 0;
+int home_y = 0;
 /// <summary>
 /// 
 /// </summary>
+/// extern Object continue_pause;
+Object home;
+Object press_start;
+Object continue_pause;
+Object home_pause;
+Object sensitivity_down_pause;
+Object sensitivity_up_pause;
 Object sensitivity[3];
-Object SOUND;
-Object MUSIC;
-Object sound;
-Object unsound;
-Object unmusic;
-Object music;
+Object sound_pause;
+Object unsound_pause;
+Object unmusic_pause;
+Object music_pause;
 Object pause_menu;
 Object pause_button;
 Object Heart[3];
@@ -49,3 +56,6 @@ Ennemies ennemies_4[1000];
 /// </summary>
 bool wave_1 = true;
 bool wave_2 = true;
+///
+//
+///

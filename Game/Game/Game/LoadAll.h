@@ -1,7 +1,14 @@
 #pragma once
-#include "IncludeAll.h"
-#include "Declaration.h"
+#include"Library.h"
+#include"SomeConst.h"
+#include"IncludeAll.h"
+#include"Declaration.h"
+#include"LoadAll.h"
+#include "Wave1.h"
 void loadAllImage();
-void loadBackGround();
-void loadPause();
-void loadPauseMenu();
+void renew();
+void loadFightBackGround();
+void loadPauseButton();
+void loadPauseScreen();
+void loadFightScreen();
+void loadHomeScreen();

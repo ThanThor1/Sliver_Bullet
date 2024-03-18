@@ -24,7 +24,7 @@ int main(int argc, char* args[]) {
 	}
 	else {
 		while (!quit)
-		{
+		{   
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
@@ -33,17 +33,14 @@ int main(int argc, char* args[]) {
 				}
 			    checkEvent(e);
 			}
-			if (pause ==true){
-				loadPauseMenu();
+			if (screen_status ==  PAUSE){
+				loadPauseScreen();
 			}
-			else {
-				SDL_RenderClear(gRenderer);
-				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-				loadBackGround();
-				loadPause();
-				Wave1();
-				player.loadFrame();
-				SDL_RenderPresent(gRenderer);
+			else if (screen_status == FIGHT){
+				loadFightScreen();
+			}
+			else if (screen_status == HOME) {
+				loadHomeScreen();
 			}
 		}
 	}

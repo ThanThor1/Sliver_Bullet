@@ -30,7 +30,7 @@
     <ClCompile Include="Object.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="P_Bullet.cpp">
+    <ClCompile Include="Bullet.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
