@@ -1,5 +1,6 @@
 ﻿#include "Declaration.h"
 
+bool loadmap_bool = false;
 bool sound_bool = true;
 bool music_bool = true;
 int screen_status = HOME;
@@ -8,6 +9,7 @@ bool nhanchuot = false;
 /// <summary>
 /// 
 /// </summary>
+
 int x = 0;
 int y = 0;
 int pre_x = 0;
@@ -38,15 +40,18 @@ Object BackGround;
 /// <summary>
 /// 
 /// </summary>
-SDL_Window* gWindow;
-SDL_Renderer* gRenderer;
-SDL_Surface* surface;
-SDL_Texture* texture;
+
 /// <summary>
 /// 
 /// </summary>
 Player player;
 Ennemies boss1;
+Ennemies_typeA ennemies_A[NUMBER_ENNEMIES];
+Ennemies_typeB ennemies_B[NUMBER_ENNEMIES];
+Ennemies_typeC ennemies_C[NUMBER_ENNEMIES];
+int number_ennemies_A = 0;
+int number_ennemies_B = 0;
+int number_ennemies_C = 0;
 Ennemies ennemies_1[NUMBER_ENNEMIES];
 Ennemies ennemies_2[NUMBER_ENNEMIES];
 Ennemies ennemies_3[NUMBER_ENNEMIES];
@@ -54,8 +59,13 @@ Ennemies ennemies_4[NUMBER_ENNEMIES];
 /// <summary>
 /// 
 /// </summary>
-bool wave_1 = true;
-bool wave_2 = true;
-///
-//
-///
+int MAP = 0;
+string map[NUMBER_MAX_HEIGHT][ NUMBER_MAX_WIDTH] = {};
+
+SDL_Window* gWindow;
+SDL_Renderer* gRenderer;
+SDL_Surface* surface;
+SDL_Texture* texture;
+
+Mix_Music* music_menu;
+Mix_Music* music_fight;

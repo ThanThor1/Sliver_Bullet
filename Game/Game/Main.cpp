@@ -1,35 +1,43 @@
 #include"Library.h"
 #include"SomeConst.h"
-#include"IncludeAll.h"
 #include"Declaration.h"
+#include "Event.h"
 #include"LoadAll.h"
-#include "Wave1.h"
-
-int main(int argc, char* args[]) {
+bool init() {
 	gWindow = SDL_CreateWindow("taplamgame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
 	SDL_Renderer* pauseRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
 	if (gWindow == NULL) {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
-	loadAllImage();
+	bool success = true;
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		success = false;
+
+	}
+	else if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+		success = false;
+	}
+	else if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		success = false;
+	}
+	return success;
+}
+int main(int argc, char* args[]) {
 	bool quit = false;
 	SDL_Event e;
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		cout << "SDL could not initialize" << SDL_GetError();;
+	if (!init()) {
+		cout << "cannot init";
 	}
 	else {
+		loadAll();
+		Mix_PlayMusic(music_menu, -1);
 		while (!quit)
 		{
-			random_device rd;
-			mt19937 gen(rd());
-			uniform_int_distribution<> dis(-90, 90);
-			int a = dis(gen);
-			cout << a << endl;
+
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)

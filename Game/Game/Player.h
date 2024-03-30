@@ -1,11 +1,12 @@
 ﻿#pragma once
 #ifndef PLAYER
 #define PLAYER
-#include "Object.h"
+
 #include "Library.h"
-#include"SomeConst.h"
+#include "SomeConst.h"
 #include "Bullet.h"
-#include "Ennemies.h"
+#include "Object.h"
+class Ennemies;
 class Player
 {
 public:

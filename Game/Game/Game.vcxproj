@@ -131,6 +131,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ennemies.cpp" />
+    <ClCompile Include="Ennemies_typeA.cpp" />
+    <ClCompile Include="Ennemies_typeB.cpp" />
+    <ClCompile Include="Ennemies_typeC.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="LoadAll.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -144,6 +147,9 @@
     <ClInclude Include="CheckCollide.h" />
     <ClInclude Include="Declaration.h" />
     <ClInclude Include="Ennemies.h" />
+    <ClInclude Include="Ennemies_typeA.h" />
+    <ClInclude Include="Ennemies_typeB.h" />
+    <ClInclude Include="Ennemies_typeC.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="IncludeAll.h" />
     <ClInclude Include="Library.h" />

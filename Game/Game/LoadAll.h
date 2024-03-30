@@ -1,12 +1,22 @@
-#pragma once
+﻿#pragma once
 #include"Library.h"
 #include"SomeConst.h"
-#include"IncludeAll.h"
-#include"Declaration.h"
-#include"LoadAll.h"
 #include "Wave1.h"
-void loadAllImage();
-void renew();
+void loadAll();  // bao gồm 5 cái dươi
+void loadAllPlayer();
+void loadAllEnnemies();
+void loadAllIcon();
+void loadAllSound();
+void loadAllMap();
+//
+//
+//
+void renewAll();  // bao gồm 2 cái dưới
+void renewAllPlayer();
+void renewAllEnnemies();
+//
+//
+//
 void loadFightBackGround();
 void loadPauseButton();
 void loadPauseScreen();

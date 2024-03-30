@@ -10,5 +10,5 @@
 #include "Library.h"
 #include "Event.h"
 #include "Object.h"
-
+#include "Ennemies_typeC.h"
 #endif

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include"Player.h"
-#include"Declaration.h"
+#include "Declaration.h"
+#include "Ennemies.h"
 void Player::free()
 {
 	//Free texture if it exists
@@ -245,10 +246,10 @@ void Player::loadLazer() {
 void Player::loadSupport() {
 	support_1.render(support_1.O_x, support_1.O_y);
 	support_2.render(support_2.O_x, support_2.O_y);
-	support_1.O_x = P_x + player.P_Width / 2 - support_1.O_Width / 2 + dis_player_support;
-	support_2.O_x = P_x + player.P_Width / 2 - support_2.O_Width / 2 - dis_player_support;
-	support_1.O_y = P_y + player.P_Height / 2 - support_1.O_Height / 2;
-	support_2.O_y = P_y + player.P_Height / 2 - support_2.O_Height / 2;
+	support_1.O_x = P_x + P_Width / 2 - support_1.O_Width / 2 + dis_player_support;
+	support_2.O_x = P_x + P_Width / 2 - support_2.O_Width / 2 - dis_player_support;
+	support_1.O_y = P_y + P_Height / 2 - support_1.O_Height / 2;
+	support_2.O_y = P_y + P_Height / 2 - support_2.O_Height / 2;
 	if (dis_player_support < 100) {
 		dis_player_support += 1;
 	}
@@ -434,12 +435,12 @@ void Player::checkHit() {
 	if (number_of_hearts > 0) {
 		for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 			for (int j = 0; j < NUMBER_BULLET; j++) {
-				if (ennemies_1[i].bullet_simple[j].exist == true) {
+				/*if (ennemies_1[i].bullet_simple[j].exist == true) {
 					if (checkImpact(ennemies_1[i].bullet_simple[j])) {
 						ennemies_1[i].bullet_simple[j].exist = false;
 						number_of_hearts--;
 					}
-				}
+				}*/
 			}
 		}
 	}
