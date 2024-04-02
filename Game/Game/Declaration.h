@@ -9,6 +9,7 @@
 #include "Ennemies_typeA.h"
 #include "Ennemies_typeB.h"
 #include "Ennemies_typeC.h"
+#include "Ennemies_typeD.h"
 #include "Player.h"
 #include "Library.h"
 extern bool loadmap_bool;
@@ -49,13 +50,11 @@ extern Ennemies boss1;
 extern Ennemies_typeA ennemies_A[NUMBER_ENNEMIES];
 extern Ennemies_typeB ennemies_B[NUMBER_ENNEMIES];
 extern Ennemies_typeC ennemies_C[NUMBER_ENNEMIES];
+extern Ennemies_typeD ennemies_D[NUMBER_ENNEMIES];
 extern int number_ennemies_A;
 extern int number_ennemies_B;
 extern int number_ennemies_C;
-extern Ennemies ennemies_1[NUMBER_ENNEMIES];
-extern Ennemies ennemies_2[NUMBER_ENNEMIES];
-extern Ennemies ennemies_3[NUMBER_ENNEMIES];
-extern Ennemies ennemies_4[NUMBER_ENNEMIES];
+extern int number_ennemies_D;
 
 extern int MAP;
 extern string map[NUMBER_MAX_HEIGHT][NUMBER_MAX_WIDTH];

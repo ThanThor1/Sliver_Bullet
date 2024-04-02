@@ -6,7 +6,8 @@
 bool init() {
 	gWindow = SDL_CreateWindow("taplamgame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
-		cout << "Window could not be created!" << SDL_GetError();
+		
+		cout<< "Window could not be created!" << SDL_GetError();
 	}
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_Renderer* pauseRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);

@@ -1,8 +1,8 @@
 ﻿#include "Ennemies_typeC.h"
 #include "Declaration.h"
 // di chuyển 
-void Ennemies_typeC::checkExist() {
-	if (health == -1) {
+bool Ennemies_typeC::checkExist() {
+	if (health == -100) {
 		health = 10;
 		E_denta_x = E_finish_x - E_start_x;
 		E_denta_y = E_finish_y - E_start_y;
@@ -15,6 +15,7 @@ void Ennemies_typeC::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	return exist;
 }
 void Ennemies_typeC::moveEnnemies() {
 	SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
@@ -83,49 +84,49 @@ void Ennemies_typeC::loadShoot() {
 		uniform_int_distribution<> dis(0, 90);
 		int a = dis(gen);
 		for (int i = 0; i < 4; i++) {
-			bullet_x4[thbullet_x4][i].start_x = bullet_x4[thbullet_x4][i].B_x = E_x - 10;
-			bullet_x4[thbullet_x4][i].start_y = bullet_x4[thbullet_x4][i].B_y = E_y - 90;
-			bullet_x4[thbullet_x4][i].angle = a;
+			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x - 10;
+			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y - 90;
+			bullet_x4[thbullet_x4][i].B_angle = a;
 			if (a >= 0 && a <= 90) {
-				bullet_x4[thbullet_x4][i].slope = 1.0 / tan(-a * 1.0 * PI / 180);
+				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan(-a * 1.0 * PI / 180);
 			}
 			else if (a >= 90 && a <= 270) {
-				bullet_x4[thbullet_x4][i].slope = 1.0 / tan((180 - a) * 1.0 * PI / 180);
+				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan((180 - a) * 1.0 * PI / 180);
 			}
 			else {
-				bullet_x4[thbullet_x4][i].slope = 1.0 / tan((360 - a) * 1.0 * PI / 180);
+				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan((360 - a) * 1.0 * PI / 180);
 			}
 			//
 			if (a == 0) {
-				bullet_x4[thbullet_x4][i].denta_x = 0;
-				bullet_x4[thbullet_x4][i].denta_y = 1;
+				bullet_x4[thbullet_x4][i].B_denta_x = 0;
+				bullet_x4[thbullet_x4][i].B_denta_y = 1;
 			}
 			else if (a == 90) {
-				bullet_x4[thbullet_x4][i].denta_y = 0;
-				bullet_x4[thbullet_x4][i].denta_x = -1;
+				bullet_x4[thbullet_x4][i].B_denta_y = 0;
+				bullet_x4[thbullet_x4][i].B_denta_x = -1;
 			}
 			else if (a == 180) {
-				bullet_x4[thbullet_x4][i].denta_x = 0;
-				bullet_x4[thbullet_x4][i].denta_y = -1;
+				bullet_x4[thbullet_x4][i].B_denta_x = 0;
+				bullet_x4[thbullet_x4][i].B_denta_y = -1;
 			}
 			else if (a == 270) {
-				bullet_x4[thbullet_x4][i].denta_y = 0;
-				bullet_x4[thbullet_x4][i].denta_x = 1;
+				bullet_x4[thbullet_x4][i].B_denta_y = 0;
+				bullet_x4[thbullet_x4][i].B_denta_x = 1;
 			}
 			//
 			if (a > 0 && a < 180) {
-				bullet_x4[thbullet_x4][i].denta_x = -1;
-				bullet_x4[thbullet_x4][i].denta_y = 1;
+				bullet_x4[thbullet_x4][i].B_denta_x = -1;
+				bullet_x4[thbullet_x4][i].B_denta_y = 1;
 			}
 			else if (a > 180 && a < 360) {
-				bullet_x4[thbullet_x4][i].denta_x = 1;
-				bullet_x4[thbullet_x4][i].denta_y = 1;
+				bullet_x4[thbullet_x4][i].B_denta_x = 1;
+				bullet_x4[thbullet_x4][i].B_denta_y = 1;
 			}
 			a += 90;
 			if (a >= 360) {
 				a = a - 360;
 			}
-			bullet_x4[thbullet_x4][i].exist = true;
+			bullet_x4[thbullet_x4][i].B_exist = true;
 		}
 		thbullet_x4++;
 	}
@@ -136,36 +137,36 @@ void Ennemies_typeC::shoot() {
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			if (bullet_x4[i][j].exist == true)
+			if (bullet_x4[i][j].B_exist == true)
 			{
-				bullet_x4[i][j].render(bullet_x4[i][j].B_x, bullet_x4[i][j].B_y, NULL, bullet_x4[i][j].angle);
-				if (bullet_x4[i][j].denta_y == 0 && bullet_x4[i][j].denta_x > 0) {
+				bullet_x4[i][j].render(bullet_x4[i][j].B_x, bullet_x4[i][j].B_y, NULL, bullet_x4[i][j].B_angle);
+				if (bullet_x4[i][j].B_denta_y == 0 && bullet_x4[i][j].B_denta_x > 0) {
 					bullet_x4[i][j].B_x += BULLET_SPEED_RIVAL;
 				}
-				else if (bullet_x4[i][j].denta_y == 0 && bullet_x4[i][j].denta_x < 0) {
+				else if (bullet_x4[i][j].B_denta_y == 0 && bullet_x4[i][j].B_denta_x < 0) {
 					bullet_x4[i][j].B_x -= BULLET_SPEED_RIVAL;
 				}
-				else if (bullet_x4[i][j].denta_y > 0 && bullet_x4[i][j].denta_x == 0) {
+				else if (bullet_x4[i][j].B_denta_y > 0 && bullet_x4[i][j].B_denta_x == 0) {
 					bullet_x4[i][j].B_y += BULLET_SPEED_RIVAL;
 				}
-				else if (bullet_x4[i][j].denta_y < 0 && bullet_x4[i][j].denta_x == 0) {
+				else if (bullet_x4[i][j].B_denta_y < 0 && bullet_x4[i][j].B_denta_x == 0) {
 					bullet_x4[i][j].B_y -= BULLET_SPEED_RIVAL;
 				}
 				else {
-					if (bullet_x4[i][j].slope >= 1) {
+					if (bullet_x4[i][j].B_slope >= 1) {
 						bullet_x4[i][j].B_y += round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 / (bullet_x4[i][j].slope * bullet_x4[i][j].slope))) * bullet_x4[i][j].denta_x;
-						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].start_x * bullet_x4[i][j].slope - bullet_x4[i][j].start_y * 1.000) / bullet_x4[i][j].slope);
+							sqrt(1 + 1.00 / (bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope))) * bullet_x4[i][j].B_denta_x;
+						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope - bullet_x4[i][j].B_start_y * 1.000) / bullet_x4[i][j].B_slope);
 					}
-					else if ((bullet_x4[i][j].slope <= 1) && (bullet_x4[i][j].slope >= -1)) {
+					else if ((bullet_x4[i][j].B_slope <= 1) && (bullet_x4[i][j].B_slope >= -1)) {
 						bullet_x4[i][j].B_x += round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 * bullet_x4[i][j].slope * bullet_x4[i][j].slope)) * bullet_x4[i][j].denta_x;
-						bullet_x4[i][j].B_y = round((bullet_x4[i][j].B_x) * bullet_x4[i][j].slope + bullet_x4[i][j].start_y * 1.000 - 1.000 * bullet_x4[i][j].start_x * bullet_x4[i][j].slope);
+							sqrt(1 + 1.00 * bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope)) * bullet_x4[i][j].B_denta_x;
+						bullet_x4[i][j].B_y = round((bullet_x4[i][j].B_x) * bullet_x4[i][j].B_slope + bullet_x4[i][j].B_start_y * 1.000 - 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope);
 					}
-					else if ((bullet_x4[i][j].slope <= -1)) {
+					else if ((bullet_x4[i][j].B_slope <= -1)) {
 						bullet_x4[i][j].B_y -= round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 / (bullet_x4[i][j].slope * bullet_x4[i][j].slope))) * bullet_x4[i][j].denta_x;
-						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].start_x * bullet_x4[i][j].slope - bullet_x4[i][j].start_y * 1.000) / bullet_x4[i][j].slope);
+							sqrt(1 + 1.00 / (bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope))) * bullet_x4[i][j].B_denta_x;
+						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope - bullet_x4[i][j].B_start_y * 1.000) / bullet_x4[i][j].B_slope);
 					}
 				}
 			}

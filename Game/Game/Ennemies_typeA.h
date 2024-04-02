@@ -10,8 +10,7 @@ public:
 	int load_bullet_simple_time = 0;
 	double speed = 1;
 	int direction = 1;
-	bool start_health = true;
-	void checkExist();
+	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();
 	void free();

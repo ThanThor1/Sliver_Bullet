@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include"Library.h"
 #include"SomeConst.h"
-#include "Wave1.h"
+#include "Wave.h"
 void loadAll();  // bao gồm 5 cái dươi
 void loadAllPlayer();
 void loadAllEnnemies();

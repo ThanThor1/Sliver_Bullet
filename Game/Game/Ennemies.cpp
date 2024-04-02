@@ -54,46 +54,46 @@ bool Ennemies::loadFromFile(string path) {
 void Ennemies::checkHit() {
 	if (health > 0) {
 		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 1; j++) {
-				if (player.bullet_simple[i][j].exist == true) {
+			for (int j = 0; j < 2; j++) {
+				if (player.bullet_simple[i][j].B_exist == true) {
 					if (checkImpact(player.bullet_simple[i][j])) {
-						health -= player.bullet_simple[i][j].damage;
-						player.bullet_simple[i][j].exist = false;
+						health -= player.bullet_simple[i][j].B_damage;
+						player.bullet_simple[i][j].B_exist = false;
 					}
 				}
 			}
 		}
 		for (int i = 0; i < 100; i++) {
 			for (int j = 0; j < 5; j++) {
-				if (player.bullet_x5[i][j].exist == true) {
+				if (player.bullet_x5[i][j].B_exist == true) {
 					if (checkImpact(player.bullet_x5[i][j])) {
-						health -= player.bullet_x5[i][j].damage;
-						player.bullet_x5[i][j].exist = false;
+						health -= player.bullet_x5[i][j].B_damage;
+						player.bullet_x5[i][j].B_exist = false;
 					}
 				}
 			}
 		}
 		for (int i = 0; i < 100; i++) {
 			for (int j = 0; j < 7; j++) {
-				if (player.bullet_x7[i][j].exist == true) {
+				if (player.bullet_x7[i][j].B_exist == true) {
 					if (checkImpact(player.bullet_x7[i][j])) {
-						health -= player.bullet_x7[i][j].damage;
-						player.bullet_x7[i][j].exist = false;
+						health -= player.bullet_x7[i][j].B_damage;
+						player.bullet_x7[i][j].B_exist = false;
 					}
 				}
 			}
 		}
 		for (int i = 0; i < 100; i++) {
-			if (player.bullet_support_1[i].exist == true) {
+			if (player.bullet_support_1[i].B_exist == true) {
 				if (checkImpact(player.bullet_support_1[i])) {
-					health -= player.bullet_support_1[i].damage;
-					player.bullet_support_1[i].exist = false;
+					health -= player.bullet_support_1[i].B_damage;
+					player.bullet_support_1[i].B_exist = false;
 				}
 			}
-			if (player.bullet_support_2[i].exist == true) {
+			if (player.bullet_support_2[i].B_exist == true) {
 				if (checkImpact(player.bullet_support_2[i])) {
-					health -= player.bullet_support_2[i].damage;
-					player.bullet_support_2[i].exist = false;
+					health -= player.bullet_support_2[i].B_damage;
+					player.bullet_support_2[i].B_exist = false;
 				}
 			}
 		}

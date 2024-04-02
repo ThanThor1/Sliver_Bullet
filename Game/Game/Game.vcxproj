@@ -134,6 +134,7 @@
     <ClCompile Include="Ennemies_typeA.cpp" />
     <ClCompile Include="Ennemies_typeB.cpp" />
     <ClCompile Include="Ennemies_typeC.cpp" />
+    <ClCompile Include="Ennemies_typeD.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="LoadAll.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -141,7 +142,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Wave1.cpp" />
+    <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CheckCollide.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Ennemies_typeA.h" />
     <ClInclude Include="Ennemies_typeB.h" />
     <ClInclude Include="Ennemies_typeC.h" />
+    <ClInclude Include="Ennemies_typeD.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="IncludeAll.h" />
     <ClInclude Include="Library.h" />
@@ -158,7 +160,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="SomeConst.h" />
-    <ClInclude Include="Wave1.h" />
+    <ClInclude Include="Wave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

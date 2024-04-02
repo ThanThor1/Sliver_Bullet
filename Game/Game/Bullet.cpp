@@ -10,18 +10,17 @@ void Bullet::free()
 	}
 	B_Width = 0;
 	B_Height = 0;
-	damage = 2;
-	denta_x = 0;
-	denta_y = 0;
-	exist = false;
-	start_x = 0;
-	start_y = 0;
+	B_denta_x = 0;
+	B_denta_y = 0;
+	B_exist = false;
+	B_start_x = 0;
+	B_start_y = 0;
 	B_x = 0;
 	B_y = 0;
 }
 Bullet::Bullet()
 {
-	exist = false;
+	B_exist = false;
 	B_Texture = NULL;
 	B_Width = 0;
 	B_Height = 0;
@@ -82,7 +81,7 @@ bool Bullet::loadFromFile(string path) {
 }
 void Bullet::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
-	exist = true;
+	B_exist = true;
 	SDL_Rect renderQuad = { x, y , B_Width, B_Height };
 	if (clip != NULL)
 	{

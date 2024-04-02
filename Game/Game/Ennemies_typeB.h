@@ -11,7 +11,7 @@ public:
 	int load_bullet_x3_time = 0;
 	double speed = 1;
 	int direction = 1;
-	void checkExist();
+	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();
 	void free();

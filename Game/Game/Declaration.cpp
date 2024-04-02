@@ -49,13 +49,12 @@ Ennemies boss1;
 Ennemies_typeA ennemies_A[NUMBER_ENNEMIES];
 Ennemies_typeB ennemies_B[NUMBER_ENNEMIES];
 Ennemies_typeC ennemies_C[NUMBER_ENNEMIES];
+Ennemies_typeD ennemies_D[NUMBER_ENNEMIES];
 int number_ennemies_A = 0;
 int number_ennemies_B = 0;
 int number_ennemies_C = 0;
-Ennemies ennemies_1[NUMBER_ENNEMIES];
-Ennemies ennemies_2[NUMBER_ENNEMIES];
-Ennemies ennemies_3[NUMBER_ENNEMIES];
-Ennemies ennemies_4[NUMBER_ENNEMIES];
+int number_ennemies_D = 0;
+
 /// <summary>
 /// 
 /// </summary>

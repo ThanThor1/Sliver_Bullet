@@ -62,7 +62,7 @@ public:
 	//
 	bool exist = false;
 	// hàm 
-	double calculateDis(Ennemies& a, Object& b);
+	double calculateDis(int E_x, int E_y, int E_Width, int E_Height, Object& b);
 	void shootSupport();
 	void determineTheTarget(int& x1, int& y1, int& x2, int& y2);
 	void loadBulletSupport();

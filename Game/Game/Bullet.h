@@ -5,16 +5,17 @@
 class Bullet
 {
 public:
-	//damage
-	int damage = 2;
+	int B_damage = 0;
+	int B_speedPlus = 0;
+	bool B_follow = true;
 	//
-	double denta_x = 0;
-	double denta_y = 0;
+	double B_denta_x = 0;
+	double B_denta_y = 0;
 	//
-	bool exist = false;
+	bool B_exist = false;
 	//
-	double start_x = 0;
-	double start_y = 0;
+	double B_start_x = 0;
+	double B_start_y = 0;
 	// dia chi trên màn hình lúc render ra
 	int B_x = 0;
 	int B_y = 0;
@@ -24,8 +25,8 @@ public:
 	int B_Height = 0;
 	//Texture
 	SDL_Texture* B_Texture = NULL;
-	double slope = 0;
-	double angle = 0;
+	double B_slope = 0;
+	double B_angle = 0;
 	bool loadFromFile(string path);
 	void setColor(Uint8 red, Uint8 green, Uint8 blue);
 	void setBlendMode(SDL_BlendMode blending);

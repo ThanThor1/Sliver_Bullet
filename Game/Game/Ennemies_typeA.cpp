@@ -1,8 +1,8 @@
 ﻿#include "Ennemies_typeA.h"
 #include"Declaration.h"
 // di chuyển 
-void Ennemies_typeA::checkExist() {
-	if (health == -1) {
+bool Ennemies_typeA::checkExist() {
+	if (health == -100) {
 		health = 10;
 		E_denta_x = E_finish_x - E_start_x;
 		E_denta_y = E_finish_y - E_start_y;
@@ -15,6 +15,7 @@ void Ennemies_typeA::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	return exist;
 }
 void Ennemies_typeA::moveEnnemies() {
 		SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
@@ -39,11 +40,11 @@ void Ennemies_typeA::loadShoot() {
 		thbullet_simple = 0;
 	}
 	if (load_bullet_simple_time == 1000) {
-		bullet_simple[thbullet_simple].start_x = bullet_simple[thbullet_simple].B_x = E_x + E_Width / 2 + (E_Height + 10) * sin(-E_angle * PI / 180) - bullet_simple[thbullet_simple].B_Width / 2;
-		bullet_simple[thbullet_simple].start_y = bullet_simple[thbullet_simple].B_y = E_y + (E_Height + 10) * cos(-E_angle * PI / 180);
-		bullet_simple[thbullet_simple].angle = E_angle;
-		bullet_simple[thbullet_simple].slope = tan((bullet_simple[thbullet_simple].angle) * PI / 180);
-		bullet_simple[thbullet_simple].exist = true;
+		bullet_simple[thbullet_simple].B_start_x = bullet_simple[thbullet_simple].B_x = E_x + E_Width / 2 + (E_Height + 10) * sin(-E_angle * PI / 180) - bullet_simple[thbullet_simple].B_Width / 2;
+		bullet_simple[thbullet_simple].B_start_y = bullet_simple[thbullet_simple].B_y = E_y + (E_Height + 10) * cos(-E_angle * PI / 180);
+		bullet_simple[thbullet_simple].B_angle = E_angle;
+		bullet_simple[thbullet_simple].B_slope = tan((bullet_simple[thbullet_simple].B_angle) * PI / 180);
+		bullet_simple[thbullet_simple].B_exist = true;
 		thbullet_simple++;
 	}
 }
@@ -51,18 +52,18 @@ void Ennemies_typeA::loadShoot() {
 void Ennemies_typeA::shoot() {
 	SDL_Point PointBullet1;
 	for (int i = 0; i < NUMBER_BULLET; i++) {
-		if (bullet_simple[i].exist == true)
+		if (bullet_simple[i].B_exist == true)
 		{
 			PointBullet1 = { bullet_simple[i].B_Width / 2, 0 };
-			bullet_simple[i].render(bullet_simple[i].B_x, bullet_simple[i].B_y, NULL, bullet_simple[i].angle, &PointBullet1);
+			bullet_simple[i].render(bullet_simple[i].B_x, bullet_simple[i].B_y, NULL, bullet_simple[i].B_angle, &PointBullet1);
 		}
 	}
 	if (load_bullet_simple_time % 2 == 0) {
 		for (int i = 0; i < NUMBER_BULLET; i++) {
-			if (bullet_simple[i].exist == true)
+			if (bullet_simple[i].B_exist == true)
 			{
-				bullet_simple[i].B_y += round((1) / sqrt(1 + 1.00 * (bullet_simple[i].slope * bullet_simple[i].slope)));
-				bullet_simple[i].B_x = round(bullet_simple[i].start_x + (1.000 * bullet_simple[i].start_y * bullet_simple[i].slope - bullet_simple[i].B_y * 1.000 * bullet_simple[i].slope));
+				bullet_simple[i].B_y += round((1) / sqrt(1 + 1.00 * (bullet_simple[i].B_slope * bullet_simple[i].B_slope)));
+				bullet_simple[i].B_x = round(bullet_simple[i].B_start_x + (1.000 * bullet_simple[i].B_start_y * bullet_simple[i].B_slope - bullet_simple[i].B_y * 1.000 * bullet_simple[i].B_slope));
 			}
 		}
 	}
