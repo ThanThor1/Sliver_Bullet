@@ -5,6 +5,7 @@
 class Bullet
 {
 public:
+
 	int B_damage = 0;
 	int B_speedPlus = 0;
 	bool B_follow = true;

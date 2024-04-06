@@ -40,7 +40,7 @@ Object BackGround;
 /// <summary>
 /// 
 /// </summary>
-
+Object loss;
 /// <summary>
 /// 
 /// </summary>
@@ -68,3 +68,7 @@ SDL_Texture* texture;
 
 Mix_Music* music_menu;
 Mix_Music* music_fight;
+
+UINT32 currentime = 0;
+UINT32 distimewave = 3000;
+UINT32 timewave =0;

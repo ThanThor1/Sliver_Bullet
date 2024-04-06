@@ -13,7 +13,6 @@ void Object::free()
 	dem1 = 0;
 	dem2 = 0;
 	damage = 5;
-	exist = false;
 	start_x;
 	start_y;
 	O_x = 0;
@@ -28,10 +27,6 @@ Object::Object()
 	O_Texture = NULL;
 	O_Width = 0;
 	O_Height = 0;
-}
-Object::~Object()
-{
-	free();
 }
 void Object::setColor(Uint8 red, Uint8 green, Uint8 blue)
 {
@@ -88,7 +83,6 @@ void Object::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* cente
 {
 	O_x = x;
 	O_y = y;
-	exist = true;
 	SDL_Rect renderQuad = { x, y , O_Width, O_Height };
 	if (clip != NULL)
 	{

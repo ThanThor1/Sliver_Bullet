@@ -58,7 +58,7 @@ public:
 	bool lazer_bool = false;
 	// trang thai anh
 	int photostatus = 0;
-	int number_of_hearts = 3;
+	int number_of_hearts = 1;
 	//
 	bool exist = false;
 	// hàm 

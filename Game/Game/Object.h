@@ -6,12 +6,14 @@
 class Object
 {
 public:
+	double phongto = 0.1;
+	//
+	bool exist = false;
 	//
 	int dem1 = 0;
 	int dem2 = 0;
 	//
 	int damage = 5;
-	bool exist = false;
 	//
 	double start_x;
 	double start_y;
@@ -36,7 +38,6 @@ public:
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	Object();
-	~Object();
 	void free();
 	void renderbackground();
 };

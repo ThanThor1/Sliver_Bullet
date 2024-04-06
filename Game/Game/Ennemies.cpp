@@ -103,7 +103,19 @@ void Ennemies::checkHit() {
 			}
 		}
 	}
-	if (health == 0) exist = false;
+	if (death.exist==false && health<=0) {
+		cout << 7;
+		SDL_Rect a[7];
+		for (int i = 0; i < 7; i++) {
+			a[i] = {i * 140, 0, 140, 140};
+		}
+		death.render(E_x+E_Width/2-70, E_y + E_Height / 2 - 70, &a[death.photo / 10]);
+		death.photo = (death.photo + 1) % 72;
+		if (death.photo > 70) {
+			cout << 8;
+			death.exist = true;
+		}
+	}
 }
 bool Ennemies::checkImpact(Bullet& a) {
 	if ((a.B_x + a.B_Width / 2) > E_x && (a.B_x + a.B_Width / 2) < (E_x + E_Width) && (a.B_y + a.B_Height / 2) > E_y && (a.B_y + a.B_Height / 2) < (E_y + E_Height)) {

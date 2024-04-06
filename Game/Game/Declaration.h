@@ -42,6 +42,7 @@ extern Object music_pause;
 extern Object pause_menu;
 extern Object pause_button;
 
+extern Object loss;
 extern Object Heart[3];
 extern Object BackGround;
 
@@ -66,4 +67,8 @@ extern SDL_Texture* texture;
 
 extern Mix_Music* music_menu;
 extern Mix_Music* music_fight;
+
+extern UINT32 currentime;
+extern UINT32 distimewave;
+extern UINT32 timewave;
 #endif

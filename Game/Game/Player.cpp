@@ -524,6 +524,15 @@ void Player::checkHit() {
 			}
 		}
 	}
+	if (number_of_hearts <= 0 && loss.exist==false) {
+		SDL_Rect a = { SCREEN_WIDTH / 2 - loss.O_Width * loss.phongto * 1 / 2, SCREEN_HEIGHT / 2 - loss.O_Height * loss.phongto * 1 / 2, loss.O_Width *loss.phongto,  loss.O_Height *loss.phongto };
+		SDL_RenderCopy(gRenderer, loss.O_Texture, NULL, &a);
+		loss.photo = (loss.photo + 1) % 21;
+		if (loss.photo == 20 && loss.phongto <1) {
+			cout << loss.phongto << endl;
+			loss.phongto+=0.1;
+		}
+	}
 }
 bool Player::checkImpact(Bullet& a) {
 	if ((a.B_x + a.B_Width / 2) > P_x && (a.B_x + a.B_Width / 2) < (P_x + P_Width) && (a.B_y + a.B_Height / 2) > P_y && (a.B_y + a.B_Height / 2) < (P_y + P_Height)) {

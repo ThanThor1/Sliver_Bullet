@@ -20,10 +20,12 @@ bool Ennemies_typeD::checkExist() {
 void Ennemies_typeD::moveEnnemies() {
 	SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
 	SDL_RenderCopy(gRenderer, E_Texture, NULL, &renderQuad);
-	//	if (E_x < E_finish_x)
-	//	direction = 1;
-	//	else direction = -1;
-	//E_x += direction;
+	if (E_x >= SCREEN_WIDTH - E_Width)
+	    direction = -1;
+	if (E_x <=0 ) {
+		direction = 1;
+	}
+	E_x += direction;
 	loadShoot();
 	shoot();
 }

@@ -76,28 +76,44 @@ void loadAllSound() {
 void loadAllEnnemies() {
 	// ennemies
 	ennemies_A[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/1.png");
+	ennemies_A[0].death.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/death1,2.png");
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_A[i].E_Texture = ennemies_A[0].E_Texture;
 		ennemies_A[i].E_Width = ennemies_A[0].E_Width;
 		ennemies_A[i].E_Height = ennemies_A[0].E_Height;
+		ennemies_A[i].death.O_Texture = ennemies_A[0].death.O_Texture;
+		ennemies_A[i].death.O_Width = ennemies_A[0].death.O_Width;
+		ennemies_A[i].death.O_Height = ennemies_A[0].death.O_Height;
 	}
 	ennemies_B[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/2.png");
+	ennemies_B[0].death.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/death1,2.png");
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_B[i].E_Texture = ennemies_B[0].E_Texture;
 		ennemies_B[i].E_Width = ennemies_B[0].E_Width;
 		ennemies_B[i].E_Height = ennemies_B[0].E_Height;
+		ennemies_B[i].death.O_Texture = ennemies_B[0].death.O_Texture;
+		ennemies_B[i].death.O_Width = ennemies_B[0].death.O_Width;
+		ennemies_B[i].death.O_Height = ennemies_B[0].death.O_Height;
 	}
-	ennemies_C[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/4.png");
+	ennemies_C[0].death.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/death3.png");
+	ennemies_C[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/3.png");
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_C[i].E_Texture = ennemies_C[0].E_Texture;
 		ennemies_C[i].E_Width = ennemies_C[0].E_Width;
 		ennemies_C[i].E_Height = ennemies_C[0].E_Height;
+		ennemies_C[i].death.O_Texture = ennemies_C[0].death.O_Texture;
+		ennemies_C[i].death.O_Width = ennemies_C[0].death.O_Width;
+		ennemies_C[i].death.O_Height = ennemies_C[0].death.O_Height;
 	}
 	ennemies_D[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/4.png");
+	ennemies_D[0].death.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/death4.png");
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-			ennemies_D[i].E_Texture = ennemies_D[0].E_Texture;
-			ennemies_D[i].E_Width = ennemies_D[0].E_Width;
-			ennemies_D[i].E_Height = ennemies_D[0].E_Height;
+		ennemies_D[i].E_Texture = ennemies_D[0].E_Texture;
+		ennemies_D[i].E_Width = ennemies_D[0].E_Width;
+		ennemies_D[i].E_Height = ennemies_D[0].E_Height;
+		ennemies_D[i].death.O_Texture = ennemies_D[0].death.O_Texture;
+		ennemies_D[i].death.O_Width = ennemies_D[0].death.O_Width;
+		ennemies_D[i].death.O_Height = ennemies_D[0].death.O_Height;
 	}
 	// đạn cho ennemies
 	ennemies_A[0].bullet_simple[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/1.png");
@@ -165,7 +181,7 @@ void loadAllPlayer() {
 			player.bullet_x5[i][j].B_Texture = player.bullet_x5[0][0].B_Texture;
 			player.bullet_x5[i][j].B_Width = player.bullet_x5[0][0].B_Width;
 			player.bullet_x5[i][j].B_Height = player.bullet_x5[0][0].B_Height;
-			player.bullet_x7[i][j].B_damage = 2;
+			player.bullet_x5[i][j].B_damage = 2;
 		}
 	}
 	player.lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/lazer/lazer.png");
@@ -186,6 +202,10 @@ void loadAllPlayer() {
 	}
 }
 void loadAllIcon() {
+    loss.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/gameover.png");
+	///
+	///
+	/// 
 	home.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/home.png");
 	press_start.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/press_start.png");
 	home.O_x = 0;
@@ -257,49 +277,49 @@ void loadAllIcon() {
 
 
 
-void renewAll() {
-	renewAllPlayer();
-	renewAllEnnemies();
-}
-void renewAllPlayer() {
-	player.free();
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 2; j++) {
-			player.bullet_simple[i][j].free();
-		}
-	}
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 7; j++) {
-			player.bullet_x7[i][j].free();
-		}
-	}
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 5; j++) {
-			player.bullet_x5[i][j].free();
-		}
-	}
-	player.lazer.free();
-	player.support_1.free();
-	player.support_2.free();
-	player.bullet_support_1[0].free();
-	player.bullet_support_2[0].free();
-	for (int i = 0; i < 100; i++) {
-		player.bullet_support_1[i].free();
-		player.bullet_support_2[i].free();
-	}
-}
-void renewAllEnnemies() {
-	//ennemies
-	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-		ennemies_A[i].free();
-	}
-	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-		ennemies_B[i].free();
-	}
-	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-		ennemies_C[i].free();
-	}
-}
+//void renewAll() {
+//	renewAllPlayer();
+//	renewAllEnnemies();
+//}
+//void renewAllPlayer() {
+//	player.free();
+//	for (int i = 0; i < NUMBER_BULLET; i++) {
+//		for (int j = 0; j < 2; j++) {
+//			player.bullet_simple[i][j].free();
+//		}
+//	}
+//	for (int i = 0; i < NUMBER_BULLET; i++) {
+//		for (int j = 0; j < 7; j++) {
+//			player.bullet_x7[i][j].free();
+//		}
+//	}
+//	for (int i = 0; i < NUMBER_BULLET; i++) {
+//		for (int j = 0; j < 5; j++) {
+//			player.bullet_x5[i][j].free();
+//		}
+//	}
+//	player.lazer.free();
+//	player.support_1.free();
+//	player.support_2.free();
+//	player.bullet_support_1[0].free();
+//	player.bullet_support_2[0].free();
+//	for (int i = 0; i < 100; i++) {
+//		player.bullet_support_1[i].free();
+//		player.bullet_support_2[i].free();
+//	}
+//}
+//void renewAllEnnemies() {
+//	//ennemies
+//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
+//		ennemies_A[i].free();
+//	}
+//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
+//		ennemies_B[i].free();
+//	}
+//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
+//		ennemies_C[i].free();
+//	}
+//}
 
 
 

@@ -8,6 +8,7 @@
 class Ennemies
 {
 public:
+	Object death;
 	bool exist = false;
 	double E_slope = 0;
 	double E_angle = 0;

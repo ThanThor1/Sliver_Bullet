@@ -3,6 +3,7 @@
 #include "Declaration.h"
 #include "LoadAll.h"
 void Wave() {
+	currentime = SDL_GetTicks();
 	if (loadmap_bool == false) {
 		loadAllMap();
 		loadmap_bool = true;
@@ -16,11 +17,15 @@ void Wave() {
 		   win=Wave2();
 		break;
 	}
-	if (win == true) {
-		MAP++;
-		loadmap_bool = false;
-		number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = 0;
+
+	if (win == true ) {
+		if (currentime >= timewave) {
+			MAP++;
+			loadmap_bool = false;
+			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = 0;
+		}
 	}
+	else timewave = currentime + distimewave;
 }
 bool Wave1() {
 	bool win = true;

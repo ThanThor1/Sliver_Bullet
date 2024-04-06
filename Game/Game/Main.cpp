@@ -38,7 +38,6 @@ int main(int argc, char* args[]) {
 		Mix_PlayMusic(music_menu, -1);
 		while (!quit)
 		{
-
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)

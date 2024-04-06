@@ -83,6 +83,7 @@ void Ennemies_typeC::loadShoot() {
 		mt19937 gen(rd());
 		uniform_int_distribution<> dis(0, 90);
 		int a = dis(gen);
+		
 		for (int i = 0; i < 4; i++) {
 			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x - 10;
 			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y - 90;
