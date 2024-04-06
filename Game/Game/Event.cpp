@@ -62,8 +62,7 @@ void checkEvent(SDL_Event e) {
 		}
 		if (checkClickObject(e, home_pause, pause_x, pause_y)) {
 			screen_status = HOME;
-			Mix_PlayMusic(music_menu, -1);
-			loadAll();
+			if (sound_bool == true) { Mix_PlayMusic(music_menu, -1); }
 		}
 		if (checkClickObject(e, sensitivity_down_pause, pause_x, pause_y)) {
 			if (player.sensitivity_index >= 1) {
@@ -80,7 +79,10 @@ void checkEvent(SDL_Event e) {
 		SDL_GetMouseState(&home_x, &home_y);
 		if (e.type == SDL_MOUSEBUTTONDOWN) {
 			screen_status = FIGHT;
-			Mix_PlayMusic(music_fight, -1);
+			renewAll();
+			if (sound_bool == true) {
+				Mix_PlayMusic(music_fight, -1);
+			}
 		}
 	}
 }

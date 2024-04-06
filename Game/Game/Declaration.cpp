@@ -2,7 +2,7 @@
 
 bool loadmap_bool = false;
 bool sound_bool = true;
-bool music_bool = true;
+bool music_bool = false;
 int screen_status = HOME;
 bool prepare_to_press_pause = false;
 bool nhanchuot = false;

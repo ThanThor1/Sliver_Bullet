@@ -10,6 +10,7 @@ public:
 	int load_bullet_follow_time = 0;
 	double speed = 1;
 	int direction = 1;
+	int health = 10;
 	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();

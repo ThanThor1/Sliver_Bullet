@@ -17,11 +17,11 @@ void Wave() {
 		   win=Wave2();
 		break;
 	}
-
 	if (win == true ) {
 		if (currentime >= timewave) {
 			MAP++;
 			loadmap_bool = false;
+			renewAllEnnemies();
 			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = 0;
 		}
 	}

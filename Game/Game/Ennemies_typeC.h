@@ -11,6 +11,7 @@ public:
 	int load_bullet_x4_time = 0;
 	double speed = 1;
 	bool turning = false;
+	int health = 10;
 	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();

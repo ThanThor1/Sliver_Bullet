@@ -35,35 +35,35 @@ void loadAllMap() {
 		for (int j = 0; j < NUMBER_MAX_WIDTH; j++) {
 			if (map[i][j] == "a") {
 				ennemies_A[stoi(map[i][j+1])].getStart(j * EDGE_LENGTH_BLOCK, (i-12) * EDGE_LENGTH_BLOCK);
-				ennemies_A[stoi(map[i][j + 1])].health = -100;
 				number_ennemies_A++;
 			}
 			if (map[i][j] == "A") {
 				ennemies_A[stoi(map[i][j+1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_A[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			if (map[i][j] == "b") {
 				ennemies_B[stoi(map[i][j+1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
-				ennemies_B[stoi(map[i][j + 1])].health = -100;
 				number_ennemies_B++;
 			}
 			if (map[i][j] == "B") {
 				ennemies_B[stoi(map[i][j+1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_B[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			if (map[i][j] == "c") {
 				ennemies_C[stoi(map[i][j+1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
-				ennemies_C[stoi(map[i][j + 1])].health = -100;
 				number_ennemies_C++;
 			}
 			if (map[i][j] == "C") {
 				ennemies_C[stoi(map[i][j+1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_C[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			if (map[i][j] == "d") {
 				ennemies_D[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
-				ennemies_D[stoi(map[i][j + 1])].health = -100;
 				number_ennemies_D++;
 			}
 			if (map[i][j] == "D") {
 				ennemies_D[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_D[stoi(map[i][j + 1])].getDeltaxy();
 			}
 		}
 	}
@@ -277,49 +277,74 @@ void loadAllIcon() {
 
 
 
-//void renewAll() {
-//	renewAllPlayer();
-//	renewAllEnnemies();
-//}
-//void renewAllPlayer() {
-//	player.free();
-//	for (int i = 0; i < NUMBER_BULLET; i++) {
-//		for (int j = 0; j < 2; j++) {
-//			player.bullet_simple[i][j].free();
-//		}
-//	}
-//	for (int i = 0; i < NUMBER_BULLET; i++) {
-//		for (int j = 0; j < 7; j++) {
-//			player.bullet_x7[i][j].free();
-//		}
-//	}
-//	for (int i = 0; i < NUMBER_BULLET; i++) {
-//		for (int j = 0; j < 5; j++) {
-//			player.bullet_x5[i][j].free();
-//		}
-//	}
-//	player.lazer.free();
-//	player.support_1.free();
-//	player.support_2.free();
-//	player.bullet_support_1[0].free();
-//	player.bullet_support_2[0].free();
-//	for (int i = 0; i < 100; i++) {
-//		player.bullet_support_1[i].free();
-//		player.bullet_support_2[i].free();
-//	}
-//}
-//void renewAllEnnemies() {
-//	//ennemies
-//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-//		ennemies_A[i].free();
-//	}
-//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-//		ennemies_B[i].free();
-//	}
-//	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
-//		ennemies_C[i].free();
-//	}
-//}
+void renewAll() {
+	renewAllPlayer();
+	renewAllEnnemies();
+	MAP = 0;
+}
+void renewAllPlayer() {
+	player.free();
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 2; j++) {
+			player.bullet_simple[i][j].free();
+		}
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 7; j++) {
+			player.bullet_x7[i][j].free();
+		}
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 5; j++) {
+			player.bullet_x5[i][j].free();
+		}
+	}
+	player.lazer.free();
+	player.support_1.free();
+	player.support_2.free();
+	player.bullet_support_1[0].free();
+	player.bullet_support_2[0].free();
+	for (int i = 0; i < 100; i++) {
+		player.bullet_support_1[i].free();
+		player.bullet_support_2[i].free();
+	}
+}
+void renewAllEnnemies() {
+	//ennemies
+	for (int i = 1; i <= number_ennemies_A; i++) {
+		ennemies_A[i].free();
+		ennemies_A[i].death.free();
+		for (int j = 0; j < NUMBER_BULLET; j++) {
+			ennemies_A[i].bullet_simple[j].free();
+		}
+	}
+	for (int i = 1; i <= number_ennemies_B; i++) {
+		ennemies_B[i].free();
+		ennemies_B[i].death.free();
+		for (int j = 0; j < NUMBER_BULLET; j++) {
+			for (int k = 0; k < 3; k++) {
+				ennemies_B[i].bullet_x3[j][k].free();
+			}
+		}
+	}
+
+	for (int i = 1; i <= number_ennemies_C; i++) {
+		ennemies_C[i].free();
+		ennemies_C[i].death.free();
+		for (int j = 0; j < NUMBER_BULLET; j++) {
+			for (int k = 0; k < 4; k++) {
+				ennemies_C[i].bullet_x4[j][k].free();
+			}
+		}
+	}
+	for (int i = 1; i <= number_ennemies_D; i++) {
+		ennemies_D[i].free();
+		ennemies_D[i].death.free();
+		for (int j = 0; j < NUMBER_BULLET; j++) {
+				ennemies_D[i].bullet_follow[j].free();
+		}
+	}
+}
 
 
 
@@ -381,12 +406,12 @@ void loadPauseScreen() {
 
 }
 void loadFightScreen() {
-
 	SDL_RenderClear(gRenderer);
 	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	loadFightBackGround();
 	loadPauseButton();
 	Wave();
+	cout << ennemies_C[1].E_denta_x << " " << ennemies_C[0].E_denta_y;
 	player.loadFrame();
 	SDL_RenderPresent(gRenderer);
 }

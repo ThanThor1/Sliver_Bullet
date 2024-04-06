@@ -13,9 +13,9 @@ void  Ennemies::getSlopeAngle(double slope, double angle) {
 	E_slope = slope;
 	E_angle = angle;
 }
-void  Ennemies::getDeltaxy(double D_x, double D_y) {
-	E_denta_x = D_x;
-	E_denta_y = D_y;
+void  Ennemies::getDeltaxy() {
+	E_denta_x = E_finish_x - E_start_x;
+	E_denta_y = E_finish_y - E_start_y;
 }
 bool Ennemies::loadFromFile(string path) {
 	//Get rid of preexisting texture
@@ -51,7 +51,7 @@ bool Ennemies::loadFromFile(string path) {
 	E_Texture = newTexture;
 	return E_Texture != NULL;
 }
-void Ennemies::checkHit() {
+void Ennemies::checkHit(int &health) {
 	if (health > 0) {
 		for (int i = 0; i < 100; i++) {
 			for (int j = 0; j < 2; j++) {
@@ -104,7 +104,6 @@ void Ennemies::checkHit() {
 		}
 	}
 	if (death.exist==false && health<=0) {
-		cout << 7;
 		SDL_Rect a[7];
 		for (int i = 0; i < 7; i++) {
 			a[i] = {i * 140, 0, 140, 140};
@@ -112,7 +111,6 @@ void Ennemies::checkHit() {
 		death.render(E_x+E_Width/2-70, E_y + E_Height / 2 - 70, &a[death.photo / 10]);
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
-			cout << 8;
 			death.exist = true;
 		}
 	}

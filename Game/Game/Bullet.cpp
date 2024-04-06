@@ -4,12 +4,6 @@
 #include "Declaration.h"
 void Bullet::free()
 {
-	if (B_Texture != NULL) {
-		SDL_DestroyTexture(B_Texture);
-		B_Texture = NULL;
-	}
-	B_Width = 0;
-	B_Height = 0;
 	B_denta_x = 0;
 	B_denta_y = 0;
 	B_exist = false;

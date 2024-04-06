@@ -17,7 +17,6 @@ bool init() {
 	bool success = true;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		success = false;
-
 	}
 	else if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 		success = false;

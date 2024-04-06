@@ -11,9 +11,9 @@ void loadAllMap();
 //
 //
 //
-//void renewAll();  // bao gồm 2 cái dưới
-//void renewAllPlayer();
-//void renewAllEnnemies();
+void renewAll();  // bao gồm 2 cái dưới
+void renewAllPlayer();
+void renewAllEnnemies();
 //
 //
 //

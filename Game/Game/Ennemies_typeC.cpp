@@ -2,12 +2,7 @@
 #include "Declaration.h"
 // di chuyển 
 bool Ennemies_typeC::checkExist() {
-	if (health == -100) {
-		health = 10;
-		E_denta_x = E_finish_x - E_start_x;
-		E_denta_y = E_finish_y - E_start_y;
-	}
-	checkHit();
+	checkHit(health);
 	if (health <= 0) {
 		exist = false;
 	}
@@ -43,6 +38,7 @@ void Ennemies_typeC::moveEnnemies() {
 	/*cout << denta_x << " " << denta_y << " ";*/
 	E_slope = 1.0 * (E_denta_y) / (E_denta_x);
 	/*cout << E_x << " " << E_y<<" "<<E_slope << endl;*/
+
 	if (E_denta_y == 0 && E_denta_x > 0) {
 		E_x += SPEED_RIVAL;
 	}
@@ -177,8 +173,6 @@ void Ennemies_typeC::shoot() {
 void Ennemies_typeC::free() {
 	E_x = 0;
 	E_y = 0;
-	E_Width = 0;
-	E_Height = 0;
 	E_start_x = 0;
 	E_start_y = 0;
 	E_finish_x = 0;
@@ -186,5 +180,9 @@ void Ennemies_typeC::free() {
 	E_slope = 0;
 	E_angle = 0;
 	exist = false;
-	health = -1;
+	health = 10;
+	thbullet_x4 = 0;
+	load_bullet_x4_time = 0;
+	speed = 1;
+	turning = false;
 }

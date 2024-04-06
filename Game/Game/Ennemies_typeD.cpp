@@ -2,12 +2,7 @@
 #include"Declaration.h"
 // di chuyển 
 bool Ennemies_typeD::checkExist() {
-	if (health == -100) {
-		health = 10;
-		E_denta_x = E_finish_x - E_start_x;
-		E_denta_y = E_finish_y - E_start_y;
-	}
-	checkHit();
+	checkHit(health);
 	if (health <= 0) {
 		exist = false;
 	}
@@ -114,8 +109,6 @@ int Ennemies_typeD::checkDistance(Bullet& a){
 void Ennemies_typeD::free() {
 	E_x = 0;
 	E_y = 0;
-	E_Width = 0;
-	E_Height = 0;
 	E_start_x = 0;
 	E_start_y = 0;
 	E_finish_x = 0;
@@ -123,5 +116,9 @@ void Ennemies_typeD::free() {
 	E_slope = 0;
 	E_angle = 0;
 	exist = false;
-	health = -1;
+	health = 10;
+	thbullet_follow = 0;
+	load_bullet_follow_time = 0;
+	speed = 1;
+	direction = 1;
 }

@@ -2,12 +2,7 @@
 #include"Declaration.h"
 // di chuyển 
 bool Ennemies_typeB::checkExist() {
-	if (health == -100) {
-		health = 10;
-		E_denta_x = E_finish_x - E_start_x;
-		E_denta_y = E_finish_y - E_start_y;
-	}
-	checkHit();
+	checkHit(health);
 	if (health <= 0) {
 		exist = false;
 	}
@@ -80,8 +75,6 @@ void Ennemies_typeB::shoot() {
 void Ennemies_typeB::free() {
 	E_x = 0;
 	E_y = 0;
-	E_Width = 0;
-	E_Height = 0;
 	E_start_x = 0;
 	E_start_y = 0;
 	E_finish_x = 0;
@@ -89,5 +82,9 @@ void Ennemies_typeB::free() {
 	E_slope = 0;
 	E_angle = 0;
 	exist = false;
-	health = -1;
+	health = 10;
+	thbullet_x3 = 0;
+	load_bullet_x3_time = 0;
+	speed = 1;
+	direction = 1;
 }

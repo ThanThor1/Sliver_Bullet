@@ -23,16 +23,15 @@ public:
 	int E_Width = 0;
 	int E_Height = 0;
 	SDL_Texture* E_Texture = NULL;
-	int health = -1;
 	// hàm
 	bool loadFromFile(string path);
 	bool checkImpact(Bullet& a);
 	bool checkLazer();
-	void checkHit();
+	void checkHit(int &health);
 	void getStart(int start_x = 0, int start_y = 0);
 	void getFinish(int finish_x = 0, int finish_y = 0);
 	void getSlopeAngle(double slope = 0, double angle = 0);
-	void getDeltaxy(double D_x, double D_y);
+	void getDeltaxy();
 };
 
 #endif

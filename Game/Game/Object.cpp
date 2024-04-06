@@ -3,13 +3,6 @@
 #include "Declaration.h"
 void Object::free()
 {
-	//Free texture if it exists
-	if (O_Texture != NULL) {
-		SDL_DestroyTexture(O_Texture);
-	}
-	O_Texture = NULL;
-	O_Width = 0;
-	O_Height = 0;
 	dem1 = 0;
 	dem2 = 0;
 	damage = 5;
@@ -21,6 +14,7 @@ void Object::free()
 	photo = 0;
 	slope = 0;
 	angle = 0;
+	exist = false;
 }
 Object::Object()
 {

@@ -4,13 +4,6 @@
 #include "Ennemies.h"
 void Player::free()
 {
-	//Free texture if it exists
-	if (P_Texture != NULL) {
-		SDL_DestroyTexture(P_Texture);
-		P_Texture = NULL;
-	}
-	P_Width = 0;
-	P_Height = 0;
 	//support
 	support_1;
 	support_2;
@@ -38,8 +31,6 @@ void Player::free()
 	// địa chỉ điểm bắt đầu (chưa cần dùng) (có thể là địa chỉ tâm)
 	P_Start_x = 0;
 	P_Start_y = 0;
-	//Texture
-	P_Texture = NULL;
 	// khiên
 	shield_bool = false;
 	// hỗ trợ
@@ -50,7 +41,7 @@ void Player::free()
 	photostatus = 0;
 	number_of_hearts = 3;
 	//
-	exist = false;
+	exist = true;
 }
 Player::~Player()
 {
@@ -529,7 +520,6 @@ void Player::checkHit() {
 		SDL_RenderCopy(gRenderer, loss.O_Texture, NULL, &a);
 		loss.photo = (loss.photo + 1) % 21;
 		if (loss.photo == 20 && loss.phongto <1) {
-			cout << loss.phongto << endl;
 			loss.phongto+=0.1;
 		}
 	}
