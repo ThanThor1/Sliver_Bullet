@@ -10,6 +10,7 @@ bool Ennemies_typeD::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	shoot();
 	return exist;
 }
 void Ennemies_typeD::moveEnnemies() {
@@ -22,7 +23,6 @@ void Ennemies_typeD::moveEnnemies() {
 	}
 	E_x += direction;
 	loadShoot();
-	shoot();
 }
 //sạc đạn
 void Ennemies_typeD::loadShoot() {
@@ -118,7 +118,7 @@ void Ennemies_typeD::free() {
 	exist = false;
 	health = 10;
 	thbullet_follow = 0;
-	load_bullet_follow_time = 0;
+	load_bullet_follow_time = Rand(0, 1000);
 	speed = 1;
 	direction = 1;
 }

@@ -10,6 +10,7 @@ bool Ennemies_typeB::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	shoot();
 	return exist;
 }
 void Ennemies_typeB::moveEnnemies() {
@@ -26,7 +27,6 @@ void Ennemies_typeB::moveEnnemies() {
 		}
 		else {
 			loadShoot();
-			shoot();
 		}
 }
 //sạc đạn
@@ -57,20 +57,12 @@ void Ennemies_typeB::shoot() {
 			{
 				PointBullet2 = { bullet_x3[i][j].B_Width / 2, 0 };
 				bullet_x3[i][j].render(bullet_x3[i][j].B_x, bullet_x3[i][j].B_y, NULL, bullet_x3[i][j].B_angle, &PointBullet2);
+				bullet_x3[i][j].B_y += round((1) / sqrt(1 + 1.00 * (bullet_x3[i][j].B_slope * bullet_x3[i][j].B_slope)));
+				bullet_x3[i][j].B_x = round(bullet_x3[i][j].B_start_x + (1.000 * bullet_x3[i][j].B_start_y * bullet_x3[i][j].B_slope - bullet_x3[i][j].B_y * 1.000 * bullet_x3[i][j].B_slope));
 			}
 		}
 	}
-	if (load_bullet_x3_time % 2 == 0) {
-		for (int i = 0; i < NUMBER_BULLET; i++) {
-			for (int j = 0; j <= 2; j++) {
-				if (bullet_x3[i][j].B_exist == true)
-				{
-					bullet_x3[i][j].B_y += 2;
-					bullet_x3[i][j].B_x = round(bullet_x3[i][j].B_start_x + (1.000 * bullet_x3[i][j].B_start_y * bullet_x3[i][j].B_slope - bullet_x3[i][j].B_y * 1.000 * bullet_x3[i][j].B_slope));
-				}
-			}
-		}
-	}
+	
 }
 void Ennemies_typeB::free() {
 	E_x = 0;
@@ -84,7 +76,7 @@ void Ennemies_typeB::free() {
 	exist = false;
 	health = 10;
 	thbullet_x3 = 0;
-	load_bullet_x3_time = 0;
+	load_bullet_x3_time = Rand(0, 1000);
 	speed = 1;
 	direction = 1;
 }

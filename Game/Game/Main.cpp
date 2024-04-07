@@ -15,7 +15,7 @@ bool init() {
 		cout << "Window could not be created!" << SDL_GetError();
 	}
 	bool success = true;
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO) < 0 || TTF_Init()<0) {
 		success = false;
 	}
 	else if (SDL_Init(SDL_INIT_AUDIO) < 0) {

@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "SomeConst.h"
 #include "Object.h"
+#include"LoadAll.h"
 class Ennemies
 {
 public:
@@ -32,6 +33,7 @@ public:
 	void getFinish(int finish_x = 0, int finish_y = 0);
 	void getSlopeAngle(double slope = 0, double angle = 0);
 	void getDeltaxy();
+	void loadExplode(Bullet &a);
 };
 
 #endif

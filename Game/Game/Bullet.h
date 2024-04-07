@@ -2,10 +2,12 @@
 #ifndef P_BULLET
 #define P_BULLET
 #include "Library.h"
+#include "Object.h"
 class Bullet
 {
 public:
-
+	Object hit;
+	bool hit_bool = false;
 	int B_damage = 0;
 	int B_speedPlus = 0;
 	bool B_follow = true;

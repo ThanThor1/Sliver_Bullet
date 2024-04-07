@@ -34,6 +34,7 @@ void checkEvent(SDL_Event e) {
 			texture = SDL_CreateTextureFromSurface(gRenderer, surface);
 		}
 		else if (e.type == SDL_MOUSEBUTTONDOWN) {
+			
 			nhanchuot = true;
 		}
 		else if (e.type == SDL_MOUSEBUTTONUP) {
@@ -87,5 +88,9 @@ void checkEvent(SDL_Event e) {
 	}
 }
 bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
-	return  (e.type == SDL_MOUSEBUTTONDOWN && x >= a.O_x && y >= a.O_y && x <= (a.O_x + a.O_Width) && y <= (a.O_y + a.O_Height));
+	if (e.type == SDL_MOUSEBUTTONDOWN && x >= a.O_x && y >= a.O_y && x <= (a.O_x + a.O_Width) && y <= (a.O_y + a.O_Height)) {
+		Mix_PlayChannel(-1, chunk_mouse, 0);
+		return true;
+	}
+	return false;
 }

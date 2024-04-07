@@ -6,7 +6,7 @@
 class Object
 {
 public:
-	double phongto = 0.1;
+	double phongto = 0.0025;
 	//
 	bool exist = false;
 	//

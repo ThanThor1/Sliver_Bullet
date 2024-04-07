@@ -130,13 +130,14 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 }
 void Player::loadShoot(int bullet_type) {
 	if (bullet_type == BULLET_SIMPLE) {
-		load_bullet_simple_time = (load_bullet_simple_time + 1) % 31;
+		load_bullet_simple_time = (load_bullet_simple_time + 1) % 61;
 		load_bullet_x7_time = 0;
 		load_bullet_x5_time = 0;
 		if (thbullet_simple == NUMBER_BULLET) {
 			thbullet_simple = 0;
 		}
-		if (load_bullet_simple_time == 30) {
+		if (load_bullet_simple_time == 60) {
+
 			bullet_simple[thbullet_simple][0].B_x = P_x + (P_Width - bullet_simple[thbullet_simple][0].B_Width) / 2 - 15;
 			bullet_simple[thbullet_simple][0].B_y = P_y - bullet_simple[thbullet_simple][0].B_Height + 50;
 			bullet_simple[thbullet_simple][0].B_exist = true;
@@ -145,16 +146,18 @@ void Player::loadShoot(int bullet_type) {
 			bullet_simple[thbullet_simple][1].B_y = P_y - bullet_simple[thbullet_simple][1].B_Height + 50;
 			bullet_simple[thbullet_simple][1].B_exist = true;
 			thbullet_simple++;
+			Mix_PlayChannel(-1, chunk_shoot, 0);
 		}
+
 	}
 	else if (bullet_type == BULLET_X7) {
-		load_bullet_x7_time = (load_bullet_x7_time + 1) % 31;
+		load_bullet_x7_time = (load_bullet_x7_time + 1) % 61;
 		load_bullet_simple_time = 0;
 		load_bullet_x5_time = 0;
 		if (thbullet_x7 == NUMBER_BULLET) {
 			thbullet_x7 = 0;
 		}
-		if (load_bullet_x7_time == 30) {
+		if (load_bullet_x7_time == 60) {
 			int a = -30;
 			int b = -30;
 			int c = 0;
@@ -174,16 +177,17 @@ void Player::loadShoot(int bullet_type) {
 				else c -= 15;
 			}
 			thbullet_x7++;
+			Mix_PlayChannel(-1, chunk_shoot, 0);
 		}
 	}
 	else if (bullet_type == BULLET_X5) {
-		load_bullet_x5_time = (load_bullet_x5_time + 1) % 31;
+		load_bullet_x5_time = (load_bullet_x5_time + 1) % 61;
 		load_bullet_simple_time = 0;
 		load_bullet_x7_time = 0;
 		if (thbullet_x5 == NUMBER_BULLET) {
 			thbullet_x5 = 0;
 		}
-		if (load_bullet_x5_time == 30) {
+		if (load_bullet_x5_time == 60) {
 			int a = -10;
 			int b = -20;
 			int c = 0;
@@ -203,6 +207,7 @@ void Player::loadShoot(int bullet_type) {
 				else c -= 10;
 			}
 			thbullet_x5++;
+			Mix_PlayChannel(-1, chunk_shoot, 0);
 		}
 	}
 	if (lazer_bool == true) {
@@ -518,9 +523,8 @@ void Player::checkHit() {
 	if (number_of_hearts <= 0 && loss.exist==false) {
 		SDL_Rect a = { SCREEN_WIDTH / 2 - loss.O_Width * loss.phongto * 1 / 2, SCREEN_HEIGHT / 2 - loss.O_Height * loss.phongto * 1 / 2, loss.O_Width *loss.phongto,  loss.O_Height *loss.phongto };
 		SDL_RenderCopy(gRenderer, loss.O_Texture, NULL, &a);
-		loss.photo = (loss.photo + 1) % 21;
-		if (loss.photo == 20 && loss.phongto <1) {
-			loss.phongto+=0.1;
+		if ( loss.phongto <1) {
+			loss.phongto+=0.0025;
 		}
 	}
 }

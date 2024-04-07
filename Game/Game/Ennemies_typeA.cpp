@@ -10,6 +10,7 @@ bool Ennemies_typeA::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	shoot();
 	return exist;
 }
 void Ennemies_typeA::moveEnnemies() {
@@ -25,7 +26,6 @@ void Ennemies_typeA::moveEnnemies() {
 		}
 		else {
 			loadShoot();
-			shoot();
 		}
 }
 //sạc đạn
@@ -51,15 +51,8 @@ void Ennemies_typeA::shoot() {
 		{
 			PointBullet1 = { bullet_simple[i].B_Width / 2, 0 };
 			bullet_simple[i].render(bullet_simple[i].B_x, bullet_simple[i].B_y, NULL, bullet_simple[i].B_angle, &PointBullet1);
-		}
-	}
-	if (load_bullet_simple_time % 2 == 0) {
-		for (int i = 0; i < NUMBER_BULLET; i++) {
-			if (bullet_simple[i].B_exist == true)
-			{
-				bullet_simple[i].B_y += round((1) / sqrt(1 + 1.00 * (bullet_simple[i].B_slope * bullet_simple[i].B_slope)));
-				bullet_simple[i].B_x = round(bullet_simple[i].B_start_x + (1.000 * bullet_simple[i].B_start_y * bullet_simple[i].B_slope - bullet_simple[i].B_y * 1.000 * bullet_simple[i].B_slope));
-			}
+			bullet_simple[i].B_y += round((1) / sqrt(1 + 1.00 * (bullet_simple[i].B_slope * bullet_simple[i].B_slope)));
+			bullet_simple[i].B_x = round(bullet_simple[i].B_start_x + (1.000 * bullet_simple[i].B_start_y * bullet_simple[i].B_slope - bullet_simple[i].B_y * 1.000 * bullet_simple[i].B_slope));
 		}
 	}
 }
@@ -74,8 +67,8 @@ void Ennemies_typeA::free() {
 	E_angle = 0;
 	exist = false;
 	health = 10;
-	 thbullet_simple = 0;
-	load_bullet_simple_time = 0;
+	thbullet_simple = 0;
+	load_bullet_simple_time = Rand(0,1000);
 	speed = 1;
 	direction = 1;
 }

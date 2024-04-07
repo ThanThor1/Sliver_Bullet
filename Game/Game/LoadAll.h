@@ -16,6 +16,7 @@ void renewAllPlayer();
 void renewAllEnnemies();
 //
 //
+int Rand(int a, int b);
 //
 void loadFightBackGround();
 void loadPauseButton();

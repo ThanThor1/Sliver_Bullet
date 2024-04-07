@@ -10,6 +10,7 @@ bool Ennemies_typeC::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
+	shoot();
 	return exist;
 }
 void Ennemies_typeC::moveEnnemies() {
@@ -17,7 +18,6 @@ void Ennemies_typeC::moveEnnemies() {
 	if (E_angle >= 360) { E_angle = 0; }
 	E_angle += 0.1;
 	SDL_RenderCopyEx(gRenderer, E_Texture, NULL, &renderQuad, E_angle, NULL, SDL_FLIP_NONE);
-	loadShoot();
 	if (E_x > 0 && E_x < (SCREEN_WIDTH - E_Width)) {
 		if (E_y > 0 && E_y < (SCREEN_HEIGHT - E_Height)) {
 			turning = true;
@@ -35,7 +35,8 @@ void Ennemies_typeC::moveEnnemies() {
 		E_start_y = E_y;
 		turning = false;
 	}
-	/*cout << denta_x << " " << denta_y << " ";*/
+	/*
+	<< denta_x << " " << denta_y << " ";*/
 	E_slope = 1.0 * (E_denta_y) / (E_denta_x);
 	/*cout << E_x << " " << E_y<<" "<<E_slope << endl;*/
 
@@ -66,7 +67,6 @@ void Ennemies_typeC::moveEnnemies() {
 		}
 	}
 	loadShoot();
-	shoot();
 }
 //sạc đạn
 void Ennemies_typeC::loadShoot() {
@@ -75,11 +75,7 @@ void Ennemies_typeC::loadShoot() {
 		thbullet_x4 = 0;
 	}
 	if (load_bullet_x4_time == 1000) {
-		random_device rd;
-		mt19937 gen(rd());
-		uniform_int_distribution<> dis(0, 90);
-		int a = dis(gen);
-		
+		int a = Rand(0, 90);
 		for (int i = 0; i < 4; i++) {
 			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x - 10;
 			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y - 90;
@@ -182,7 +178,7 @@ void Ennemies_typeC::free() {
 	exist = false;
 	health = 10;
 	thbullet_x4 = 0;
-	load_bullet_x4_time = 0;
+	load_bullet_x4_time = Rand(0, 1000);
 	speed = 1;
 	turning = false;
 }

@@ -68,6 +68,8 @@ SDL_Texture* texture;
 
 Mix_Music* music_menu;
 Mix_Music* music_fight;
+Mix_Chunk* chunk_mouse;
+Mix_Chunk* chunk_shoot;
 
 UINT32 currentime = 0;
 UINT32 distimewave = 3000;

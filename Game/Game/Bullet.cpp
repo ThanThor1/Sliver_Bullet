@@ -75,7 +75,6 @@ bool Bullet::loadFromFile(string path) {
 }
 void Bullet::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
-	B_exist = true;
 	SDL_Rect renderQuad = { x, y , B_Width, B_Height };
 	if (clip != NULL)
 	{

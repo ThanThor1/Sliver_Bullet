@@ -1,6 +1,7 @@
 #pragma once
 #include"Ennemies.h"
 #include"Declaration.h"
+
 void Ennemies::getStart(int start_x, int start_y) {
 	E_x = E_start_x = start_x;
 	E_y = E_start_y = start_y;
@@ -59,7 +60,11 @@ void Ennemies::checkHit(int &health) {
 					if (checkImpact(player.bullet_simple[i][j])) {
 						health -= player.bullet_simple[i][j].B_damage;
 						player.bullet_simple[i][j].B_exist = false;
+						player.bullet_simple[i][j].hit_bool = true;
 					}
+				}
+				if (player.bullet_simple[i][j].hit_bool == true) {
+					loadExplode(player.bullet_simple[i][j]);
 				}
 			}
 		}
@@ -69,7 +74,11 @@ void Ennemies::checkHit(int &health) {
 					if (checkImpact(player.bullet_x5[i][j])) {
 						health -= player.bullet_x5[i][j].B_damage;
 						player.bullet_x5[i][j].B_exist = false;
+						player.bullet_x5[i][j].hit_bool = true;
 					}
+				}
+				if (player.bullet_x5[i][j].hit_bool == true) {
+					loadExplode(player.bullet_x5[i][j]);
 				}
 			}
 		}
@@ -79,7 +88,11 @@ void Ennemies::checkHit(int &health) {
 					if (checkImpact(player.bullet_x7[i][j])) {
 						health -= player.bullet_x7[i][j].B_damage;
 						player.bullet_x7[i][j].B_exist = false;
+						player.bullet_x7[i][j].hit_bool = true;
 					}
+				}
+				if (player.bullet_x7[i][j].hit_bool == true) {
+					loadExplode(player.bullet_x7[i][j]);
 				}
 			}
 		}
@@ -88,13 +101,21 @@ void Ennemies::checkHit(int &health) {
 				if (checkImpact(player.bullet_support_1[i])) {
 					health -= player.bullet_support_1[i].B_damage;
 					player.bullet_support_1[i].B_exist = false;
+					player.bullet_support_1[i].hit_bool = true;
 				}
 			}
 			if (player.bullet_support_2[i].B_exist == true) {
 				if (checkImpact(player.bullet_support_2[i])) {
 					health -= player.bullet_support_2[i].B_damage;
 					player.bullet_support_2[i].B_exist = false;
+					player.bullet_support_2[i].hit_bool = true;
 				}
+			}
+			if (player.bullet_support_1[i].hit_bool == true) {
+				loadExplode(player.bullet_support_1[i]);
+			}
+			if (player.bullet_support_2[i].hit_bool == true) {
+				loadExplode(player.bullet_support_2[i]);
 			}
 		}
 		if (player.lazer.exist == true) {
@@ -106,12 +127,14 @@ void Ennemies::checkHit(int &health) {
 	if (death.exist==false && health<=0) {
 		SDL_Rect a[7];
 		for (int i = 0; i < 7; i++) {
-			a[i] = {i * 140, 0, 140, 140};
+			a[i] = {i * death.O_Width / 7, 0, death.O_Width /7, death.O_Height};
 		}
-		death.render(E_x+E_Width/2-70, E_y + E_Height / 2 - 70, &a[death.photo / 10]);
+		death.setAlpha(255- death.photo*3);
+		death.render(E_x+E_Width/2- death.O_Width/14, E_y + E_Height / 2 - death.O_Height/2, &a[death.photo / 10]);
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
 			death.exist = true;
+			death.setAlpha(255);
 		}
 	}
 }
@@ -129,4 +152,17 @@ bool Ennemies::checkLazer() {
 		return false;
 	}
 	return true;
+}
+void Ennemies::loadExplode(Bullet& b) {
+	SDL_Rect a[7];
+	for (int i = 0; i < 6; i++) {
+		a[i] = { i * b.hit.O_Width / 6, 0, b.hit.O_Width / 6, b.hit.O_Height };
+	}
+	b.hit.setAlpha(255 - b.hit.photo * 4);
+	b.hit.render(b.B_x + b.B_Width / 2 - b.hit.O_Width / 12, b.B_y + b.B_Height / 2 - b.hit.O_Height / 2, &a[b.hit.photo / 10]);
+	b.hit.photo = (b.hit.photo + 1) % 72;
+	if (b.hit.photo > 70) {
+		b.hit_bool = false;
+		b.hit.setAlpha(255);
+	}
 }

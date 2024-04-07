@@ -67,6 +67,8 @@ extern SDL_Texture* texture;
 
 extern Mix_Music* music_menu;
 extern Mix_Music* music_fight;
+extern Mix_Chunk* chunk_mouse;
+extern Mix_Chunk* chunk_shoot;
 
 extern UINT32 currentime;
 extern UINT32 distimewave;
