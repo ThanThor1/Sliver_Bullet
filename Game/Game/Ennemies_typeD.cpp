@@ -15,7 +15,10 @@ bool Ennemies_typeD::checkExist() {
 }
 void Ennemies_typeD::moveEnnemies() {
 	SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
-	SDL_RenderCopy(gRenderer, E_Texture, NULL, &renderQuad);
+	SDL_Rect cut;
+	cut= {photo/10 * E_Width, 0, E_Width , E_Height};
+	photo = (photo + 1) % 41;
+	SDL_RenderCopy(gRenderer, E_Texture,&cut, &renderQuad);
 	if (E_x >= SCREEN_WIDTH - E_Width)
 	    direction = -1;
 	if (E_x <=0 ) {
@@ -35,63 +38,32 @@ void Ennemies_typeD::loadShoot() {
 		bullet_follow[thbullet_follow].B_y = bullet_follow[thbullet_follow].B_start_y = E_y + E_Height;
 		bullet_follow[thbullet_follow].B_denta_y = 1.00000 * (player.P_x + player.P_Width / 2 - (bullet_follow[thbullet_follow].B_start_x + bullet_follow[thbullet_follow].B_Width / 2));
 		bullet_follow[thbullet_follow].B_denta_x = 1.00000 * (player.P_y + player.P_Height / 2 - (bullet_follow[thbullet_follow].B_start_y + bullet_follow[thbullet_follow].B_Height / 2));
-		bullet_follow[thbullet_follow].B_slope = 1.00000 * bullet_follow[thbullet_follow].B_denta_y / bullet_follow[thbullet_follow].B_denta_x;
-		if (bullet_follow[thbullet_follow].B_denta_y >= 0)
-			bullet_follow[thbullet_follow].B_angle = -1.000000 * atan(1.00000 / bullet_follow[thbullet_follow].B_slope) * 180 / PI;
-		else bullet_follow[thbullet_follow].B_angle = -(180.0000 + (1.0000 * atan(1.0000 / bullet_follow[thbullet_follow].B_slope) * 180 / PI));
+		bullet_follow[thbullet_follow].B_slope = 1.00000 * bullet_follow[thbullet_follow].B_denta_x / bullet_follow[thbullet_follow].B_denta_y;
 		bullet_follow[thbullet_follow].B_exist = true;
 		thbullet_follow++;
 	}
 }
 //bắn
 void Ennemies_typeD::shoot() {
-	SDL_Point pointBullet = { E_Width / 2, E_Height / 2 };
 	for (int i = 0; i < 10; i++)
 	{
 		if (bullet_follow[i].B_exist == true) {
-			if ((checkDistance(bullet_follow[i])) <= 40000) {
-				bullet_follow[i].B_speedPlus = 3;
-				bullet_follow[i].B_follow = false;
-			}
-			if (bullet_follow[i].B_follow) {
-				bullet_follow[i].B_start_x = bullet_follow[i].B_x ;
-				bullet_follow[i].B_start_y = bullet_follow[i].B_y ;
-				bullet_follow[i].B_denta_x = 1.0 * (player.P_x + player.P_Width / 2 - (bullet_follow[i].B_x + bullet_follow[i].B_Width / 2));
-				bullet_follow[i].B_denta_y = 1.0 * (player.P_y + player.P_Height / 2 - (bullet_follow[i].B_y + bullet_follow[i].B_Height / 2));
-				bullet_follow[i].B_slope = 1.0 * bullet_follow[i].B_denta_y / bullet_follow[i].B_denta_x;
-				if (bullet_follow[i].B_denta_y >= 0)
-					bullet_follow[i].B_angle = -1.0 * atan(1.0 / bullet_follow[i].B_slope) * 180 / PI;
-				else bullet_follow[i].B_angle = -(180.0 + (1.0 * atan(1.0 / bullet_follow[i].B_slope) * 180 / PI));
-			}
-			bullet_follow[i].render(bullet_follow[i].B_x, bullet_follow[i].B_y, NULL, bullet_follow[i].B_angle, &pointBullet);
-			if (bullet_follow[i].B_denta_y == 0 && bullet_follow[i].B_denta_x > 0) {
-				bullet_follow[i].B_x += BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus;
-			}
-			else if (bullet_follow[i].B_denta_y == 0 && bullet_follow[i].B_denta_x < 0) {
-				bullet_follow[i].B_x -= BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus;
-			}
-			else if (bullet_follow[i].B_denta_y > 0 && bullet_follow[i].B_denta_x == 0) {
-				bullet_follow[i].B_y += BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus;
-			}
-			else if (bullet_follow[i].B_denta_y < 0 && bullet_follow[i].B_denta_x == 0) {
-				bullet_follow[i].B_y -= BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus;
+			if (bullet_follow[i].phandan == false) {
+				if ((checkDistance(bullet_follow[i])) <= 40000) {
+					bullet_follow[i].B_speedPlus = 3;
+					bullet_follow[i].B_follow = false;
+				}
+				if (bullet_follow[i].B_follow) {
+					bullet_follow[i].B_start_x = bullet_follow[i].B_x;
+					bullet_follow[i].B_start_y = bullet_follow[i].B_y;
+					bullet_follow[i].B_denta_x = 1.0 * (player.P_x + player.P_Width / 2 - (bullet_follow[i].B_x + bullet_follow[i].B_Width / 2));
+					bullet_follow[i].B_denta_y = 1.0 * (player.P_y + player.P_Height / 2 - (bullet_follow[i].B_y + bullet_follow[i].B_Height / 2));
+					bullet_follow[i].B_slope = 1.0 * bullet_follow[i].B_denta_x / bullet_follow[i].B_denta_y;
+				}
+				bullet_follow[i].RenderBulletSlope();
 			}
 			else {
-				if (bullet_follow[i].B_slope >= 1) {
-					bullet_follow[i].B_y += round((BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus) /
-						sqrt(1 + 1.00 / (bullet_follow[i].B_slope * bullet_follow[i].B_slope))) * bullet_follow[i].B_denta_x / abs(bullet_follow[i].B_denta_x);
-					bullet_follow[i].B_x = round((bullet_follow[i].B_y + 1.000 * bullet_follow[i].B_start_x * bullet_follow[i].B_slope - bullet_follow[i].B_start_y * 1.000) / bullet_follow[i].B_slope);
-				}
-				else if ((bullet_follow[i].B_slope <= 1) && (bullet_follow[i].B_slope >= -1)) {
-					bullet_follow[i].B_x += round((BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus) /
-						sqrt(1 + 1.00 * bullet_follow[i].B_slope * bullet_follow[i].B_slope)) * bullet_follow[i].B_denta_x / abs(bullet_follow[i].B_denta_x);
-					bullet_follow[i].B_y = round((bullet_follow[i].B_x) * bullet_follow[i].B_slope + bullet_follow[i].B_start_y * 1.000 - 1.000 * bullet_follow[i].B_start_x * bullet_follow[i].B_slope);
-				}
-				else if ((bullet_follow[i].B_slope <= -1)) {
-					bullet_follow[i].B_y -= round((BULLET_SPEED_RIVAL + bullet_follow[i].B_speedPlus) /
-						sqrt(1 + 1.00 / (bullet_follow[i].B_slope * bullet_follow[i].B_slope))) * bullet_follow[i].B_denta_x / abs(bullet_follow[i].B_denta_x);
-					bullet_follow[i].B_x = round((bullet_follow[i].B_y + 1.000 * bullet_follow[i].B_start_x * bullet_follow[i].B_slope - bullet_follow[i].B_start_y * 1.000) / bullet_follow[i].B_slope);
-				}
+				bullet_follow[i].RenderBulletAngle();
 			}
 		}
 	}
@@ -104,8 +76,6 @@ int Ennemies_typeD::checkDistance(Bullet& a){
 		;
 	return dis;
 }
-
-
 void Ennemies_typeD::free() {
 	E_x = 0;
 	E_y = 0;
@@ -121,4 +91,39 @@ void Ennemies_typeD::free() {
 	load_bullet_follow_time = Rand(0, 1000);
 	speed = 1;
 	direction = 1;
+	photo = 0;
+}
+bool Ennemies_typeD::loadFromFile(string path) {
+	//Get rid of preexisting texture
+	//The final texture
+	SDL_Texture* newTexture = NULL;
+
+	//Load image at specified path
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+	if (loadedSurface == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+	}
+	else
+	{
+		//Color key image
+		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 180, 180, 180));
+		//Create texture from surface pixels
+		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+		if (newTexture == NULL)
+		{
+			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+		}
+		else
+		{
+			//Get image dimensions
+			E_Width = loadedSurface->w/4;
+			E_Height = loadedSurface->h;
+		}
+		//Get rid of old loaded surface
+		SDL_FreeSurface(loadedSurface);
+	}
+	//Return success
+	E_Texture = newTexture;
+	return E_Texture != NULL;
 }

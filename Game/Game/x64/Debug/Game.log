@@ -1,4 +1,20 @@
-﻿  Event.cpp
-  LoadAll.cpp
-  Generating Code...
+﻿  Player.cpp
+D:\Game\Game\Game\Player.cpp(97,17): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(100,17): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(154,73): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(155,73): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(180,73): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(181,73): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(289,90): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(290,90): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(296,90): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(297,90): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(485,35): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Player.cpp(485,35): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(485,100): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Player.cpp(485,100): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(485,165): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Player.cpp(485,165): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Player.cpp(485,204): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Player.cpp(485,204): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Game.vcxproj -> D:\Game\Game\x64\Debug\Game.exe

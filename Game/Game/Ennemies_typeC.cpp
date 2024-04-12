@@ -77,49 +77,11 @@ void Ennemies_typeC::loadShoot() {
 	if (load_bullet_x4_time == 1000) {
 		int a = Rand(0, 90);
 		for (int i = 0; i < 4; i++) {
-			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x - 10;
-			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y - 90;
+			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x + E_Width/2 - bullet_x4[thbullet_x4][i].B_Width/2;
+			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y + E_Height/2 - bullet_x4[thbullet_x4][i].B_Height/2;
 			bullet_x4[thbullet_x4][i].B_angle = a;
-			if (a >= 0 && a <= 90) {
-				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan(-a * 1.0 * PI / 180);
-			}
-			else if (a >= 90 && a <= 270) {
-				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan((180 - a) * 1.0 * PI / 180);
-			}
-			else {
-				bullet_x4[thbullet_x4][i].B_slope = 1.0 / tan((360 - a) * 1.0 * PI / 180);
-			}
-			//
-			if (a == 0) {
-				bullet_x4[thbullet_x4][i].B_denta_x = 0;
-				bullet_x4[thbullet_x4][i].B_denta_y = 1;
-			}
-			else if (a == 90) {
-				bullet_x4[thbullet_x4][i].B_denta_y = 0;
-				bullet_x4[thbullet_x4][i].B_denta_x = -1;
-			}
-			else if (a == 180) {
-				bullet_x4[thbullet_x4][i].B_denta_x = 0;
-				bullet_x4[thbullet_x4][i].B_denta_y = -1;
-			}
-			else if (a == 270) {
-				bullet_x4[thbullet_x4][i].B_denta_y = 0;
-				bullet_x4[thbullet_x4][i].B_denta_x = 1;
-			}
-			//
-			if (a > 0 && a < 180) {
-				bullet_x4[thbullet_x4][i].B_denta_x = -1;
-				bullet_x4[thbullet_x4][i].B_denta_y = 1;
-			}
-			else if (a > 180 && a < 360) {
-				bullet_x4[thbullet_x4][i].B_denta_x = 1;
-				bullet_x4[thbullet_x4][i].B_denta_y = 1;
-			}
-			a += 90;
-			if (a >= 360) {
-				a = a - 360;
-			}
 			bullet_x4[thbullet_x4][i].B_exist = true;
+			a += 90;
 		}
 		thbullet_x4++;
 	}
@@ -130,39 +92,7 @@ void Ennemies_typeC::shoot() {
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			if (bullet_x4[i][j].B_exist == true)
-			{
-				bullet_x4[i][j].render(bullet_x4[i][j].B_x, bullet_x4[i][j].B_y, NULL, bullet_x4[i][j].B_angle);
-				if (bullet_x4[i][j].B_denta_y == 0 && bullet_x4[i][j].B_denta_x > 0) {
-					bullet_x4[i][j].B_x += BULLET_SPEED_RIVAL;
-				}
-				else if (bullet_x4[i][j].B_denta_y == 0 && bullet_x4[i][j].B_denta_x < 0) {
-					bullet_x4[i][j].B_x -= BULLET_SPEED_RIVAL;
-				}
-				else if (bullet_x4[i][j].B_denta_y > 0 && bullet_x4[i][j].B_denta_x == 0) {
-					bullet_x4[i][j].B_y += BULLET_SPEED_RIVAL;
-				}
-				else if (bullet_x4[i][j].B_denta_y < 0 && bullet_x4[i][j].B_denta_x == 0) {
-					bullet_x4[i][j].B_y -= BULLET_SPEED_RIVAL;
-				}
-				else {
-					if (bullet_x4[i][j].B_slope >= 1) {
-						bullet_x4[i][j].B_y += round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 / (bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope))) * bullet_x4[i][j].B_denta_x;
-						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope - bullet_x4[i][j].B_start_y * 1.000) / bullet_x4[i][j].B_slope);
-					}
-					else if ((bullet_x4[i][j].B_slope <= 1) && (bullet_x4[i][j].B_slope >= -1)) {
-						bullet_x4[i][j].B_x += round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 * bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope)) * bullet_x4[i][j].B_denta_x;
-						bullet_x4[i][j].B_y = round((bullet_x4[i][j].B_x) * bullet_x4[i][j].B_slope + bullet_x4[i][j].B_start_y * 1.000 - 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope);
-					}
-					else if ((bullet_x4[i][j].B_slope <= -1)) {
-						bullet_x4[i][j].B_y -= round((BULLET_SPEED_RIVAL) /
-							sqrt(1 + 1.00 / (bullet_x4[i][j].B_slope * bullet_x4[i][j].B_slope))) * bullet_x4[i][j].B_denta_x;
-						bullet_x4[i][j].B_x = round((bullet_x4[i][j].B_y + 1.000 * bullet_x4[i][j].B_start_x * bullet_x4[i][j].B_slope - bullet_x4[i][j].B_start_y * 1.000) / bullet_x4[i][j].B_slope);
-					}
-				}
-			}
+			bullet_x4[i][j].RenderBulletAngle();
 		}
 	}
 }
@@ -180,5 +110,40 @@ void Ennemies_typeC::free() {
 	thbullet_x4 = 0;
 	load_bullet_x4_time = Rand(0, 1000);
 	speed = 1;
+	photo = 0;
 	turning = false;
+}
+bool Ennemies_typeC::loadFromFile(string path) {
+	//Get rid of preexisting texture
+	//The final texture
+	SDL_Texture* newTexture = NULL;
+
+	//Load image at specified path
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+	if (loadedSurface == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+	}
+	else
+	{
+		//Color key image
+		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 180, 180, 180));
+		//Create texture from surface pixels
+		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+		if (newTexture == NULL)
+		{
+			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+		}
+		else
+		{
+			//Get image dimensions
+			E_Width = loadedSurface->w;
+			E_Height = loadedSurface->h;
+		}
+		//Get rid of old loaded surface
+		SDL_FreeSurface(loadedSurface);
+	}
+	//Return success
+	E_Texture = newTexture;
+	return E_Texture != NULL;
 }

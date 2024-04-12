@@ -19,6 +19,8 @@ public:
 	void loadShoot();
 	//bắn
 	void shoot();
+	//
+	bool loadFromFile(string path);
 };
 
 #endif

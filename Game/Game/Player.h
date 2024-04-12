@@ -12,7 +12,14 @@ class Player
 public:
 	double sensitivity[3];
 	int sensitivity_index = 0;
-
+	int  support_dem = 0;
+	int  shield_dem = 0;
+	int  x5_dem = 0;
+	int  x7_dem = 0;
+	int bullet_type = 0;
+	//
+	Object shield[5];
+	int thshield = 0;
 	//support
 	Object support_1;
 	Object support_2;
@@ -28,17 +35,11 @@ public:
 	//bullet
 	Bullet bullet_simple[ NUMBER_BULLET][2];
 	int thbullet_simple = 0;
-	int load_bullet_simple_time = 0;
-	//
 	Bullet bullet_x7[ NUMBER_BULLET][7];
 	int thbullet_x7 = 0;
-	int load_bullet_x7_time = 0;
-	//
 	Bullet bullet_x5[ NUMBER_BULLET][5];
 	int thbullet_x5 = 0;
-	int load_bullet_x5_time = 0;
-	//loại đạn
-	int bullet_type = 10;
+	int load_bullet_time = 0;
 	// địa chỉ trên màn hình lúc render ra
 	int P_x = 350;
 	int P_y = 700;
@@ -51,15 +52,15 @@ public:
 	//Texture
 	SDL_Texture* P_Texture = NULL;
 	// khiên
-	bool shield_bool = false;
+	bool buff_shield = false;
 	// hỗ trợ
-	bool support_bool = false;
+	bool buff_support = false;
 	// lazer
-	bool lazer_bool = false;
+	bool buff_lazer = false;
 	// trang thai anh
 	int photostatus = 0;
 	int number_of_hearts = 1;
-	//
+	// 
 	bool exist = false;
 	// hàm 
 	double calculateDis(int E_x, int E_y, int E_Width, int E_Height, Object& b);
@@ -68,14 +69,16 @@ public:
 	void loadBulletSupport();
 	void loadSupport();
 	void loadLazer();
-	void loadShoot(int bullet_type);
+	void loadShoot();
 	void shoot();
 	void loadFrame(SDL_Rect* clip = NULL,
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);
 	void checkHit();
-	bool checkImpact(Bullet& a);
+	bool checkImpactBullet(Bullet& a);
+	bool checkImpactItem(Object& a);
+	bool checkImpactShield(Bullet& a);
 	Player();
 	~Player();
 	void free();

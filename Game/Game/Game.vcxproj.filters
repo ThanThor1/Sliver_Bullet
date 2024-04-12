@@ -78,6 +78,9 @@
     <ClCompile Include="Ennemies_typeD.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
+    <ClCompile Include="FindAngle.cpp">
+      <Filter>Resource Files\Non class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ennemies.h">
@@ -92,7 +95,7 @@
     <ClInclude Include="Ennemies_typeC.h">
       <Filter>Header Files\Ennemies</Filter>
     </ClInclude>
-    <ClInclude Include="CheckCollide.h">
+    <ClInclude Include="FindAngle.h">
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
     <ClInclude Include="Declaration.h">

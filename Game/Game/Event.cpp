@@ -8,7 +8,7 @@ void checkEvent(SDL_Event e) {
 		{
 			switch (e.key.keysym.sym) {
 			case SDLK_1:
-				player.bullet_type = BULLET_SIMPLE;
+				player.bullet_type = NONE;
 				break;
 			case SDLK_2:
 				player.bullet_type = BULLET_X5;
@@ -20,12 +20,15 @@ void checkEvent(SDL_Event e) {
 				player.bullet_type = 10;
 				break;
 			case SDLK_4:
-				player.lazer_bool = true;
+				player.buff_lazer = true;
 				break;
 			case SDLK_5:
-				player.support_bool = true;
+				player.buff_support = true;
 				break;
-			}
+			case SDLK_6:
+				player.buff_shield = true;
+				break;
+		    }
 		}
 		if (checkClickObject(e, pause_button, pre_x, pre_y)) {
 			screen_status = PAUSE;
@@ -34,7 +37,6 @@ void checkEvent(SDL_Event e) {
 			texture = SDL_CreateTextureFromSurface(gRenderer, surface);
 		}
 		else if (e.type == SDL_MOUSEBUTTONDOWN) {
-			
 			nhanchuot = true;
 		}
 		else if (e.type == SDL_MOUSEBUTTONUP) {
@@ -89,6 +91,7 @@ void checkEvent(SDL_Event e) {
 }
 bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
 	if (e.type == SDL_MOUSEBUTTONDOWN && x >= a.O_x && y >= a.O_y && x <= (a.O_x + a.O_Width) && y <= (a.O_y + a.O_Height)) {
+		if(sound_bool==true)
 		Mix_PlayChannel(-1, chunk_mouse, 0);
 		return true;
 	}

@@ -67,36 +67,70 @@ void loadAllMap() {
 			}
 		}
 	}
-
+	loadItem();
 }
+//
+//
+void loadItem() {
+	for (int i = 1; i <= number_ennemies_A; i++) {
+		
+		ennemies_A[i].buff = item[ennemies_A[i].buff.buff_type];
+	}
+	for (int i = 1; i <= number_ennemies_B; i++) {
+
+		ennemies_B[i].buff = item[ennemies_B[i].buff.buff_type];
+	}
+	for (int i = 1; i <= number_ennemies_C; i++) {
+
+		ennemies_C[i].buff = item[ennemies_C[i].buff.buff_type];
+	}
+	for (int i = 1; i <= number_ennemies_D; i++) {
+
+		ennemies_D[i].buff = item[ennemies_D[i].buff.buff_type];
+	}
+}
+
 void loadAllSound() {
-	music_menu = Mix_LoadMUS("C:/Users/Lenovo/Desktop/nhacgame/music_menu.mp3");
+	music_menu  = Mix_LoadMUS("C:/Users/Lenovo/Desktop/nhacgame/music_menu.mp3");
 	music_fight = Mix_LoadMUS("C:/Users/Lenovo/Desktop/nhacgame/music_fight.mp3");
 	chunk_mouse = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_mouse.mp3");
 	chunk_shoot = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_shoot.mp3");
+	chunk_explode1 = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_explode1.mp3");
+	chunk_explode2 = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_explode2.mp3");
 }
 void loadAllEnnemies() {
 	// đạn cho ennemies
+	item[SHIELD].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/bullet.png");
+	item[SHIELD].buff_type = SHIELD;
+	item[SUPPORT].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/bullet.png");
+	item[SUPPORT].buff_type = SUPPORT;
+    item[BULLET_X5].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/bullet.png");
+	item[BULLET_X5].buff_type = BULLET_X5;
+	item[BULLET_X7].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/bullet.png");
+	item[BULLET_X7].buff_type = BULLET_X7;
 	ennemies_A[0].bullet_simple[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/1.png");
+	ennemies_A[0].bullet_simple[0].B_damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		ennemies_A[0].bullet_simple[j] = ennemies_A[0].bullet_simple[0];
 	}
 	ennemies_B[0].bullet_x3[0][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/2.png");
+	ennemies_B[0].bullet_x3[0][0].B_damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		for (int k = 0; k < 3; k++) {
 			ennemies_B[0].bullet_x3[j][k] = ennemies_B[0].bullet_x3[0][0];
 		}
 	}
 	ennemies_C[0].bullet_x4[0][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/3.png");
+	ennemies_C[0].bullet_x4[0][0].B_damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		for (int k = 0; k < 4; k++) {
 			ennemies_C[0].bullet_x4[j][k] = ennemies_C[0].bullet_x4[0][0];
 		}
 	}
 	ennemies_D[0].bullet_follow[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/4.png");
+	ennemies_D[0].bullet_follow[0].B_damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		ennemies_D[0].bullet_follow[j] = ennemies_D[0].bullet_follow[0];
-
 	}
 	// ennemies
 	ennemies_A[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Ennemies/1.png");
@@ -119,13 +153,14 @@ void loadAllEnnemies() {
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_D[i] = ennemies_D[0];
 	}
-	
 }
 void loadAllPlayer() {
+	player.shield[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/shield.png");
+	for (int i = 0; i < 5; i++) {
+		player.shield[i] = player.shield[0];
+	}
 	//player
 	player.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/player.png");
-	//
-	
 	//bulletplayer
 	player.bullet_simple[0][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/bullet1.png");
 	player.bullet_simple[0][0].hit.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/hit1.png");
@@ -167,7 +202,8 @@ void loadAllPlayer() {
 	}
 }
 void loadAllIcon() {
-    loss.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/gameover.png");
+    gameover.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/gameover.png");
+	start.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/start.png");
 	///
 	///
 	/// 
@@ -236,16 +272,14 @@ void loadAllIcon() {
 
 
 
-
-
-
-
-
-
 void renewAll() {
 	renewAllPlayer();
 	renewAllEnnemies();
 	MAP = 0;
+	loadmap_bool = false;
+	number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = 0;
+	start.free();
+	gameover.free();
 }
 void renewAllPlayer() {
 	player.free();
@@ -292,7 +326,6 @@ void renewAllEnnemies() {
 			}
 		}
 	}
-
 	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
 		ennemies_C[i].free();
 		ennemies_C[i].death.free();
@@ -310,11 +343,6 @@ void renewAllEnnemies() {
 		}
 	}
 }
-
-
-
-
-
 void loadFightBackGround() {
 	BackGround.renderbackground();
 	loadPauseButton();
@@ -372,10 +400,28 @@ void loadPauseScreen() {
 
 }
 void loadFightScreen() {
+
 	SDL_RenderClear(gRenderer);
 	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	loadFightBackGround();
-	Wave();
+	/*if (start.exist == false){
+		SDL_Rect a;
+		if (start.phongto <= 1) {
+			 a = { int(SCREEN_WIDTH / 2 - start.O_Width * start.phongto * 1 / 2),int(SCREEN_HEIGHT / 2 - start.O_Height * start.phongto * 1 / 2), int(start.O_Width *start.phongto),  int(start.O_Height * start.phongto) };
+		}
+		else
+		{
+			 a = { SCREEN_WIDTH / 2 - start.O_Width * 1 / 2, SCREEN_HEIGHT / 2 - start.O_Height *  1 / 2, start.O_Width,  start.O_Height};
+		}
+		SDL_RenderCopy(gRenderer, start.O_Texture, NULL, &a);
+		start.phongto += 0.0025;
+		if (start.phongto >= 2) {
+			start.exist = true;
+		}
+	}*/
+	/*else {*/
+		Wave();
+	//}
 	player.loadFrame();
 	SDL_RenderPresent(gRenderer);
 }

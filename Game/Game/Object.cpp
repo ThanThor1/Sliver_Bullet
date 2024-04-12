@@ -15,6 +15,7 @@ void Object::free()
 	slope = 0;
 	angle = 0;
 	exist = false;
+	phongto = 0.0025;
 }
 Object::Object()
 {
@@ -92,4 +93,25 @@ void Object::renderbackground()
 	SDL_Rect renderQuad = { 0, 0 , SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_Rect cut = { 0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_RenderCopy(gRenderer, O_Texture, &cut, &renderQuad);
+}
+void Object::renderBuff(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
+{
+	if (exist == true) {
+		if (dem3 == 0) {
+			O_x = x;
+			O_y = y;
+		}
+		O_y++;
+		dem3++;
+		if (dem3 == 1500) {
+			exist = false;
+		}
+		SDL_Rect renderQuad = { x, y , O_Width, O_Height };
+		if (clip != NULL)
+		{
+			renderQuad.w = clip->w;
+			renderQuad.h = clip->h;
+		}
+		SDL_RenderCopyEx(gRenderer, O_Texture, clip, &renderQuad, angle, center, flip);
+	}
 }

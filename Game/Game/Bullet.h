@@ -6,9 +6,13 @@
 class Bullet
 {
 public:
+	bool phandan=false;
 	Object hit;
+	SDL_Point* Center = NULL;
+	SDL_Rect* Clip = NULL;
 	bool hit_bool = false;
 	int B_damage = 0;
+	int B_speed = 0;
 	int B_speedPlus = 0;
 	bool B_follow = true;
 	//
@@ -40,6 +44,8 @@ public:
 	Bullet();
 	~Bullet();
 	void free();
+	void RenderBulletSlope();
+	void RenderBulletAngle();
+	void RenderBulletStraight();
 };
-
 #endif

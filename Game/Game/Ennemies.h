@@ -9,7 +9,9 @@
 class Ennemies
 {
 public:
+	Object buff;
 	Object death;
+	int photo = 0;
 	bool exist = false;
 	double E_slope = 0;
 	double E_angle = 0;
@@ -25,7 +27,6 @@ public:
 	int E_Height = 0;
 	SDL_Texture* E_Texture = NULL;
 	// hàm
-	bool loadFromFile(string path);
 	bool checkImpact(Bullet& a);
 	bool checkLazer();
 	void checkHit(int &health);
@@ -34,6 +35,7 @@ public:
 	void getSlopeAngle(double slope = 0, double angle = 0);
 	void getDeltaxy();
 	void loadExplode(Bullet &a);
+	void loadBuff();
 };
 
 #endif

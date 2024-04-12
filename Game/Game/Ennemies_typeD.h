@@ -21,6 +21,7 @@ public:
 	void shoot();
 	//
 	int checkDistance(Bullet &a);
+	bool loadFromFile(string path);
 };
 
 #endif

@@ -5,6 +5,7 @@
 
 
 #include "Library.h"
+#define NUMBER_ITEM 50
 #define NUMBER_BULLET 100
 #define NUMBER_ENNEMIES 50
 #define BULLET_SPEED 5
@@ -15,6 +16,7 @@
 #define NUMBER_MAX_WIDTH 40
 #define NUMBER_MAX_HEIGHT 70
 #define EDGE_LENGTH_BLOCK 20
+#define DELAY_BULLET 120
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 1050;
@@ -24,8 +26,10 @@ enum screenstatus {
 	HOME,
 	FIGHT,
 };
-enum bullet {
-	BULLET_SIMPLE,
+enum buff {
+	NONE,
+	SHIELD,
+	SUPPORT,
 	BULLET_X5,
 	BULLET_X7,
 };

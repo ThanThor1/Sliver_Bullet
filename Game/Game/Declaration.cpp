@@ -2,7 +2,7 @@
 
 bool loadmap_bool = false;
 bool sound_bool = true;
-bool music_bool = false;
+bool music_bool = true;
 int screen_status = HOME;
 bool prepare_to_press_pause = false;
 bool nhanchuot = false;
@@ -40,7 +40,8 @@ Object BackGround;
 /// <summary>
 /// 
 /// </summary>
-Object loss;
+Object gameover;
+Object start;
 /// <summary>
 /// 
 /// </summary>
@@ -53,13 +54,14 @@ Ennemies_typeD ennemies_D[NUMBER_ENNEMIES];
 int number_ennemies_A = 0;
 int number_ennemies_B = 0;
 int number_ennemies_C = 0;
-int number_ennemies_D = 0;
-
+int number_ennemies_D = 0; 
+Object item[20];
 /// <summary>
 /// 
 /// </summary>
 int MAP = 0;
 string map[NUMBER_MAX_HEIGHT][ NUMBER_MAX_WIDTH] = {};
+
 
 SDL_Window* gWindow;
 SDL_Renderer* gRenderer;
@@ -70,6 +72,8 @@ Mix_Music* music_menu;
 Mix_Music* music_fight;
 Mix_Chunk* chunk_mouse;
 Mix_Chunk* chunk_shoot;
+Mix_Chunk* chunk_explode1;
+Mix_Chunk* chunk_explode2;
 
 UINT32 currentime = 0;
 UINT32 distimewave = 3000;

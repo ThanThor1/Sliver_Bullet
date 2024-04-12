@@ -3,15 +3,19 @@
 #ifndef OBJECT
 #define OBJECT
 #include "Library.h"
+#include "SomeConst.h"
 class Object
 {
 public:
-	double phongto = 0.0025;
+	int buff_type = NONE;
+	double phongto = 0.0;
+	int alpha = 255;
 	//
 	bool exist = false;
 	//
 	int dem1 = 0;
 	int dem2 = 0;
+	int dem3 = 0;
 	//
 	int damage = 5;
 	//
@@ -35,6 +39,9 @@ public:
 	void setBlendMode(SDL_BlendMode blending);
 	void setAlpha(Uint8 alpha);
 	void render(int x, int y, SDL_Rect* clip = NULL,
+		double angle = 0.0, SDL_Point* center = NULL,
+		SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void renderBuff(int x, int y, SDL_Rect* clip = NULL,
 		double angle = 0.0, SDL_Point* center = NULL,
 		SDL_RendererFlip flip = SDL_FLIP_NONE);
 	Object();

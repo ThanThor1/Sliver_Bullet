@@ -8,6 +8,7 @@ void loadAllEnnemies();
 void loadAllIcon();
 void loadAllSound();
 void loadAllMap();
+void loadItem();
 //
 //
 //

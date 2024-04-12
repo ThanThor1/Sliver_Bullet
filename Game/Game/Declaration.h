@@ -11,7 +11,12 @@
 #include "Ennemies_typeC.h"
 #include "Ennemies_typeD.h"
 #include "Player.h"
+#include "Item_shield.h"
+#include "Item_support.h"
+#include "Item_x5.h"
+#include "Item_x7.h"
 #include "Library.h"
+
 extern bool loadmap_bool;
 extern bool sound_bool;
 extern bool music_bool;
@@ -42,7 +47,8 @@ extern Object music_pause;
 extern Object pause_menu;
 extern Object pause_button;
 
-extern Object loss;
+extern Object gameover;
+extern Object start;
 extern Object Heart[3];
 extern Object BackGround;
 
@@ -56,6 +62,7 @@ extern int number_ennemies_A;
 extern int number_ennemies_B;
 extern int number_ennemies_C;
 extern int number_ennemies_D;
+extern Object item[20];
 
 extern int MAP;
 extern string map[NUMBER_MAX_HEIGHT][NUMBER_MAX_WIDTH];
@@ -69,6 +76,8 @@ extern Mix_Music* music_menu;
 extern Mix_Music* music_fight;
 extern Mix_Chunk* chunk_mouse;
 extern Mix_Chunk* chunk_shoot;
+extern Mix_Chunk* chunk_explode1;
+extern Mix_Chunk* chunk_explode2;
 
 extern UINT32 currentime;
 extern UINT32 distimewave;
