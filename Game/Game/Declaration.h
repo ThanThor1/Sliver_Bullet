@@ -3,18 +3,16 @@
 #ifndef DECLARATION
 #define DECLARATION
 #include "Ennemies.h"
-#include "Bullet.h"
+#include "Bullet_Straight.h"
 #include "SomeConst.h"
 #include "Object.h"
 #include "Ennemies_typeA.h"
 #include "Ennemies_typeB.h"
 #include "Ennemies_typeC.h"
 #include "Ennemies_typeD.h"
+#include "Ennemies_typeE.h"
 #include "Player.h"
-#include "Item_shield.h"
-#include "Item_support.h"
-#include "Item_x5.h"
-#include "Item_x7.h"
+#include "Item.h"
 #include "Library.h"
 
 extern bool loadmap_bool;
@@ -26,8 +24,8 @@ extern bool prepare_to_press_pause;
 
 extern int pause_x;
 extern int pause_y;
-extern int x;
-extern int y;
+extern int now_x;
+extern int now_y;
 extern int pre_x;
 extern int pre_y;
 extern int home_x;
@@ -58,11 +56,25 @@ extern Ennemies_typeA ennemies_A[NUMBER_ENNEMIES];
 extern Ennemies_typeB ennemies_B[NUMBER_ENNEMIES];
 extern Ennemies_typeC ennemies_C[NUMBER_ENNEMIES];
 extern Ennemies_typeD ennemies_D[NUMBER_ENNEMIES];
+extern Ennemies_typeE ennemies_E[NUMBER_ENNEMIES];
 extern int number_ennemies_A;
 extern int number_ennemies_B;
 extern int number_ennemies_C;
 extern int number_ennemies_D;
-extern Object item[20];
+extern int number_ennemies_E;
+extern Bullet_Straight  bullet_ennemies_A[NUMBER_BULLET];
+extern Bullet_Straight  bullet_ennemies_B[NUMBER_BULLET][3];
+extern Bullet_Straight  bullet_ennemies_C[NUMBER_BULLET][4];
+extern Bullet_Straight  bullet_ennemies_D[NUMBER_BULLET];
+extern Bullet_Straight  bullet_ennemies_E[NUMBER_BULLET];
+extern int bullet_ennemies_A_index ;
+extern int bullet_ennemies_B_index ;
+extern int bullet_ennemies_C_index ;
+extern int bullet_ennemies_D_index ;
+extern int bullet_ennemies_E_index ;
+extern Item item[100];
+extern int item_index ;
+extern Item item_example[20];
 
 extern int MAP;
 extern string map[NUMBER_MAX_HEIGHT][NUMBER_MAX_WIDTH];
@@ -82,4 +94,7 @@ extern Mix_Chunk* chunk_explode2;
 extern UINT32 currentime;
 extern UINT32 distimewave;
 extern UINT32 timewave;
+
+extern Object support_1;
+extern Object support_2;
 #endif

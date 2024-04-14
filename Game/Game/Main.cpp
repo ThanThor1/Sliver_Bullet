@@ -21,7 +21,7 @@ bool init() {
 	else if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 		success = false;
 	}
-	else if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+	else if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 3, 2048) < 0) {
 		success = false;
 	}
 	return success;

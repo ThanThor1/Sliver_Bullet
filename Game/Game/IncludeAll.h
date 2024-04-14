@@ -5,7 +5,7 @@
 
 #include "Player.h"
 #include "Ennemies.h"
-#include "Bullet.h"
+#include "Bullet_Straight.h"
 #include "SomeConst.h"
 #include "Library.h"
 #include "Event.h"

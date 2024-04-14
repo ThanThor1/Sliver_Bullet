@@ -9,25 +9,19 @@ void Wave() {
 		loadmap_bool = true;
 	}
 	bool win = false;
-	switch (MAP) {
-	   case WAVE_1:
-		   win=Wave1();
-		break;
-	   case WAVE_2:
-		   win=Wave2();
-		break;
-	}
+	win = checkWin();
 	if (win == true ) {
 		if (currentime >= timewave) {
-			MAP++;
 			loadmap_bool = false;
 			renewAllEnnemies();
-			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = 0;
+			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E= 0;
 		}
 	}
 	else timewave = currentime + distimewave;
+	RenderBullet();
+	RenderItem();
 }
-bool Wave1() {
+bool  checkWin() {
 	bool win = true;
 	for (int i = 1; i <= number_ennemies_A; i++) {
 		win = win *!ennemies_A[i].checkExist();
@@ -41,21 +35,45 @@ bool Wave1() {
 	for (int i = 1; i <= number_ennemies_D; i++) {
 		win = win*!ennemies_D[i].checkExist();
 	}
+	for (int i = 1; i <= number_ennemies_E; i++) {
+		win = win * !ennemies_E[i].checkExist();
+	}
 	return win;
 }
-bool Wave2() {
-	bool win = true;
-	for (int i = 1; i <= number_ennemies_A; i++) {
-		win = win * !ennemies_A[i].checkExist();
+void RenderBullet() {
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_A[j].exist == true) {
+			bullet_ennemies_A[j].RenderBullet_StraightAngle();
+		}
 	}
-	for (int i = 1; i <= number_ennemies_B; i++) {
-		win = win * !ennemies_B[i].checkExist();
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		for (int k = 0; k < 3; k++) {
+			if (bullet_ennemies_B[j][k].exist == true) {
+				bullet_ennemies_B[j][k].RenderBullet_StraightAngle();
+			}
+		}
 	}
-	for (int i = 1; i <= number_ennemies_C; i++) {
-		win = win * !ennemies_C[i].checkExist();
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		for (int k = 0; k < 4; k++) {
+			if (bullet_ennemies_C[j][k].exist == true) {
+				bullet_ennemies_C[j][k].RenderBullet_StraightAngle();
+			}
+		}
 	}
-	for (int i = 1; i <= number_ennemies_D; i++) {
-		win = win * !ennemies_D[i].checkExist();
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_D[j].exist == true) {
+			bullet_ennemies_D[j].RenderBullet_FollowSlope();
+		}
+
 	}
-	return win;
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_E[j].exist == true) {
+			bullet_ennemies_E[j].RenderBullet_StraightAngle();
+		}
+	}
+}
+void RenderItem() {
+	for (int i = 0; i < NUMBER_ITEM; i++) {
+		item[i].Render_Item();
+	}
 }

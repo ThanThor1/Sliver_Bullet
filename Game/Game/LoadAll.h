@@ -3,17 +3,19 @@
 #include"SomeConst.h"
 #include "Wave.h"
 void loadAll();  // bao gồm 5 cái dươi
-void loadAllPlayer();
 void loadAllEnnemies();
+void loadAllPlayer();
 void loadAllIcon();
 void loadAllSound();
 void loadAllMap();
-void loadItem();
+void loadAllItem();
 //
 //
 //
 void renewAll();  // bao gồm 2 cái dưới
 void renewAllPlayer();
+void renewAllBullet();
+void renewAllItem();
 void renewAllEnnemies();
 //
 //

@@ -10,105 +10,96 @@ bool Ennemies_typeC::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
-	shoot();
 	return exist;
 }
 void Ennemies_typeC::moveEnnemies() {
-	SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
-	if (E_angle >= 360) { E_angle = 0; }
-	E_angle += 0.1;
-	SDL_RenderCopyEx(gRenderer, E_Texture, NULL, &renderQuad, E_angle, NULL, SDL_FLIP_NONE);
-	if (E_x > 0 && E_x < (SCREEN_WIDTH - E_Width)) {
-		if (E_y > 0 && E_y < (SCREEN_HEIGHT - E_Height)) {
+	SDL_Rect  renderQuad = { x, y , width, height };
+	if (angle >= 360) { angle = 0; }
+	angle += 0.1;
+	SDL_RenderCopyEx(gRenderer, Texture, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
+	if (x > 0 && x < (SCREEN_WIDTH - width)) {
+		if (y > 0 && y < (SCREEN_HEIGHT - height)) {
 			turning = true;
 		}
 	}
-	if ((E_x <= 0 || E_x >= SCREEN_WIDTH - E_Width) && turning == true) {
-		E_denta_x = -E_denta_x;
-		E_start_x = E_x;
-		E_start_y = E_y;
+	if ((x <= 0 || x >= SCREEN_WIDTH - width) && turning == true) {
+		delta_x = -delta_x;
+		start_x = x;
+		start_y = y;
 		turning = false;
 	}
-	if ((E_y <= 0 || E_y >= SCREEN_HEIGHT - E_Height) && turning == true) {
-		E_denta_y = -E_denta_y;
-		E_start_x = E_x;
-		E_start_y = E_y;
+	if ((y <= 0 || y >= SCREEN_HEIGHT - height) && turning == true) {
+		delta_y = -delta_y;
+		start_x = x;
+		start_y = y;
 		turning = false;
 	}
 	/*
-	<< denta_x << " " << denta_y << " ";*/
-	E_slope = 1.0 * (E_denta_y) / (E_denta_x);
-	/*cout << E_x << " " << E_y<<" "<<E_slope << endl;*/
+	<< delta_x << " " << delta_y << " ";*/
+	slope = 1.0 * (delta_y) / (delta_x);
+	/*cout << x << " " << y<<" "<<slope << endl;*/
 
-	if (E_denta_y == 0 && E_denta_x > 0) {
-		E_x += SPEED_RIVAL;
+	if (delta_y == 0 && delta_x > 0) {
+		x += SPEED_RIVAL;
 	}
-	else if (E_denta_y == 0 && E_denta_x < 0) {
-		E_x -= SPEED_RIVAL;
+	else if (delta_y == 0 && delta_x < 0) {
+		x -= SPEED_RIVAL;
 	}
-	else if (E_denta_y > 0 && E_denta_x == 0) {
-		E_y += SPEED_RIVAL;
+	else if (delta_y > 0 && delta_x == 0) {
+		y += SPEED_RIVAL;
 	}
-	else if (E_denta_y < 0 && E_denta_x == 0) {
-		E_y -= SPEED_RIVAL;
+	else if (delta_y < 0 && delta_x == 0) {
+		y -= SPEED_RIVAL;
 	}
 	else {
-		if (E_slope >= 1) {
-			E_y += round((SPEED_RIVAL) / sqrt(1 + 1.00 / (E_slope * E_slope))) * E_denta_x / abs(E_denta_x);
-			E_x = round((E_y + 1.000 * E_start_x * E_slope - E_start_y * 1.000) / E_slope);
+		if (slope >= 1) {
+			y += round((SPEED_RIVAL) / sqrt(1 + 1.00 / (slope * slope))) * delta_x / abs(delta_x);
+			x = round((y + 1.000 * start_x * slope - start_y * 1.000) / slope);
 		}
-		else if ((E_slope <= 1) && (E_slope >= -1)) {
-			E_x += round((SPEED_RIVAL) / sqrt(1 + 1.00 * E_slope * E_slope)) * E_denta_x / abs(E_denta_x);
-			E_y = round((E_x)*E_slope + E_start_y * 1.000 - 1.000 * E_start_x * E_slope);
+		else if ((slope <= 1) && (slope >= -1)) {
+			x += round((SPEED_RIVAL) / sqrt(1 + 1.00 * slope * slope)) * delta_x / abs(delta_x);
+			y = round((x)*slope + start_y * 1.000 - 1.000 * start_x * slope);
 		}
-		else if ((E_slope <= -1)) {
-			E_y -= round((SPEED_RIVAL) / sqrt(1 + 1.00 / (E_slope * E_slope))) * E_denta_x / abs(E_denta_x);
-			E_x = round((E_y + 1.000 * E_start_x * E_slope - E_start_y * 1.000) / E_slope);
+		else if ((slope <= -1)) {
+			y -= round((SPEED_RIVAL) / sqrt(1 + 1.00 / (slope * slope))) * delta_x / abs(delta_x);
+			x = round((y + 1.000 * start_x * slope - start_y * 1.000) / slope);
 		}
 	}
 	loadShoot();
 }
 //sạc đạn
 void Ennemies_typeC::loadShoot() {
-	load_bullet_x4_time = (load_bullet_x4_time + 1) % 1001;
-	if (thbullet_x4 == NUMBER_BULLET) {
-		thbullet_x4 = 0;
+	load_bullet_ennemies_C_time = (load_bullet_ennemies_C_time + 1) % 1001;
+	if (bullet_ennemies_C_index == NUMBER_BULLET) {
+		bullet_ennemies_C_index = 0;
 	}
-	if (load_bullet_x4_time == 1000) {
+	if (load_bullet_ennemies_C_time == 1000) {
 		int a = Rand(0, 90);
 		for (int i = 0; i < 4; i++) {
-			bullet_x4[thbullet_x4][i].B_start_x = bullet_x4[thbullet_x4][i].B_x = E_x + E_Width/2 - bullet_x4[thbullet_x4][i].B_Width/2;
-			bullet_x4[thbullet_x4][i].B_start_y = bullet_x4[thbullet_x4][i].B_y = E_y + E_Height/2 - bullet_x4[thbullet_x4][i].B_Height/2;
-			bullet_x4[thbullet_x4][i].B_angle = a;
-			bullet_x4[thbullet_x4][i].B_exist = true;
+			bullet_ennemies_C[bullet_ennemies_C_index][i].start_x = bullet_ennemies_C[bullet_ennemies_C_index][i].x = x + width / 2 - bullet_ennemies_C[bullet_ennemies_C_index][i].width / 2;
+			bullet_ennemies_C[bullet_ennemies_C_index][i].start_y = bullet_ennemies_C[bullet_ennemies_C_index][i].y = y + height / 2 - bullet_ennemies_C[bullet_ennemies_C_index][i].height / 2;
+			bullet_ennemies_C[bullet_ennemies_C_index][i].angle = a;
+			bullet_ennemies_C[bullet_ennemies_C_index][i].exist = true;
 			a += 90;
 		}
-		thbullet_x4++;
+		bullet_ennemies_C_index++;
 	}
 }
 //bắn
-void Ennemies_typeC::shoot() {
-	for (int i = 0; i < NUMBER_BULLET; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			bullet_x4[i][j].RenderBulletAngle();
-		}
-	}
-}
+
 void Ennemies_typeC::free() {
-	E_x = 0;
-	E_y = 0;
-	E_start_x = 0;
-	E_start_y = 0;
-	E_finish_x = 0;
-	E_finish_y = 0;
-	E_slope = 0;
-	E_angle = 0;
+	x = 0;
+	y = 0;
+	start_x = 0;
+	start_y = 0;
+	finish_x = 0;
+	finish_y = 0;
+	slope = 0;
+	angle = 0;
 	exist = false;
 	health = 10;
-	thbullet_x4 = 0;
-	load_bullet_x4_time = Rand(0, 1000);
+	bullet_ennemies_C_index = 0;
+	load_bullet_ennemies_C_time = Rand(0, 1000);
 	speed = 1;
 	photo = 0;
 	turning = false;
@@ -137,13 +128,13 @@ bool Ennemies_typeC::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			E_Width = loadedSurface->w;
-			E_Height = loadedSurface->h;
+			width = loadedSurface->w;
+			height = loadedSurface->h;
 		}
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
 	//Return success
-	E_Texture = newTexture;
-	return E_Texture != NULL;
+	Texture = newTexture;
+	return Texture != NULL;
 }

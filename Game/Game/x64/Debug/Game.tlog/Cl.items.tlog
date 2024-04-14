@@ -3,12 +3,14 @@ D:\Game\Game\Game\Ennemies_typeA.cpp;D:\Game\Game\Game\x64\Debug\Ennemies_typeA.
 D:\Game\Game\Game\Ennemies_typeB.cpp;D:\Game\Game\Game\x64\Debug\Ennemies_typeB.obj
 D:\Game\Game\Game\Ennemies_typeC.cpp;D:\Game\Game\Game\x64\Debug\Ennemies_typeC.obj
 D:\Game\Game\Game\Ennemies_typeD.cpp;D:\Game\Game\Game\x64\Debug\Ennemies_typeD.obj
+D:\Game\Game\Game\Ennemies_typeE.cpp;D:\Game\Game\Game\x64\Debug\Ennemies_typeE.obj
 D:\Game\Game\Game\Event.cpp;D:\Game\Game\Game\x64\Debug\Event.obj
 D:\Game\Game\Game\FindAngle.cpp;D:\Game\Game\Game\x64\Debug\FindAngle.obj
+D:\Game\Game\Game\Item.cpp;D:\Game\Game\Game\x64\Debug\Item.obj
 D:\Game\Game\Game\LoadAll.cpp;D:\Game\Game\Game\x64\Debug\LoadAll.obj
 D:\Game\Game\Game\Main.cpp;D:\Game\Game\Game\x64\Debug\Main.obj
 D:\Game\Game\Game\Declaration.cpp;D:\Game\Game\Game\x64\Debug\Declaration.obj
 D:\Game\Game\Game\Object.cpp;D:\Game\Game\Game\x64\Debug\Object.obj
 D:\Game\Game\Game\Player.cpp;D:\Game\Game\Game\x64\Debug\Player.obj
-D:\Game\Game\Game\Bullet.cpp;D:\Game\Game\Game\x64\Debug\Bullet.obj
+D:\Game\Game\Game\Bullet_Straight.cpp;D:\Game\Game\Game\x64\Debug\Bullet_Straight.obj
 D:\Game\Game\Game\Wave.cpp;D:\Game\Game\Game\x64\Debug\Wave.obj

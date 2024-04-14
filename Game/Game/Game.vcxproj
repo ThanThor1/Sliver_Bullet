@@ -135,17 +135,20 @@
     <ClCompile Include="Ennemies_typeB.cpp" />
     <ClCompile Include="Ennemies_typeC.cpp" />
     <ClCompile Include="Ennemies_typeD.cpp" />
+    <ClCompile Include="Ennemies_typeE.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="FindAngle.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="LoadAll.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Bullet_Straight.cpp" />
     <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ennemies_typeE.h" />
     <ClInclude Include="FindAngle.h" />
     <ClInclude Include="Declaration.h" />
     <ClInclude Include="Ennemies.h" />
@@ -155,11 +158,12 @@
     <ClInclude Include="Ennemies_typeD.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="IncludeAll.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadAll.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Bullet_Straight.h" />
     <ClInclude Include="SomeConst.h" />
     <ClInclude Include="Wave.h" />
   </ItemGroup>

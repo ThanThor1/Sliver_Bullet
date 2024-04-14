@@ -10,64 +10,57 @@ bool Ennemies_typeA::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
-	shoot();
 	return exist;
 }
 void Ennemies_typeA::moveEnnemies() {
-	    SDL_Rect cut;
-	    cut = { photo* E_Width, 0, E_Width , E_Height };
-		if (load_bullet_simple_time == 1000) {
-			photo = 1;
-		}
-		else if (load_bullet_simple_time >= 150) {
-			photo = 0;
-			if (E_angle >= 15) { direction = -1; }
-			if (E_angle <= -15) { direction = 1; }
-			E_angle += 0.1 * direction;
-		}
-		SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
-		SDL_Point center = { E_Width / 2 ,0 };
-		SDL_RenderCopyEx(gRenderer, E_Texture, &cut, &renderQuad, E_angle, &center, SDL_FLIP_NONE);
-		if (E_y != E_finish_y) {
-			E_y++;
-		}
-		else {
-			loadShoot();
-		}
+	SDL_Rect cut;
+	cut = { photo * width, 0, width , height };
+	if (load_bullet_ennemies_A_time == 1000) {
+		photo = 1;
+	}
+	else if (load_bullet_ennemies_A_time >= 150) {
+		photo = 0;
+		if (angle >= 15) { direction = -1; }
+		if (angle <= -15) { direction = 1; }
+		angle += 0.1 * direction;
+	}
+	SDL_Rect  renderQuad = { x, y , width, height };
+	SDL_Point center = { width / 2 ,0 };
+	SDL_RenderCopyEx(gRenderer, Texture, &cut, &renderQuad, angle, &center, SDL_FLIP_NONE);
+	if (y != finish_y) {
+		y++;
+	}
+	else {
+		loadShoot();
+	}
 }
 //sạc đạn
 void Ennemies_typeA::loadShoot() {
-	load_bullet_simple_time = (load_bullet_simple_time + 1) % 1001;
-	if (thbullet_simple == NUMBER_BULLET) {
-		thbullet_simple = 0;
+	load_bullet_ennemies_A_time = (load_bullet_ennemies_A_time + 1) % 1001;
+	if (bullet_ennemies_A_index == NUMBER_BULLET) {
+		bullet_ennemies_A_index = 0;
 	}
-	if (load_bullet_simple_time == 1000) {
-		bullet_simple[thbullet_simple].B_start_x = bullet_simple[thbullet_simple].B_x = E_x + E_Width / 2 + (E_Height + 10) * sin(-E_angle * PI / 180) - bullet_simple[thbullet_simple].B_Width / 2;
-		bullet_simple[thbullet_simple].B_start_y = bullet_simple[thbullet_simple].B_y = E_y + (E_Height + 10) * cos(-E_angle * PI / 180);
-		bullet_simple[thbullet_simple].B_angle = E_angle;
-		bullet_simple[thbullet_simple].B_exist = true;
-		thbullet_simple++;
-	}
-}
-//bắn
-void Ennemies_typeA::shoot() {
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		bullet_simple[i].RenderBulletAngle();
+	if (load_bullet_ennemies_A_time == 1000) {
+		bullet_ennemies_A[bullet_ennemies_A_index].start_x = bullet_ennemies_A[bullet_ennemies_A_index].x = x + width / 2 + (height + 10) * sin(-angle * PI / 180) - bullet_ennemies_A[bullet_ennemies_A_index].width / 2;
+		bullet_ennemies_A[bullet_ennemies_A_index].start_y = bullet_ennemies_A[bullet_ennemies_A_index].y = y + (height + 10) * cos(-angle * PI / 180);
+		bullet_ennemies_A[bullet_ennemies_A_index].angle = angle;
+		bullet_ennemies_A[bullet_ennemies_A_index].exist = true;
+		bullet_ennemies_A_index++;
 	}
 }
+
 void Ennemies_typeA::free() {
-	E_x = 0;
-	E_y = 0;
-	E_start_x = 0;
-	E_start_y = 0;
-	E_finish_x = 0;
-	E_finish_y = 0;
-	E_slope = 0;
-	E_angle = 0;
+	x = 0;
+	y = 0;
+	start_x = 0;
+	start_y = 0;
+	finish_x = 0;
+	finish_y = 0;
+	slope = 0;
+	angle = 0;
 	exist = false;
 	health = 10;
-	thbullet_simple = 0;
-	load_bullet_simple_time = Rand(0,1000);
+	load_bullet_ennemies_A_time = Rand(0, 1000);
 	speed = 1;
 	direction = 1;
 	photo = 0;
@@ -96,13 +89,13 @@ bool Ennemies_typeA::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			E_Width = loadedSurface->w/2;
-			E_Height = loadedSurface->h;
+			width = loadedSurface->w / 2;
+			height = loadedSurface->h;
 		}
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
 	//Return success
-	E_Texture = newTexture;
-	return E_Texture != NULL;
+	Texture = newTexture;
+	return Texture != NULL;
 }

@@ -28,6 +28,9 @@ void checkEvent(SDL_Event e) {
 			case SDLK_6:
 				player.buff_shield = true;
 				break;
+			case SDLK_7:
+				player.buff_speed_bullet = true;
+				break;	
 		    }
 		}
 		if (checkClickObject(e, pause_button, pre_x, pre_y)) {
@@ -90,7 +93,7 @@ void checkEvent(SDL_Event e) {
 	}
 }
 bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
-	if (e.type == SDL_MOUSEBUTTONDOWN && x >= a.O_x && y >= a.O_y && x <= (a.O_x + a.O_Width) && y <= (a.O_y + a.O_Height)) {
+	if (e.type == SDL_MOUSEBUTTONDOWN && x >= a.x && y >= a.y && x <= (a.x + a.width) && y <= (a.y + a.height)) {
 		if(sound_bool==true)
 		Mix_PlayChannel(-1, chunk_mouse, 0);
 		return true;

@@ -4,27 +4,27 @@
 
 #include "Library.h"
 #include "SomeConst.h"
-#include "Bullet.h"
+#include "Bullet_Straight.h"
 #include "Object.h"
+#include "Item.h"
 class Ennemies;
-class Player
+class Player : public Object
 {
 public:
+	int delay_bullet = 120;
 	double sensitivity[3];
-	int sensitivity_index = 0;
+	int  sensitivity_index = 0;
 	int  support_dem = 0;
 	int  shield_dem = 0;
 	int  x5_dem = 0;
 	int  x7_dem = 0;
-	int bullet_type = 0;
+	int  bullet_type = 0;
 	//
 	Object shield[5];
 	int thshield = 0;
 	//support
-	Object support_1;
-	Object support_2;
-	Bullet bullet_support_1[ NUMBER_BULLET];
-	Bullet bullet_support_2[ NUMBER_BULLET];
+	Bullet_Straight bullet_support_1[NUMBER_BULLET];
+	Bullet_Straight bullet_support_2[NUMBER_BULLET];
 	int load_support_time = 0;
 	int load_bullet_support_time = 0;
 	int thbullet_support = 0;
@@ -33,35 +33,27 @@ public:
 	Object lazer;
 	int load_lazer_time = 0;
 	//bullet
-	Bullet bullet_simple[ NUMBER_BULLET][2];
+	Bullet_Straight bullet_simple[NUMBER_BULLET][2];
 	int thbullet_simple = 0;
-	Bullet bullet_x7[ NUMBER_BULLET][7];
+	Bullet_Straight bullet_x7[NUMBER_BULLET][7];
 	int thbullet_x7 = 0;
-	Bullet bullet_x5[ NUMBER_BULLET][5];
+	Bullet_Straight bullet_x5[NUMBER_BULLET][5];
 	int thbullet_x5 = 0;
 	int load_bullet_time = 0;
-	// địa chỉ trên màn hình lúc render ra
-	int P_x = 350;
-	int P_y = 700;
-	// địa chỉ điểm bắt đầu (chưa cần dùng) (có thể là địa chỉ tâm)
-	double P_Start_x = 0;
-	double P_Start_y = 0;
-	//chiều ngang và dọc
-	int P_Width = 0;
-	int P_Height = 0;
-	//Texture
-	SDL_Texture* P_Texture = NULL;
+	//
+	bool behit = false;
+	int behit_dem = 0;
+	int doichieu = 1;
 	// khiên
 	bool buff_shield = false;
 	// hỗ trợ
 	bool buff_support = false;
 	// lazer
 	bool buff_lazer = false;
+	//
+	bool buff_speed_bullet = false;
 	// trang thai anh
-	int photostatus = 0;
-	int number_of_hearts = 1;
-	// 
-	bool exist = false;
+	int number_of_hearts = 3;
 	// hàm 
 	double calculateDis(int E_x, int E_y, int E_Width, int E_Height, Object& b);
 	void shootSupport();
@@ -71,14 +63,15 @@ public:
 	void loadLazer();
 	void loadShoot();
 	void shoot();
-	void loadFrame(SDL_Rect* clip = NULL,
-		double angle = 0.0, SDL_Point* center = NULL,
-		SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void loadFrame(SDL_Rect* clip = NULL,double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);
-	void checkHit();
-	bool checkImpactBullet(Bullet& a);
-	bool checkImpactItem(Object& a);
-	bool checkImpactShield(Bullet& a);
+	bool checkHit();
+	bool checkImpactBullet(Bullet_Straight& a);
+	void checkImpactItem(Item& a);
+	bool checkImpactShield(Bullet_Straight& a);
+	void setColor(Uint8 red, Uint8 green, Uint8 blue);
+	void setBlendMode(SDL_BlendMode blending);
+	void setAlpha(Uint8 alpha);
 	Player();
 	~Player();
 	void free();

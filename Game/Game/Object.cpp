@@ -1,39 +1,49 @@
-#pragma once
+﻿#pragma once
 #include "Object.h"
 #include "Declaration.h"
 void Object::free()
 {
-	dem1 = 0;
-	dem2 = 0;
-	damage = 5;
-	start_x;
-	start_y;
-	O_x = 0;
-	O_y = 0;
-	dem = 0;
-	photo = 0;
-	slope = 0;
-	angle = 0;
-	exist = false;
-	phongto = 0.0025;
+	 flip = SDL_FLIP_NONE;
+	 photo = 0;
+	 damage = 0;
+	// tỉ lệ in ra màn hình
+	 ratio = 0.0;
+	// độ trong suốt
+	 alpha = 255;
+	// có tồn tại hay không
+	 exist = false;
+	// mot so tinh chat
+	 x = 0;
+	 y = 0;
+	 start_x = 0;
+	 start_y = 0;
+	 finish_x = 0;
+	 finish_y = 0;
+	 delta_x = 0;
+	 delta_y = 0;
+	 slope = 0;
+	 angle = 0;
+	//Texture
+	 dem = 0;
+	//Texture
 }
 Object::Object()
 {
-	O_Texture = NULL;
-	O_Width = 0;
-	O_Height = 0;
+	Texture = NULL;
+	width = 0;
+	height = 0;
 }
 void Object::setColor(Uint8 red, Uint8 green, Uint8 blue)
 {
-	SDL_SetTextureColorMod(O_Texture, red, green, blue);
+	SDL_SetTextureColorMod(Texture, red, green, blue);
 }
 void Object::setBlendMode(SDL_BlendMode blending)
 {
-	SDL_SetTextureBlendMode(O_Texture, blending);
+	SDL_SetTextureBlendMode(Texture, blending);
 }
 void Object::setAlpha(Uint8 alpha)
 {
-	SDL_SetTextureAlphaMod(O_Texture, alpha);
+	SDL_SetTextureAlphaMod(Texture, alpha);
 }
 bool Object::loadFromFile(string path) {
 	//Get rid of preexisting texture
@@ -61,30 +71,25 @@ bool Object::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			O_Width = loadedSurface->w;
-			O_Height = loadedSurface->h;
+			width = loadedSurface->w;
+			height = loadedSurface->h;
 		}
 
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
-
 	//Return success
-	O_Texture = newTexture;
-	return O_Texture != NULL;
-
+	Texture = newTexture;
+	return Texture != NULL;
 }
-void Object::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
-{
-	O_x = x;
-	O_y = y;
-	SDL_Rect renderQuad = { x, y , O_Width, O_Height };
-	if (clip != NULL)
+void Object :: render(int x1, int y1, SDL_Rect* clip1 ,double angle1, SDL_Point* center1, SDL_RendererFlip flip1){
+	SDL_Rect renderQuad = { x1, y1 , width, height };
+	if (clip1 != NULL)
 	{
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
+		renderQuad.w = clip1->w;
+		renderQuad.h = clip1->h;
 	}
-	SDL_RenderCopyEx(gRenderer, O_Texture, clip, &renderQuad, angle, center, flip);
+	SDL_RenderCopyEx(gRenderer, Texture, clip1, &renderQuad, angle1, center1, flip1);
 }
 void Object::renderbackground()
 {
@@ -92,26 +97,5 @@ void Object::renderbackground()
 	photo = (photo + dem / 2) % (SCREEN_HEIGHT + 1);
 	SDL_Rect renderQuad = { 0, 0 , SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_Rect cut = { 0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
-	SDL_RenderCopy(gRenderer, O_Texture, &cut, &renderQuad);
-}
-void Object::renderBuff(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
-{
-	if (exist == true) {
-		if (dem3 == 0) {
-			O_x = x;
-			O_y = y;
-		}
-		O_y++;
-		dem3++;
-		if (dem3 == 1500) {
-			exist = false;
-		}
-		SDL_Rect renderQuad = { x, y , O_Width, O_Height };
-		if (clip != NULL)
-		{
-			renderQuad.w = clip->w;
-			renderQuad.h = clip->h;
-		}
-		SDL_RenderCopyEx(gRenderer, O_Texture, clip, &renderQuad, angle, center, flip);
-	}
+	SDL_RenderCopy(gRenderer, Texture, &cut, &renderQuad);
 }

@@ -6,7 +6,7 @@
 
 #include "Library.h"
 #define NUMBER_ITEM 50
-#define NUMBER_BULLET 100
+#define NUMBER_BULLET 50
 #define NUMBER_ENNEMIES 50
 #define BULLET_SPEED 5
 #define BULLET_SPEED_SUPPORT 5
@@ -30,6 +30,7 @@ enum buff {
 	NONE,
 	SHIELD,
 	SUPPORT,
+	SPEED_BULLET,
 	BULLET_X5,
 	BULLET_X7,
 };

@@ -5,9 +5,7 @@
 class Ennemies_typeD : public Ennemies
 {
 public:
-	Bullet bullet_follow[NUMBER_BULLET];
-	int thbullet_follow = 0;
-	int load_bullet_follow_time = 0;
+	int load_bullet_ennemies_D_time = 0;
 	double speed = 1;
 	int direction = 1;
 	int health = 10;
@@ -18,9 +16,6 @@ public:
 	//sạc đạn
 	void loadShoot();
 	//bắn
-	void shoot();
-	//
-	int checkDistance(Bullet &a);
 	bool loadFromFile(string path);
 };
 

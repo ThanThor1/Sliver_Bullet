@@ -5,9 +5,7 @@
 class Ennemies_typeA : public Ennemies
 {
 public:
-	Bullet bullet_simple[NUMBER_BULLET];
-	int thbullet_simple = 0;
-	int load_bullet_simple_time = 0;
+	int load_bullet_ennemies_A_time = 0;
 	double speed = 1;
 	int direction = 1;
 	int health = 10;
@@ -17,8 +15,6 @@ public:
 	void free();
 	//sạc đạn
 	void loadShoot();
-	//bắn
-	void shoot();
 	//
 	bool loadFromFile(string path);
 };

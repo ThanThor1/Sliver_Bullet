@@ -10,85 +10,52 @@ bool Ennemies_typeD::checkExist() {
 	if (exist == true) {
 		moveEnnemies();
 	}
-	shoot();
 	return exist;
 }
 void Ennemies_typeD::moveEnnemies() {
-	SDL_Rect  renderQuad = { E_x, E_y , E_Width, E_Height };
+	SDL_Rect  renderQuad = { x, y , width, height };
 	SDL_Rect cut;
-	cut= {photo/10 * E_Width, 0, E_Width , E_Height};
+	cut = { photo / 10 * width, 0, width , height };
 	photo = (photo + 1) % 41;
-	SDL_RenderCopy(gRenderer, E_Texture,&cut, &renderQuad);
-	if (E_x >= SCREEN_WIDTH - E_Width)
-	    direction = -1;
-	if (E_x <=0 ) {
+	SDL_RenderCopy(gRenderer, Texture, &cut, &renderQuad);
+	if (x >= SCREEN_WIDTH - width)
+		direction = -1;
+	if (x <= 0) {
 		direction = 1;
 	}
-	E_x += direction;
+	x += direction;
 	loadShoot();
 }
 //sạc đạn
 void Ennemies_typeD::loadShoot() {
-	load_bullet_follow_time = (load_bullet_follow_time + 1) % 1001;
-	if (thbullet_follow == NUMBER_BULLET) {
-		thbullet_follow = 0;
+	load_bullet_ennemies_D_time = (load_bullet_ennemies_D_time + 1) % 1001;
+	if (bullet_ennemies_D_index == NUMBER_BULLET) {
+		bullet_ennemies_D_index = 0;
 	}
-	if (load_bullet_follow_time == 1000) {
-		bullet_follow[thbullet_follow].B_x = bullet_follow[thbullet_follow].B_start_x = E_x + E_Width / 2;
-		bullet_follow[thbullet_follow].B_y = bullet_follow[thbullet_follow].B_start_y = E_y + E_Height;
-		bullet_follow[thbullet_follow].B_denta_y = 1.00000 * (player.P_x + player.P_Width / 2 - (bullet_follow[thbullet_follow].B_start_x + bullet_follow[thbullet_follow].B_Width / 2));
-		bullet_follow[thbullet_follow].B_denta_x = 1.00000 * (player.P_y + player.P_Height / 2 - (bullet_follow[thbullet_follow].B_start_y + bullet_follow[thbullet_follow].B_Height / 2));
-		bullet_follow[thbullet_follow].B_slope = 1.00000 * bullet_follow[thbullet_follow].B_denta_x / bullet_follow[thbullet_follow].B_denta_y;
-		bullet_follow[thbullet_follow].B_exist = true;
-		thbullet_follow++;
+	if (load_bullet_ennemies_D_time == 1000) {
+		bullet_ennemies_D[bullet_ennemies_D_index].x = bullet_ennemies_D[bullet_ennemies_D_index].start_x = x + width / 2;
+		bullet_ennemies_D[bullet_ennemies_D_index].y = bullet_ennemies_D[bullet_ennemies_D_index].start_y = y + height;
+		bullet_ennemies_D[bullet_ennemies_D_index].delta_y = 1.00000 * (player.x + player.width / 2 - (bullet_ennemies_D[bullet_ennemies_D_index].start_x + bullet_ennemies_D[bullet_ennemies_D_index].width / 2));
+		bullet_ennemies_D[bullet_ennemies_D_index].delta_x = 1.00000 * (player.y + player.height / 2 - (bullet_ennemies_D[bullet_ennemies_D_index].start_y + bullet_ennemies_D[bullet_ennemies_D_index].height / 2));
+		bullet_ennemies_D[bullet_ennemies_D_index].slope = 1.00000 * bullet_ennemies_D[bullet_ennemies_D_index].delta_x / bullet_ennemies_D[bullet_ennemies_D_index].delta_y;
+		bullet_ennemies_D[bullet_ennemies_D_index].exist = true;
+		bullet_ennemies_D_index++;
 	}
 }
 //bắn
-void Ennemies_typeD::shoot() {
-	for (int i = 0; i < 10; i++)
-	{
-		if (bullet_follow[i].B_exist == true) {
-			if (bullet_follow[i].phandan == false) {
-				if ((checkDistance(bullet_follow[i])) <= 40000) {
-					bullet_follow[i].B_speedPlus = 3;
-					bullet_follow[i].B_follow = false;
-				}
-				if (bullet_follow[i].B_follow) {
-					bullet_follow[i].B_start_x = bullet_follow[i].B_x;
-					bullet_follow[i].B_start_y = bullet_follow[i].B_y;
-					bullet_follow[i].B_denta_x = 1.0 * (player.P_x + player.P_Width / 2 - (bullet_follow[i].B_x + bullet_follow[i].B_Width / 2));
-					bullet_follow[i].B_denta_y = 1.0 * (player.P_y + player.P_Height / 2 - (bullet_follow[i].B_y + bullet_follow[i].B_Height / 2));
-					bullet_follow[i].B_slope = 1.0 * bullet_follow[i].B_denta_x / bullet_follow[i].B_denta_y;
-				}
-				bullet_follow[i].RenderBulletSlope();
-			}
-			else {
-				bullet_follow[i].RenderBulletAngle();
-			}
-		}
-	}
-}
-int Ennemies_typeD::checkDistance(Bullet& a){
-	int dis = ((a.B_x + a.B_Width / 2) - (player.P_x + player.P_Width / 2))
-		* ((a.B_x + a.B_Width / 2) - (player.P_x + player.P_Width / 2)) + 
-		((a.B_y + a.B_Height / 2) - (player.P_y + player.P_Height / 2))
-		* ((a.B_y + a.B_Height / 2) - (player.P_y + player.P_Height / 2))
-		;
-	return dis;
-}
 void Ennemies_typeD::free() {
-	E_x = 0;
-	E_y = 0;
-	E_start_x = 0;
-	E_start_y = 0;
-	E_finish_x = 0;
-	E_finish_y = 0;
-	E_slope = 0;
-	E_angle = 0;
+	x = 0;
+	y = 0;
+	start_x = 0;
+	start_y = 0;
+	finish_x = 0;
+	finish_y = 0;
+	slope = 0;
+	angle = 0;
 	exist = false;
 	health = 10;
-	thbullet_follow = 0;
-	load_bullet_follow_time = Rand(0, 1000);
+	bullet_ennemies_D_index = 0;
+	load_bullet_ennemies_D_time = Rand(0, 1000);
 	speed = 1;
 	direction = 1;
 	photo = 0;
@@ -117,13 +84,13 @@ bool Ennemies_typeD::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			E_Width = loadedSurface->w/4;
-			E_Height = loadedSurface->h;
+			width = loadedSurface->w / 4;
+			height = loadedSurface->h;
 		}
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
 	//Return success
-	E_Texture = newTexture;
-	return E_Texture != NULL;
+	Texture = newTexture;
+	return Texture != NULL;
 }

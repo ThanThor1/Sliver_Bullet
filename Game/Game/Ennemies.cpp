@@ -2,192 +2,198 @@
 #include"Ennemies.h"
 #include"Declaration.h"
 #include "LoadAll.h"
-void Ennemies::getStart(int start_x, int start_y) {
-	E_x = E_start_x = start_x;
-	E_y = E_start_y = start_y;
-	int a;
-	a = Rand(0, 1000) % 10;
-	if (a <= 5) {
-		a = 0;
-	}
-	else a -= 5;
-	buff.buff_type = a;
+void Ennemies::getStart(int start_x1, int start_y1) {
+	x = start_x = start_x1;
+	y = start_y = start_y1;
 }
-void Ennemies::getFinish(int finish_x, int finish_y) {
-	E_finish_x = finish_x;
-	E_finish_y = finish_y;
+void Ennemies::getFinish(int finish_x1, int finish_y1) {
+	finish_x = finish_x1;
+	finish_y = finish_y1;
 }
-void  Ennemies::getSlopeAngle(double slope, double angle) {
-	E_slope = slope;
-	E_angle = angle;
+void  Ennemies::getSlopeAngle(double slope1, double angle1) {
+	slope = slope1;
+	angle = angle1;
 }
 void  Ennemies::getDeltaxy() {
-	E_denta_x = E_finish_x - E_start_x;
-	E_denta_y = E_finish_y - E_start_y;
+	delta_x = finish_x - start_x;
+	delta_y = finish_y - start_y;
 }
-void Ennemies::checkHit(int &health) {
-	if (health > 0) {
-		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 2; j++) {
-				if (player.bullet_simple[i][j].B_exist == true) {
+void Ennemies::checkHit(int& health) {
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 2; j++) {
+			if (health > 0) {
+				if (player.bullet_simple[i][j].exist == true) {
 					if (checkImpact(player.bullet_simple[i][j])) {
-						health -= player.bullet_simple[i][j].B_damage;
-						player.bullet_simple[i][j].B_exist = false;
+						health -= player.bullet_simple[i][j].damage;
+						player.bullet_simple[i][j].exist = false;
 						player.bullet_simple[i][j].hit_bool = true;
 					}
 				}
-				if (player.bullet_simple[i][j].hit_bool == true) {
-					loadExplode(player.bullet_simple[i][j]);
-				}
+			}
+			if (player.bullet_simple[i][j].hit_bool == true) {
+				loadExplode(player.bullet_simple[i][j]);
 			}
 		}
-		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 5; j++) {
-				if (player.bullet_x5[i][j].B_exist == true) {
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (health > 0) {
+				if (player.bullet_x5[i][j].exist == true) {
+
 					if (checkImpact(player.bullet_x5[i][j])) {
-						health -= player.bullet_x5[i][j].B_damage;
-						player.bullet_x5[i][j].B_exist  = false;
+						health -= player.bullet_x5[i][j].damage;
+						player.bullet_x5[i][j].exist = false;
 						player.bullet_x5[i][j].hit_bool = true;
 					}
 				}
-				if (player.bullet_x5[i][j].hit_bool == true) {
-					loadExplode(player.bullet_x5[i][j]);
-				}
+			}
+			if (player.bullet_x5[i][j].hit_bool == true) {
+				loadExplode(player.bullet_x5[i][j]);
 			}
 		}
-		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 7; j++) {
-				if (player.bullet_x7[i][j].B_exist == true) {
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j < 7; j++) {
+			if (health > 0) {
+				if (player.bullet_x7[i][j].exist == true) {
 					if (checkImpact(player.bullet_x7[i][j])) {
-						health -= player.bullet_x7[i][j].B_damage;
-						player.bullet_x7[i][j].B_exist = false;
+						health -= player.bullet_x7[i][j].damage;
+						player.bullet_x7[i][j].exist = false;
 						player.bullet_x7[i][j].hit_bool = true;
 					}
 				}
-				if (player.bullet_x7[i][j].hit_bool == true) {
-					loadExplode(player.bullet_x7[i][j]);
-				}
+			}
+			if (player.bullet_x7[i][j].hit_bool == true) {
+				loadExplode(player.bullet_x7[i][j]);
 			}
 		}
-		for (int i = 0; i < 100; i++) {
-			if (player.bullet_support_1[i].B_exist == true) {
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		if (health > 0) {
+			if (player.bullet_support_1[i].exist == true) {
 				if (checkImpact(player.bullet_support_1[i])) {
-					health -= player.bullet_support_1[i].B_damage;
-					player.bullet_support_1[i].B_exist = false;
+					health -= player.bullet_support_1[i].damage;
+					player.bullet_support_1[i].exist = false;
 					player.bullet_support_1[i].hit_bool = true;
 				}
 			}
-			if (player.bullet_support_2[i].B_exist == true) {
+			if (player.bullet_support_2[i].exist == true) {
 				if (checkImpact(player.bullet_support_2[i])) {
-					health -= player.bullet_support_2[i].B_damage;
-					player.bullet_support_2[i].B_exist = false;
+					health -= player.bullet_support_2[i].damage;
+					player.bullet_support_2[i].exist = false;
 					player.bullet_support_2[i].hit_bool = true;
 				}
 			}
-			if (player.bullet_support_1[i].hit_bool == true) {
-				loadExplode(player.bullet_support_1[i]);
-			}
-			if (player.bullet_support_2[i].hit_bool == true) {
-				loadExplode(player.bullet_support_2[i]);
-			}
 		}
-		if (player.lazer.exist == true) {
-			if (checkLazer()) {
-				health -= player.lazer.damage;
-			}
+		if (player.bullet_support_1[i].hit_bool == true) {
+			loadExplode(player.bullet_support_1[i]);
 		}
-		// check đạn phản ngược.
-		for (int i = 1; i <= number_ennemies_A; i++) {
-			for (int j = 0; j < NUMBER_BULLET; j++) {
-				if (ennemies_A[i].bullet_simple[j].B_exist == true && ennemies_A[i].bullet_simple[j].phandan == true) {
-					if (checkImpact(ennemies_A[i].bullet_simple[j])) {
-						ennemies_A[i].bullet_simple[j].B_exist = false;
-						health -= ennemies_A[i].bullet_simple[j].B_damage;
-				
-					}
+		if (player.bullet_support_2[i].hit_bool == true) {
+			loadExplode(player.bullet_support_2[i]);
+		}
+	}
+	if (player.lazer.exist == true) {
+		if (checkLazer()) {
+			health -= player.lazer.damage;
+		}
+	}
+	// check đạn phản ngược.
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_A[j].exist == true && bullet_ennemies_A[j].good == true) {
+			if (health > 0) {
+				if (checkImpact(bullet_ennemies_A[j])) {
+					bullet_ennemies_A[j].free();
+					health -= bullet_ennemies_A[j].damage;
+
 				}
 			}
 		}
-		for (int i = 1; i <= number_ennemies_B; i++) {
-			for (int j = 0; j < NUMBER_BULLET; j++) {
-				for (int k= 0; k < 3; k++) {
-					if (ennemies_B[i].bullet_x3[j][k].B_exist == true && ennemies_B[i].bullet_x3[j][k].phandan == true) {
-						if (checkImpact(ennemies_B[i].bullet_x3[j][k])) {
-							ennemies_B[i].bullet_x3[j][k].B_exist = false;
-							health -= ennemies_B[i].bullet_x3[j][k].B_damage;
-						}
-					}
-					
-				}
-			}
-		}
-		for (int i = 1; i <= number_ennemies_C; i++) {
-			for (int j = 0; j < NUMBER_BULLET; j++) {
-				for (int k = 0; k < 4; k++) {
-					if (ennemies_C[i].bullet_x4[j][k].B_exist == true && ennemies_C[i].bullet_x4[j][k].phandan == true) {
-						if (checkImpact(ennemies_C[i].bullet_x4[j][k])) {
-							ennemies_C[i].bullet_x4[j][k].B_exist = false;
-							health -= ennemies_C[i].bullet_x4[j][k].B_damage;
-						}
-					}
-				}
-			}
-		}
-		for (int i = 1; i <= number_ennemies_D; i++) {
-			for (int j = 0; j < NUMBER_BULLET; j++) {
-				if (ennemies_D[i].bullet_follow[j].B_exist == true && ennemies_D[i].bullet_follow[j].phandan == true) {
-					if (checkImpact(ennemies_D[i].bullet_follow[j])) {
-						ennemies_D[i].bullet_follow[j].B_exist = false;
-						health -= ennemies_D[i].bullet_follow[j].B_damage;
+	}
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		for (int k = 0; k < 3; k++) {
+			if (bullet_ennemies_B[j][k].exist == true && bullet_ennemies_B[j][k].good == true) {
+				if (health > 0) {
+					if (checkImpact(bullet_ennemies_B[j][k])) {
+						bullet_ennemies_B[j][k].free();
+						health -= bullet_ennemies_B[j][k].damage;
 					}
 				}
 			}
 		}
 	}
-	if (death.exist==false && health<=0) {
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		for (int k = 0; k < 4; k++) {
+			if (bullet_ennemies_C[j][k].exist == true && bullet_ennemies_C[j][k].good == true) {
+				if (health > 0) {
+					if (checkImpact(bullet_ennemies_C[j][k])) {
+						bullet_ennemies_C[j][k].free();
+						health -= bullet_ennemies_C[j][k].damage;
+					}
+				}
+			}
+		}
+	}
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_D[j].exist == true && bullet_ennemies_D[j].good == true) {
+			if (health > 0) {
+				if (checkImpact(bullet_ennemies_D[j])) {
+					bullet_ennemies_D[j].free();
+					health -= bullet_ennemies_D[j].damage;
+				}
+			}
+		}
+	}
+
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_ennemies_E[j].exist == true && bullet_ennemies_E[j].good == true) {
+			if (health > 0) {
+				if (checkImpact(bullet_ennemies_E[j])) {
+					bullet_ennemies_E[j].free();
+					health -= bullet_ennemies_E[j].damage;
+				}
+			}
+		}
+	}
+	if (death.exist == false && health <= 0) {
 		SDL_Rect a;
-		a = { (death.photo / 10) * death.O_Width / 7, 0, death.O_Width /7, death.O_Height};
-		death.setAlpha(255- death.photo*2);
+		a = { (death.photo / 10) * death.width / 7, 0, death.width / 7, death.height };
+		death.setAlpha(255 - death.photo * 2);
 		if (death.photo == 0) {
 			if (sound_bool == true)
-			Mix_PlayChannel(-1, chunk_explode1, 0);
+				Mix_PlayChannel(-1, chunk_explode1, 0);
 		}
-		death.render(E_x+E_Width/2 - death.O_Width/14, E_y + E_Height / 2 - death.O_Height/2, &a);
+		death.render(x + width / 2 - death.width / 14, y + height / 2 - death.height / 2, &a);
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
 			loadBuff();
 			death.exist = true;
 			death.setAlpha(255);
-		}
-	}
-	if (health <= 0) {
-		if (buff.exist == true) {
-			buff.renderBuff(buff.O_x, buff.O_y);
+			free();
 		}
 	}
 }
-bool Ennemies::checkImpact(Bullet& a) {
-	if ((a.B_x + a.B_Width / 2) > E_x && (a.B_x + a.B_Width / 2) < (E_x + E_Width) && (a.B_y + a.B_Height / 2) > E_y && (a.B_y + a.B_Height / 2) < (E_y + E_Height)) {
+bool Ennemies::checkImpact(Bullet_Straight& a) {
+	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height)) {
 		return true;
 	}
 	return false;
 }
 bool Ennemies::checkLazer() {
-	if (E_x > (player.lazer.O_x + player.lazer.O_Width / 12 - 39) || player.lazer.O_x + 39 > (E_x + E_Width)) {
+	if (x > (player.lazer.x + player.lazer.width / 12 - 39) || player.lazer.x + 39 > (x + width)) {
 		return false;
 	}
-	if (E_y > player.P_y) {
+	if (y > player.y) {
 		return false;
 	}
 	return true;
 }
-void Ennemies::loadExplode(Bullet& b) {
+void Ennemies::loadExplode(Bullet_Straight& b) {
 	SDL_Rect a[7];
 	for (int i = 0; i < 6; i++) {
-		a[i] = { i * b.hit.O_Width / 6, 0, b.hit.O_Width / 6, b.hit.O_Height };
+		a[i] = { i * b.hit.width / 6, 0, b.hit.width / 6, b.hit.height };
 	}
 	b.hit.setAlpha(255 - b.hit.photo * 4);
-	b.hit.render(b.B_x + b.B_Width / 2 - b.hit.O_Width / 12, b.B_y + b.B_Height / 2 - b.hit.O_Height / 2, &a[b.hit.photo / 10]);
+	b.hit.render(b.x + b.width / 2 - b.hit.width / 12, b.y + b.height / 2 - b.hit.height / 2, &a[b.hit.photo / 10]);
 	b.hit.photo = (b.hit.photo + 1) % 72;
 	if (b.hit.photo > 70) {
 		b.hit_bool = false;
@@ -195,9 +201,19 @@ void Ennemies::loadExplode(Bullet& b) {
 	}
 }
 void Ennemies::loadBuff() {
-	if (!(buff.buff_type == NONE)) {
-		buff.O_x = E_x;
-		buff.O_y = E_y;
-		buff.exist = true;
+	int a;
+	a = Rand(0, 1000) % 20;
+	if (a <= 14) {
+		a = 0;
 	}
+	else a -= 14;
+	if (item_index == NUMBER_ITEM) {
+		item_index = 0;
+	}
+	item[item_index] = item_example[a];
+	item[item_index].x = x + width / 2 - item[item_index].width / 2;
+	item[item_index].y = y + height / 2 - item[item_index].height / 2;
+	item[item_index].exist = true;
+	item_index++;
+	
 }

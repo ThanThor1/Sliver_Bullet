@@ -63,7 +63,7 @@
     <ClCompile Include="Wave.cpp">
       <Filter>Resource Files\Load all</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="Bullet_Straight.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
@@ -80,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="FindAngle.cpp">
       <Filter>Resource Files\Non class</Filter>
+    </ClCompile>
+    <ClCompile Include="Ennemies_typeE.cpp">
+      <Filter>Resource Files\Ennemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Resource Files\Other class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,7 +116,7 @@
     <ClInclude Include="Library.h">
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
+    <ClInclude Include="Bullet_Straight.h">
       <Filter>Header Files\Other class</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
@@ -130,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="Ennemies_typeD.h">
       <Filter>Header Files\Ennemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Ennemies_typeE.h">
+      <Filter>Header Files\Ennemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Other class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
