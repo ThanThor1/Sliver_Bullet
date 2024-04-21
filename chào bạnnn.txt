@@ -1,1 +1,1 @@
-thử git ignore 1
+new gitignore
