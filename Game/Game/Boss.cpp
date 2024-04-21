@@ -222,8 +222,8 @@ bool Boss::loadFromFile(string path) {
 void Boss::RenderMiniBoss() {
 	int a = 0;
 	if (bool_load_bullet_level[0] == true) {
-		bullet_level[0][bullet_level_index[0]].start_x = bullet_level[0][bullet_level_index[0]].x = mini_boss_center_1.x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[0] * bullet_level[0][bullet_level_index[0]].width / 2;
-		bullet_level[0][bullet_level_index[0]].start_y = bullet_level[0][bullet_level_index[0]].y = mini_boss_center_1.y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[0] * bullet_level[0][bullet_level_index[0]].height / 2;
+		bullet_level[0][bullet_level_index[0]].start_x = bullet_level[0][bullet_level_index[0]].x = mini_boss_center_1.x + mini_boss_center_1.width/2 + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[0] * bullet_level[0][bullet_level_index[0]].width / 2;
+		bullet_level[0][bullet_level_index[0]].start_y = bullet_level[0][bullet_level_index[0]].y = mini_boss_center_1.y + mini_boss_center_1.height/ 2 + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[0] * bullet_level[0][bullet_level_index[0]].height / 2;
 		SDL_Rect b = { bullet_level[0][bullet_level_index[0]].x,  bullet_level[0][bullet_level_index[0]].y, bullet_level[0][bullet_level_index[0]].width * bullet_level_ratio[0], bullet_level[0][bullet_level_index[0]].height * bullet_level_ratio[0] };
 		SDL_RenderCopy(gRenderer, bullet_level[0][bullet_level_index[0]].Texture, NULL, &b);
 		bullet_level_ratio[0] += 0.001;
@@ -233,8 +233,8 @@ void Boss::RenderMiniBoss() {
 	}
 	a += 120;
 	if (bool_load_bullet_level[1] == true) {
-		bullet_level[0][bullet_level_index[0] + 1].start_x = bullet_level[0][bullet_level_index[0] + 1].x = mini_boss_center_1.x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 1].width / 2;
-		bullet_level[0][bullet_level_index[0] + 1].start_y = bullet_level[0][bullet_level_index[0] + 1].y = mini_boss_center_1.y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 1].height / 2;
+		bullet_level[0][bullet_level_index[0] + 1].start_x = bullet_level[0][bullet_level_index[0] + 1].x = mini_boss_center_1.x + mini_boss_center_1.width / 2 + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 1].width / 2;
+		bullet_level[0][bullet_level_index[0] + 1].start_y = bullet_level[0][bullet_level_index[0] + 1].y = mini_boss_center_1.y + mini_boss_center_1.height / 2 + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 1].height / 2;
 		SDL_Rect d = { bullet_level[0][bullet_level_index[0] + 1].x,  bullet_level[0][bullet_level_index[0] + 1].y, bullet_level[0][bullet_level_index[0] + 1].width * bullet_level_ratio[2], bullet_level[0][bullet_level_index[0] + 1].height * bullet_level_ratio[2] };
 		SDL_RenderCopy(gRenderer, bullet_level[0][bullet_level_index[0] + 1].Texture, NULL, &d);
 		bullet_level_ratio[1] += 0.001;
@@ -244,8 +244,8 @@ void Boss::RenderMiniBoss() {
 	}
 	a += 120;
 	if (bool_load_bullet_level[2] == true) {
-		bullet_level[0][bullet_level_index[0] + 2].start_x = bullet_level[0][bullet_level_index[0] + 2].x = mini_boss_center_1.x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 2].width / 2;
-		bullet_level[0][bullet_level_index[0] + 2].start_y = bullet_level[0][bullet_level_index[0] + 2].y = mini_boss_center_1.y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 2].height / 2;
+		bullet_level[0][bullet_level_index[0] + 2].start_x = bullet_level[0][bullet_level_index[0] + 2].x = mini_boss_center_1.x + mini_boss_center_1.width / 2  + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 2].width / 2;
+		bullet_level[0][bullet_level_index[0] + 2].start_y = bullet_level[0][bullet_level_index[0] + 2].y = mini_boss_center_1.y + mini_boss_center_1.height / 2 + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180) - bullet_level_ratio[2] * bullet_level[0][bullet_level_index[0] + 2].height / 2;
 		SDL_Rect d = { bullet_level[0][bullet_level_index[0] + 2].x,  bullet_level[0][bullet_level_index[0] + 2].y, bullet_level[0][bullet_level_index[0] + 2].width * bullet_level_ratio[2], bullet_level[0][bullet_level_index[0] + 2].height * bullet_level_ratio[2] };
 		SDL_RenderCopy(gRenderer, bullet_level[0][bullet_level_index[0] + 2].Texture, NULL, &d);
 		bullet_level_ratio[2] += 0.001;
