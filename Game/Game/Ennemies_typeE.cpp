@@ -1,6 +1,7 @@
-﻿#include "Ennemies_typeE.h"
+﻿
 #include "FindAngle.h"
 #include "Declaration.h"
+#include "Ennemies_typeE.h"
 // di chuyển 
 bool Ennemies_typeE::checkExist() {
 	checkHit(health);
@@ -35,6 +36,37 @@ void Ennemies_typeE::moveEnnemies() {
 		loadShoot();
 	}
 }
+void Ennemies_typeE::RenderMiniBoss() {
+	checkHit(health);
+	if (health <= 0) {
+		exist = false;
+	}
+	else exist = true;
+	if (exist == true) {
+		SDL_Rect cut2; cut2 = { photo * width, 0, width , height };
+		if (load_bullet_ennemies_E_time == 100) {
+			photo = 1;
+		}
+		else if (load_bullet_ennemies_E_time >= 15) {
+			photo = 0;
+			angle = FindAngle(x + width / 2, y + height / 2, player.x + player.width / 2, player.y + player.height / 2);
+		}
+		SDL_Rect  renderQuad1 = { x, y , width, height };
+		SDL_Point center = { width / 2 , height / 2 };
+		SDL_Rect cut1 = { 2 * width,0, width , height };
+		SDL_RenderCopyEx(gRenderer, Texture, &cut1, &renderQuad1, 0, NULL, SDL_FLIP_NONE);
+		SDL_RenderCopyEx(gRenderer, Texture, &cut2, &renderQuad1, angle, &center, SDL_FLIP_NONE);
+		loadShoot();
+	}
+	else {
+		load_reborn_time++;
+		if (load_reborn_time == 1000) {
+			free();
+			load_reborn_time = 0;
+		}
+	}
+
+}
 //sạc đạn
 void Ennemies_typeE::loadShoot() {
 	load_bullet_ennemies_E_time = (load_bullet_ennemies_E_time + 1) % 101;
@@ -66,6 +98,7 @@ void Ennemies_typeE::free() {
 	speed = 1;
 	direction = 1;
 	photo = 0;
+	death.free();
 }
 bool Ennemies_typeE::loadFromFile(string path) {
 	//Get rid of preexisting texture
@@ -91,6 +124,7 @@ bool Ennemies_typeE::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
+			load_bullet_ennemies_E_time = Rand(0, 1000);
 			width = loadedSurface->w / 3;
 			height = loadedSurface->h;
 		}

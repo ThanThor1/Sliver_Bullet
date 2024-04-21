@@ -130,6 +130,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boom.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Bullet_Round.cpp" />
     <ClCompile Include="Ennemies.cpp" />
     <ClCompile Include="Ennemies_typeA.cpp" />
     <ClCompile Include="Ennemies_typeB.cpp" />
@@ -148,6 +151,9 @@
     <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boom.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Bullet_Round.h" />
     <ClInclude Include="Ennemies_typeE.h" />
     <ClInclude Include="FindAngle.h" />
     <ClInclude Include="Declaration.h" />

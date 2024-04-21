@@ -12,7 +12,7 @@ public:
 	bool good = false;
 	bool hit_bool = false;
 	int damage = 0;
-	int speed = 3;
+	int speed = 10;
 	int speedPlus = 3;
 	bool follow = true;
 	bool loadFromFile(string path);

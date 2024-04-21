@@ -95,66 +95,100 @@ bool Player::loadFromFile(string path) {
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
-
+	death[0].photo = 0;
+	death[1].photo = 0;
+	death[2].photo = 0;
+	death[3].photo = 0;
+	death[0].exist = true;
+	death[1].exist = true;
+	death[2].exist = true;
+	death[3].exist = true;
+	death[1].delta_x = 40;
+	death[3].delta_x = -40;
+	death[0].delta_y = 30;
+	death[2].delta_y = -25;
 	//Return success
 	Texture = newTexture;
 	return Texture != NULL;
 }
 void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
-	if (behit == false) {
-		behit = checkHit();
-	}
-	else {
-		behit_dem++;
-		if (alpha == 255) {
-			doichieu = -1;
+	if  (number_of_hearts > 0) {
+		if (behit == false) {
+			behit = checkHit();
 		}
-		if (alpha == 100) {
-			doichieu = 1;
+		else {
+			behit_dem++;
+			if (alpha == 255) {
+				doichieu = -1;
+			}
+			if (alpha == 100) {
+				doichieu = 1;
+			}
+			alpha += doichieu;
+			setAlpha(alpha);
+			if (behit_dem == 500) {
+				behit_dem = 0;
+				behit = false;
+				setAlpha(255);
+			}
+			checkHit();
 		}
-		alpha += doichieu;
-		setAlpha(alpha);
-		if (behit_dem == 500) {
-			behit_dem = 0;
-			behit = false;
-			setAlpha(255);
+		if (nhanchuot == true) {
+			SDL_GetMouseState(&now_x, &now_y);
+			if (x <= (SCREEN_WIDTH - width) && x >= 0 && y >= 0 && y <= (SCREEN_HEIGHT - height)) {
+				if (x <= (SCREEN_WIDTH) && x >= 0) {
+					x += round((now_x - pre_x) * sensitivity[sensitivity_index]);
+				}
+				if (y <= (SCREEN_HEIGHT) && y >= 0) {
+					y += round((now_y - pre_y) * sensitivity[sensitivity_index]);
+				}
+				if (x <= 0) {
+					x = 0;
+				}
+				if (x >= (SCREEN_WIDTH - width)) {
+					x = (SCREEN_WIDTH - width);
+				}
+				if (y <= 0) {
+					y = 0;
+				}
+				if (y >= (SCREEN_HEIGHT - height)) {
+					y = (SCREEN_HEIGHT - height);
+				}
+			}
+			pre_x = now_x;
+			pre_y = now_y;
 		}
-	}
-	if (nhanchuot == true) {
-		SDL_GetMouseState(&now_x, &now_y);
-		if (x <= (SCREEN_WIDTH - width) && x >= 0 && y >= 0 && y <= (SCREEN_HEIGHT - height)) {
-			if (x <= (SCREEN_WIDTH) && x >= 0) {
-				x += round((now_x - pre_x) * sensitivity[sensitivity_index]);
-			}
-			if (y <= (SCREEN_HEIGHT) && y >= 0) {
-				y += round((now_y - pre_y) * sensitivity[sensitivity_index]);
-			}
-			if (x <= 0) {
-				x = 0;
-			}
-			if (x >= (SCREEN_WIDTH - width)) {
-				x = (SCREEN_WIDTH - width);
-			}
-			if (y <= 0) {
-				y = 0;
-			}
-			if (y >= (SCREEN_HEIGHT - height)) {
-				y = (SCREEN_HEIGHT - height);
-			}
+		else {
+			SDL_GetMouseState(&pre_x, &pre_y);
 		}
-		pre_x = now_x;
-		pre_y = now_y;
-	}
-	else {
-		SDL_GetMouseState(&pre_x, &pre_y);
-	}
-	if (number_of_hearts > 0) {
 		SDL_Rect renderQuad = { x, y , width, height };
 		SDL_RenderCopyEx(gRenderer, Texture, NULL, &renderQuad, angle, center, flip);
 		loadShoot();
 		shoot();
 		shootSupport();
 		exist = true;
+	}
+	else if (number_of_hearts <= 0 && gameover.exist == false) {
+		SDL_Rect a = { SCREEN_WIDTH / 2 - gameover.width * gameover.ratio * 1 / 2, SCREEN_HEIGHT / 2 - gameover.height * gameover.ratio * 1 / 2, gameover.width * gameover.ratio,  gameover.height * gameover.ratio };
+		SDL_RenderCopy(gRenderer, gameover.Texture, NULL, &a);
+		if (gameover.ratio < 1) {
+			gameover.ratio += 0.0025;
+		}
+		dem_death = (dem_death + 1) % 2;
+		for (int i = 0; i < 4; i++) {
+				if (death[i].exist == true) {
+					a = { (death[i].photo / 10) * death[i].width / 7, 0, death[i].width / 7, death[i].height };
+					death[i].setAlpha(255 - death[i].photo * 3);
+					death[i].render(x + death[i].delta_x + width / 2 - death[i].width / 14, y + death[i].delta_y + height / 2 - death[i].height / 2, &a);
+					if (dem_death == 0) {
+						death[i].photo = (death[i].photo + 1) % 72;
+						if (death[i].photo > 70) {
+							death[i].setAlpha(255);
+							death[i].exist = false;
+						}
+					}
+				}
+		}
 	}
 }
 void Player::loadShoot() {
@@ -173,7 +207,7 @@ void Player::loadShoot() {
 			bullet_simple[thbullet_simple][1].exist = true;
 			thbullet_simple++;
 		}
-		else if (bullet_type == BULLET_X7) {
+		if (bullet_type == BULLET_X7) {
 			if (thbullet_x7 == NUMBER_BULLET) {
 				thbullet_x7 = 0;
 			}
@@ -199,7 +233,7 @@ void Player::loadShoot() {
 				x7_dem = 0;
 			}
 		}
-		else if (bullet_type == BULLET_X5) {
+		if (bullet_type == BULLET_X5) {
 			if (thbullet_x5 == NUMBER_BULLET) {
 				thbullet_x5 = 0;
 			}
@@ -277,7 +311,9 @@ void Player::loadShoot() {
 		}
 	}
 	if (buff_speed_bullet == true) {
-		delay_bullet -= 10;
+		if (delay_bullet >=40) {
+			delay_bullet -= 7;
+		}
 		buff_speed_bullet = false;
 	}
 }
@@ -303,7 +339,7 @@ void Player::loadSupport() {
 	support_2.x = x + width / 2 - support_2.width / 2 - dis_player_support;
 	support_1.y = y + height / 2 - support_1.height / 2;
 	support_2.y = y + height / 2 - support_2.height / 2;
-	if (dis_player_support < 100) {
+	if (dis_player_support < 60) {
 		dis_player_support += 1;
 	}
 	else {
@@ -461,14 +497,12 @@ double Player::calculateDis(int x, int y, int width, int height, Object& b) {
 	return ((x + width / 2 - b.x - b.width / 2) * (x + width / 2 - b.x - b.width / 2) + (y + height / 2 - b.y - b.height / 2) * (y + height / 2 - b.y - b.height / 2));
 }
 bool Player::checkHit() {
-	if (number_of_hearts > 0) {
-		//check shoot
 		for (int j = 0; j < NUMBER_BULLET; j++) {
 			if (bullet_ennemies_A[j].exist == true) {
 				if (buff_shield == true) {
 					checkImpactShield(bullet_ennemies_A[j]);
 				}
-				if (checkImpactBullet(bullet_ennemies_A[j]) && bullet_ennemies_A[j].good == false) {
+				if (checkImpactBullet(bullet_ennemies_A[j]) && bullet_ennemies_A[j].good == false && behit==false) {
 					bullet_ennemies_A[j].free();
 					number_of_hearts--;
 					return true;
@@ -481,7 +515,7 @@ bool Player::checkHit() {
 					if (buff_shield == true) {
 						checkImpactShield(bullet_ennemies_B[j][k]);
 					}
-					if (checkImpactBullet(bullet_ennemies_B[j][k]) && bullet_ennemies_B[j][k].good == false) {
+					if (checkImpactBullet(bullet_ennemies_B[j][k]) && bullet_ennemies_B[j][k].good == false && behit == false) {
 						bullet_ennemies_B[j][k].free();
 						number_of_hearts--;
 						return true;
@@ -494,7 +528,7 @@ bool Player::checkHit() {
 				if (buff_shield == true) {
 					checkImpactShield(bullet_ennemies_C[j][k]);
 				}
-				if (bullet_ennemies_C[j][k].exist == true && bullet_ennemies_C[j][k].good == false) {
+				if (bullet_ennemies_C[j][k].exist == true && bullet_ennemies_C[j][k].good == false && behit == false) {
 					if (checkImpactBullet(bullet_ennemies_C[j][k])) {
 						bullet_ennemies_C[j][k].free();
 						number_of_hearts--;
@@ -509,7 +543,7 @@ bool Player::checkHit() {
 				if (buff_shield == true) {
 					checkImpactShield(bullet_ennemies_D[j]);
 				}
-				if (checkImpactBullet(bullet_ennemies_D[j]) && bullet_ennemies_D[j].good == false) {
+				if (checkImpactBullet(bullet_ennemies_D[j]) && bullet_ennemies_D[j].good == false && behit == false) {
 					bullet_ennemies_D[j].free();
 					number_of_hearts--;
 					return true;
@@ -522,26 +556,19 @@ bool Player::checkHit() {
 				if (buff_shield == true) {
 					checkImpactShield(bullet_ennemies_E[j]);
 				}
-				if (checkImpactBullet(bullet_ennemies_E[j]) && bullet_ennemies_E[j].good == false) {
+				if (checkImpactBullet(bullet_ennemies_E[j]) && bullet_ennemies_E[j].good == false && behit == false) {
 					bullet_ennemies_E[j].free();
 					number_of_hearts--;
 					return true;
 				}
 			}
 		}
-		// check item
+		checkLazer();
+			// check item
 		for (int j = 0; j < NUMBER_ITEM; j++) {
 			checkImpactItem(item[j]);
 		}
 		return false;
-	}
-	if (number_of_hearts <= 0 && gameover.exist == false) {
-		SDL_Rect a = { SCREEN_WIDTH / 2 - gameover.width * gameover.ratio * 1 / 2, SCREEN_HEIGHT / 2 - gameover.height * gameover.ratio * 1 / 2, gameover.width * gameover.ratio,  gameover.height * gameover.ratio };
-		SDL_RenderCopy(gRenderer, gameover.Texture, NULL, &a);
-		if (gameover.ratio < 1) {
-			gameover.ratio += 0.0025;
-		}
-	}
 }
 bool Player::checkImpactBullet(Bullet_Straight& a) {
 	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height)) {
@@ -568,7 +595,8 @@ bool Player::checkImpactShield(Bullet_Straight& a) {
 	return true;
 }
 void Player::checkImpactItem(Item& a) {
-	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height)) {
+	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height) && a.exist==true) {
+		Mix_PlayChannel(-1, chunk_item, 0);
 		if (a.buff_type == SHIELD) {
 			buff_shield = true;
 		}
@@ -586,4 +614,19 @@ void Player::checkImpactItem(Item& a) {
 		}
 		a.exist = false;
 	}
+}
+bool Player:: checkLazer() {
+	bool success = false;
+	/*for (int i = 0; i < 3; i++) {
+		int delta_x1 = (lazer_boss[i].width / abs(cos(lazer_boss[i].angle * PI / 180)) + abs(height * tan(lazer_boss[i].angle * PI / 180)) + width) / 2;
+		int center_x1 = boss.x + boss.width / 2 - ((y + height / 2) - (boss.y + boss.height / 2)) * tan(lazer_boss[i].angle * PI / 180);
+		bool a = (((lazer_boss[i].angle >= 0) && (lazer_boss[i].angle <= 90)) || ((lazer_boss[i].angle >= 270) && (lazer_boss[i].angle <= 360))) && (y + height / 2) > (boss.y + boss.height / 2);
+		bool b = (((lazer_boss[i].angle >= 90) && (lazer_boss[i].angle <= 270)) && (y + height / 2) < (boss.y + boss.height / 2));
+		if (a || b) {
+			if (((x + width / 2) < center_x1 + delta_x1) && ((x + width / 2) > center_x1 - delta_x1)) {
+				success = true;
+			}
+		}
+	}*/
+	return success;
 }

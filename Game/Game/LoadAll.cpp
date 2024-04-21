@@ -11,6 +11,7 @@ void  loadAll() {
 	loadAllItem();
 }
 void loadAllMap() {
+	cout << MAP;
 	ifstream get_map;
 	switch (MAP) {
 	case WAVE_1:
@@ -38,41 +39,47 @@ void loadAllMap() {
 				ennemies_A[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_A++;
 			}
-			if (map[i][j] == "A") {
+			else if (map[i][j] == "A") {
 				ennemies_A[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_A[stoi(map[i][j + 1])].getDeltaxy();
 			}
-			if (map[i][j] == "b") {
+			else if (map[i][j] == "b") {
 				ennemies_B[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_B++;
 			}
-			if (map[i][j] == "B") {
+			else if (map[i][j] == "B") {
 				ennemies_B[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_B[stoi(map[i][j + 1])].getDeltaxy();
 			}
-			if (map[i][j] == "c") {
+			else if (map[i][j] == "c") {
 				ennemies_C[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_C++;
 			}
-			if (map[i][j] == "C") {
+			else if (map[i][j] == "C") {
 				ennemies_C[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_C[stoi(map[i][j + 1])].getDeltaxy();
 			}
-			if (map[i][j] == "d") {
+			else if (map[i][j] == "d") {
 				ennemies_D[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_D++;
 			}
-			if (map[i][j] == "D") {
+			else if (map[i][j] == "D") {
 				ennemies_D[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_D[stoi(map[i][j + 1])].getDeltaxy();
 			}
-			if (map[i][j] == "e") {
+			else if (map[i][j] == "e") {
 				ennemies_E[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_E++;
 			}
-			if (map[i][j] == "E") {
+			else if (map[i][j] == "E") {
 				ennemies_E[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_E[stoi(map[i][j + 1])].getDeltaxy();
+			}
+			else if (map[i][j] == "s") {
+				boss.getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+			}
+			else if (map[i][j] == "S") {
+				boss.getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 			}
 		}
 	}
@@ -96,8 +103,10 @@ void loadAllSound() {
 	chunk_shoot = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_shoot.mp3");
 	chunk_explode1 = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_explode1.mp3");
 	chunk_explode2 = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_explode2.mp3");
+	chunk_item = Mix_LoadWAV("C:/Users/Lenovo/Desktop/nhacgame/chunk_item.mp3");
 }
 void loadAllEnnemies() {
+	
 	// đạn cho ennemies
 	bullet_ennemies_A[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Bullet_ennemies/1.png");
 	bullet_ennemies_A[0].damage = 3;
@@ -154,12 +163,66 @@ void loadAllEnnemies() {
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_E[i] = ennemies_E[0];
 	}
+	// boss
+	miniboss_1_B = miniboss_2_B = ennemies_B[0];
+	miniboss_1_D = miniboss_2_D = ennemies_D[0];
+	miniboss_1_E = miniboss_2_E = ennemies_E[0];
+	mini_boss_center_1.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
+	mini_boss_center_2.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
+	for (int i = 0; i < 3; i++) {
+		mini_boss_1[i] = mini_boss_1[0];
+		mini_boss_2[i] = mini_boss_1[0];
+	}
+	//
+	boom[0].warning.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/warning.png");
+	boom[0].explode.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/boom.png");
+	boom[0].warning_around[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/round_warning.png");
+	for (int i = 0; i < 5; i++) {
+		boom[0].warning_around[i] = boom[0].warning_around[0];
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		boom[i] = boom[0];
+	}
+	boss.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/boss.png");
+	lazer_warning_green.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_green.png");
+	lazer_warning_red.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_red.png");
+	head_lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/head_lazer.png");
+	lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer.png");
+	bullet_round[0].bullet_virtual.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			bullet_round[0].bullet_around[i][j].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_around.png");
+		}
+	}
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		bullet_round[j] = bullet_round[0];
+	}
+	bullet_level[0][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_level_0.png");
+	bullet_level[1][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_level_1.png");
+	bullet_level[2][0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_level_2.png");
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < NUMBER_BULLET * 25; j++) {
+			if (i == 0) {
+				bullet_level[i][j] = bullet_level[0][0];
+			}
+			else if (i == 1) {
+				bullet_level[i][j] = bullet_level[1][0];
+			}
+			else if (i == 2) {
+				bullet_level[i][j] = bullet_level[2][0];
+			}
+		}
+	}
 }
 void loadAllPlayer() {
 	player.shield[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/shield.png");
 	for (int i = 0; i < 5; i++) {
 		player.shield[i] = player.shield[0];
 	}
+	player.death[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/death.png");
+	player.death[1].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/death1.png");
+	player.death[2].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/death2.png");
+	player.death[3].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/death3.png");
 	//player
 	player.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/player.png");
 	//bulletplayer
@@ -278,7 +341,7 @@ void renewAll() {
 	renewAllEnnemies();
 	renewAllBullet();
 	renewAllItem();
-	MAP = 0;
+	MAP = 1;
 	loadmap_bool = false;
 	number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E = 0;
 	start.free();

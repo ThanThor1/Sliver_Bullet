@@ -10,6 +10,7 @@ public:
 	double speed = 1;
 	bool turning = false;
 	int health = 10;
+	bool inscreen = false;
 	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();

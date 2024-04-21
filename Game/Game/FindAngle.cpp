@@ -18,7 +18,6 @@ double FindAngle(int x1, int y1, int x2, int y2) {
 	else if (denta_x > 0 && denta_y < 0) {
 		angle = 180 - atan(slope) / PI * 180;
 	}
-	
 	if (denta_x == 0 && denta_y > 0) {
 		angle = 0;
 	}

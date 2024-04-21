@@ -5,6 +5,7 @@
 class Ennemies_typeD : public Ennemies
 {
 public:
+	int load_reborn_time = 0;
 	int load_bullet_ennemies_D_time = 0;
 	double speed = 1;
 	int direction = 1;
@@ -17,6 +18,7 @@ public:
 	void loadShoot();
 	//bắn
 	bool loadFromFile(string path);
+	void RenderMiniBoss();
 };
 
 #endif

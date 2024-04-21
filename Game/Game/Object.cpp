@@ -82,7 +82,7 @@ bool Object::loadFromFile(string path) {
 	Texture = newTexture;
 	return Texture != NULL;
 }
-void Object :: render(int x1, int y1, SDL_Rect* clip1 ,double angle1, SDL_Point* center1, SDL_RendererFlip flip1){
+void Object :: render(int x1, int y1, SDL_Rect* clip1 ,double angle1, SDL_Point* center1, double ratio, SDL_RendererFlip flip1){
 	SDL_Rect renderQuad = { x1, y1 , width, height };
 	if (clip1 != NULL)
 	{
@@ -94,7 +94,10 @@ void Object :: render(int x1, int y1, SDL_Rect* clip1 ,double angle1, SDL_Point*
 void Object::renderbackground()
 {
 	dem = (dem + 1) % 3;
-	photo = (photo + dem / 2) % (SCREEN_HEIGHT + 1);
+	photo = (photo - dem / 2)% (SCREEN_HEIGHT + 1);
+	if (photo == -1) {
+		photo = SCREEN_HEIGHT - 1;
+	}
 	SDL_Rect renderQuad = { 0, 0 , SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_Rect cut = { 0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_RenderCopy(gRenderer, Texture, &cut, &renderQuad);

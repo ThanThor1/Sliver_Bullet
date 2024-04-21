@@ -38,6 +38,7 @@ bool  checkWin() {
 	for (int i = 1; i <= number_ennemies_E; i++) {
 		win = win * !ennemies_E[i].checkExist();
 	}
+	win = win * !boss.checkExist();
 	return win;
 }
 void RenderBullet() {
@@ -69,6 +70,29 @@ void RenderBullet() {
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		if (bullet_ennemies_E[j].exist == true) {
 			bullet_ennemies_E[j].RenderBullet_StraightAngle();
+		}
+	}
+	for (int j = 0; j < NUMBER_BULLET; j++) {
+		if (bullet_round[j].exist == true) {
+			bullet_round[j].bullet_virtual.RenderBullet_StraightAngle();
+			bullet_round[j].RenderBullet_Round();
+		}
+	}
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < NUMBER_BULLET * 25; j++) {
+			if (bullet_level[i][j].exist == true) {
+				bullet_level[i][j].RenderBullet_StraightAngle();
+			}
+		}
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		if (boom[i].exist == true) {
+			if (boom[i].explode_bool == true) {
+				boom[i].RenderExplode();
+			}
+			else { 
+				boom[i].RenderWarning(); 
+			}
 		}
 	}
 }

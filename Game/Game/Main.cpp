@@ -37,6 +37,7 @@ int main(int argc, char* args[]) {
 		Mix_PlayMusic(music_menu, -1);
 		while (!quit)
 		{
+	/*	   int start = SDL_GetTicks();*/
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
@@ -54,7 +55,11 @@ int main(int argc, char* args[]) {
 			else if (screen_status == HOME) {
 				loadHomeScreen();
 			}
+		  /*  int end = SDL_GetTicks();
+			cout << 1000 / 60 - end + start << endl;
+			SDL_Delay(1000 / 60- end + start);*/
 		}
+		
 	}
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);

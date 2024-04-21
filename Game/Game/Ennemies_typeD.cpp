@@ -26,6 +26,28 @@ void Ennemies_typeD::moveEnnemies() {
 	x += direction;
 	loadShoot();
 }
+void Ennemies_typeD::RenderMiniBoss() {
+	checkHit(health);
+	if (health <= 0) {
+		exist = false;
+	}
+	else exist = true;
+	if (exist == true) {
+		SDL_Rect  renderQuad = { x, y , width, height };
+		SDL_Rect cut;
+		cut = { photo / 10 * width, 0, width , height };
+		photo = (photo + 1) % 41;
+		SDL_RenderCopy(gRenderer, Texture, &cut, &renderQuad);
+		loadShoot();
+	}
+	else {
+		load_reborn_time++;
+		if (load_reborn_time == 1000) {
+			free();
+			load_reborn_time = 0;
+		}
+	}
+}
 //sạc đạn
 void Ennemies_typeD::loadShoot() {
 	load_bullet_ennemies_D_time = (load_bullet_ennemies_D_time + 1) % 1001;
@@ -59,6 +81,7 @@ void Ennemies_typeD::free() {
 	speed = 1;
 	direction = 1;
 	photo = 0;
+	death.free();
 }
 bool Ennemies_typeD::loadFromFile(string path) {
 	//Get rid of preexisting texture
@@ -83,6 +106,7 @@ bool Ennemies_typeD::loadFromFile(string path) {
 		}
 		else
 		{
+			load_bullet_ennemies_D_time = Rand(0, 1000);
 			//Get image dimensions
 			width = loadedSurface->w / 4;
 			height = loadedSurface->h;

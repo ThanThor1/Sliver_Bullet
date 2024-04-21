@@ -15,7 +15,7 @@ void Bullet_Straight::free()
 	hit_bool = false;
 	damage = 3;
 	speed = 3;
-	speedPlus = 3;
+	speedPlus = 1;
 	follow = true;
 }
 Bullet_Straight::Bullet_Straight()
@@ -223,7 +223,7 @@ int Bullet_Straight::SolveDistance() {
 	return dis;
 }
 void Bullet_Straight::checkOutScreen() {
-	if (x > (SCREEN_WIDTH + 100) || x<-100 || y>(SCREEN_HEIGHT + 100) || y < -100) {
+	if (x > (SCREEN_WIDTH + 500) || x<-500 || y>(SCREEN_HEIGHT + 500) || y < -500) {
 		free();
 	}
 }

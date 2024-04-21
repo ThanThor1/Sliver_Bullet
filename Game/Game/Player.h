@@ -11,6 +11,8 @@ class Ennemies;
 class Player : public Object
 {
 public:
+	Object death[10];
+	int dem_death = 0;
 	int delay_bullet = 120;
 	double sensitivity[3];
 	int  sensitivity_index = 0;
@@ -65,6 +67,7 @@ public:
 	void shoot();
 	void loadFrame(SDL_Rect* clip = NULL,double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	bool loadFromFile(string path);
+	bool checkLazer();
 	bool checkHit();
 	bool checkImpactBullet(Bullet_Straight& a);
 	void checkImpactItem(Item& a);

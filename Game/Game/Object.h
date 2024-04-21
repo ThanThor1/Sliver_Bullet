@@ -27,6 +27,8 @@ public:
 	int finish_y=0;
 	int delta_x = 0;
 	int delta_y = 0;
+	int center_y = 0;
+	int center_x = 0;
 	double slope = 0;
 	double angle = 0;
 	//chieu ngang và doc
@@ -42,7 +44,7 @@ public:
 	void setAlpha(Uint8 alpha);
 	void render(int x1, int y1, SDL_Rect* clip1 = NULL,
 		double angle1 = 0.0, SDL_Point* center1 = NULL,
-		SDL_RendererFlip flip1 = SDL_FLIP_NONE);
+		 double ratio =0.0, SDL_RendererFlip flip1 = SDL_FLIP_NONE);
 	Object();
 	void free();
 	void renderbackground();

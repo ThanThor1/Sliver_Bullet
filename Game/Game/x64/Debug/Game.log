@@ -1,17 +1,32 @@
-﻿  Player.cpp
-D:\Game\Game\Game\Player.cpp(127,15): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(130,15): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(325,60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(326,60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(332,60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(333,60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(539,35): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-D:\Game\Game\Game\Player.cpp(539,35): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(539,96): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-D:\Game\Game\Game\Player.cpp(539,96): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(539,155): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-D:\Game\Game\Game\Player.cpp(539,155): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(539,190): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-D:\Game\Game\Game\Player.cpp(539,190): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Game\Game\Game\Player.cpp(545,1): warning C4715: 'Player::checkHit': not all control paths return a value
+﻿  Boss.cpp
+D:\Game\Game\Game\Boss.cpp(45,36): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(45,36): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(45,79): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(45,79): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(46,38): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(46,38): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(46,103): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(46,103): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(46,166): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(46,166): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(46,204): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(46,204): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(225,181): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(226,181): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(227,148): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(227,148): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(227,219): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(227,219): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(236,189): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(237,189): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(238,160): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(238,160): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(238,235): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(238,235): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(247,189): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(248,189): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(249,160): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(249,160): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Game\Game\Game\Boss.cpp(249,235): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Game\Game\Game\Boss.cpp(249,235): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Game.vcxproj -> D:\Game\Game\x64\Debug\Game.exe

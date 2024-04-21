@@ -28,14 +28,14 @@
     <Filter Include="Resource Files\Load all">
       <UniqueIdentifier>{66f110bd-7bd1-4ad2-9f95-89c016c606e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Non class">
-      <UniqueIdentifier>{81456d73-779a-4b8c-ad58-bf6fb7e532f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Other class">
       <UniqueIdentifier>{fa0febf1-1623-4901-b726-17e9d5c55213}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Other class">
       <UniqueIdentifier>{a36b9045-794b-4714-8e99-4385306a4f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Non class">
+      <UniqueIdentifier>{81456d73-779a-4b8c-ad58-bf6fb7e532f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +57,6 @@
     <ClCompile Include="Event.cpp">
       <Filter>Resource Files\Load all</Filter>
     </ClCompile>
-    <ClCompile Include="LoadAll.cpp">
-      <Filter>Resource Files\Load all</Filter>
-    </ClCompile>
     <ClCompile Include="Wave.cpp">
       <Filter>Resource Files\Load all</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
-    <ClCompile Include="Declaration.cpp">
-      <Filter>Resource Files\Non class</Filter>
-    </ClCompile>
     <ClCompile Include="Ennemies_typeD.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
@@ -86,6 +80,21 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Resource Files\Other class</Filter>
+    </ClCompile>
+    <ClCompile Include="Declaration.cpp">
+      <Filter>Resource Files\Non class</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Resource Files\Ennemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet_Round.cpp">
+      <Filter>Resource Files\Other class</Filter>
+    </ClCompile>
+    <ClCompile Include="Boom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAll.cpp">
+      <Filter>Resource Files\Non class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +151,15 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\Other class</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Header Files\Ennemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet_Round.h">
+      <Filter>Header Files\Other class</Filter>
+    </ClInclude>
+    <ClInclude Include="Boom.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

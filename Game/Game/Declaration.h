@@ -14,6 +14,9 @@
 #include "Player.h"
 #include "Item.h"
 #include "Library.h"
+#include "Boss.h"
+#include "Bullet_Round.h"
+#include "Boom.h"
 
 extern bool loadmap_bool;
 extern bool sound_bool;
@@ -51,7 +54,22 @@ extern Object Heart[3];
 extern Object BackGround;
 
 extern Player player;
-extern Ennemies boss1;
+extern Boss boss;
+extern Object mini_boss_1[3];
+extern Object mini_boss_2[3];
+extern Object mini_boss_center_1;
+extern Object mini_boss_center_2;
+extern Object lazer;
+extern Object head_lazer;
+extern Object lazer_warning_red;
+extern Object lazer_warning_green;
+extern Ennemies_typeB miniboss_1_B;
+extern Ennemies_typeD miniboss_1_D;
+extern Ennemies_typeE miniboss_1_E;
+extern Ennemies_typeB miniboss_2_B;
+extern Ennemies_typeD miniboss_2_D;
+extern Ennemies_typeE miniboss_2_E;
+extern Boom boom[NUMBER_BULLET];
 extern Ennemies_typeA ennemies_A[NUMBER_ENNEMIES];
 extern Ennemies_typeB ennemies_B[NUMBER_ENNEMIES];
 extern Ennemies_typeC ennemies_C[NUMBER_ENNEMIES];
@@ -67,11 +85,16 @@ extern Bullet_Straight  bullet_ennemies_B[NUMBER_BULLET][3];
 extern Bullet_Straight  bullet_ennemies_C[NUMBER_BULLET][4];
 extern Bullet_Straight  bullet_ennemies_D[NUMBER_BULLET];
 extern Bullet_Straight  bullet_ennemies_E[NUMBER_BULLET];
+extern Bullet_Round bullet_round[NUMBER_BULLET];
+extern Bullet_Straight bullet_level[3][NUMBER_BULLET * 25];
 extern int bullet_ennemies_A_index ;
 extern int bullet_ennemies_B_index ;
 extern int bullet_ennemies_C_index ;
 extern int bullet_ennemies_D_index ;
 extern int bullet_ennemies_E_index ;
+extern int bullet_round_index ;
+extern int bullet_level_index[3];
+extern int boom_index;
 extern Item item[100];
 extern int item_index ;
 extern Item item_example[20];
@@ -90,6 +113,7 @@ extern Mix_Chunk* chunk_mouse;
 extern Mix_Chunk* chunk_shoot;
 extern Mix_Chunk* chunk_explode1;
 extern Mix_Chunk* chunk_explode2;
+extern Mix_Chunk* chunk_item;
 
 extern UINT32 currentime;
 extern UINT32 distimewave;

@@ -155,13 +155,13 @@ void Ennemies::checkHit(int& health) {
 		}
 	}
 	if (death.exist == false && health <= 0) {
-		SDL_Rect a;
-		a = { (death.photo / 10) * death.width / 7, 0, death.width / 7, death.height };
-		death.setAlpha(255 - death.photo * 2);
 		if (death.photo == 0) {
 			if (sound_bool == true)
 				Mix_PlayChannel(-1, chunk_explode1, 0);
 		}
+		SDL_Rect a;
+		a = { (death.photo / 10) * death.width / 7, 0, death.width / 7, death.height };
+		death.setAlpha(255 - death.photo * 2);
 		death.render(x + width / 2 - death.width / 14, y + height / 2 - death.height / 2, &a);
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
@@ -201,6 +201,7 @@ void Ennemies::loadExplode(Bullet_Straight& b) {
 	}
 }
 void Ennemies::loadBuff() {
+	cout << 1;
 	int a;
 	a = Rand(0, 1000) % 20;
 	if (a <= 14) {
@@ -215,5 +216,4 @@ void Ennemies::loadBuff() {
 	item[item_index].y = y + height / 2 - item[item_index].height / 2;
 	item[item_index].exist = true;
 	item_index++;
-	
 }

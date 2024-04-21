@@ -64,6 +64,7 @@ void Ennemies_typeA::free() {
 	speed = 1;
 	direction = 1;
 	photo = 0;
+	death.free();
 }
 bool Ennemies_typeA::loadFromFile(string path) {
 	//Get rid of preexisting texture

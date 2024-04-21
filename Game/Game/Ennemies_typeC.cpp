@@ -17,28 +17,29 @@ void Ennemies_typeC::moveEnnemies() {
 	if (angle >= 360) { angle = 0; }
 	angle += 0.1;
 	SDL_RenderCopyEx(gRenderer, Texture, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
-	if (x > 0 && x < (SCREEN_WIDTH - width)) {
-		if (y > 0 && y < (SCREEN_HEIGHT - height)) {
-			turning = true;
+	if (inscreen == false && y > finish_y) {
+		inscreen = true;
+	}
+	if (inscreen == true) {
+		if (x > 0 && x < (SCREEN_WIDTH - width)) {
+			if (y > 0 && y < (SCREEN_HEIGHT - height)) {
+				turning = true;
+			}
+		}
+		if ((x <= 0 || x >= SCREEN_WIDTH - width) && turning == true) {
+			delta_x = -delta_x;
+			start_x = x;
+			start_y = y;
+			turning = false;
+		}
+		if ((y <= 0 || y >= SCREEN_HEIGHT - height) && turning == true) {
+			delta_y = -delta_y;
+			start_x = x;
+			start_y = y;
+			turning = false;
 		}
 	}
-	if ((x <= 0 || x >= SCREEN_WIDTH - width) && turning == true) {
-		delta_x = -delta_x;
-		start_x = x;
-		start_y = y;
-		turning = false;
-	}
-	if ((y <= 0 || y >= SCREEN_HEIGHT - height) && turning == true) {
-		delta_y = -delta_y;
-		start_x = x;
-		start_y = y;
-		turning = false;
-	}
-	/*
-	<< delta_x << " " << delta_y << " ";*/
 	slope = 1.0 * (delta_y) / (delta_x);
-	/*cout << x << " " << y<<" "<<slope << endl;*/
-
 	if (delta_y == 0 && delta_x > 0) {
 		x += SPEED_RIVAL;
 	}
@@ -103,6 +104,7 @@ void Ennemies_typeC::free() {
 	speed = 1;
 	photo = 0;
 	turning = false;
+	death.free();
 }
 bool Ennemies_typeC::loadFromFile(string path) {
 	//Get rid of preexisting texture
