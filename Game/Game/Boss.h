@@ -3,6 +3,8 @@
 class Boss : public Ennemies
 {
 public:
+	bool star_bool = false;
+	int star_dem_time = 0;
 	int direction_rotation_lazer = 1;
 	bool start_dem_time = false;
 	double bullet_level_ratio[3];

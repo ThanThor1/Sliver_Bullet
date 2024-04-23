@@ -95,6 +95,11 @@ void RenderBullet() {
 			}
 		}
 	}
+	for (int i = 0; i < 1000; i++) {
+		if (star[i].exist == true) {
+			star[i].RenderBullet_StraightAngle();
+		}
+	}
 }
 void RenderItem() {
 	for (int i = 0; i < NUMBER_ITEM; i++) {

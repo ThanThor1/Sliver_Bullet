@@ -223,7 +223,7 @@ int Bullet_Straight::SolveDistance() {
 	return dis;
 }
 void Bullet_Straight::checkOutScreen() {
-	if (x > (SCREEN_WIDTH + 500) || x<-500 || y>(SCREEN_HEIGHT + 500) || y < -500) {
+	if (x > (SCREEN_WIDTH + 200) || x< -200 || y>(SCREEN_HEIGHT + 200) || y < -200) {
 		free();
 	}
 }

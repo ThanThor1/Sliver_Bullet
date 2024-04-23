@@ -164,14 +164,34 @@ void loadAllEnnemies() {
 		ennemies_E[i] = ennemies_E[0];
 	}
 	// boss
+	star[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/star.png");
+	for (int i = 0; i < 1000; i++) {
+		star[i] = star[0];
+	}
+	int a = -100;
+	for (int i = 0; i < 7; i++) {
+		star_coordinates[i][0] = -100;
+		star_coordinates[i][1] =  a;
+		star_coordinates[i][2] = -1;
+		a += 270;
+	}
+	int b = 0;
+	for (int i = 7; i < 15; i++) {
+		star_coordinates[i][1] = -100;
+		star_coordinates[i][0] = b;
+		star_coordinates[i][2] = -1;
+		b += 100;
+	}
 	miniboss_1_B = miniboss_2_B = ennemies_B[0];
 	miniboss_1_D = miniboss_2_D = ennemies_D[0];
 	miniboss_1_E = miniboss_2_E = ennemies_E[0];
-	mini_boss_center_1.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
-	mini_boss_center_2.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
+	mini_boss_center_1.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/mini_boss_1.png");
+	staff_mini_boss_1.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/staff_mini_boss_1.png");
+	mini_boss_center_2.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/mini_boss_2.png");
 	for (int i = 0; i < 3; i++) {
 		mini_boss_1[i] = mini_boss_1[0];
 		mini_boss_2[i] = mini_boss_1[0];
+		
 	}
 	//
 	boom[0].warning.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/warning.png");
