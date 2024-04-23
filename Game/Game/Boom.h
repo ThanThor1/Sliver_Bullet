@@ -4,6 +4,7 @@ class Boom : public Object
 {
 public:
 	bool explode_bool = 0;
+	bool warning_bool = 0;
 	Object warning;
 	Object explode;
 	Object warning_around[5];

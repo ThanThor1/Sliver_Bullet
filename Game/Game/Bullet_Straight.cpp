@@ -79,8 +79,7 @@ bool Bullet_Straight::loadFromFile(string path) {
 	return Texture != NULL;
 }
 void Bullet_Straight::RenderBullet_StraightSlope() {
-	if (exist == true)
-	{
+	checkOutScreen();
 		if (delta_x > 0 && delta_y > 0) {
 			angle = 360 - atan(slope) / PI * 180;
 		}
@@ -106,13 +105,10 @@ void Bullet_Straight::RenderBullet_StraightSlope() {
 			angle = 270;
 		}
 		RenderBullet_Straight();
-	}
 }
 
 void Bullet_Straight::RenderBullet_StraightAngle() {
 	checkOutScreen();
-	if (exist == true)
-	{
 		// set lai goc neu bi lech
 		if (angle >= 360) {
 			angle = angle - 360;
@@ -164,38 +160,40 @@ void Bullet_Straight::RenderBullet_StraightAngle() {
 			slope = tan((360 - angle) * 1.0 * PI / 180);
 		}
 		RenderBullet_Straight();
-	}
 }
 void Bullet_Straight::RenderBullet_Straight() {
-	render(x, y, NULL, angle);
-	if (delta_y == 0 && delta_x > 0) {
-		x += speed + speedPlus;
-	}
-	else if (delta_y == 0 && delta_x < 0) {
-		x -= speed + speedPlus;
-	}
-	else if (delta_y > 0 && delta_x == 0) {
-		y += speed + speedPlus;
-	}
-	else if (delta_y < 0 && delta_x == 0) {
-		y -= speed + speedPlus;
-	}
-	else {
-		if (slope >= 1) {
-			x += round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * delta_y / abs(delta_y);
-			y = round((x) / slope + start_y * 1.000 - 1.000 * start_x / slope);
+	if (exist == true) {
+		if (delta_y == 0 && delta_x > 0) {
+			x += speed + speedPlus;
 		}
-		else if ((slope <= 1) && (slope >= -1)) {
-			y += round((speed + speedPlus) / sqrt(1 + 1.00 * slope * slope)) * 1.0 * delta_y / abs(delta_y);
-			x = round((y + 1.000 * start_x / slope - start_y * 1.000) * slope);
+		else if (delta_y == 0 && delta_x < 0) {
+			x -= speed + speedPlus;
 		}
-		else if ((slope <= -1)) {
-			x -= round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * delta_y / abs(delta_y);
-			y = round((x) / slope + start_y * 1.000 - 1.000 * start_x / slope);
+		else if (delta_y > 0 && delta_x == 0) {
+			y += speed + speedPlus;
 		}
+		else if (delta_y < 0 && delta_x == 0) {
+			y -= speed + speedPlus;
+		}
+		else {
+			if (slope >= 1) {
+				x += round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * delta_y / abs(delta_y);
+				y = round((x) / slope + start_y * 1.000 - 1.000 * start_x / slope);
+			}
+			else if ((slope <= 1) && (slope >= -1)) {
+				y += round((speed + speedPlus) / sqrt(1 + 1.00 * slope * slope)) * 1.0 * delta_y / abs(delta_y);
+				x = round((y + 1.000 * start_x / slope - start_y * 1.000) * slope);
+			}
+			else if ((slope <= -1)) {
+				x -= round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * delta_y / abs(delta_y);
+				y = round((x) / slope + start_y * 1.000 - 1.000 * start_x / slope);
+			}
+		}
+		render(x, y, NULL, angle);
 	}
 }
 void Bullet_Straight::RenderBullet_FollowSlope() {
+	checkOutScreen();
 	if (good == false) {
 		if (SolveDistance() <= 40000) {
 			speedPlus = 3;

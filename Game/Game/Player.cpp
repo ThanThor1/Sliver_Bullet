@@ -12,9 +12,6 @@ void Player::free()
 	load_bullet_support_time = 0;
 	thbullet_support = 0;
 	dis_player_support = 0;
-	//lazer
-	lazer;
-	load_lazer_time = 0;
 	//bullet
 	thbullet_simple = 0;
 	//
@@ -112,6 +109,7 @@ bool Player::loadFromFile(string path) {
 	return Texture != NULL;
 }
 void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
+	
 	if  (number_of_hearts > 0) {
 		if (behit == false) {
 			behit = checkHit();
@@ -263,12 +261,6 @@ void Player::loadShoot() {
 			Mix_PlayChannel(-1, chunk_shoot, 0);
 		}
 	}
-	if (buff_lazer == true) {
-		lazer.exist = true;
-		lazer.x = x + width / 2 - 72;
-		lazer.y = y + height / 2 - 1325;
-		loadLazer();
-	}
 	if (buff_support == true) {
 		support_1.exist = true;
 		support_2.exist = true;
@@ -315,21 +307,6 @@ void Player::loadShoot() {
 			delay_bullet -= 7;
 		}
 		buff_speed_bullet = false;
-	}
-}
-void Player::loadLazer() {
-	load_bullet_time = 0;
-	SDL_Rect cutLazer[12];
-	for (int i = 0; i <= 11; i++) {
-		cutLazer[i] = { i * 145,0,145,1300 };
-	}
-	lazer.render(lazer.x, lazer.y, &cutLazer[load_lazer_time / 5]);
-	load_lazer_time++;
-	if (load_lazer_time == 61)
-	{
-		load_lazer_time = 0;
-		lazer.exist = false;
-		buff_lazer = false;
 	}
 }
 void Player::loadSupport() {
@@ -389,23 +366,29 @@ void Player::shoot() {
 	}
 	for (int i = 0; i < NUMBER_BULLET; i++) {
 		for (int j = 0; j <= 6; j++) {
-			bullet_x7[i][j].RenderBullet_StraightAngle();
+			if (bullet_x7[i][j].exist == true) {
+				bullet_x7[i][j].RenderBullet_StraightAngle();
+			}
 		}
 	}
 	for (int i = 0; i < NUMBER_BULLET; i++)
 	{
 		for (int j = 0; j <= 4; j++) {
-			bullet_x5[i][j].RenderBullet_StraightAngle();
+			if (bullet_x5[i][j].exist == true) {
+				bullet_x5[i][j].RenderBullet_StraightAngle();
+			}
 		}
 	}
 }
 void Player::shootSupport() {
 	for (int i = 0; i < NUMBER_BULLET; i++)
 	{
+		if(bullet_support_1[i].exist==true)
 		bullet_support_1[i].RenderBullet_StraightSlope();
 	}
 	for (int i = 0; i < NUMBER_BULLET; i++)
 	{
+		if (bullet_support_2[i].exist == true)
 		bullet_support_2[i].RenderBullet_StraightSlope();
 	}
 }
@@ -563,13 +546,63 @@ bool Player::checkHit() {
 				}
 			}
 		}
+		for (int k = 0; k < NUMBER_BULLET; k++) {
+			if (buff_shield == true) {
+				if (checkImpactShield(bullet_round[k].bullet_virtual)) {
+					for (int i = 0; i < 3; i++) {
+						for (int j = 0; j < 3; j++) {
+							bullet_round[k].bullet_around[i][j].good = true;
+						}
+					}
+				}
+			}
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					if (bullet_round[k].bullet_around[i][j].exist == true) {
+						if (checkImpactBullet(bullet_round[k].bullet_around[i][j]) && bullet_round[k].bullet_around[i][j].good == false && behit == false) {
+							bullet_round[k].bullet_around[i][j].free();
+							number_of_hearts--;
+							return true;
+						}
+					}
+				}
+			}
+		}
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < NUMBER_BULLET * 25; j++) {
+				if (bullet_level[i][j].exist == true) {
+					if (buff_shield == true) {
+						checkImpactShield(bullet_level[i][j]);
+					}
+					if (checkImpactBullet(bullet_level[i][j]) && bullet_level[i][j].good == true && behit == false) {
+						bullet_level[i][j].free();
+						number_of_hearts--;
+						return true;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < 1000; i++) {
+				if (star[i].exist == true) {
+					if (buff_shield == true) {
+						checkImpactShield(star[i]);
+					}
+					if (checkImpactBullet(star[i]) && star[i].good == true && behit == false) {
+						star[i].free();
+						number_of_hearts--;
+						return true;
+					}
+				}
+		}
 		checkLazer();
-			// check item
+		// check item
 		for (int j = 0; j < NUMBER_ITEM; j++) {
 			checkImpactItem(item[j]);
 		}
 		return false;
 }
+
+
 bool Player::checkImpactBullet(Bullet_Straight& a) {
 	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height)) {
 		return true;
@@ -581,6 +614,7 @@ bool Player::checkImpactShield(Bullet_Straight& a) {
 	int delta_y = (a.y + a.height / 2) - (y + height / 2);
 	if ((delta_x * delta_x + delta_y * delta_y <= 16900) )
 	{
+		
 		if (a.good == false) {
 			double angle1 = FindAngle(a.x + a.width / 2, a.y + a.height / 2, x + width / 2, y + height / 2);
 			a.angle = (angle1) * 2 - a.angle + 180;
@@ -617,16 +651,19 @@ void Player::checkImpactItem(Item& a) {
 }
 bool Player:: checkLazer() {
 	bool success = false;
-	/*for (int i = 0; i < 3; i++) {
-		int delta_x1 = (lazer_boss[i].width / abs(cos(lazer_boss[i].angle * PI / 180)) + abs(height * tan(lazer_boss[i].angle * PI / 180)) + width) / 2;
-		int center_x1 = boss.x + boss.width / 2 - ((y + height / 2) - (boss.y + boss.height / 2)) * tan(lazer_boss[i].angle * PI / 180);
-		bool a = (((lazer_boss[i].angle >= 0) && (lazer_boss[i].angle <= 90)) || ((lazer_boss[i].angle >= 270) && (lazer_boss[i].angle <= 360))) && (y + height / 2) > (boss.y + boss.height / 2);
-		bool b = (((lazer_boss[i].angle >= 90) && (lazer_boss[i].angle <= 270)) && (y + height / 2) < (boss.y + boss.height / 2));
-		if (a || b) {
-			if (((x + width / 2) < center_x1 + delta_x1) && ((x + width / 2) > center_x1 - delta_x1)) {
-				success = true;
+	for (int i = 0; i < 2; i++) {
+		if (lazer[0].exist == true) {
+			int delta_x1 = (lazer[i].width / abs(cos(lazer[i].angle * PI / 180)) + abs(height * tan(lazer[i].angle * PI / 180)) + width) / 2;
+			int center_x1 = lazer[i].center_x - ((y + height / 2) - (lazer[i].center_y)) * tan(lazer[i].angle * PI / 180);
+			item_example[3].render(center_x1 - item_example[3].width / 2, y + height / 2 - item_example[3].height / 2);
+			bool a = (((lazer[i].angle <= 0) && (lazer[i].angle >= -90)) ||((lazer[i].angle >= 0) && (lazer[i].angle <= 90)) || ((lazer[i].angle >= 270) && (lazer[i].angle <= 360))) && (y + height / 2) > (boss.y + boss.height / 2);
+			bool b = (((lazer[i].angle >= 90) && (lazer[i].angle <= 270)) && (y + height / 2) < (boss.y + boss.height / 2));
+			if (a || b) {
+				if (((x + width / 2) < center_x1 + delta_x1 - 10) && ((x + width / 2) > center_x1 - delta_x1 +10)) {
+					success = true;
+				}
 			}
 		}
-	}*/
+	}
 	return success;
 }

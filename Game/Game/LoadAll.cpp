@@ -204,10 +204,14 @@ void loadAllEnnemies() {
 		boom[i] = boom[0];
 	}
 	boss.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/boss.png");
-	lazer_warning_green.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_green.png");
-	lazer_warning_red.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_red.png");
-	head_lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/head_lazer.png");
-	lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer.png");
+	lazer_warning_green[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_green.png");
+	lazer_warning_green[1] = lazer_warning_green[0];
+	lazer_warning_red[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer_warning_red.png");
+	lazer_warning_red[1] = lazer_warning_red[0];
+	head_lazer[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/head_lazer.png");
+	head_lazer[1] = head_lazer[0];
+	lazer[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/lazer.png");
+	lazer[1] = lazer[0];
 	bullet_round[0].bullet_virtual.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Boss/bullet_virtual.png");
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -270,7 +274,7 @@ void loadAllPlayer() {
 			player.bullet_x7[i][j].damage = 2;
 		}
 	}
-	player.lazer.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/lazer.png");
+
 	support_1.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/support.png");
 	support_2.loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/support.png");
 	player.bullet_support_1[0].loadFromFile("C:/Users/Lenovo/Desktop/anhgame/Player/bullet_support.png");
@@ -384,7 +388,6 @@ void renewAllPlayer() {
 			player.bullet_x5[i][j].free();
 		}
 	}
-	player.lazer.free();
 	support_1.free();
 	support_2.free();
 	player.bullet_support_1[0].free();

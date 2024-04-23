@@ -13,7 +13,6 @@ public:
 	int photo = 0;
 	// hàm
 	bool checkImpact(Bullet_Straight& a);
-	bool checkLazer();
 	void checkHit(int& health);
 	void getStart(int start_x = 0, int start_y = 0);
 	void getFinish(int finish_x = 0, int finish_y = 0);

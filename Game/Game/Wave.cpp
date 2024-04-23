@@ -72,10 +72,12 @@ void RenderBullet() {
 			bullet_ennemies_E[j].RenderBullet_StraightAngle();
 		}
 	}
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		if (bullet_round[j].exist == true) {
-			bullet_round[j].bullet_virtual.RenderBullet_StraightAngle();
-			bullet_round[j].RenderBullet_Round();
+	for (int k = 0; k < NUMBER_BULLET; k++) {
+		if (bullet_round[k].exist == true) {
+			if (bullet_round[k].bullet_virtual.exist == true) {
+				bullet_round[k].bullet_virtual.RenderBullet_StraightAngle();
+			}
+			bullet_round[k].RenderBullet_Round();
 		}
 	}
 	for (int i = 0; i < 3; i++) {
@@ -86,14 +88,12 @@ void RenderBullet() {
 		}
 	}
 	for (int i = 0; i < NUMBER_BULLET; i++) {
-		if (boom[i].exist == true) {
 			if (boom[i].explode_bool == true) {
 				boom[i].RenderExplode();
 			}
-			else { 
+			if (boom[i].warning_bool == true) {
 				boom[i].RenderWarning(); 
 			}
-		}
 	}
 	for (int i = 0; i < 1000; i++) {
 		if (star[i].exist == true) {

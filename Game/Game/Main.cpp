@@ -46,6 +46,7 @@ int main(int argc, char* args[]) {
 				}
 				checkEvent(e);
 			}
+		
 			if (screen_status == PAUSE) {
 				loadPauseScreen();
 			}

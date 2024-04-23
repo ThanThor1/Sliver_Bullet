@@ -31,9 +31,6 @@ public:
 	int load_bullet_support_time = 0;
 	int thbullet_support = 0;
 	int dis_player_support = 0;
-	//lazer
-	Object lazer;
-	int load_lazer_time = 0;
 	//bullet
 	Bullet_Straight bullet_simple[NUMBER_BULLET][2];
 	int thbullet_simple = 0;
@@ -62,7 +59,6 @@ public:
 	void determineTheTarget(int& x1, int& y1, int& x2, int& y2);
 	void loadBulletSupport();
 	void loadSupport();
-	void loadLazer();
 	void loadShoot();
 	void shoot();
 	void loadFrame(SDL_Rect* clip = NULL,double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);

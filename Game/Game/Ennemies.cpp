@@ -92,11 +92,6 @@ void Ennemies::checkHit(int& health) {
 			loadExplode(player.bullet_support_2[i]);
 		}
 	}
-	if (player.lazer.exist == true) {
-		if (checkLazer()) {
-			health -= player.lazer.damage;
-		}
-	}
 	// check đạn phản ngược.
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		if (bullet_ennemies_A[j].exist == true && bullet_ennemies_A[j].good == true) {
@@ -178,15 +173,6 @@ bool Ennemies::checkImpact(Bullet_Straight& a) {
 	}
 	return false;
 }
-bool Ennemies::checkLazer() {
-	if (x > (player.lazer.x + player.lazer.width / 12 - 39) || player.lazer.x + 39 > (x + width)) {
-		return false;
-	}
-	if (y > player.y) {
-		return false;
-	}
-	return true;
-}
 void Ennemies::loadExplode(Bullet_Straight& b) {
 	SDL_Rect a[7];
 	for (int i = 0; i < 6; i++) {
@@ -201,7 +187,6 @@ void Ennemies::loadExplode(Bullet_Straight& b) {
 	}
 }
 void Ennemies::loadBuff() {
-	cout << 1;
 	int a;
 	a = Rand(0, 1000) % 20;
 	if (a <= 14) {
