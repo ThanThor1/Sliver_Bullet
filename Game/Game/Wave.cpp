@@ -38,7 +38,7 @@ bool  checkWin() {
 	for (int i = 1; i <= number_ennemies_E; i++) {
 		win = win * !ennemies_E[i].checkExist();
 	}
-	win = win * !boss.checkExist();
+	/*win = win * !boss.checkExist();*/
 	return win;
 }
 void RenderBullet() {

@@ -17,8 +17,6 @@ public:
 	void free();
 	//sạc đạn
 	void loadShoot();
-	//bắn
-	bool loadFromFile(string path);
 };
 
 #endif

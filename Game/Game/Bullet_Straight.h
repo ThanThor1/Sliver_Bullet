@@ -12,13 +12,9 @@ public:
 	bool good = false;
 	bool hit_bool = false;
 	int damage = 0;
-	int speed = 10;
+	int speed = 1;
 	int speedPlus = 3;
 	bool follow = true;
-	bool loadFromFile(string path);
-	void setColor(Uint8 red, Uint8 green, Uint8 blue);
-	void setBlendMode(SDL_BlendMode blending);
-	void setAlpha(Uint8 alpha);
 	Bullet_Straight();
 	~Bullet_Straight();
 	void free();

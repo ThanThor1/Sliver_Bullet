@@ -6,10 +6,19 @@
 class Object
 {
 public:
+	SDL_Rect cut[10];
+	SDL_Rect put;
+	SDL_Point center;
+	int red=0;
+	int green=0;
+	int blue=0;
 	int dem1 = 0;
 	int dem2 = 0;
-	int dem3 = 0;
-	int flip = SDL_FLIP_NONE;
+	int frameth = 1;
+	int frame = 1;
+	double slope = 0;
+	double angle = 0;
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	int photo = 0;
 	int damage = 5;
 	// tỉ lệ in ra màn hình
@@ -19,18 +28,14 @@ public:
 	// có tồn tại hay không
 	bool exist = false;
 	// mot so tinh chat
-	int x = 0;
-	int y = 0;
-	int start_x=0;
-	int start_y=0;
-	int finish_x=0;
-	int finish_y=0;
-	int delta_x = 0;
-	int delta_y = 0;
-	int center_y = 0;
-	int center_x = 0;
-	double slope = 0;
-	double angle = 0;
+	int center_x= 0;
+	int center_y= 0;
+	int center_start_x= 0;
+	int center_start_y= 0;
+	int center_finish_x= 0;
+	int center_finish_y= 0;
+	int center_delta_x = 0;
+	int center_delta_y = 0;
 	//chieu ngang và doc
 	int width = 0;
 	int height = 0;
@@ -38,13 +43,12 @@ public:
 	int dem = 0;
 	//Texture
 	SDL_Texture* Texture = NULL;
-	bool loadFromFile(string path);
-	void setColor(Uint8 red, Uint8 green, Uint8 blue);
+	bool loadFromFile(string path, int frame1);
+	void setColor();
 	void setBlendMode(SDL_BlendMode blending);
 	void setAlpha(Uint8 alpha);
-	void render(int x1, int y1, SDL_Rect* clip1 = NULL,
-		double angle1 = 0.0, SDL_Point* center1 = NULL,
-		 double ratio =0.0, SDL_RendererFlip flip1 = SDL_FLIP_NONE);
+	void render(SDL_Point* a  = NULL);
+	void renderRatio(SDL_Point* a = NULL);
 	Object();
 	void free();
 	void renderbackground();

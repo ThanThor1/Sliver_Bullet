@@ -9,6 +9,7 @@ void loadAllIcon();
 void loadAllSound();
 void loadAllMap();
 void loadAllItem();
+void loadAllText();
 //
 //
 //
@@ -26,3 +27,4 @@ void loadPauseButton();
 void loadPauseScreen();
 void loadFightScreen();
 void loadHomeScreen();
+void loadGameover();

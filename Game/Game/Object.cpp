@@ -13,14 +13,14 @@ void Object::free()
 	// có tồn tại hay không
 	 exist = false;
 	// mot so tinh chat
-	 x = 0;
-	 y = 0;
-	 start_x = 0;
-	 start_y = 0;
-	 finish_x = 0;
-	 finish_y = 0;
-	 delta_x = 0;
-	 delta_y = 0;
+	 center_x= 0;
+	 center_y= 0;
+	 center_start_x = 0;
+	 center_start_y = 0;
+	 center_finish_x = 0;
+	 center_finish_y = 0;
+	 center_delta_x = 0;
+	 center_delta_y = 0;
 	 slope = 0;
 	 angle = 0;
 	//Texture
@@ -33,7 +33,7 @@ Object::Object()
 	width = 0;
 	height = 0;
 }
-void Object::setColor(Uint8 red, Uint8 green, Uint8 blue)
+void Object::setColor()
 {
 	SDL_SetTextureColorMod(Texture, red, green, blue);
 }
@@ -45,13 +45,11 @@ void Object::setAlpha(Uint8 alpha)
 {
 	SDL_SetTextureAlphaMod(Texture, alpha);
 }
-bool Object::loadFromFile(string path) {
+bool Object::loadFromFile(string path, int frame1) {
 	//Get rid of preexisting texture
 	free();
-
 	//The final texture
 	SDL_Texture* newTexture = NULL;
-
 	//Load image at specified path
 	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 	if (loadedSurface == NULL)
@@ -71,10 +69,14 @@ bool Object::loadFromFile(string path) {
 		else
 		{
 			//Get image dimensions
-			width = loadedSurface->w;
+			frame = frame1;
+			width = loadedSurface->w/frame;
 			height = loadedSurface->h;
+			for (int i = 1; i <=frame; i++) {
+				cut[i] = { (i-1)*width,0, width, height};
+			}
+			center = { width / 2, height / 2 };
 		}
-
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
@@ -82,14 +84,25 @@ bool Object::loadFromFile(string path) {
 	Texture = newTexture;
 	return Texture != NULL;
 }
-void Object :: render(int x1, int y1, SDL_Rect* clip1 ,double angle1, SDL_Point* center1, double ratio, SDL_RendererFlip flip1){
-	SDL_Rect renderQuad = { x1, y1 , width, height };
-	if (clip1 != NULL)
-	{
-		renderQuad.w = clip1->w;
-		renderQuad.h = clip1->h;
+void Object :: render(SDL_Point* a){
+	setAlpha(alpha);
+	if (a == NULL) {
+		center = { width / 2,height / 2 };
 	}
-	SDL_RenderCopyEx(gRenderer, Texture, clip1, &renderQuad, angle1, center1, flip1);
+	else {
+		center = *a;
+	}
+	put = { int(center_x - center.x), int(center_y - center.y),int(width),int(height) };
+	SDL_RenderCopyEx(gRenderer, Texture, &cut[frameth], &put, angle, &center, flip);
+}
+void Object::renderRatio(SDL_Point* a) {
+	setAlpha(alpha);
+	if (a == NULL) {
+		center = { int(width / 2 * ratio),int(height / 2 * ratio) };
+	}
+	else center = *a;
+	put = { int(center_x - center.x ), int(center_y - center.y ),int(width * ratio),int(height * ratio) };
+	SDL_RenderCopyEx(gRenderer, Texture, &cut[frameth], &put, angle, &center, flip);
 }
 void Object::renderbackground()
 {
@@ -102,3 +115,4 @@ void Object::renderbackground()
 	SDL_Rect cut = { 0,photo, SCREEN_WIDTH , SCREEN_HEIGHT };
 	SDL_RenderCopy(gRenderer, Texture, &cut, &renderQuad);
 }
+

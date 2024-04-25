@@ -16,7 +16,6 @@ public:
 	//sạc đạn
 	void loadShoot();
 	//
-	bool loadFromFile(string path);
 };
 
 #endif

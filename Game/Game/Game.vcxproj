@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)sdl\SDL2-2.30.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)sdl\SDL2-2.30.0\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,12 +108,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\sdl\SDL2-2.30.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\sdl\SDL2-2.30.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\sdl\SDL2-2.30.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)sdl\SDL2-2.30.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;SDL2_mixer.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -148,6 +152,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Bullet_Straight.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +176,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Bullet_Straight.h" />
     <ClInclude Include="SomeConst.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Wave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

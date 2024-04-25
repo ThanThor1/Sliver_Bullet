@@ -48,12 +48,12 @@ void checkEvent(SDL_Event e) {
 	}
 	else if (screen_status == PAUSE) {
 		SDL_GetMouseState(&pause_x, &pause_y);
-		if (checkClickObject(e, sound_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_sound_pause, pause_x, pause_y)) {
 			if (sound_bool)
 				sound_bool = false;
 			else sound_bool = true;
 		}
-		if (checkClickObject(e, music_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_music_pause, pause_x, pause_y)) {
 			if (music_bool) {
 				music_bool = false;
 				Mix_PauseMusic();
@@ -63,19 +63,19 @@ void checkEvent(SDL_Event e) {
 				Mix_ResumeMusic();
 			}
 		}
-		if (checkClickObject(e, continue_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_continue, pause_x, pause_y)) {
 			screen_status = FIGHT;
 		}
-		if (checkClickObject(e, home_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_home, pause_x, pause_y)) {
 			screen_status = HOME;
 			if (sound_bool == true) { Mix_PlayMusic(music_menu, -1); }
 		}
-		if (checkClickObject(e, sensitivity_down_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_sensitivity_down, pause_x, pause_y)) {
 			if (player.sensitivity_index >= 1) {
 				player.sensitivity_index--;
 			}
 		}
-		if (checkClickObject(e, sensitivity_up_pause, pause_x, pause_y)) {
+		if (checkClickObject(e, pause_screen_sensitivity_up, pause_x, pause_y)) {
 			if (player.sensitivity_index <= 1) {
 				player.sensitivity_index++;
 			}
@@ -91,9 +91,15 @@ void checkEvent(SDL_Event e) {
 			}
 		}
 	}
+	else if (screen_status == GAMEOVER) {
+		SDL_GetMouseState(&gameover_x,&gameover_y);
+		if (checkClickObject(e, gameover_screen_home , gameover_x, gameover_y)) {
+			screen_status = HOME;
+		}
+	}
 }
 bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
-	if (e.type == SDL_MOUSEBUTTONDOWN && x >= a.x && y >= a.y && x <= (a.x + a.width) && y <= (a.y + a.height)) {
+	if (e.type == SDL_MOUSEBUTTONDOWN && x >= (a.center_x - a.width / 2) && y>= (a.center_y - a.height / 2) && x<= (a.center_x + a.width/2) && y<= (a.center_y + a.height/2)) {
 		if(sound_bool==true)
 		Mix_PlayChannel(-1, chunk_mouse, 0);
 		return true;

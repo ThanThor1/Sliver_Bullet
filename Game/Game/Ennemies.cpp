@@ -3,20 +3,20 @@
 #include"Declaration.h"
 #include "LoadAll.h"
 void Ennemies::getStart(int start_x1, int start_y1) {
-	x = start_x = start_x1;
-	y = start_y = start_y1;
+	center_x = center_start_x = start_x1;
+	center_y = center_start_y = start_y1;
 }
 void Ennemies::getFinish(int finish_x1, int finish_y1) {
-	finish_x = finish_x1;
-	finish_y = finish_y1;
+	center_finish_x = finish_x1;
+	center_finish_y = finish_y1;
 }
 void  Ennemies::getSlopeAngle(double slope1, double angle1) {
 	slope = slope1;
 	angle = angle1;
 }
 void  Ennemies::getDeltaxy() {
-	delta_x = finish_x - start_x;
-	delta_y = finish_y - start_y;
+	center_delta_x = center_finish_x - center_start_x;
+	center_delta_y = center_finish_y - center_start_y;
 }
 void Ennemies::checkHit(int& health) {
 	for (int i = 0; i < NUMBER_BULLET; i++) {
@@ -154,36 +154,38 @@ void Ennemies::checkHit(int& health) {
 			if (sound_bool == true)
 				Mix_PlayChannel(-1, chunk_explode1, 0);
 		}
-		SDL_Rect a;
-		a = { (death.photo / 10) * death.width / 7, 0, death.width / 7, death.height };
-		death.setAlpha(255 - death.photo * 2);
-		death.render(x + width / 2 - death.width / 14, y + height / 2 - death.height / 2, &a);
+		death.center_x = center_x;
+		death.center_y = center_y;
+		death.frameth =  death.photo / 10;
+		death.alpha -= death.photo * 2;
+		death.render();
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
+			aliens_defeated++;
 			loadBuff();
 			death.exist = true;
-			death.setAlpha(255);
+			death.alpha = 255;
 			free();
 		}
 	}
 }
 bool Ennemies::checkImpact(Bullet_Straight& a) {
-	if ((a.x + a.width / 2) > x && (a.x + a.width / 2) < (x + width) && (a.y + a.height / 2) > y && (a.y + a.height / 2) < (y + height)) {
+	if ((a.center_x) > (center_x-width/2) && (a.center_x) < (center_x + width/2) 
+		&& (a.center_y) > (center_y - height/2) && (a.center_y) < (center_y + height / 2)) {
 		return true;
 	}
 	return false;
 }
 void Ennemies::loadExplode(Bullet_Straight& b) {
-	SDL_Rect a[7];
-	for (int i = 0; i < 6; i++) {
-		a[i] = { i * b.hit.width / 6, 0, b.hit.width / 6, b.hit.height };
-	}
-	b.hit.setAlpha(255 - b.hit.photo * 4);
-	b.hit.render(b.x + b.width / 2 - b.hit.width / 12, b.y + b.height / 2 - b.hit.height / 2, &a[b.hit.photo / 10]);
+	b.hit.frameth = b.hit.photo / 10 +1;
+	b.hit.alpha  -= b.hit.photo * 4;
+	b.hit.center_x = b.center_x;
+	b.hit.center_y = b.center_y;
+	b.hit.render();
 	b.hit.photo = (b.hit.photo + 1) % 72;
 	if (b.hit.photo > 70) {
 		b.hit_bool = false;
-		b.hit.setAlpha(255);
+		b.hit.alpha =255;
 	}
 }
 void Ennemies::loadBuff() {
@@ -197,8 +199,8 @@ void Ennemies::loadBuff() {
 		item_index = 0;
 	}
 	item[item_index] = item_example[a];
-	item[item_index].x = x + width / 2 - item[item_index].width / 2;
-	item[item_index].y = y + height / 2 - item[item_index].height / 2;
+	item[item_index].center_x =center_x;
+	item[item_index].center_y =center_y;
 	item[item_index].exist = true;
 	item_index++;
 }

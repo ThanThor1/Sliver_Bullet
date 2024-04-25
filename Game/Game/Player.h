@@ -14,7 +14,7 @@ public:
 	Object death[10];
 	int dem_death = 0;
 	int delay_bullet = 120;
-	double sensitivity[3];
+	double pause_screen_sensitivity[3];
 	int  sensitivity_index = 0;
 	int  support_dem = 0;
 	int  shield_dem = 0;
@@ -54,7 +54,7 @@ public:
 	// trang thai anh
 	int number_of_hearts = 3;
 	// hàm 
-	double calculateDis(int E_x, int E_y, int E_Width, int E_Height, Object& b);
+	double calculateDis(int E_x, int E_y, Object& b);
 	void shootSupport();
 	void determineTheTarget(int& x1, int& y1, int& x2, int& y2);
 	void loadBulletSupport();
@@ -62,8 +62,8 @@ public:
 	void loadShoot();
 	void shoot();
 	void loadFrame(SDL_Rect* clip = NULL,double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	bool loadFromFile(string path);
 	bool checkLazer();
+	bool checkBoom();
 	bool checkHit();
 	bool checkImpactBullet(Bullet_Straight& a);
 	void checkImpactItem(Item& a);

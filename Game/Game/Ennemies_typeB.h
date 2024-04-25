@@ -17,9 +17,6 @@ public:
 	void free();
 	//sạc đạn
 	void loadShoot();
-	//
-	bool loadFromFile(string path);
-	void RenderMiniBoss();
 };
 
 #endif

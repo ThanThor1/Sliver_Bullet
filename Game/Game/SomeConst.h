@@ -25,6 +25,7 @@ enum screenstatus {
 	PAUSE,
 	HOME,
 	FIGHT,
+	GAMEOVER,
 };
 enum buff {
 	NONE,

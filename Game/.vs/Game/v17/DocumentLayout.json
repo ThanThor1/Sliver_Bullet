@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "D:\\Game\\Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\LoadAll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\LoadAll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\FindAngle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\FindAngle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Declaration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Declaration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Wave.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Wave.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Event.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Event.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Boss.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Boss.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\LoadAll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\LoadAll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Declaration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Declaration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeE.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeE.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Boom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Boom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -35,108 +51,20 @@
       "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Bullet_Straight.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Boom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Boom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Bullet_Round.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Bullet_Round.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Bullet_Straight.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Bullet_Straight.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Bullet_Round.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Bullet_Round.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\FindAngle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\FindAngle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Declaration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Declaration.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeA.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeA.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Boss.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Boss.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Event.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Event.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Declaration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Declaration.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Wave.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Wave.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\FindAngle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\FindAngle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeE.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeE.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeC.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeC.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\LoadAll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\LoadAll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\IncludeAll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\IncludeAll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies_typeD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies_typeD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\SomeConst.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\SomeConst.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Wave.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Wave.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|D:\\Game\\Game\\Game\\Ennemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{641A8604-1230-470B-B384-CB667A0E0ECF}|Game\\Game.vcxproj|solutionrelative:Game\\Ennemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -146,238 +74,23 @@
       "DocumentGroups": [
         {
           "DockedHeight": 287,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Ennemies_typeA.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeA.h",
-              "RelativeDocumentMoniker": "Game\\Ennemies_typeA.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies_typeA.h",
-              "RelativeToolTip": "Game\\Ennemies_typeA.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-23T07:07:09.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Ennemies.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies.h",
-              "RelativeDocumentMoniker": "Game\\Ennemies.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies.h",
-              "RelativeToolTip": "Game\\Ennemies.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-23T07:07:00.657Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Player.cpp",
-              "RelativeDocumentMoniker": "Game\\Player.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Player.cpp",
-              "RelativeToolTip": "Game\\Player.cpp",
-              "ViewState": "AQIAAKoAAAAAAAAAAAAAAMQAAAAYAAAA",
+              "DocumentIndex": 3,
+              "Title": "Wave.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Wave.cpp",
+              "RelativeDocumentMoniker": "Game\\Wave.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Wave.cpp",
+              "RelativeToolTip": "Game\\Wave.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:40:32.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Ennemies.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies.cpp",
-              "RelativeDocumentMoniker": "Game\\Ennemies.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies.cpp",
-              "RelativeToolTip": "Game\\Ennemies.cpp",
-              "ViewState": "AQIAAMwAAAAAAAAAAAAAAK8AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-21T08:18:16.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Declaration.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Declaration.cpp",
-              "RelativeDocumentMoniker": "Game\\Declaration.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Declaration.cpp",
-              "RelativeToolTip": "Game\\Declaration.cpp",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAowE8AAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:23.283Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoadAll.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\LoadAll.cpp",
-              "RelativeDocumentMoniker": "Game\\LoadAll.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\LoadAll.cpp",
-              "RelativeToolTip": "Game\\LoadAll.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:20:17.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Boom.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Boom.cpp",
-              "RelativeDocumentMoniker": "Game\\Boom.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Boom.cpp",
-              "RelativeToolTip": "Game\\Boom.cpp",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAUwCkAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:14.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Object.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Object.cpp",
-              "RelativeDocumentMoniker": "Game\\Object.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Object.cpp",
-              "RelativeToolTip": "Game\\Object.cpp",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAF4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-22T14:04:15.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Item.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Item.cpp",
-              "RelativeDocumentMoniker": "Game\\Item.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Item.cpp",
-              "RelativeToolTip": "Game\\Item.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:25:13.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T14:26:02.297Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Bullet_Straight.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Straight.cpp",
-              "RelativeDocumentMoniker": "Game\\Bullet_Straight.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Straight.cpp",
-              "RelativeToolTip": "Game\\Bullet_Straight.cpp",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAAANgAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:25:10.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Bullet_Round.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Round.cpp",
-              "RelativeDocumentMoniker": "Game\\Bullet_Round.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Round.cpp",
-              "RelativeToolTip": "Game\\Bullet_Round.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:24.538Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Boss.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Boss.cpp",
-              "RelativeDocumentMoniker": "Game\\Boss.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Boss.cpp",
-              "RelativeToolTip": "Game\\Boss.cpp",
-              "ViewState": "AQIAAGUBAAAAAAAAAAAAAHsBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T09:41:19.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "FindAngle.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\FindAngle.h",
-              "RelativeDocumentMoniker": "Game\\FindAngle.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\FindAngle.h",
-              "RelativeToolTip": "Game\\FindAngle.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:02:26.79Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "IncludeAll.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\IncludeAll.h",
-              "RelativeDocumentMoniker": "Game\\IncludeAll.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\IncludeAll.h",
-              "RelativeToolTip": "Game\\IncludeAll.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:02:26.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Declaration.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Declaration.h",
-              "RelativeDocumentMoniker": "Game\\Declaration.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Declaration.h",
-              "RelativeToolTip": "Game\\Declaration.h",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAmwGQAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T02:14:44.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Main.cpp",
-              "RelativeDocumentMoniker": "Game\\Main.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Main.cpp",
-              "RelativeToolTip": "Game\\Main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:16.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "FindAngle.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\FindAngle.cpp",
-              "RelativeDocumentMoniker": "Game\\FindAngle.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\FindAngle.cpp",
-              "RelativeToolTip": "Game\\FindAngle.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:18.371Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Event.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Event.cpp",
-              "RelativeDocumentMoniker": "Game\\Event.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Event.cpp",
-              "RelativeToolTip": "Game\\Event.cpp",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEcAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:26:07.053Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
               "Title": "Ennemies_typeE.cpp",
               "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeE.cpp",
               "RelativeDocumentMoniker": "Game\\Ennemies_typeE.cpp",
@@ -385,188 +98,186 @@
               "RelativeToolTip": "Game\\Ennemies_typeE.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-22T08:58:26.921Z"
+              "WhenOpened": "2024-04-24T14:09:38.232Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Ennemies_typeD.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeD.cpp",
-              "RelativeDocumentMoniker": "Game\\Ennemies_typeD.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies_typeD.cpp",
-              "RelativeToolTip": "Game\\Ennemies_typeD.cpp",
+              "DocumentIndex": 4,
+              "Title": "Event.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Event.cpp",
+              "RelativeDocumentMoniker": "Game\\Event.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Event.cpp",
+              "RelativeToolTip": "Game\\Event.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-22T09:41:46.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Ennemies_typeC.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeC.cpp",
-              "RelativeDocumentMoniker": "Game\\Ennemies_typeC.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies_typeC.cpp",
-              "RelativeToolTip": "Game\\Ennemies_typeC.cpp",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAAAGoAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T14:30:14.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Ennemies_typeB.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeB.cpp",
-              "RelativeDocumentMoniker": "Game\\Ennemies_typeB.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies_typeB.cpp",
-              "RelativeToolTip": "Game\\Ennemies_typeB.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-21T08:18:17.803Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Ennemies_typeA.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies_typeA.cpp",
-              "RelativeDocumentMoniker": "Game\\Ennemies_typeA.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies_typeA.cpp",
-              "RelativeToolTip": "Game\\Ennemies_typeA.cpp",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAEIAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T14:28:11.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Player.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Player.h",
-              "RelativeDocumentMoniker": "Game\\Player.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Player.h",
-              "RelativeToolTip": "Game\\Player.h",
-              "ViewState": "AQIAAC4AAAAAAAAAAABBwEcAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T08:18:35.032Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Bullet_Round.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Round.h",
-              "RelativeDocumentMoniker": "Game\\Bullet_Round.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Round.h",
-              "RelativeToolTip": "Game\\Bullet_Round.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T08:18:31.072Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Bullet_Straight.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Straight.h",
-              "RelativeDocumentMoniker": "Game\\Bullet_Straight.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Straight.h",
-              "RelativeToolTip": "Game\\Bullet_Straight.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T08:18:31.888Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Item.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Item.h",
-              "RelativeDocumentMoniker": "Game\\Item.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Item.h",
-              "RelativeToolTip": "Game\\Item.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T08:18:33.632Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Object.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Object.h",
-              "RelativeDocumentMoniker": "Game\\Object.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Object.h",
-              "RelativeToolTip": "Game\\Object.h",
-              "ViewState": "AQIAAAcAAAAAAAAAAABBwBEAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-21T08:18:34.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "SomeConst.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\SomeConst.h",
-              "RelativeDocumentMoniker": "Game\\SomeConst.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\SomeConst.h",
-              "RelativeToolTip": "Game\\SomeConst.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:02:25.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Wave.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Wave.h",
-              "RelativeDocumentMoniker": "Game\\Wave.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Wave.h",
-              "RelativeToolTip": "Game\\Wave.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:02:28.155Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "LoadAll.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\LoadAll.h",
-              "RelativeDocumentMoniker": "Game\\LoadAll.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\LoadAll.h",
-              "RelativeToolTip": "Game\\LoadAll.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:02:29.296Z"
+              "WhenOpened": "2024-04-24T14:09:37.377Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Boom.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Boom.h",
-              "RelativeDocumentMoniker": "Game\\Boom.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Boom.h",
-              "RelativeToolTip": "Game\\Boom.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAQAAAA",
+              "Title": "Player.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Player.cpp",
+              "RelativeDocumentMoniker": "Game\\Player.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Player.cpp",
+              "RelativeToolTip": "Game\\Player.cpp",
+              "ViewState": "AQIAAGoCAAAAAAAAAAASwIQCAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T14:01:28.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Item.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Item.cpp",
+              "RelativeDocumentMoniker": "Game\\Item.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Item.cpp",
+              "RelativeToolTip": "Game\\Item.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T13:18:53.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Object.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Object.cpp",
+              "RelativeDocumentMoniker": "Game\\Object.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Object.cpp",
+              "RelativeToolTip": "Game\\Object.cpp",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T13:18:50.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Text.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Text.cpp",
+              "RelativeDocumentMoniker": "Game\\Text.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Text.cpp",
+              "RelativeToolTip": "Game\\Text.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T13:18:47.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Main.cpp",
+              "RelativeDocumentMoniker": "Game\\Main.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Main.cpp",
+              "RelativeToolTip": "Game\\Main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T13:18:46.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Declaration.h",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Declaration.h",
+              "RelativeDocumentMoniker": "Game\\Declaration.h",
+              "ToolTip": "D:\\Game\\Game\\Game\\Declaration.h",
+              "RelativeToolTip": "Game\\Declaration.h",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADsAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-22T09:03:36.234Z",
+              "WhenOpened": "2024-04-24T13:13:30.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Bullet_Straight.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Straight.cpp",
+              "RelativeDocumentMoniker": "Game\\Bullet_Straight.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Straight.cpp",
+              "RelativeToolTip": "Game\\Bullet_Straight.cpp",
+              "ViewState": "AQIAACIAAAAAAAAAAAAswE0AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T11:04:08.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Bullet_Round.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Bullet_Round.cpp",
+              "RelativeDocumentMoniker": "Game\\Bullet_Round.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Bullet_Round.cpp",
+              "RelativeToolTip": "Game\\Bullet_Round.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T11:04:03.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Declaration.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Declaration.cpp",
+              "RelativeDocumentMoniker": "Game\\Declaration.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Declaration.cpp",
+              "RelativeToolTip": "Game\\Declaration.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T10:55:16.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Boss.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Boss.cpp",
+              "RelativeDocumentMoniker": "Game\\Boss.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Boss.cpp",
+              "RelativeToolTip": "Game\\Boss.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T10:55:14.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Ennemies.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\Ennemies.cpp",
+              "RelativeDocumentMoniker": "Game\\Ennemies.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\Ennemies.cpp",
+              "RelativeToolTip": "Game\\Ennemies.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T10:55:12.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoadAll.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\LoadAll.cpp",
+              "RelativeDocumentMoniker": "Game\\LoadAll.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\LoadAll.cpp",
+              "RelativeToolTip": "Game\\LoadAll.cpp",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAPMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-24T10:53:50.898Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Boss.h",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Boss.h",
-              "RelativeDocumentMoniker": "Game\\Boss.h",
-              "ToolTip": "D:\\Game\\Game\\Game\\Boss.h",
-              "RelativeToolTip": "Game\\Boss.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-19T16:18:11.99Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Wave.cpp",
-              "DocumentMoniker": "D:\\Game\\Game\\Game\\Wave.cpp",
-              "RelativeDocumentMoniker": "Game\\Wave.cpp",
-              "ToolTip": "D:\\Game\\Game\\Game\\Wave.cpp",
-              "RelativeToolTip": "Game\\Wave.cpp",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAUwFkAAAAqAAAA",
+              "DocumentIndex": 1,
+              "Title": "FindAngle.cpp",
+              "DocumentMoniker": "D:\\Game\\Game\\Game\\FindAngle.cpp",
+              "RelativeDocumentMoniker": "Game\\FindAngle.cpp",
+              "ToolTip": "D:\\Game\\Game\\Game\\FindAngle.cpp",
+              "RelativeToolTip": "Game\\FindAngle.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-20T15:22:10.364Z"
+              "WhenOpened": "2024-04-24T10:53:50.099Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 113,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

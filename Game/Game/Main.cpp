@@ -4,7 +4,7 @@
 #include "Event.h"
 #include"LoadAll.h"
 bool init() {
-	gWindow = SDL_CreateWindow("taplamgame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	gWindow = SDL_CreateWindow("vuxuandung_2k5", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
 		
 		cout<< "Window could not be created!" << SDL_GetError();
@@ -24,6 +24,9 @@ bool init() {
 	else if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 3, 2048) < 0) {
 		success = false;
 	}
+	else if (TTF_Init() < 0) {
+		success = false;
+	}
 	return success;
 }
 int main(int argc, char* args[]) {
@@ -37,7 +40,7 @@ int main(int argc, char* args[]) {
 		Mix_PlayMusic(music_menu, -1);
 		while (!quit)
 		{
-	/*	   int start = SDL_GetTicks();*/
+       	   /*int start = SDL_GetTicks();*/
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
@@ -46,7 +49,6 @@ int main(int argc, char* args[]) {
 				}
 				checkEvent(e);
 			}
-		
 			if (screen_status == PAUSE) {
 				loadPauseScreen();
 			}
@@ -56,9 +58,11 @@ int main(int argc, char* args[]) {
 			else if (screen_status == HOME) {
 				loadHomeScreen();
 			}
-		  /*  int end = SDL_GetTicks();
-			cout << 1000 / 60 - end + start << endl;
-			SDL_Delay(1000 / 60- end + start);*/
+			else if (screen_status == GAMEOVER) {
+				loadGameover();
+			}
+		   /* int end = SDL_GetTicks();
+			SDL_Delay(1000 / 65 - end + start);*/
 		}
 		
 	}
