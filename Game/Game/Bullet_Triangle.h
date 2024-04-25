@@ -1,6 +1,6 @@
 #pragma once
 #include "Bullet_Straight.h"
-class Bullet_Round :public Bullet_Straight
+class Bullet_Triangle :public Bullet_Straight
 {
 public:
 
@@ -11,6 +11,6 @@ public:
 	int R_increase_time = 0;
 	double angle_first;
 	void set();
-	void RenderBullet_Round();
+	void RenderBullet_Triangle();
 };
 

@@ -5,6 +5,7 @@
 class Ennemies_typeD : public Ennemies
 {
 public:
+	int score = 15;
 	int load_reborn_time = 0;
 	int load_bullet_ennemies_D_time = 0;
 	double speed = 1;

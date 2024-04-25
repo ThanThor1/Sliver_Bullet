@@ -5,8 +5,8 @@ class Text
 public:
 	int start_count = 0;
 	int photo = 0;
-	int x;
-	int y;
+	int center_x;
+	int center_y;
 	int width;
 	int height;
 	TTF_Font* font;

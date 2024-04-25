@@ -13,18 +13,3 @@ void loadAllText();
 //
 //
 //
-void renewAll();  // bao gồm 2 cái dưới
-void renewAllPlayer();
-void renewAllBullet();
-void renewAllItem();
-void renewAllEnnemies();
-//
-//
-int Rand(int a, int b);
-//
-void loadFightBackGround();
-void loadPauseButton();
-void loadPauseScreen();
-void loadFightScreen();
-void loadHomeScreen();
-void loadGameover();

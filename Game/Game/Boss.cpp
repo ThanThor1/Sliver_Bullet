@@ -1,9 +1,9 @@
 ﻿#include "Boss.h"
-#include "FindAngle.h"
+#include "SomeFunction.h"
 #include "Declaration.h"
 // di chuyển 
 bool Boss::checkExist() {
-	checkHit(health);
+	checkHit(health,score);
 	if (health <= 0) {
 		exist = false;
 	}
@@ -111,21 +111,21 @@ void Boss::loadShoot() {
 	//
 	//
 
-	/*load_bullet_round_time = (load_bullet_round_time + 1) % 501;
-	if (bullet_round_index == NUMBER_BULLET) {
-		bullet_round_index = 0;
+	/*load_bullet_triangle_time = (load_bullet_triangle_time + 1) % 501;
+	if (bullet_triangle_index == NUMBER_BULLET) {
+		bullet_triangle_index = 0;
 	}
-	if (load_bullet_round_time == 500) {
-		bullet_round[bullet_round_index].bullet_virtual.center_start_x = bullet_round[bullet_round_index].bullet_virtual.center_x = center_x;
-		bullet_round[bullet_round_index].bullet_virtual.center_start_y = bullet_round[bullet_round_index].bullet_virtual.center_y = center_y;
-		bullet_round[bullet_round_index].bullet_virtual.angle = FindAngle(center_x, center_y , player.center_x , player.center_y );
-		bullet_round[bullet_round_index].exist = true;
-		bullet_round[bullet_round_index].bullet_virtual.exist = true;
-		bullet_round[bullet_round_index].set();
-		bullet_round_index++;
+	if (load_bullet_triangle_time == 500) {
+		bullet_triangle[bullet_triangle_index].bullet_virtual.center_start_x = bullet_triangle[bullet_triangle_index].bullet_virtual.center_x = center_x;
+		bullet_triangle[bullet_triangle_index].bullet_virtual.center_start_y = bullet_triangle[bullet_triangle_index].bullet_virtual.center_y = center_y;
+		bullet_triangle[bullet_triangle_index].bullet_virtual.angle = FindAngle(center_x, center_y , player.center_x , player.center_y );
+		bullet_triangle[bullet_triangle_index].exist = true;
+		bullet_triangle[bullet_triangle_index].bullet_virtual.exist = true;
+		bullet_triangle[bullet_triangle_index].set();
+		bullet_triangle_index++;
 	}*/
 
-	load_boom_time = (load_boom_time + 1) % 7002;
+	/*load_boom_time = (load_boom_time + 1) % 7002;
 	if (load_boom_time == 2200) {
 		for (int i = 0; i < boom_index; i++) {
 			boom[i].explode_bool = true;
@@ -144,108 +144,106 @@ void Boss::loadShoot() {
 		for (int i = 0; i < boom_index; i++) {
 			boom[i].warning_bool = false;
 		}
-	}
+	}*/
 }
 void Boss::free() {
 
 }
 void Boss::RenderMiniBoss() {
-	//int a = 0;
-	//if (bool_load_bullet_level[0] == true) {
-	//	bullet_level[0][bullet_level_index[0]].center_start_x = bullet_level[0][bullet_level_index[0]].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0]].center_start_y = bullet_level[0][bullet_level_index[0]].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0]].renderRatio();
-	//	bullet_level[0][bullet_level_index[0]].ratio = bullet_level_ratio[0];
-	//	bullet_level_ratio[0] += 0.001;
-	//	if (bullet_level_ratio[0] >= 1.0) {
-	//		bullet_level_ratio[0] = 1;
-	//	}
-	//}
-	//a += 120;
-	//if (bool_load_bullet_level[1] == true) {
-	//	bullet_level[0][bullet_level_index[0] + 1].center_start_x = bullet_level[0][bullet_level_index[0] + 1].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0] + 1].center_start_y = bullet_level[0][bullet_level_index[0] + 1].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0] + 1].renderRatio();
-	//	bullet_level[0][bullet_level_index[0] + 1].ratio = bullet_level_ratio[1];
-	//	bullet_level_ratio[1] += 0.001;
-	//	if (bullet_level_ratio[1] >= 1) {
-	//		bullet_level_ratio[1] = 1.0;
-	//	}
-	//}
-	//a += 120;
-	//if (bool_load_bullet_level[2] == true) {
-	//	bullet_level[0][bullet_level_index[0] + 2].center_start_x = bullet_level[0][bullet_level_index[0] + 2].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0] + 2].center_start_y = bullet_level[0][bullet_level_index[0] + 2].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
-	//	bullet_level[0][bullet_level_index[0] + 2].renderRatio();
-	//	bullet_level[0][bullet_level_index[0] + 2].ratio = bullet_level_ratio[2];
-	//	bullet_level_ratio[2] += 0.001;
-	//	cout << bullet_level_ratio[2] << endl;
-	//	if (bullet_level_ratio[2] >= 1) {
-	//		bullet_level_ratio[2] = 1.0;
-	//		start_dem_time = true;
-	//	}
-	//}
-	//SDL_Rect b4 = { mini_boss_center_1.width / 2  , 0 ,  mini_boss_center_1.width / 2, mini_boss_center_1.height };
-	//mini_boss_center_1.frameth = 2;
-	//staff_mini_boss_1.center_x = mini_boss_center_1.center_x + mini_boss_center_1.width / 2;
-	//staff_mini_boss_1.center_y = mini_boss_center_1.center_y + 10;
-	//if (load_bullet_level_time > 400 && load_bullet_level_time < 500) {
-	//	staff_mini_boss_1.angle -= 0.5;
-	//}
-	//else if (load_bullet_level_time > 500 && load_bullet_level_time < 600) {
-	//	staff_mini_boss_1.angle += 0.5;
-	//}
-	//else if (load_bullet_level_time > 900 && load_bullet_level_time < 1000) {
-	//	staff_mini_boss_1.angle -= 0.5;
-	//}
-	//else if (load_bullet_level_time > 1000 && load_bullet_level_time < 1100) {
-	//	staff_mini_boss_1.angle += 0.5;
-	//}
-	//else if (load_bullet_level_time > 1400 && load_bullet_level_time < 1500) {
-	//	staff_mini_boss_1.angle -= 0.5;
-	//}
-	//else if (load_bullet_level_time > 1500 && load_bullet_level_time < 1600) {
-	//	staff_mini_boss_1.angle += 0.5;
-	//}
-	//else {
-	//	mini_boss_center_1.frameth = 1;
-	//}
-	//mini_boss_center_1.render();
-	//staff_mini_boss_1.render();
-	//if (start_dem_time == true) {
-	//	load_bullet_level_time = (load_bullet_level_time + 1) % 1801;
-	//}
-	//if (load_bullet_level_time == 500) {
-	//	bullet_level[0][bullet_level_index[0]].angle = 1.0 * Rand(0, 70);
-	//	bullet_level[0][bullet_level_index[0]].exist = true;
-	//	bool_load_bullet_level[0] = false;
-	//}
-	//else if (load_bullet_level_time == 1000) {
-	//	staff_mini_boss_1.angle -= 0.1;
-	//	bullet_level[0][bullet_level_index[0] + 1].angle = 1.0 * Rand(0, 70);
-	//	bullet_level[0][bullet_level_index[0] + 1].exist = true;
-	//	bool_load_bullet_level[1] = false;
-	//}
-	//else if (load_bullet_level_time == 1500) {
-	//	bullet_level[0][bullet_level_index[0] + 2].angle = 1.0 * Rand(0, 70);
-	//	bullet_level[0][bullet_level_index[0] + 2].exist = true;
-	//	bool_load_bullet_level[2] = false;
-	//}
-	//else if (load_bullet_level_time == 1800) {
-	//	bullet_level_index[0] += 3;
-	//	bullet_level_ratio[0] = 0.0;
-	//	bullet_level_ratio[1] = 0.0;
-	//	bullet_level_ratio[2] = 0.0;
-	//	bool_load_bullet_level[0] = bool_load_bullet_level[1] = bool_load_bullet_level[2] = true;
-	//	load_bullet_level_time = 0;
-	//	start_dem_time = false;
-	//}
-
-	/*for (int i = 0; i < 2; i++) {
+	int a = 0;
+	if (bool_load_bullet_level[0] == true) {
+		bullet_level[0][bullet_level_index[0]].center_start_x = bullet_level[0][bullet_level_index[0]].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0]].center_start_y = bullet_level[0][bullet_level_index[0]].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0]].renderRatio();
+		bullet_level[0][bullet_level_index[0]].ratio = bullet_level_ratio[0];
+		bullet_level_ratio[0] += 0.001;
+		if (bullet_level_ratio[0] >= 1.0) {
+			bullet_level_ratio[0] = 1;
+		}
+	}
+	a += 120;
+	if (bool_load_bullet_level[1] == true) {
+		bullet_level[0][bullet_level_index[0] + 1].center_start_x = bullet_level[0][bullet_level_index[0] + 1].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0] + 1].center_start_y = bullet_level[0][bullet_level_index[0] + 1].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0] + 1].renderRatio();
+		bullet_level[0][bullet_level_index[0] + 1].ratio = bullet_level_ratio[1];
+		bullet_level_ratio[1] += 0.001;
+		if (bullet_level_ratio[1] >= 1) {
+			bullet_level_ratio[1] = 1.0;
+		}
+	}
+	a += 120;
+	if (bool_load_bullet_level[2] == true) {
+		bullet_level[0][bullet_level_index[0] + 2].center_start_x = bullet_level[0][bullet_level_index[0] + 2].center_x = mini_boss_center_1.center_x + R_mini_boss * cos((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0] + 2].center_start_y = bullet_level[0][bullet_level_index[0] + 2].center_y = mini_boss_center_1.center_y + R_mini_boss * sin((angle_first_mini_boss + a + 90) * PI / 180);
+		bullet_level[0][bullet_level_index[0] + 2].renderRatio();
+		bullet_level[0][bullet_level_index[0] + 2].ratio = bullet_level_ratio[2];
+		bullet_level_ratio[2] += 0.001;
+		if (bullet_level_ratio[2] >= 1) {
+			bullet_level_ratio[2] = 1.0;
+			start_load_shoot_bullet_level_time = true;
+		}
+	}
+	SDL_Rect b4 = { mini_boss_center_1.width / 2  , 0 ,  mini_boss_center_1.width / 2, mini_boss_center_1.height };
+	mini_boss_center_1.frameth = 2;
+	staff_mini_boss_1.center_x = mini_boss_center_1.center_x + mini_boss_center_1.width / 2;
+	staff_mini_boss_1.center_y = mini_boss_center_1.center_y + 10;
+	if (load_bullet_level_time > 400 && load_bullet_level_time < 500) {
+		staff_mini_boss_1.angle -= 0.5;
+	}
+	else if (load_bullet_level_time > 500 && load_bullet_level_time < 600) {
+		staff_mini_boss_1.angle += 0.5;
+	}
+	else if (load_bullet_level_time > 900 && load_bullet_level_time < 1000) {
+		staff_mini_boss_1.angle -= 0.5;
+	}
+	else if (load_bullet_level_time > 1000 && load_bullet_level_time < 1100) {
+		staff_mini_boss_1.angle += 0.5;
+	}
+	else if (load_bullet_level_time > 1400 && load_bullet_level_time < 1500) {
+		staff_mini_boss_1.angle -= 0.5;
+	}
+	else if (load_bullet_level_time > 1500 && load_bullet_level_time < 1600) {
+		staff_mini_boss_1.angle += 0.5;
+	}
+	else {
+		mini_boss_center_1.frameth = 1;
+	}
+	mini_boss_center_1.render();
+	staff_mini_boss_1.render();
+	if (start_load_shoot_bullet_level_time == true) {
+		load_bullet_level_time = (load_bullet_level_time + 1) % 1801;
+	}
+	if (load_bullet_level_time == 500) {
+		bullet_level[0][bullet_level_index[0]].angle = 1.0 * Rand(0, 70);
+		bullet_level[0][bullet_level_index[0]].exist = true;
+		bool_load_bullet_level[0] = false;
+	}
+	else if (load_bullet_level_time == 1000) {
+		staff_mini_boss_1.angle -= 0.1;
+		bullet_level[0][bullet_level_index[0] + 1].angle = 1.0 * Rand(0, 70);
+		bullet_level[0][bullet_level_index[0] + 1].exist = true;
+		bool_load_bullet_level[1] = false;
+	}
+	else if (load_bullet_level_time == 1500) {
+		bullet_level[0][bullet_level_index[0] + 2].angle = 1.0 * Rand(0, 70);
+		bullet_level[0][bullet_level_index[0] + 2].exist = true;
+		bool_load_bullet_level[2] = false;
+	}
+	else if (load_bullet_level_time == 1800) {
+		bullet_level_index[0] += 3;
+		bullet_level_ratio[0] = 0.0;
+		bullet_level_ratio[1] = 0.0;
+		bullet_level_ratio[2] = 0.0;
+		bool_load_bullet_level[0] = bool_load_bullet_level[1] = bool_load_bullet_level[2] = true;
+		load_bullet_level_time = 0;
+		start_load_shoot_bullet_level_time = false;
+	}
+	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < NUMBER_BULLET * 25; j++) {
 			if (bullet_level[i][j].exist == true) {
 				if (bullet_level[i][j].center_y >= SCREEN_HEIGHT) {
-					int a = 90 + 36;
+					int a = 90 + Rand(0, 72);
 					for (int h = 1; h <= 4; h++) {
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_x = bullet_level[i + 1][bullet_level_index[i + 1]].center_x = bullet_level[i][j].center_x;
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_y = bullet_level[i + 1][bullet_level_index[i + 1]].center_y = bullet_level[i][j].center_y - 10;
@@ -256,8 +254,8 @@ void Boss::RenderMiniBoss() {
 					}
 					bullet_level[i][j].exist = false;
 				}
-				if (bullet_level[i][j].center_y <= 0) {
-					int a = 270 + 36;
+				else if (bullet_level[i][j].center_y <= 0) {
+					int a = 270 + Rand(0, 72);
 					for (int h = 1; h <= 4; h++) {
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_x = bullet_level[i + 1][bullet_level_index[i + 1]].center_x = bullet_level[i][j].center_x;
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_y = bullet_level[i + 1][bullet_level_index[i + 1]].center_y = bullet_level[i][j].center_y + 10;
@@ -268,8 +266,8 @@ void Boss::RenderMiniBoss() {
 					}
 					bullet_level[i][j].exist = false;
 				}
-				if (bullet_level[i][j].center_x >= SCREEN_WIDTH) {
-					int a = 36;
+				else if (bullet_level[i][j].center_x >= SCREEN_WIDTH) {
+					int a = Rand(0, 72);
 					for (int h = 1; h <= 4; h++) {
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_x = bullet_level[i + 1][bullet_level_index[i + 1]].center_x = bullet_level[i][j].center_x - 10;
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_y = bullet_level[i + 1][bullet_level_index[i + 1]].center_y = bullet_level[i][j].center_y;
@@ -280,8 +278,8 @@ void Boss::RenderMiniBoss() {
 					}
 					bullet_level[i][j].exist = false;
 				}
-				if (bullet_level[i][j].center_x <= 0) {
-					int a = 180 + 36;
+				else if (bullet_level[i][j].center_x <= 0) {
+					int a = 180 + Rand(0, 72);
 					for (int h = 1; h <= 4; h++) {
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_x = bullet_level[i + 1][bullet_level_index[i + 1]].center_x = bullet_level[i][j].center_x + 10;
 						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_y = bullet_level[i + 1][bullet_level_index[i + 1]].center_y = bullet_level[i][j].center_y;
@@ -292,9 +290,23 @@ void Boss::RenderMiniBoss() {
 					}
 					bullet_level[i][j].exist = false;
 				}
+				else if (((bullet_level[i][j].center_x - mini_boss_center_1.center_x) * (bullet_level[i][j].center_x - mini_boss_center_1.center_x)
+					+ (bullet_level[i][j].center_y - mini_boss_center_1.center_y) * (bullet_level[i][j].center_y - mini_boss_center_1.center_y)
+					>= 160000) && i == 0) {
+					int a = Rand(0, 36);
+					for (int h = 1; h <= 5; h++) {
+						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_x = bullet_level[i + 1][bullet_level_index[i + 1]].center_x = bullet_level[i][j].center_x + 10;
+						bullet_level[i + 1][bullet_level_index[i + 1]].center_start_y = bullet_level[i + 1][bullet_level_index[i + 1]].center_y = bullet_level[i][j].center_y;
+						bullet_level[i + 1][bullet_level_index[i + 1]].angle = a;
+						bullet_level[i + 1][bullet_level_index[i + 1]].exist = true;
+						a += 72;
+						bullet_level_index[i + 1] += 1;
+					}
+					bullet_level[i][j].exist = false;
+				}
 			}
 		}
-	}*/
+	}
 	/*mini_boss_center_2.frameth = 2;
     star_dem_time= (star_dem_time+1)%5000;
 	if (star_dem_time <= 2500) {

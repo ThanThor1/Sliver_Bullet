@@ -48,8 +48,8 @@ Object fight_screen_score;
 Text score_fight_screen_text;
 Object Heart[3];
 int wave_number = 0;
-int score = 0;
-int aliens_defeated = 0;
+int score_number = 0;
+int aliens_defeated_number= 0;
 // icon in game over
 Object gameover_screen_background;
 Object gameover_screen_home;
@@ -73,13 +73,15 @@ Object lazer[2];
 Object head_lazer[2];
 Object lazer_warning_red[2];
 Object lazer_warning_green[2];
+Bullet_Straight bullet_around_boss[NUMBER_BULLET];
+int bullet_around_boss_index =0;
 Boom boom[NUMBER_BULLET];
 int boom_index = 0;
 int star_coordinates[100][3];
 Bullet_Straight star[1000];
 int star_index = 0;
-Bullet_Round bullet_round[NUMBER_BULLET];
-int bullet_round_index = 0;
+Bullet_Triangle bullet_triangle[NUMBER_BULLET];
+int bullet_triangle_index = 0;
 Bullet_Straight bullet_level[3][NUMBER_BULLET * 25];
 int bullet_level_index[3];
 /// <summary>
@@ -137,7 +139,7 @@ Mix_Chunk* chunk_shoot;
 Mix_Chunk* chunk_explode1;
 Mix_Chunk* chunk_explode2;
 Mix_Chunk* chunk_item;
-
+Mix_Chunk* chunk_gameover;
 
 
 

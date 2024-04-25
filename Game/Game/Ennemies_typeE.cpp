@@ -1,10 +1,9 @@
 ﻿
-#include "FindAngle.h"
 #include "Declaration.h"
 #include "Ennemies_typeE.h"
 // di chuyển 
 bool Ennemies_typeE::checkExist() {
-	checkHit(health);
+	checkHit(health,score);
 	if (health <= 0) {
 		exist = false;
 	}
@@ -49,7 +48,6 @@ void Ennemies_typeE::loadShoot() {
 		bullet_ennemies_E_index++;
 	}
 }
-
 void Ennemies_typeE::free() {
 	center_x = 0;
 	center_y = 0;

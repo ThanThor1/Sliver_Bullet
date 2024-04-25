@@ -3,6 +3,7 @@
 #include"Declaration.h"
 #include "Event.h"
 #include"LoadAll.h"
+#include"RenderScreen.h"
 bool init() {
 	gWindow = SDL_CreateWindow("vuxuandung_2k5", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
@@ -40,7 +41,7 @@ int main(int argc, char* args[]) {
 		Mix_PlayMusic(music_menu, -1);
 		while (!quit)
 		{
-       	   /*int start = SDL_GetTicks();*/
+       	   int start = SDL_GetTicks();
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
@@ -59,10 +60,13 @@ int main(int argc, char* args[]) {
 				loadHomeScreen();
 			}
 			else if (screen_status == GAMEOVER) {
-				loadGameover();
+				loadGameoverScreen();
 			}
-		   /* int end = SDL_GetTicks();
-			SDL_Delay(1000 / 65 - end + start);*/
+		    int end = SDL_GetTicks();
+			cout << 1000 / 120 - end + start << endl;
+			if (quit != true && (1000 / 120 - end + start)>0) {
+				SDL_Delay(1000 / 120 - end + start);
+			}
 		}
 		
 	}

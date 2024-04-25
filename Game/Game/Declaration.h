@@ -15,10 +15,9 @@
 #include "Item.h"
 #include "Library.h"
 #include "Boss.h"
-#include "Bullet_Round.h"
+#include "bullet_triangle.h"
 #include "Boom.h"
 #include "Text.h"
-
 /// <summary>
 /// some_bool
 /// </summary>
@@ -67,8 +66,8 @@ extern Object fight_screen_score;
 extern Text score_fight_screen_text;
 extern Object Heart[3];
 extern int wave_number;
-extern int score;
-extern int aliens_defeated;
+extern int score_number;
+extern int aliens_defeated_number;
 // icon in game over
 extern Object gameover_screen_background;
 extern Object gameover_screen_home;
@@ -97,8 +96,8 @@ extern int boom_index;
 extern int star_coordinates[100][3];
 extern Bullet_Straight star[1000];
 extern int star_index;
-extern Bullet_Round bullet_round[NUMBER_BULLET];
-extern int bullet_round_index;
+extern Bullet_Triangle bullet_triangle[NUMBER_BULLET];
+extern int bullet_triangle_index;
 extern Bullet_Straight bullet_level[3][NUMBER_BULLET * 25];
 extern int bullet_level_index[3];
 /// <summary>
@@ -156,5 +155,5 @@ extern Mix_Chunk* chunk_shoot;
 extern Mix_Chunk* chunk_explode1;
 extern Mix_Chunk* chunk_explode2;
 extern Mix_Chunk* chunk_item;
-
+extern Mix_Chunk* chunk_gameover;
 #endif

@@ -2,7 +2,7 @@
 #include"Declaration.h"
 // di chuyển 
 bool Ennemies_typeA::checkExist() {
-	checkHit(health);
+	checkHit(health,score);
 	if (health <= 0) {
 		exist = false;
 	}

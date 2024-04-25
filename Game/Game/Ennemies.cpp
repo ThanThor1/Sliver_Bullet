@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include"Ennemies.h"
+
 #include"Declaration.h"
 #include "LoadAll.h"
 void Ennemies::getStart(int start_x1, int start_y1) {
@@ -18,7 +19,7 @@ void  Ennemies::getDeltaxy() {
 	center_delta_x = center_finish_x - center_start_x;
 	center_delta_y = center_finish_y - center_start_y;
 }
-void Ennemies::checkHit(int& health) {
+void Ennemies::checkHit(int& health, int score) {
 	for (int i = 0; i < NUMBER_BULLET; i++) {
 		for (int j = 0; j < 2; j++) {
 			if (health > 0) {
@@ -159,9 +160,11 @@ void Ennemies::checkHit(int& health) {
 		death.frameth =  death.photo / 10;
 		death.alpha -= death.photo * 2;
 		death.render();
+		plus_score.loadText("+" + to_string(score), center_x - 15, center_y);
 		death.photo = (death.photo + 1) % 72;
 		if (death.photo > 70) {
-			aliens_defeated++;
+			aliens_defeated_number++;
+			score_number+= score;
 			loadBuff();
 			death.exist = true;
 			death.alpha = 255;

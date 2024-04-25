@@ -136,7 +136,7 @@
   <ItemGroup>
     <ClCompile Include="Boom.cpp" />
     <ClCompile Include="Boss.cpp" />
-    <ClCompile Include="Bullet_Round.cpp" />
+    <ClCompile Include="Bullet_Triangle.cpp" />
     <ClCompile Include="Ennemies.cpp" />
     <ClCompile Include="Ennemies_typeA.cpp" />
     <ClCompile Include="Ennemies_typeB.cpp" />
@@ -152,15 +152,17 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Bullet_Straight.cpp" />
+    <ClCompile Include="RenderScreen.cpp" />
+    <ClCompile Include="RenewAllcpp.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boom.h" />
     <ClInclude Include="Boss.h" />
-    <ClInclude Include="Bullet_Round.h" />
+    <ClInclude Include="Bullet_Triangle.h" />
     <ClInclude Include="Ennemies_typeE.h" />
-    <ClInclude Include="FindAngle.h" />
+    <ClInclude Include="SomeFunction.h" />
     <ClInclude Include="Declaration.h" />
     <ClInclude Include="Ennemies.h" />
     <ClInclude Include="Ennemies_typeA.h" />
@@ -168,13 +170,14 @@
     <ClInclude Include="Ennemies_typeC.h" />
     <ClInclude Include="Ennemies_typeD.h" />
     <ClInclude Include="Event.h" />
-    <ClInclude Include="IncludeAll.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadAll.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Bullet_Straight.h" />
+    <ClInclude Include="RenderScreen.h" />
+    <ClInclude Include="RenewAll.h" />
     <ClInclude Include="SomeConst.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Wave.h" />

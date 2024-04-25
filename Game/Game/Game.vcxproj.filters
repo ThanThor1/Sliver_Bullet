@@ -22,12 +22,6 @@
     <Filter Include="Header Files\Non class">
       <UniqueIdentifier>{0d75ab9a-e4e4-496d-9ba4-71eb240b0da8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Load all">
-      <UniqueIdentifier>{c82bacb5-626b-4085-9fe2-188cf76895e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Load all">
-      <UniqueIdentifier>{66f110bd-7bd1-4ad2-9f95-89c016c606e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Other class">
       <UniqueIdentifier>{fa0febf1-1623-4901-b726-17e9d5c55213}</UniqueIdentifier>
     </Filter>
@@ -36,6 +30,12 @@
     </Filter>
     <Filter Include="Resource Files\Non class">
       <UniqueIdentifier>{81456d73-779a-4b8c-ad58-bf6fb7e532f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Load">
+      <UniqueIdentifier>{c82bacb5-626b-4085-9fe2-188cf76895e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Load">
+      <UniqueIdentifier>{66f110bd-7bd1-4ad2-9f95-89c016c606e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,10 +55,10 @@
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
-      <Filter>Resource Files\Load all</Filter>
+      <Filter>Resource Files\Load</Filter>
     </ClCompile>
     <ClCompile Include="Wave.cpp">
-      <Filter>Resource Files\Load all</Filter>
+      <Filter>Resource Files\Load</Filter>
     </ClCompile>
     <ClCompile Include="Bullet_Straight.cpp">
       <Filter>Resource Files\Other class</Filter>
@@ -72,9 +72,6 @@
     <ClCompile Include="Ennemies_typeD.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
-    <ClCompile Include="FindAngle.cpp">
-      <Filter>Resource Files\Non class</Filter>
-    </ClCompile>
     <ClCompile Include="Ennemies_typeE.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
@@ -87,17 +84,26 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet_Round.cpp">
+    <ClCompile Include="Bullet_Triangle.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
-    <ClCompile Include="Boom.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="RenewAllcpp.cpp">
+      <Filter>Resource Files\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderScreen.cpp">
+      <Filter>Resource Files\Load</Filter>
     </ClCompile>
     <ClCompile Include="LoadAll.cpp">
-      <Filter>Resource Files\Non class</Filter>
+      <Filter>Resource Files\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="FindAngle.cpp">
+      <Filter>Resource Files\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="Boom.cpp">
+      <Filter>Resource Files\Other class</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Other class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,13 +119,10 @@
     <ClInclude Include="Ennemies_typeC.h">
       <Filter>Header Files\Ennemies</Filter>
     </ClInclude>
-    <ClInclude Include="FindAngle.h">
+    <ClInclude Include="SomeFunction.h">
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
     <ClInclude Include="Declaration.h">
-      <Filter>Header Files\Non class</Filter>
-    </ClInclude>
-    <ClInclude Include="IncludeAll.h">
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
     <ClInclude Include="SomeConst.h">
@@ -138,13 +141,13 @@
       <Filter>Header Files\Other class</Filter>
     </ClInclude>
     <ClInclude Include="LoadAll.h">
-      <Filter>Header Files\Load all</Filter>
+      <Filter>Header Files\Load</Filter>
     </ClInclude>
     <ClInclude Include="Wave.h">
-      <Filter>Header Files\Load all</Filter>
+      <Filter>Header Files\Load</Filter>
     </ClInclude>
     <ClInclude Include="Event.h">
-      <Filter>Header Files\Load all</Filter>
+      <Filter>Header Files\Load</Filter>
     </ClInclude>
     <ClInclude Include="Ennemies_typeD.h">
       <Filter>Header Files\Ennemies</Filter>
@@ -158,14 +161,20 @@
     <ClInclude Include="Boss.h">
       <Filter>Header Files\Ennemies</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet_Round.h">
+    <ClInclude Include="Bullet_Triangle.h">
+      <Filter>Header Files\Other class</Filter>
+    </ClInclude>
+    <ClInclude Include="RenewAll.h">
+      <Filter>Header Files\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderScreen.h">
+      <Filter>Header Files\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
       <Filter>Header Files\Other class</Filter>
     </ClInclude>
     <ClInclude Include="Boom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Other class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

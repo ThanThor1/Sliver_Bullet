@@ -6,6 +6,7 @@ class Ennemies_typeA : public Ennemies
 {
 public:
 	int load_bullet_ennemies_A_time = 0;
+	int score = 10;
 	double speed = 1;
 	int direction = 1;
 	int health = 10;

@@ -1,6 +1,6 @@
-#include "Bullet_Round.h"
+#include "Bullet_Triangle.h"
 #include "Declaration.h"
-void Bullet_Round::RenderBullet_Round() {
+void Bullet_Triangle::RenderBullet_Triangle() {
 	if (bullet_virtual.exist == true) {
 		R_increase_time = (R_increase_time + 1) % 3;
 		if (R <= 400 && R_increase_time == 2) {
@@ -74,7 +74,7 @@ void Bullet_Round::RenderBullet_Round() {
 		angle_first = 0.5 + angle_first;
 	}
 }
-void Bullet_Round::set() {
+void Bullet_Triangle::set() {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			bullet_around[i][j].exist = true;

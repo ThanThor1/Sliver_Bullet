@@ -7,6 +7,7 @@ class Bullet_Straight : public Object
 {
 public:
 	Object hit;
+	int delay_bullet = 0;
 	SDL_Point* Center = NULL;
 	SDL_Rect* Clip = NULL;
 	bool good = false;

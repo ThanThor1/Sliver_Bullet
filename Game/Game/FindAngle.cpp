@@ -1,4 +1,4 @@
-#include "FindAngle.h"
+#include "SomeFunction.h"
 #include "SomeConst.h"
 #include "Library.h"
 double FindAngle(int x1, int y1, int x2, int y2) {
@@ -31,4 +31,10 @@ double FindAngle(int x1, int y1, int x2, int y2) {
 		angle = 270;
 	}
 	return angle;
+}
+int Rand(int a, int b) {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> dis(a, b);
+	return dis(gen);
 }

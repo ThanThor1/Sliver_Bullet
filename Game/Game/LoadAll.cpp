@@ -12,10 +12,10 @@ void  loadAll() {
 	loadAllText();
 }
 void loadAllText() {
-	score_fight_screen_text.loadFont("font//font.ttf", 33);
-	wave_number_gameover_screen_text.loadFont("font//font.ttf", 30);
-	score_gameover_menu_screen_text.loadFont("font//font.ttf", 30);
-	aliens_defeated_gameover_screen_text.loadFont("font//font.ttf", 30);
+	score_fight_screen_text.loadFont("font//font.ttf", 30);
+	wave_number_gameover_screen_text.loadFont("font//font.ttf", 33);
+	score_gameover_menu_screen_text.loadFont("font//font.ttf", 33);
+	aliens_defeated_gameover_screen_text.loadFont("font//font.ttf", 33);
 }
 void loadAllMap() {
 	cout << MAP;
@@ -92,18 +92,19 @@ void loadAllMap() {
 	}
 }
 void loadAllItem() {
-	item_example[SHIELD].loadFromFile("picture//bullet.png",1);
+	item_example[SHIELD].loadFromFile("picture//item/buff_shield.png",1);
 	item_example[SHIELD].buff_type = SHIELD;
-	item_example[SUPPORT].loadFromFile("picture//bullet.png",1);
+	item_example[SUPPORT].loadFromFile("picture//item/buff_support.png",1);
 	item_example[SUPPORT].buff_type = SUPPORT;
-	item_example[SPEED_BULLET].loadFromFile("picture//bullet.png",1);
+	item_example[SPEED_BULLET].loadFromFile("picture//item/buff_speed.png",1);
 	item_example[SPEED_BULLET].buff_type = SPEED_BULLET;
-	item_example[BULLET_X5].loadFromFile("picture//bullet.png",1);
+	item_example[BULLET_X5].loadFromFile("picture//item/buff_x5.png",1);
 	item_example[BULLET_X5].buff_type = BULLET_X5;
-	item_example[BULLET_X7].loadFromFile("picture//bullet.png",1);
+	item_example[BULLET_X7].loadFromFile("picture//item/buff_x7.png",1);
 	item_example[BULLET_X7].buff_type = BULLET_X7;
 }
 void loadAllSound() {
+	chunk_gameover = Mix_LoadWAV("sound_and_music//chunk_gameover.mp3");
 	music_menu = Mix_LoadMUS("sound_and_music//music_menu.mp3");
 	music_fight = Mix_LoadMUS("sound_and_music//music_fight.mp3");
 	chunk_mouse = Mix_LoadWAV("sound_and_music//chunk_mouse.mp3");
@@ -147,26 +148,31 @@ void loadAllEnnemies() {
 	// ennemies
 	ennemies_A[0].loadFromFile("picture//Ennemies/1.png", 2);
 	ennemies_A[0].death.loadFromFile("picture//Ennemies/death1.png", 7);
+	ennemies_A[0].plus_score.loadFont("font//font.ttf", 20);
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_A[i] = ennemies_A[0];
 	}
 	ennemies_B[0].loadFromFile("picture//Ennemies/2.png", 2);
 	ennemies_B[0].death.loadFromFile("picture//Ennemies/death2.png", 7);
+	ennemies_B[0].plus_score.loadFont("font//font.ttf", 20);
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_B[i] = ennemies_B[0];
 	}
 	ennemies_C[0].loadFromFile("picture//Ennemies/3.png", 1);
 	ennemies_C[0].death.loadFromFile("picture//Ennemies/death3.png", 7);
+	ennemies_C[0].plus_score.loadFont("font//font.ttf", 20);
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_C[i] = ennemies_C[0];
 	}
 	ennemies_D[0].loadFromFile("picture//Ennemies/4.png", 4);
 	ennemies_D[0].death.loadFromFile("picture//Ennemies/death4.png", 7);
+	ennemies_D[0].plus_score.loadFont("font//font.ttf", 20);
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_D[i] = ennemies_D[0];
 	}
 	ennemies_E[0].loadFromFile("picture//Ennemies/5.png", 3);
 	ennemies_E[0].death.loadFromFile("picture//Ennemies/death5.png", 7);
+	ennemies_E[0].plus_score.loadFont("font//font.ttf", 20);
 	for (int i = 0; i < NUMBER_ENNEMIES; i++) {
 		ennemies_E[i] = ennemies_E[0];
 	}
@@ -211,14 +217,14 @@ void loadAllEnnemies() {
 	head_lazer[1] = head_lazer[0];
 	lazer[0].loadFromFile("picture//Boss/lazer.png", 1);
 	lazer[1] = lazer[0];
-	bullet_round[0].bullet_virtual.loadFromFile("picture//Boss/bullet_virtual.png", 1);
+	bullet_triangle[0].bullet_virtual.loadFromFile("picture//Boss/bullet_virtual.png", 1);
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
-			bullet_round[0].bullet_around[i][j].loadFromFile("picture//Boss/bullet_around.png", 1);
+			bullet_triangle[0].bullet_around[i][j].loadFromFile("picture//Boss/bullet_around.png", 1);
 		}
 	}
 	for (int j = 0; j < NUMBER_BULLET; j++) {
-		bullet_round[j] = bullet_round[0];
+		bullet_triangle[j] = bullet_triangle[0];
 	}
 	bullet_level[0][0].loadFromFile("picture//Boss/bullet_level_0.png", 1);
 	bullet_level[1][0].loadFromFile("picture//Boss/bullet_level_1.png", 1);
@@ -291,7 +297,7 @@ void loadAllPlayer() {
 void loadAllIcon() {
 	gameover_screen_home.loadFromFile("picture//gameover_screen/gameover_screen_home.png", 1);
 	gameover_screen_home.center_x = 392;
-	gameover_screen_home.center_y = 858;
+	gameover_screen_home.center_y = 820;
 	gameover_screen_background.loadFromFile("picture//gameover_screen/gameover_screen_background.png", 1);
 	gameover_screen_background.center_x = SCREEN_WIDTH / 2;
 	gameover_screen_background.center_y = SCREEN_HEIGHT / 2;
@@ -339,268 +345,30 @@ void loadAllIcon() {
 	///
 	pause_background.center_x = SCREEN_WIDTH / 2;
 	pause_background.center_y = SCREEN_HEIGHT / 2;
-	pause_screen_continue.center_x = 566;
-	pause_screen_continue.center_y = 874;
-	pause_screen_home.center_x = 270;
-	pause_screen_home.center_y = 874;
+	pause_screen_continue.center_x = 556;
+	pause_screen_continue.center_y = 830;
+	pause_screen_home.center_x = 260;
+	pause_screen_home.center_y = 830;
 	pause_screen_sensitivity_down.center_x = 247;
-	pause_screen_sensitivity_down.center_y = 632;
+	pause_screen_sensitivity_down.center_y = 650;
 	pause_screen_sensitivity_up.center_x = 578;
-	pause_screen_sensitivity_up.center_y = 632;
+	pause_screen_sensitivity_up.center_y = 650;
 	pause_screen_music_pause.center_x = 554;
-	pause_screen_music_pause.center_y = 374;
+	pause_screen_music_pause.center_y = 380;
 	pause_screen_unmusic_pause.center_x = 554;
-	pause_screen_unmusic_pause.center_y = 374;
+	pause_screen_unmusic_pause.center_y = 380;
 	pause_screen_sound_pause.center_x = 270;
-	pause_screen_sound_pause.center_y = 374;
+	pause_screen_sound_pause.center_y = 380;
 	pause_screen_unsound_pause.center_x = 270;
-	pause_screen_unsound_pause.center_y = 374;
+	pause_screen_unsound_pause.center_y = 380;
 	pause_screen_sensitivity[0].center_x = 420;
-	pause_screen_sensitivity[0].center_y = 632;
+	pause_screen_sensitivity[0].center_y = 650;
 	pause_screen_sensitivity[1].center_x = 420;
-	pause_screen_sensitivity[1].center_y = 632;
+	pause_screen_sensitivity[1].center_y = 650;
 	pause_screen_sensitivity[2].center_x = 420;
-	pause_screen_sensitivity[2].center_y = 632;
+	pause_screen_sensitivity[2].center_y = 650;
 	////
 	////
 	
 }
 
-
-
-
-
-void renewAll() {
-	renewAllPlayer();
-	renewAllEnnemies();
-	renewAllBullet();
-	renewAllItem();
-	MAP = 0;
-	loadmap_bool = false;
-	number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E = 0;
-	fight_screen_start.free();
-	fight_screen_gameover.free();
-}
-void renewAllPlayer() {
-	player.free();
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 2; j++) {
-			player.bullet_simple[i][j].free();
-		}
-	}
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 7; j++) {
-			player.bullet_x7[i][j].free();
-		}
-	}
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j < 5; j++) {
-			player.bullet_x5[i][j].free();
-		}
-	}
-	support_1.free();
-	support_2.free();
-	player.bullet_support_1[0].free();
-	player.bullet_support_2[0].free();
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		player.bullet_support_1[i].free();
-		player.bullet_support_2[i].free();
-	}
-}
-void renewAllEnnemies() {
-	//ennemies
-	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
-		ennemies_A[i].free();
-		ennemies_A[i].death.free();
-	}
-	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
-		ennemies_B[i].free();
-		ennemies_B[i].death.free();
-	}
-	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
-		ennemies_C[i].free();
-		ennemies_C[i].death.free();
-	}
-	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
-		ennemies_D[i].free();
-		ennemies_D[i].death.free();
-	}
-	for (int i = 1; i < NUMBER_ENNEMIES; i++) {
-		ennemies_E[i].free();
-		ennemies_E[i].death.free();
-	}
-}
-void renewAllBullet() {
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		bullet_ennemies_A[j].free();
-	}
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		for (int k = 0; k < 3; k++) {
-			bullet_ennemies_B[j][k].free();
-		}
-	}
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		for (int k = 0; k < 4; k++) {
-			bullet_ennemies_C[j][k].free();
-		}
-	}
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		bullet_ennemies_D[j].free();
-	}
-	for (int j = 0; j < NUMBER_BULLET; j++) {
-		bullet_ennemies_E[j].free();
-	}
-}
-void renewAllItem() {
-	for (int i = 0; i < NUMBER_ITEM; i++) {
-		item[i].free();
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void loadFightBackGround() {
-	fight_screen_background.renderbackground();
-	loadPauseButton();
-	for (int i = 0; i <= 2; i++) {
-		if (i >= player.number_of_hearts) {
-			Heart[i].alpha=100;
-		}
-		else Heart[i].alpha=255;
-		Heart[i].render();
-	}
-	pause_button.render();
-
-	fight_screen_score.center_x = 400;
-	fight_screen_score.center_y = 70;
-	fight_screen_score.render();
-	score_fight_screen_text.loadText((": "+to_string(aliens_defeated)).c_str(), 490, 65);
-}
-void loadPauseButton() {
-	if (pre_x >= pause_button.center_x && pre_y >= pause_button.center_y && pre_x <= (pause_button.center_x + pause_button.width) && pre_y <= (pause_button.center_y + pause_button.height)) {
-		pause_button.width = 48;
-		pause_button.height = 63;
-		prepare_to_press_pause = true;
-	}
-	else {
-		pause_button.width = 31;
-		pause_button.height = 51;
-		prepare_to_press_pause = false;
-	}
-}
-void loadPauseScreen() {
-	SDL_RenderClear(gRenderer);
-	SDL_Rect rect = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
-	SDL_RenderCopy(gRenderer, texture, NULL, &rect);
-	pause_background.render();
-	pause_screen_continue.render();
-	pause_screen_home.render();
-	pause_screen_sensitivity_down.render();
-	pause_screen_sensitivity_up.render();
-	if (music_bool == true) {
-		pause_screen_music_pause.render();
-	}
-	else {
-		pause_screen_unmusic_pause.render();
-	}
-	if (sound_bool == true) {
-		pause_screen_sound_pause.render();
-	}
-	else { pause_screen_unsound_pause.render(); }
-
-	pause_screen_sensitivity[player.sensitivity_index].render();
-	SDL_RenderPresent(gRenderer);
-
-}
-void loadFightScreen() {
-
-	SDL_RenderClear(gRenderer);
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	
-	loadFightBackGround();
-	/*if (start.exist == false){
-		SDL_Rect a;
-		if (start.phongto <= 1) {
-			 a = { int(SCREEN_WIDTH / 2 - start.Width * start.phongto * 1 / 2),int(SCREEN_HEIGHT / 2 - start.Height * start.phongto * 1 / 2), int(start.Width *start.phongto),  int(start.Height * start.phongto) };
-		}
-		else
-		{
-			 a = { SCREEN_WIDTH / 2 - start.Width * 1 / 2, SCREEN_HEIGHT / 2 - start.Height *  1 / 2, start.Width,  start.Height};
-		}
-		SDL_RenderCopy(gRenderer, start.Texture, NULL, &a);
-		start.phongto += 0.0025;
-		if (start.phongto >= 2) {
-			start.exist = true;
-		}
-	}*/
-	/*else {*/
-	Wave();
-	//}
-	player.loadFrame();
-	SDL_RenderPresent(gRenderer);
-}
-void loadHomeScreen() {
-
-	SDL_RenderClear(gRenderer);
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	fight_screen_background.renderbackground();
-	
-	home_background.render();
-	home_screen_press_start.dem1 = (home_screen_press_start.dem1 + 1) % 5;
-	home_screen_press_start.dem2 = (home_screen_press_start.dem2 + home_screen_press_start.dem1 / 4) % 30;
-	if (home_screen_press_start.dem2 <= 29 && home_screen_press_start.dem2 >= 10) {
-		home_screen_press_start.render();
-	}
-
-	SDL_RenderPresent(gRenderer);
-}
-void loadGameover() {
-	SDL_RenderClear(gRenderer);
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	gameover_screen_background.render();
-	score_fight_screen_text.photo = (score_fight_screen_text.photo + 1) % 16;
-	if (score_fight_screen_text.start_count < aliens_defeated && score_fight_screen_text.photo %15==0) {
-		score_fight_screen_text.start_count++;
-	}
-	score_fight_screen_text.loadText((to_string(score_fight_screen_text.start_count)).c_str(), 600, 300);
-	gameover_screen_home.render();
-	SDL_RenderPresent(gRenderer);
-}
-int Rand(int a, int b) {
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> dis(a, b);
-	return dis(gen);
-}

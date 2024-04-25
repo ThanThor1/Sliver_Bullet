@@ -19,7 +19,7 @@
 #define DELAY_BULLET 120
 
 const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 1050;
+const int SCREEN_HEIGHT = 1000;
 
 enum screenstatus {
 	PAUSE,

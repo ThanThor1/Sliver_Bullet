@@ -2,7 +2,7 @@
 #include"Player.h"
 #include "Declaration.h"
 #include "Ennemies.h"
-#include "FindAngle.h"
+#include "SomeFunction.h"
 void Player::free()
 {
 	death[0].photo = 0;
@@ -521,19 +521,19 @@ bool Player::checkHit() {
 		}
 		for (int k = 0; k < NUMBER_BULLET; k++) {
 			if (buff_shield == true) {
-				if (checkImpactShield(bullet_round[k].bullet_virtual)) {
+				if (checkImpactShield(bullet_triangle[k].bullet_virtual)) {
 					for (int i = 0; i < 3; i++) {
 						for (int j = 0; j < 3; j++) {
-							bullet_round[k].bullet_around[i][j].good = true;
+							bullet_triangle[k].bullet_around[i][j].good = true;
 						}
 					}
 				}
 			}
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
-					if (bullet_round[k].bullet_around[i][j].exist == true) {
-						if (checkImpactBullet(bullet_round[k].bullet_around[i][j]) && bullet_round[k].bullet_around[i][j].good == false && behit == false) {
-							bullet_round[k].bullet_around[i][j].free();
+					if (bullet_triangle[k].bullet_around[i][j].exist == true) {
+						if (checkImpactBullet(bullet_triangle[k].bullet_around[i][j]) && bullet_triangle[k].bullet_around[i][j].good == false && behit == false) {
+							bullet_triangle[k].bullet_around[i][j].free();
 							number_of_hearts--;
 							return true;
 						}

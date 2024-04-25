@@ -1,6 +1,7 @@
 #include "Event.h"
 #include "Declaration.h"
 #include "LoadAll.h"
+#include "RenewAll.h"
 #include "Player.h"
 void checkEvent(SDL_Event e) {
 	if (screen_status == FIGHT) {

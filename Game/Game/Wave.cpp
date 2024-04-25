@@ -1,6 +1,7 @@
 
 #include "Wave.h"
 #include "Declaration.h"
+#include "RenewAll.h"
 #include "LoadAll.h"
 void Wave() {
 	currentime = SDL_GetTicks();
@@ -12,6 +13,7 @@ void Wave() {
 	win = checkWin();
 	if (win == true ) {
 		if (currentime >= timewave) {
+			wave_number++;
 			loadmap_bool = false;
 			renewAllEnnemies();
 			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E= 0;
@@ -38,7 +40,7 @@ bool  checkWin() {
 	for (int i = 1; i <= number_ennemies_E; i++) {
 		win = win * !ennemies_E[i].checkExist();
 	}
-	/*win = win * !boss.checkExist();*/
+	win = win * !boss.checkExist();
 	return win;
 }
 void RenderBullet() {
@@ -73,11 +75,11 @@ void RenderBullet() {
 		}
 	}
 	for (int k = 0; k < NUMBER_BULLET; k++) {
-		if (bullet_round[k].exist == true) {
-			if (bullet_round[k].bullet_virtual.exist == true) {
-				bullet_round[k].bullet_virtual.RenderBullet_StraightAngle();
+		if (bullet_triangle[k].exist == true) {
+			if (bullet_triangle[k].bullet_virtual.exist == true) {
+				bullet_triangle[k].bullet_virtual.RenderBullet_StraightAngle();
 			}
-			bullet_round[k].RenderBullet_Round();
+			bullet_triangle[k].RenderBullet_Triangle();
 		}
 	}
 	for (int i = 0; i < 3; i++) {

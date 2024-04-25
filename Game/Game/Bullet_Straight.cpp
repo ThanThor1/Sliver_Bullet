@@ -114,33 +114,34 @@ void Bullet_Straight::RenderBullet_StraightAngle() {
 }
 void Bullet_Straight::RenderBullet_Straight() {
 	if (exist == true) {
-		if (center_delta_y == 0 && center_delta_x > 0) {
-			center_x += speed + speedPlus;
-		}
-		else if (center_delta_y == 0 && center_delta_x < 0) {
-			center_x -= speed + speedPlus;
-		}
-		else if (center_delta_y > 0 && center_delta_x == 0) {
-			center_y += speed + speedPlus;
-		}
-		else if (center_delta_y < 0 && center_delta_x == 0) {
-			center_y -= speed + speedPlus;
-		}
-		else {
-			if (slope >= 1) {
-				center_x += round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * center_delta_y / abs(center_delta_y);
-				center_y = round((center_x) / slope + center_start_y * 1.000 - 1.000 * center_start_x / slope);
+		
+			if (center_delta_y == 0 && center_delta_x > 0) {
+				center_x += speed + speedPlus;
 			}
-			else if ((slope <= 1) && (slope >= -1)) {
-				center_y += round((speed + speedPlus) / sqrt(1 + 1.00 * slope * slope)) * 1.0 * center_delta_y / abs(center_delta_y);
-				center_x = round((center_y + 1.000 * center_start_x / slope - center_start_y * 1.000) * slope);
+			else if (center_delta_y == 0 && center_delta_x < 0) {
+				center_x -= speed + speedPlus;
 			}
-			else if ((slope <= -1)) {
-				center_x -= round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * center_delta_y / abs(center_delta_y);
-				center_y = round((center_x) / slope + center_start_y * 1.000 - 1.000 * center_start_x / slope);
+			else if (center_delta_y > 0 && center_delta_x == 0) {
+				center_y += speed + speedPlus;
 			}
-		}
-		render();
+			else if (center_delta_y < 0 && center_delta_x == 0) {
+				center_y -= speed + speedPlus;
+			}
+			else {
+				if (slope >= 1) {
+					center_x += round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * center_delta_y / abs(center_delta_y);
+					center_y = round((center_x) / slope + center_start_y * 1.000 - 1.000 * center_start_x / slope);
+				}
+				else if ((slope <= 1) && (slope >= -1)) {
+					center_y += round((speed + speedPlus) / sqrt(1 + 1.00 * slope * slope)) * 1.0 * center_delta_y / abs(center_delta_y);
+					center_x = round((center_y + 1.000 * center_start_x / slope - center_start_y * 1.000) * slope);
+				}
+				else if ((slope <= -1)) {
+					center_x -= round((speed + speedPlus) / sqrt(1 + 1.00 / (slope * slope))) * 1.0 * center_delta_y / abs(center_delta_y);
+					center_y = round((center_x) / slope + center_start_y * 1.000 - 1.000 * center_start_x / slope);
+				}
+			}
+			render();
 	}
 }
 void Bullet_Straight::RenderBullet_FollowSlope() {
