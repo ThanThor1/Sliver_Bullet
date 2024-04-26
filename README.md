@@ -1,9 +1,7 @@
 [[English]](README_en.md)
 
 # Game Arcadium
-
-- Thử nghiệm game: [https://youtu.be/EyTwTOWr5zU](https://youtu.be/EziCb7U9UbU)
-- Phá đảo game: https://youtu.be/0RQHeCaz4sg
+- Demo game và giới thiệu chính về code game : https://drive.google.com/drive/folders/157-6H2uNI5fIchrmhjj2tJoZPPlyRuhU?usp=sharing
 
 # Giới thiệu game
 
