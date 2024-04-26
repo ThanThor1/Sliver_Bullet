@@ -11,6 +11,9 @@ void renewAll() {
 	prepare_to_press_pause = false;
 	nhanchuot = false;
 	number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E = 0;
+	wave_number_gameover_screen_text.start_count = 0;
+	aliens_defeated_gameover_screen_text.start_count = 0;
+	score_gameover_menu_screen_text.start_count = 0;
 	bullet_ennemies_A_index = 0;
 	bullet_ennemies_B_index = 0;
 	bullet_ennemies_C_index = 0;
