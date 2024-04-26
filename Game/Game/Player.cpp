@@ -5,6 +5,36 @@
 #include "SomeFunction.h"
 void Player::free()
 {
+	dem_death = 0;
+	delay_bullet = 120;
+	sensitivity_index = 1;
+	support_dem = 0;
+	shield_dem = 0;
+	x5_dem = 0;
+	x7_dem = 0;
+	bullet_type = 0;
+	thshield = 0;
+	load_support_time = 0;
+	load_bullet_support_time = 0;
+	thbullet_support = 0;
+	dis_player_support = 0;
+	thbullet_simple = 0;
+	thbullet_x7 = 0;
+	thbullet_x5 = 0;
+	load_bullet_time = 0;
+	//
+	behit = false;
+	behit_dem = 0;
+	doichieu = 1;
+	// khiên
+	buff_shield = false;
+	// hỗ trợ
+	buff_support = false;
+	//
+	buff_speed_bullet = false;
+	// trang thai anh
+	number_of_hearts = 3;
+	// hàm 
 	death[0].photo = 0;
 	death[1].photo = 0;
 	death[2].photo = 0;
@@ -18,8 +48,7 @@ void Player::free()
 	death[0].center_delta_y = 30;
 	death[2].center_delta_y = -25;
 	//support
-	support_1;
-	support_2;
+
 	load_support_time = 0;
 	load_bullet_support_time = 0;
 	thbullet_support = 0;
@@ -31,7 +60,7 @@ void Player::free()
 	//
 	thbullet_x5 = 0;
 	//loại đạn
-	bullet_type = 10;
+	bullet_type = 0;
 	// địa chỉ trên màn hình lúc render ra
 	center_x = 350;
 	center_y = 700;
@@ -42,8 +71,6 @@ void Player::free()
 	buff_shield = false;
 	// hỗ trợ
 	buff_support = false;
-	// lazer
-	buff_lazer = false;
 	// trang thai anh
 	photo = 0;
 	number_of_hearts = 3;
@@ -96,7 +123,7 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 		}
 		if (nhanchuot == true) {
 			SDL_GetMouseState(&now_x, &now_y);
-			if (center_x <= (SCREEN_WIDTH - width) && center_x>= 0 &&center_y>= 0 &&center_y<= (SCREEN_HEIGHT - height)) {
+			if (center_x <= (SCREEN_WIDTH) && center_x>= 0 &&center_y>= 0 &&center_y<= (SCREEN_HEIGHT)) {
 				if (center_x <= (SCREEN_WIDTH) &&center_x>= 0) {
 					center_x += round((now_x - pre_x) * pause_screen_sensitivity[sensitivity_index]);
 				}
@@ -106,14 +133,14 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 				if (center_x <= 0) {
 					center_x = 0;
 				}
-				if (center_x >= (SCREEN_WIDTH - width)) {
-					center_x = (SCREEN_WIDTH - width);
+				if (center_x >= (SCREEN_WIDTH)) {
+					center_x = (SCREEN_WIDTH);
 				}
 				if (center_y <= 0) {
 					center_y = 0;
 				}
-				if (center_y >= (SCREEN_HEIGHT - height)) {
-					center_y = (SCREEN_HEIGHT - height);
+				if (center_y >= (SCREEN_HEIGHT)) {
+					center_y = (SCREEN_HEIGHT);
 				}
 			}
 			pre_x = now_x;
@@ -130,7 +157,6 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 	}
 	else if (number_of_hearts <= 0 && fight_screen_gameover.exist == false) {
 		fight_screen_gameover.photo++;
-		cout << fight_screen_gameover.photo << endl;
 		SDL_Rect a = { SCREEN_WIDTH / 2 - fight_screen_gameover.width * fight_screen_gameover.ratio * 1 / 2, SCREEN_HEIGHT / 2 - fight_screen_gameover.height * fight_screen_gameover.ratio * 1 / 2, fight_screen_gameover.width * fight_screen_gameover.ratio,  fight_screen_gameover.height * fight_screen_gameover.ratio };
 		SDL_RenderCopy(gRenderer, fight_screen_gameover.Texture, NULL, &a);
 		if (fight_screen_gameover.ratio < 1) {
@@ -139,7 +165,6 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 		if (fight_screen_gameover.photo >= 500) {
 			screen_status = GAMEOVER;
 		}
-		dem_death = (dem_death + 1) % 2;
 		for (int i = 0; i < 4; i++) {
 			if (death[i].exist == true) {
 				death[i].frameth = death[i].photo / 10 + 1;
@@ -147,12 +172,10 @@ void Player::loadFrame(SDL_Rect* clip, double angle, SDL_Point* center, SDL_Rend
 				death[i].center_x = center_x + death[i].center_delta_x;
 				death[i].center_y = center_y + death[i].center_delta_y;
 				death[i].render();
-				if (dem_death == 0) {
-					death[i].photo = (death[i].photo + 1) % 72;
-					if (death[i].photo > 70) {
+			    death[i].photo = (death[i].photo + 1) % 72;
+				if (death[i].photo > 70) {
 						death[i].alpha = 255;
 						death[i].exist = false;
-					}
 				}
 			}
 		}
@@ -276,8 +299,8 @@ void Player::loadShoot() {
 		}
 	}
 	if (buff_speed_bullet == true) {
-		if (delay_bullet >=40) {
-			delay_bullet -= 7;
+		if (delay_bullet >= 40) {
+			delay_bullet -= 25;
 		}
 		buff_speed_bullet = false;
 	}
@@ -333,17 +356,11 @@ void Player::shoot() {
 			if (bullet_simple[i][j].exist == true)
 			{
 				bullet_simple[i][j].render();
-				bullet_simple[i][j].center_y -= BULLET_SPEED;
+				bullet_simple[i][j].center_y -= SPEED_BULLET_PLAYER;
 			}
 		}
 	}
-	for (int i = 0; i < NUMBER_BULLET; i++) {
-		for (int j = 0; j <= 6; j++) {
-			if (bullet_x7[i][j].exist == true) {
-				bullet_x7[i][j].RenderBullet_StraightAngle();
-			}
-		}
-	}
+	
 	for (int i = 0; i < NUMBER_BULLET; i++)
 	{
 		for (int j = 0; j <= 4; j++) {
@@ -447,6 +464,10 @@ void Player::determineTheTarget(int& x1, int& y1, int& x2, int& y2) {
 			x2 = ennemies_E[i].center_x;
 			y2 = ennemies_E[i].center_y;
 		}
+	}
+	if (boss.exist == true) {
+		x1 = x2 = boss.center_x;
+		y1 = y2 = boss.center_y;
 	}
 }
 double Player::calculateDis(int center_x, int center_y, Object& b) {
@@ -591,7 +612,6 @@ bool Player::checkImpactShield(Bullet_Straight& a) {
 	int center_delta_y = a.center_y  - center_y;
 	if ((center_delta_x * center_delta_x + center_delta_y * center_delta_y <= 16900) )
 	{
-		
 		if (a.good == false) {
 			double angle1 = FindAngle(a.center_x, a.center_y ,center_x ,center_y );
 			a.angle = (angle1) * 2 - a.angle + 180;
@@ -606,8 +626,7 @@ bool Player::checkImpactShield(Bullet_Straight& a) {
 	return true;
 }
 void Player::checkImpactItem(Item& a) {
-	if ((a.center_x) > (center_x - width / 2) && (a.center_x) < (a.center_x + width / 2)
-		&& (a.center_y) > (center_y - height / 2) && (a.center_y) < (a.center_y + height / 2))
+	if (((a.center_x) > (center_x - width / 2) && (a.center_x) < (center_x + width / 2)  && (a.center_y) > (center_y - height / 2) && (a.center_y) < (center_y + height / 2)) && a.exist == true)
 	{
 		Mix_PlayChannel(-1, chunk_item, 0);
 		if (a.buff_type == SHIELD) {
@@ -632,15 +651,22 @@ bool Player:: checkLazer() {
 	bool success = false;
 	for (int i = 0; i < 2; i++) {
 		if (lazer[0].exist == true) {
+			while (lazer[i].angle > 360) {
+				lazer[i].angle -= 360;
+			}
+			while (lazer[i].angle < 0) {
+				lazer[i].angle += 360;
+			}
 			int delta_x1 = (lazer[i].width / abs(cos(lazer[i].angle * PI / 180)) + abs(height * tan(lazer[i].angle * PI / 180)) + width) / 2;
 			int center_x1 = lazer[i].center_x - (center_y - lazer[i].center_y) * tan(lazer[i].angle * PI / 180);
 			item_example[3].center_x = center_x1;
 			item_example[3].center_y = center_y;
 			item_example[3].render();
-			bool a = (((lazer[i].angle <= 0) && (lazer[i].angle >= -90)) ||((lazer[i].angle >= 0) && (lazer[i].angle <= 90)) || ((lazer[i].angle >= 270) && (lazer[i].angle <= 360))) && (center_y) > (boss.center_y + boss.height / 2);
+			bool a = (((lazer[i].angle >= 0) && (lazer[i].angle <= 90)) || ((lazer[i].angle >= 270) && (lazer[i].angle <= 360))) && (center_y) > (boss.center_y + boss.height / 2);
 			bool b = (((lazer[i].angle >= 90) && (lazer[i].angle <= 270)) && (center_y) < (boss.center_y + boss.height / 2));
 			if (a || b) {
 				if ((center_x < center_x1 + delta_x1 - 10) && (center_x > center_x1 - delta_x1 +10)) {
+					number_of_hearts--;
 					success = true;
 				}
 			}
@@ -653,7 +679,7 @@ bool Player::checkBoom() {
 	for (int i = 0; i < 10; i++) {
 		if (boom[i].explode_bool == true) {
 			if ((center_x - boom[i].explode.center_x)*(center_x - boom[i].explode.center_x) + (center_y - boom[i].explode.center_y)*(center_y - boom[i].explode.center_y)
-				<= (20+boom[i].explode.height/2* boom[i].explode.ratio)* (20+boom[i].explode.height / 2 * boom[i].explode.ratio) ){
+				<= (10+boom[i].explode.height/2* boom[i].explode.ratio)* (10+boom[i].explode.height / 2 * boom[i].explode.ratio) ){
 				number_of_hearts--;
 				success = true;
 			}

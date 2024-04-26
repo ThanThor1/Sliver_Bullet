@@ -2,8 +2,11 @@
 #include "RenderScreen.h"
 
 void loadFightBackGround();
-void loadPauseButton();
 void loadPauseScreen();
 void loadFightScreen();
 void loadHomeScreen();
 void loadGameoverScreen();
+void loadWarningScreen();
+void loadCreditScreen();
+void loadOptionScreen();
+void loadCreditGame();

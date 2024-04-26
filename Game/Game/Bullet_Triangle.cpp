@@ -81,3 +81,14 @@ void Bullet_Triangle::set() {
 		}
 	}
 }
+void Bullet_Triangle::free1() {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			bullet_around[i][j].free();
+		}
+	}
+	bullet_virtual.free();
+	R = 0;
+	R_increase_time = 0;
+	angle_first = 0.0;
+}

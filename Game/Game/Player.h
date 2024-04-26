@@ -15,7 +15,7 @@ public:
 	int dem_death = 0;
 	int delay_bullet = 120;
 	double pause_screen_sensitivity[3];
-	int  sensitivity_index = 0;
+	int  sensitivity_index = 1;
 	int  support_dem = 0;
 	int  shield_dem = 0;
 	int  x5_dem = 0;
@@ -34,7 +34,6 @@ public:
 	//bullet
 	Bullet_Straight bullet_simple[NUMBER_BULLET][2];
 	int thbullet_simple = 0;
-	Bullet_Straight bullet_x7[NUMBER_BULLET][7];
 	int thbullet_x7 = 0;
 	Bullet_Straight bullet_x5[NUMBER_BULLET][5];
 	int thbullet_x5 = 0;
@@ -47,8 +46,6 @@ public:
 	bool buff_shield = false;
 	// hỗ trợ
 	bool buff_support = false;
-	// lazer
-	bool buff_lazer = false;
 	//
 	bool buff_speed_bullet = false;
 	// trang thai anh

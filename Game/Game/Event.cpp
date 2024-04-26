@@ -5,35 +5,6 @@
 #include "Player.h"
 void checkEvent(SDL_Event e) {
 	if (screen_status == FIGHT) {
-		if (e.type == SDL_KEYDOWN)
-		{
-			switch (e.key.keysym.sym) {
-			case SDLK_1:
-				player.bullet_type = NONE;
-				break;
-			case SDLK_2:
-				player.bullet_type = BULLET_X5;
-				break;
-			case SDLK_3:
-				player.bullet_type = BULLET_X7;
-				break;
-			case SDLK_9:
-				player.bullet_type = 10;
-				break;
-			case SDLK_4:
-				player.buff_lazer = true;
-				break;
-			case SDLK_5:
-				player.buff_support = true;
-				break;
-			case SDLK_6:
-				player.buff_shield = true;
-				break;
-			case SDLK_7:
-				player.buff_speed_bullet = true;
-				break;	
-		    }
-		}
 		if (checkClickObject(e, pause_button, pre_x, pre_y)) {
 			screen_status = PAUSE;
 			surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, 0, 0, 0, 0);
@@ -57,19 +28,19 @@ void checkEvent(SDL_Event e) {
 		if (checkClickObject(e, pause_screen_music_pause, pause_x, pause_y)) {
 			if (music_bool) {
 				music_bool = false;
-				Mix_PauseMusic();
 			}
 			else {
 				music_bool = true;
-				Mix_ResumeMusic();
 			}
 		}
 		if (checkClickObject(e, pause_screen_continue, pause_x, pause_y)) {
 			screen_status = FIGHT;
 		}
 		if (checkClickObject(e, pause_screen_home, pause_x, pause_y)) {
-			screen_status = HOME;
-			if (sound_bool == true) { Mix_PlayMusic(music_menu, -1); }
+			surface = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32, 0, 0, 0, 0);
+			SDL_RenderReadPixels(gRenderer, NULL, SDL_PIXELFORMAT_RGB888, surface->pixels, surface->pitch);
+			texture = SDL_CreateTextureFromSurface(gRenderer, surface);
+			screen_status = WARNING;
 		}
 		if (checkClickObject(e, pause_screen_sensitivity_down, pause_x, pause_y)) {
 			if (player.sensitivity_index >= 1) {
@@ -81,23 +52,80 @@ void checkEvent(SDL_Event e) {
 				player.sensitivity_index++;
 			}
 		}
+		
+	}
+	else if (screen_status == OPTION) {
+		SDL_GetMouseState(&option_x, &option_y);
+		if (checkClickObject(e, option_screen_sound_pause, option_x, option_y)) {
+			if (sound_bool)
+				sound_bool = false;
+			else sound_bool = true;
+		}
+		if (checkClickObject(e, option_screen_music_pause, option_x, option_y)) {
+			if (music_bool) {
+				music_bool = false;
+			}
+			else {
+				music_bool = true;
+			}
+		}
+		if (checkClickObject(e, option_screen_continue, option_x, option_y)) {
+			screen_status = HOME;
+			Mix_PlayMusic(home_screen_music, -1);
+		}
+		if (checkClickObject(e, option_screen_sensitivity_down, option_x, option_y)) {
+			if (player.sensitivity_index >= 1) {
+				player.sensitivity_index--;
+			}
+		}
+		if (checkClickObject(e, option_screen_sensitivity_up, option_x, option_y)) {
+			if (player.sensitivity_index <= 1) {
+				player.sensitivity_index++;
+			}
+		}
 	}
 	else if (screen_status == HOME) {
 		SDL_GetMouseState(&home_x, &home_y);
-		if (e.type == SDL_MOUSEBUTTONDOWN) {
+		if (checkClickObject(e, home_screen_option, home_x, home_y)) {
+			screen_status = OPTION;
+		}
+		else if (e.type == SDL_MOUSEBUTTONDOWN) {
 			screen_status = FIGHT;
 			renewAll();
 			if (sound_bool == true) {
-				Mix_PlayMusic(music_fight, -1);
+				Mix_PlayMusic(fight_screen_music, -1);
 			}
 		}
 	}
 	else if (screen_status == GAMEOVER) {
 		SDL_GetMouseState(&gameover_x,&gameover_y);
-		if (checkClickObject(e, gameover_screen_home , gameover_x, gameover_y)) {
-			screen_status = HOME;
+		if (boss.health > 0) {
+			if (checkClickObject(e, gameover_screen_home, gameover_x, gameover_y)) {
+				screen_status = HOME;
+				Mix_PlayMusic(home_screen_music, -1);
+			}
+		}
+		else {
+			if (checkClickObject(e, gameover_screen_home, gameover_x, gameover_y)) {
+				screen_status = CREDIT;
+				Mix_PlayMusic(home_screen_music, -1);
+			}
 		}
 	}
+	else if (screen_status == WARNING) {
+		SDL_GetMouseState(&warning_x, &warning_y);
+		if (checkClickObject(e, warning_screen_yes, warning_x, warning_y)) {
+			screen_status = HOME;
+			Mix_PlayMusic(home_screen_music, -1);
+		}
+		if (checkClickObject(e, warning_screen_no, warning_x, warning_y)) {
+			screen_status = PAUSE;
+		}
+	}
+	if (music_bool == false) {
+		Mix_PauseMusic();
+	}
+	else Mix_ResumeMusic();
 }
 bool checkClickObject(SDL_Event& e, Object& a, int x, int y) {
 	if (e.type == SDL_MOUSEBUTTONDOWN && x >= (a.center_x - a.width / 2) && y>= (a.center_y - a.height / 2) && x<= (a.center_x + a.width/2) && y<= (a.center_y + a.height/2)) {

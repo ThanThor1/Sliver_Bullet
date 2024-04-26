@@ -8,9 +8,8 @@ public:
 	int score = 15;
 	int load_reborn_time = 0;
 	int load_bullet_ennemies_D_time = 0;
-	double speed = 1;
 	int direction = 1;
-	int health = 10;
+	int health = HEALTH_ENNEMIES_D;
 	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();

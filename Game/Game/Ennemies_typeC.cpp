@@ -41,28 +41,28 @@ void Ennemies_typeC::moveEnnemies() {
 	}
 	slope = 1.0 * (center_delta_y) / (center_delta_x);
 	if (center_delta_y == 0 && center_delta_x > 0) {
-		center_x += SPEED_RIVAL;
+		center_x += ENNEMIES_C_SPEED;
 	}
 	else if (center_delta_y == 0 && center_delta_x < 0) {
-		center_x -= SPEED_RIVAL;
+		center_x -= ENNEMIES_C_SPEED;
 	}
 	else if (center_delta_y > 0 && center_delta_x == 0) {
-		center_y += SPEED_RIVAL;
+		center_y += ENNEMIES_C_SPEED;
 	}
 	else if (center_delta_y < 0 && center_delta_x == 0) {
-		center_y -= SPEED_RIVAL;
+		center_y -= ENNEMIES_C_SPEED;
 	}
 	else {
 		if (slope >= 1) {
-			center_y += round((SPEED_RIVAL) / sqrt(1 + 1.00 / (slope * slope))) * center_delta_x / abs(center_delta_x);
+			center_y += round((ENNEMIES_C_SPEED) / sqrt(1 + 1.00 / (slope * slope))) * center_delta_x / abs(center_delta_x);
 			center_x = round((center_y + 1.000 * center_start_x * slope - center_start_y * 1.000) / slope);
 		}
 		else if ((slope <= 1) && (slope >= -1)) {
-			center_x += round((SPEED_RIVAL) / sqrt(1 + 1.00 * slope * slope)) * center_delta_x / abs(center_delta_x);
+			center_x += round((ENNEMIES_C_SPEED) / sqrt(1 + 1.00 * slope * slope)) * center_delta_x / abs(center_delta_x);
 			center_y = round((center_x)*slope + center_start_y * 1.000 - 1.000 * center_start_x * slope);
 		}
 		else if ((slope <= -1)) {
-			center_y -= round((SPEED_RIVAL) / sqrt(1 + 1.00 / (slope * slope))) * center_delta_x / abs(center_delta_x);
+			center_y -= round((ENNEMIES_C_SPEED) / sqrt(1 + 1.00 / (slope * slope))) * center_delta_x / abs(center_delta_x);
 			center_x = round((center_y + 1.000 * center_start_x * slope - center_start_y * 1.000) / slope);
 		}
 	}
@@ -70,11 +70,11 @@ void Ennemies_typeC::moveEnnemies() {
 }
 //sạc đạn
 void Ennemies_typeC::loadShoot() {
-	load_bullet_ennemies_C_time = (load_bullet_ennemies_C_time + 1) % 1001;
+	load_bullet_ennemies_C_time = (load_bullet_ennemies_C_time + 1) % (DELAY_BULLET_ENNEMIES_C+1);
 	if (bullet_ennemies_C_index == NUMBER_BULLET) {
 		bullet_ennemies_C_index = 0;
 	}
-	if (load_bullet_ennemies_C_time == 1000) {
+	if (load_bullet_ennemies_C_time == DELAY_BULLET_ENNEMIES_C) {
 		int a = Rand(0, 90);
 		for (int i = 0; i < 4; i++) {
 			bullet_ennemies_C[bullet_ennemies_C_index][i].center_start_x = bullet_ennemies_C[bullet_ennemies_C_index][i].center_x =center_x;
@@ -98,10 +98,9 @@ void Ennemies_typeC::free() {
 	slope = 0;
 	angle = 0;
 	exist = false;
-	health = 10;
+	health = HEALTH_ENNEMIES_C;
 	bullet_ennemies_C_index = 0;
-	load_bullet_ennemies_C_time = Rand(0, 1000);
-	speed = 1;
+	load_bullet_ennemies_C_time = Rand(0, DELAY_BULLET_ENNEMIES_C);
 	photo = 0;
 	turning = false;
 	death.free();

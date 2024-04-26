@@ -4,6 +4,7 @@
 #include "Declaration.h"
 void Bullet_Straight::free()
 {
+	hit.free();
 	center_delta_x = 0;
 	center_delta_y = 0;
 	center_start_x = 0;
@@ -13,7 +14,7 @@ void Bullet_Straight::free()
 	exist = false;
 	good = false;
 	hit_bool = false;
-	damage = 3;
+	damage = 10;
 	speed = 3;
 	speedPlus = 1;
 	follow = true;
@@ -57,7 +58,6 @@ void Bullet_Straight::RenderBullet_StraightSlope() {
 		}
 		RenderBullet_Straight();
 }
-
 void Bullet_Straight::RenderBullet_StraightAngle() {
 	checkOutScreen();
 		// set lai goc neu bi lech
@@ -114,7 +114,6 @@ void Bullet_Straight::RenderBullet_StraightAngle() {
 }
 void Bullet_Straight::RenderBullet_Straight() {
 	if (exist == true) {
-		
 			if (center_delta_y == 0 && center_delta_x > 0) {
 				center_x += speed + speedPlus;
 			}
@@ -141,7 +140,8 @@ void Bullet_Straight::RenderBullet_Straight() {
 					center_y = round((center_x) / slope + center_start_y * 1.000 - 1.000 * center_start_x / slope);
 				}
 			}
-			render();
+			put = { center_x - center.x, center_y - center.y,width,height };
+			SDL_RenderCopyEx(gRenderer, Texture, &cut[frameth], &put, angle, &center, flip);
 	}
 }
 void Bullet_Straight::RenderBullet_FollowSlope() {

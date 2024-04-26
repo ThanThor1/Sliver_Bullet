@@ -11,29 +11,9 @@ void  loadAll() {
 	loadAllItem();
 	loadAllText();
 }
-void loadAllText() {
-	score_fight_screen_text.loadFont("font//font.ttf", 30);
-	wave_number_gameover_screen_text.loadFont("font//font.ttf", 33);
-	score_gameover_menu_screen_text.loadFont("font//font.ttf", 33);
-	aliens_defeated_gameover_screen_text.loadFont("font//font.ttf", 33);
-}
 void loadAllMap() {
-	cout << MAP;
 	ifstream get_map;
-	switch (MAP) {
-	case WAVE_1:
-		get_map.open("wave//wave1.txt");
-		break;
-	case WAVE_2:
-		get_map.open("wave//wave2.txt");
-		break;
-	case WAVE_3:
-		get_map.open("wave//wave3.txt");
-		break;
-	case WAVE_4:
-		get_map.open("wave//wave4.txt");
-		break;
-	}
+	get_map.open(wave_path+to_string(MAP)+".txt");
 	for (int i = 0; i < NUMBER_MAX_HEIGHT; i++) {
 		for (int j = 0; j < NUMBER_MAX_WIDTH; j++) {
 			get_map >> map[i][j];
@@ -43,53 +23,61 @@ void loadAllMap() {
 	for (int i = 0; i < NUMBER_MAX_HEIGHT; i++) {
 		for (int j = 0; j < NUMBER_MAX_WIDTH; j++) {
 			if (map[i][j] == "a") {
-				ennemies_A[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_A[stoi(map[i][j + 1])].getStart((j-3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_A++;
 			}
 			else if (map[i][j] == "A") {
-				ennemies_A[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_A[stoi(map[i][j + 1])].getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_A[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			else if (map[i][j] == "b") {
-				ennemies_B[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_B[stoi(map[i][j + 1])].getStart((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_B++;
 			}
 			else if (map[i][j] == "B") {
-				ennemies_B[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_B[stoi(map[i][j + 1])].getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_B[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			else if (map[i][j] == "c") {
-				ennemies_C[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_C[stoi(map[i][j + 1])].getStart((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_C++;
 			}
 			else if (map[i][j] == "C") {
-				ennemies_C[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_C[stoi(map[i][j + 1])].getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_C[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			else if (map[i][j] == "d") {
-				ennemies_D[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_D[stoi(map[i][j + 1])].getStart((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_D++;
 			}
 			else if (map[i][j] == "D") {
-				ennemies_D[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_D[stoi(map[i][j + 1])].getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_D[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			else if (map[i][j] == "e") {
-				ennemies_E[stoi(map[i][j + 1])].getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_E[stoi(map[i][j + 1])].getStart((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				number_ennemies_E++;
 			}
 			else if (map[i][j] == "E") {
-				ennemies_E[stoi(map[i][j + 1])].getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				ennemies_E[stoi(map[i][j + 1])].getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 				ennemies_E[stoi(map[i][j + 1])].getDeltaxy();
 			}
 			else if (map[i][j] == "s") {
-				boss.getStart(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				boss.getStart((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 			}
 			else if (map[i][j] == "S") {
-				boss.getFinish(j * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
+				boss.getFinish((j - 3) * EDGE_LENGTH_BLOCK, (i - 12) * EDGE_LENGTH_BLOCK);
 			}
 		}
 	}
+}
+void loadAllText() {
+	you_win.loadFont("font//font.ttf", 100);
+	you_win.TextColor = { 249 ,34 ,255 };
+	score_fight_screen_text.loadFont("font//font.ttf", 30);
+	wave_number_gameover_screen_text.loadFont("font//font.ttf", 33);
+	score_gameover_menu_screen_text.loadFont("font//font.ttf", 33);
+	aliens_defeated_gameover_screen_text.loadFont("font//font.ttf", 33);
 }
 void loadAllItem() {
 	item_example[SHIELD].loadFromFile("picture//item/buff_shield.png",1);
@@ -105,8 +93,8 @@ void loadAllItem() {
 }
 void loadAllSound() {
 	chunk_gameover = Mix_LoadWAV("sound_and_music//chunk_gameover.mp3");
-	music_menu = Mix_LoadMUS("sound_and_music//music_menu.mp3");
-	music_fight = Mix_LoadMUS("sound_and_music//music_fight.mp3");
+	home_screen_music = Mix_LoadMUS("sound_and_music//home_screen_music.mp3");
+	fight_screen_music = Mix_LoadMUS("sound_and_music//fight_screen_music.mp3");
 	chunk_mouse = Mix_LoadWAV("sound_and_music//chunk_mouse.mp3");
 	chunk_shoot = Mix_LoadWAV("sound_and_music//chunk_shoot.mp3");
 	chunk_explode1 = Mix_LoadWAV("sound_and_music//chunk_explode1.mp3");
@@ -116,32 +104,27 @@ void loadAllSound() {
 void loadAllEnnemies() {
 	
 	// đạn cho ennemies
-	bullet_ennemies_A[0].loadFromFile("picture//Bullet_ennemies/1.png",1);
-	bullet_ennemies_A[0].damage = 3;
+	bullet_ennemies_A[0].loadFromFile("picture//Bullet_ennemies/1.png", 1);
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		bullet_ennemies_A[j] = bullet_ennemies_A[0];
 	}
 	bullet_ennemies_B[0][0].loadFromFile("picture//Bullet_ennemies/2.png",1);
-	bullet_ennemies_B[0][0].damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		for (int k = 0; k < 3; k++) {
 			bullet_ennemies_B[j][k] = bullet_ennemies_B[0][0];
 		}
 	}
 	bullet_ennemies_C[0][0].loadFromFile("picture//Bullet_ennemies/3.png",1);
-	bullet_ennemies_C[0][0].damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		for (int k = 0; k < 4; k++) {
 			bullet_ennemies_C[j][k] = bullet_ennemies_C[0][0];
 		}
 	}
 	bullet_ennemies_D[0].loadFromFile("picture//Bullet_ennemies/4.png",1);
-	bullet_ennemies_D[0].damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		bullet_ennemies_D[j] = bullet_ennemies_D[0];
 	}
 	bullet_ennemies_E[0].loadFromFile("picture//Bullet_ennemies/5.png",1);
-	bullet_ennemies_E[0].damage = 3;
 	for (int j = 0; j < NUMBER_BULLET; j++) {
 		bullet_ennemies_E[j] = bullet_ennemies_E[0];
 	}
@@ -209,6 +192,20 @@ void loadAllEnnemies() {
 		boom[i] = boom[0];
 	}
 	boss.loadFromFile("picture//Boss/boss.png", 1);
+	boss.death[0].loadFromFile("picture//Player/death.png", 7);
+	boss.death[1].loadFromFile("picture//Player/death1.png", 7);
+	boss.death[2].loadFromFile("picture//Player/death2.png", 7);
+	boss.death[3].loadFromFile("picture//Player/death3.png", 7);
+	boss.death[4].loadFromFile("picture//Player/death.png", 7);
+	boss.death[5].loadFromFile("picture//Player/death1.png", 7);
+	boss.death[6].loadFromFile("picture//Player/death2.png", 7);
+	boss.death[7].loadFromFile("picture//Player/death3.png", 7);
+	boss.death[8].loadFromFile("picture//Player/death.png", 7);
+	boss.death[9].loadFromFile("picture//Player/death1.png", 7);
+	boss.death[10].loadFromFile("picture//Player/death2.png", 7);
+	boss.death[11].loadFromFile("picture//Player/death3.png", 7);
+	health_boss.loadFromFile("picture//Boss/health_boss.png", 1);
+	health_boss_background.loadFromFile("picture//Boss/health_boss_background.png", 1);
 	lazer_warning_green[0].loadFromFile("picture//Boss/lazer_warning_green.png", 1);
 	lazer_warning_green[1] = lazer_warning_green[0];
 	lazer_warning_red[0].loadFromFile("picture//Boss/lazer_warning_red.png", 1);
@@ -271,12 +268,12 @@ void loadAllPlayer() {
 			player.bullet_x5[i][j].damage = 2;
 		}
 	}
-	player.bullet_x7[0][0].loadFromFile("picture//Player/bullet3.png", 1);
-	player.bullet_x7[0][0].hit.loadFromFile("picture//Player/hit3.png", 6);
+	bullet_x7[0][0].loadFromFile("picture//Player/bullet3.png", 1);
+	bullet_x7[0][0].hit.loadFromFile("picture//Player/hit3.png", 6);
 	for (int i = 0; i < NUMBER_BULLET; i++) {
 		for (int j = 0; j < 7; j++) {
-			player.bullet_x7[i][j] = player.bullet_x7[0][0];
-			player.bullet_x7[i][j].damage = 2;
+			bullet_x7[i][j] = bullet_x7[0][0];
+			bullet_x7[i][j].damage = 2;
 		}
 	}
 
@@ -295,9 +292,14 @@ void loadAllPlayer() {
 	}
 }
 void loadAllIcon() {
+	//
+	credit_win_screen.loadFromFile("picture//credit_win_screen/credit_win_sceen.png", 1);
+	//
 	gameover_screen_home.loadFromFile("picture//gameover_screen/gameover_screen_home.png", 1);
-	gameover_screen_home.center_x = 392;
+	gameover_screen_win.loadFromFile("picture//gameover_screen/gameover_screen_home_win.png", 1);
+	gameover_screen_win.center_x = gameover_screen_home.center_x = 392;
 	gameover_screen_home.center_y = 820;
+	gameover_screen_win.center_y = 850;
 	gameover_screen_background.loadFromFile("picture//gameover_screen/gameover_screen_background.png", 1);
 	gameover_screen_background.center_x = SCREEN_WIDTH / 2;
 	gameover_screen_background.center_y = SCREEN_HEIGHT / 2;
@@ -323,12 +325,26 @@ void loadAllIcon() {
 	/// 
 	home_background.loadFromFile("picture//home_screen/home_screen_background.png", 1);
 	home_screen_press_start.loadFromFile("picture//home_screen/home_screen_press_start.png", 1);
-	home_background.center_x = SCREEN_WIDTH / 2;;
+	home_screen_option.loadFromFile("picture//home_screen/home_screen_option.png", 1);
+	home_screen_option.center_x = 400;
+	home_screen_option.center_y = 700;
+	home_background.center_x = SCREEN_WIDTH / 2;
 	home_background.center_y = SCREEN_HEIGHT / 2;
 	home_screen_press_start.center_x = 400;
 	home_screen_press_start.center_y = 500;
 	///
 	///
+	warning_screen_background.loadFromFile("picture//warning_screen/warning_screen_background.png", 1);
+	warning_screen_yes.loadFromFile("picture//warning_screen/warning_screen_yes.png", 1);
+	warning_screen_no.loadFromFile("picture//warning_screen/warning_screen_no.png", 1);
+	warning_screen_background.center_x = SCREEN_WIDTH / 2;
+	warning_screen_background.center_y = SCREEN_HEIGHT / 2;
+	warning_screen_yes.center_x = warning_screen_background.center_x - 100;
+	warning_screen_yes.center_y = warning_screen_background.center_y + 70;
+	warning_screen_no.center_x = warning_screen_background.center_x + 100;
+	warning_screen_no.center_y = warning_screen_background.center_y + 70;
+	/// 
+	/// 
 	pause_screen_continue.loadFromFile("picture//pause_screen/pause_screen_continue.png", 1);
 	pause_screen_home.loadFromFile("picture//pause_screen/pause_screen_home.png", 1);
 	pause_screen_sensitivity_down.loadFromFile("picture//pause_screen/pause_screen_sensitivity_down.png", 1);
@@ -369,6 +385,40 @@ void loadAllIcon() {
 	pause_screen_sensitivity[2].center_y = 650;
 	////
 	////
-	
+	option_screen_continue.loadFromFile("picture//option_screen/option_screen_continue.png", 1);
+	option_screen_sensitivity_down.loadFromFile("picture//option_screen/option_screen_sensitivity_down.png", 1);
+	option_screen_sensitivity_up.loadFromFile("picture//option_screen/option_screen_sensitivity_up.png", 1);
+	option_screen_sensitivity[0].loadFromFile("picture//option_screen/option_screen_sensitivity_0.png", 1);
+	option_screen_sensitivity[1].loadFromFile("picture//option_screen/option_screen_sensitivity_1.png", 1);
+	option_screen_sensitivity[2].loadFromFile("picture//option_screen/option_screen_sensitivity_2.png", 1);
+	option_screen_sound_pause.loadFromFile("picture//option_screen/option_screen_sound.png", 1);
+	option_screen_unsound_pause.loadFromFile("picture//option_screen/option_screen_unsound.png", 1);
+	option_screen_music_pause.loadFromFile("picture//option_screen/option_screen_music.png", 1);
+	option_screen_unmusic_pause.loadFromFile("picture//option_screen/option_screen_unmusic.png", 1);
+	option_background.loadFromFile("picture//option_screen/option_screen_background.png", 1);
+	///
+	///
+	option_background.center_x = SCREEN_WIDTH / 2;
+	option_background.center_y = SCREEN_HEIGHT / 2;
+	option_screen_continue.center_x = 400;
+	option_screen_continue.center_y = 830;
+	option_screen_sensitivity_down.center_x = 247;
+	option_screen_sensitivity_down.center_y = 650;
+	option_screen_sensitivity_up.center_x = 578;
+	option_screen_sensitivity_up.center_y = 650;
+	option_screen_music_pause.center_x = 554;
+	option_screen_music_pause.center_y = 380;
+	option_screen_unmusic_pause.center_x = 554;
+	option_screen_unmusic_pause.center_y = 380;
+	option_screen_sound_pause.center_x = 270;
+	option_screen_sound_pause.center_y = 380;
+	option_screen_unsound_pause.center_x = 270;
+	option_screen_unsound_pause.center_y = 380;
+	option_screen_sensitivity[0].center_x = 420;
+	option_screen_sensitivity[0].center_y = 650;
+	option_screen_sensitivity[1].center_x = 420;
+	option_screen_sensitivity[1].center_y = 650;
+	option_screen_sensitivity[2].center_x = 420;
+	option_screen_sensitivity[2].center_y = 650;
 }
 

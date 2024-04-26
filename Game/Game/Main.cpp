@@ -5,7 +5,7 @@
 #include"LoadAll.h"
 #include"RenderScreen.h"
 bool init() {
-	gWindow = SDL_CreateWindow("vuxuandung_2k5", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	gWindow = SDL_CreateWindow("Arcadium", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
 		
 		cout<< "Window could not be created!" << SDL_GetError();
@@ -38,10 +38,10 @@ int main(int argc, char* args[]) {
 	}
 	else {
 		loadAll();
-		Mix_PlayMusic(music_menu, -1);
+		Mix_PlayMusic(home_screen_music, -1);
 		while (!quit)
 		{
-       	   int start = SDL_GetTicks();
+			int start = SDL_GetTicks();
 			while (SDL_PollEvent(&e) != 0)
 			{
 				if (e.type == SDL_QUIT)
@@ -62,8 +62,16 @@ int main(int argc, char* args[]) {
 			else if (screen_status == GAMEOVER) {
 				loadGameoverScreen();
 			}
+			else if (screen_status == WARNING) {
+				loadWarningScreen();
+			}
+			else if (screen_status == OPTION) {
+				loadOptionScreen();
+			}
+			else if (screen_status == CREDIT) {
+				loadCreditGame();
+			}
 		    int end = SDL_GetTicks();
-			cout << 1000 / 120 - end + start << endl;
 			if (quit != true && (1000 / 120 - end + start)>0) {
 				SDL_Delay(1000 / 120 - end + start);
 			}

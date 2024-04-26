@@ -1,5 +1,5 @@
 ﻿#include "Declaration.h"
-
+Bullet_Straight bullet_x7[NUMBER_BULLET][7];
 /// <summary>
 /// some_bool
 /// </summary>
@@ -9,6 +9,7 @@ bool music_bool = true;
 bool prepare_to_press_pause = false;
 bool nhanchuot = false;
 int screen_status = HOME;
+string wave_path= "wave//wave";
 /// <summary>
 /// location of mouse
 /// </summary>
@@ -22,12 +23,20 @@ int home_x = 0;
 int home_y = 0;
 int gameover_x = 0;
 int gameover_y = 0;
+int warning_x = 0;
+int warning_y = 0;
+int option_x=0;
+int option_y=0;
+int credit_x=0;
+int credit_y=0;
 /// <summary>
 /// icon
 /// </summary>
 /// icon in home
 Object home_background;
 Object home_screen_press_start;
+Object home_screen_option;
+Object home_screen_credit;
 // icon in pause
 Object pause_screen_continue;
 Object pause_screen_home;
@@ -40,7 +49,19 @@ Object pause_screen_unmusic_pause;
 Object pause_screen_music_pause;
 Object pause_background;
 Object pause_button;
+// icon in option
+Object option_screen_continue;
+Object option_screen_sensitivity_down;
+Object option_screen_sensitivity_up;
+Object option_screen_sensitivity[3];
+Object option_screen_sound_pause;
+Object option_screen_unsound_pause;
+Object option_screen_unmusic_pause;
+Object option_screen_music_pause;
+Object option_background;
+Object option_button;
 // icon in fight
+Text you_win;
 Object fight_screen_background;
 Object fight_screen_gameover;
 Object fight_screen_start;
@@ -53,9 +74,16 @@ int aliens_defeated_number= 0;
 // icon in game over
 Object gameover_screen_background;
 Object gameover_screen_home;
+Object gameover_screen_win;
 Text wave_number_gameover_screen_text;
 Text score_gameover_menu_screen_text;
 Text aliens_defeated_gameover_screen_text;
+// icon in warning
+Object warning_screen_background;
+Object warning_screen_yes;
+Object warning_screen_no;
+// icon in credit
+Object credit_win_screen;
 /// <summary>
 /// Player
 /// </summary>
@@ -66,6 +94,8 @@ Object support_2;
 /// boss
 /// </summary>
 Boss boss;
+Object health_boss;
+Object health_boss_background;
 Object mini_boss_center_1;
 Object staff_mini_boss_1;
 Object mini_boss_center_2;
@@ -73,8 +103,9 @@ Object lazer[2];
 Object head_lazer[2];
 Object lazer_warning_red[2];
 Object lazer_warning_green[2];
-Bullet_Straight bullet_around_boss[NUMBER_BULLET];
+
 int bullet_around_boss_index =0;
+Bullet_Straight bullet_around_boss[NUMBER_BULLET];
 Boom boom[NUMBER_BULLET];
 int boom_index = 0;
 int star_coordinates[100][3];
@@ -113,7 +144,7 @@ int bullet_ennemies_E_index = 0;
 /// <summary>
 /// Bullet Ennemies
 /// </summary>
-Item item[100];
+Item item[NUMBER_ITEM];
 int item_index = 0;
 Item item_example[20];
 /// <summary>
@@ -132,14 +163,15 @@ SDL_Texture* texture;
 /// <summary>
 /// music
 /// </summary>
-Mix_Music* music_menu;
-Mix_Music* music_fight;
+Mix_Music* home_screen_music;
+Mix_Music* fight_screen_music;
 Mix_Chunk* chunk_mouse;
 Mix_Chunk* chunk_shoot;
 Mix_Chunk* chunk_explode1;
 Mix_Chunk* chunk_explode2;
 Mix_Chunk* chunk_item;
 Mix_Chunk* chunk_gameover;
+
 
 
 

@@ -144,7 +144,7 @@
     <ClCompile Include="Ennemies_typeD.cpp" />
     <ClCompile Include="Ennemies_typeE.cpp" />
     <ClCompile Include="Event.cpp" />
-    <ClCompile Include="FindAngle.cpp" />
+    <ClCompile Include="SomeFunction.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LoadAll.cpp" />
     <ClCompile Include="Main.cpp" />

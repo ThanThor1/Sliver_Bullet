@@ -78,9 +78,6 @@
     <ClCompile Include="Item.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
-    <ClCompile Include="Declaration.cpp">
-      <Filter>Resource Files\Non class</Filter>
-    </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Resource Files\Ennemies</Filter>
     </ClCompile>
@@ -96,13 +93,16 @@
     <ClCompile Include="LoadAll.cpp">
       <Filter>Resource Files\Load</Filter>
     </ClCompile>
-    <ClCompile Include="FindAngle.cpp">
+    <ClCompile Include="SomeFunction.cpp">
       <Filter>Resource Files\Load</Filter>
     </ClCompile>
     <ClCompile Include="Boom.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
+      <Filter>Resource Files\Other class</Filter>
+    </ClCompile>
+    <ClCompile Include="Declaration.cpp">
       <Filter>Resource Files\Other class</Filter>
     </ClCompile>
   </ItemGroup>
@@ -123,9 +123,6 @@
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
     <ClInclude Include="Declaration.h">
-      <Filter>Header Files\Non class</Filter>
-    </ClInclude>
-    <ClInclude Include="SomeConst.h">
       <Filter>Header Files\Non class</Filter>
     </ClInclude>
     <ClInclude Include="Library.h">
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Boom.h">
       <Filter>Header Files\Other class</Filter>
+    </ClInclude>
+    <ClInclude Include="SomeConst.h">
+      <Filter>Header Files\Ennemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

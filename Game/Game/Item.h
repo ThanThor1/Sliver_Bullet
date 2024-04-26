@@ -3,7 +3,7 @@
 class Item : public Object
 {
 public:
-	int buff_type = 0;
+	int buff_type = 1;
 	void Render_Item();
 };
 

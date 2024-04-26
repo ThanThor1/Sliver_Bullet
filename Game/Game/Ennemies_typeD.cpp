@@ -16,21 +16,22 @@ void Ennemies_typeD::moveEnnemies() {
 	frameth = photo/10+1;
 	photo = (photo + 1) % 41;
 	render();
-	if (center_x >= SCREEN_WIDTH - width)
+	if (center_x >= SCREEN_WIDTH - width) {
 		direction = -1;
+	}
 	if (center_x <= 0) {
 		direction = 1;
 	}
-	center_x += direction;
+	center_x += ENNEMIES_D_SPEED* direction;
 	loadShoot();
 }
 //sạc đạn
 void Ennemies_typeD::loadShoot() {
-	load_bullet_ennemies_D_time = (load_bullet_ennemies_D_time + 1) % 1001;
+	load_bullet_ennemies_D_time = (load_bullet_ennemies_D_time + 1) % (DELAY_BULLET_ENNEMIES_D+1);
 	if (bullet_ennemies_D_index == NUMBER_BULLET) {
 		bullet_ennemies_D_index = 0;
 	}
-	if (load_bullet_ennemies_D_time == 1000) {
+	if (load_bullet_ennemies_D_time == DELAY_BULLET_ENNEMIES_D) {
 		bullet_ennemies_D[bullet_ennemies_D_index].center_x = bullet_ennemies_D[bullet_ennemies_D_index].center_start_x =center_x;
 		bullet_ennemies_D[bullet_ennemies_D_index].center_y = bullet_ennemies_D[bullet_ennemies_D_index].center_start_y =center_y;
 		bullet_ennemies_D[bullet_ennemies_D_index].center_delta_y = 1.00000 * (player.center_x - bullet_ennemies_D[bullet_ennemies_D_index].center_start_x );
@@ -51,10 +52,9 @@ void Ennemies_typeD::free() {
 	slope = 0;
 	angle = 0;
 	exist = false;
-	health = 10;
+	health = HEALTH_ENNEMIES_D;
 	bullet_ennemies_D_index = 0;
-	load_bullet_ennemies_D_time = Rand(0, 1000);
-	speed = 1;
+	load_bullet_ennemies_D_time = Rand(0, DELAY_BULLET_ENNEMIES_D);
 	direction = 1;
 	photo = 0;
 	death.free();

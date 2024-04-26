@@ -11,19 +11,22 @@ void Wave() {
 	}
 	bool win = false;
 	win = checkWin();
-	if (win == true ) {
-		if (currentime >= timewave) {
-			wave_number++;
-			loadmap_bool = false;
-			renewAllEnnemies();
-			number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E= 0;
+	if (MAP < 7) {
+		if (win == true) {
+			if (currentime >= timewave) {
+				wave_number++;
+				MAP++;
+				loadmap_bool = false;
+				renewAllEnnemies();
+				number_ennemies_A = number_ennemies_B = number_ennemies_C = number_ennemies_D = number_ennemies_E = 0;
+			}
 		}
 	}
 	else timewave = currentime + distimewave;
 	RenderBullet();
 	RenderItem();
 }
-bool  checkWin() {
+bool checkWin() {
 	bool win = true;
 	for (int i = 1; i <= number_ennemies_A; i++) {
 		win = win *!ennemies_A[i].checkExist();
@@ -40,7 +43,9 @@ bool  checkWin() {
 	for (int i = 1; i <= number_ennemies_E; i++) {
 		win = win * !ennemies_E[i].checkExist();
 	}
-	win = win * !boss.checkExist();
+	if (MAP == 7) {
+		win = win * !boss.checkExist();
+	}
 	return win;
 }
 void RenderBullet() {
@@ -100,6 +105,13 @@ void RenderBullet() {
 	for (int i = 0; i < 1000; i++) {
 		if (star[i].exist == true) {
 			star[i].RenderBullet_StraightAngle();
+		}
+	}
+	for (int i = 0; i < NUMBER_BULLET; i++) {
+		for (int j = 0; j <= 6; j++) {
+			if (bullet_x7[i][j].exist == true) {
+				bullet_x7[i][j].RenderBullet_StraightAngle();
+			}
 		}
 	}
 }

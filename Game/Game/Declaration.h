@@ -18,6 +18,9 @@
 #include "bullet_triangle.h"
 #include "Boom.h"
 #include "Text.h"
+
+extern Bullet_Straight bullet_x7[NUMBER_BULLET][7];
+
 /// <summary>
 /// some_bool
 /// </summary>
@@ -27,6 +30,7 @@ extern bool music_bool;
 extern bool prepare_to_press_pause;
 extern bool nhanchuot;
 extern int screen_status;
+extern string wave_path;
 /// <summary>
 /// location of mouse
 /// </summary>
@@ -40,12 +44,20 @@ extern int home_x;
 extern int home_y;
 extern int gameover_x;
 extern int gameover_y;
+extern int warning_x;
+extern int warning_y;
+extern int option_x;
+extern int option_y;
+extern int credit_x;
+extern int credit_y;
 /// <summary>
 /// icon
 /// </summary>
 /// icon in home
 extern Object home_background;
 extern Object home_screen_press_start;
+extern Object home_screen_option;
+extern Object home_screen_credit;
 // icon in pause
 extern Object pause_screen_continue;
 extern Object pause_screen_home;
@@ -58,12 +70,24 @@ extern Object pause_screen_unmusic_pause;
 extern Object pause_screen_music_pause;
 extern Object pause_background;
 extern Object pause_button;
+// icon in option
+extern Object option_screen_continue;
+extern Object option_screen_sensitivity_down;
+extern Object option_screen_sensitivity_up;
+extern Object option_screen_sensitivity[3];
+extern Object option_screen_sound_pause;
+extern Object option_screen_unsound_pause;
+extern Object option_screen_unmusic_pause;
+extern Object option_screen_music_pause;
+extern Object option_background;
+extern Object option_button;
 // icon in fight
 extern Object fight_screen_background;
 extern Object fight_screen_gameover;
 extern Object fight_screen_start;
 extern Object fight_screen_score;
 extern Text score_fight_screen_text;
+extern Text you_win;
 extern Object Heart[3];
 extern int wave_number;
 extern int score_number;
@@ -71,9 +95,16 @@ extern int aliens_defeated_number;
 // icon in game over
 extern Object gameover_screen_background;
 extern Object gameover_screen_home;
+extern Object gameover_screen_win;
 extern Text wave_number_gameover_screen_text;
 extern Text score_gameover_menu_screen_text;
 extern Text aliens_defeated_gameover_screen_text;
+// icon in warning
+extern Object warning_screen_background;
+extern Object warning_screen_yes;
+extern Object warning_screen_no;
+// icon in warning
+extern Object credit_win_screen;
 /// <summary>
 /// Player
 /// </summary>
@@ -84,6 +115,8 @@ extern Object support_2;
 /// boss
 /// </summary>
 extern Boss boss;
+extern Object health_boss;
+extern Object health_boss_background;
 extern Object mini_boss_center_1;
 extern Object staff_mini_boss_1;
 extern Object mini_boss_center_2;
@@ -91,10 +124,12 @@ extern Object lazer[2];
 extern Object head_lazer[2];
 extern Object lazer_warning_red[2];
 extern Object lazer_warning_green[2];
+extern Bullet_Straight bullet_around_boss[NUMBER_BULLET];
+extern int bullet_around_boss_index;
 extern Boom boom[NUMBER_BULLET];
 extern int boom_index;
-extern int star_coordinates[100][3];
 extern Bullet_Straight star[1000];
+extern int star_coordinates[100][3];
 extern int star_index;
 extern Bullet_Triangle bullet_triangle[NUMBER_BULLET];
 extern int bullet_triangle_index;
@@ -129,7 +164,7 @@ extern int bullet_ennemies_E_index;
 /// <summary>
 /// Bullet Ennemies
 /// </summary>
-extern Item item[100];
+extern Item item[NUMBER_ITEM];
 extern int item_index;
 extern Item item_example[20];
 /// <summary>
@@ -148,8 +183,8 @@ extern SDL_Texture* texture;
 /// <summary>
 /// music
 /// </summary>
-extern Mix_Music* music_menu;
-extern Mix_Music* music_fight;
+extern Mix_Music* home_screen_music;
+extern Mix_Music* fight_screen_music;
 extern Mix_Chunk* chunk_mouse;
 extern Mix_Chunk* chunk_shoot;
 extern Mix_Chunk* chunk_explode1;

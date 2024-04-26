@@ -18,6 +18,6 @@ void Text::loadText(string text, int x, int y) {
 void Text::loadFont(string location, int size) {
 	font = TTF_OpenFont(location.c_str(), size);
 	if (font == NULL) {
-		cout << "loi font" << endl;
+		cout << "loi font " <<location << endl;
 	}
 }

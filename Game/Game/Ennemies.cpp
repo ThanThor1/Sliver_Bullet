@@ -40,7 +40,6 @@ void Ennemies::checkHit(int& health, int score) {
 		for (int j = 0; j < 5; j++) {
 			if (health > 0) {
 				if (player.bullet_x5[i][j].exist == true) {
-
 					if (checkImpact(player.bullet_x5[i][j])) {
 						health -= player.bullet_x5[i][j].damage;
 						player.bullet_x5[i][j].exist = false;
@@ -56,16 +55,16 @@ void Ennemies::checkHit(int& health, int score) {
 	for (int i = 0; i < NUMBER_BULLET; i++) {
 		for (int j = 0; j < 7; j++) {
 			if (health > 0) {
-				if (player.bullet_x7[i][j].exist == true) {
-					if (checkImpact(player.bullet_x7[i][j])) {
-						health -= player.bullet_x7[i][j].damage;
-						player.bullet_x7[i][j].exist = false;
-						player.bullet_x7[i][j].hit_bool = true;
+				if (bullet_x7[i][j].exist == true) {
+					if (checkImpact(bullet_x7[i][j])) {
+						health -= bullet_x7[i][j].damage;
+						bullet_x7[i][j].exist = false;
+						bullet_x7[i][j].hit_bool = true;
 					}
 				}
 			}
-			if (player.bullet_x7[i][j].hit_bool == true) {
-				loadExplode(player.bullet_x7[i][j]);
+			if (bullet_x7[i][j].hit_bool == true) {
+				loadExplode(bullet_x7[i][j]);
 			}
 		}
 	}
@@ -100,7 +99,6 @@ void Ennemies::checkHit(int& health, int score) {
 				if (checkImpact(bullet_ennemies_A[j])) {
 					bullet_ennemies_A[j].free();
 					health -= bullet_ennemies_A[j].damage;
-
 				}
 			}
 		}
@@ -152,8 +150,9 @@ void Ennemies::checkHit(int& health, int score) {
 	}
 	if (death.exist == false && health <= 0) {
 		if (death.photo == 0) {
-			if (sound_bool == true)
+			if (sound_bool == true) {
 				Mix_PlayChannel(-1, chunk_explode1, 0);
+			}
 		}
 		death.center_x = center_x;
 		death.center_y = center_y;
@@ -167,8 +166,8 @@ void Ennemies::checkHit(int& health, int score) {
 			score_number+= score;
 			loadBuff();
 			death.exist = true;
-			death.alpha = 255;
-			free();
+			death.photo = 0;
+			exist = false;
 		}
 	}
 }
@@ -193,17 +192,19 @@ void Ennemies::loadExplode(Bullet_Straight& b) {
 }
 void Ennemies::loadBuff() {
 	int a;
-	a = Rand(0, 1000) % 20;
-	if (a <= 14) {
+	a = Rand(0, 10000) % 100;
+	if (a <= 94) {
 		a = 0;
 	}
-	else a -= 14;
+	else a -= 94;
 	if (item_index == NUMBER_ITEM) {
 		item_index = 0;
 	}
-	item[item_index] = item_example[a];
-	item[item_index].center_x =center_x;
-	item[item_index].center_y =center_y;
-	item[item_index].exist = true;
-	item_index++;
+	if (a > 0) {
+		item[item_index] = item_example[a];
+		item[item_index].center_x = center_x;
+		item[item_index].center_y = center_y;
+		item[item_index].exist = true;
+		item_index++;
+	}
 }

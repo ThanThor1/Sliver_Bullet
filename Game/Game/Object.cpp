@@ -3,28 +3,36 @@
 #include "Declaration.h"
 void Object::free()
 {
-	 flip = SDL_FLIP_NONE;
-	 photo = 0;
-	 damage = 0;
+	direction = 1;
+	red = 0;
+	green = 0;
+	blue = 0;
+	dem1 = 0;
+	dem2 = 0;
+	frameth = 1;
+	frame = 1;
+	slope = 0;
+	angle = 0;
+	flip = SDL_FLIP_NONE;
+	photo = 0;
+	damage = 5;
 	// tỉ lệ in ra màn hình
-	 ratio = 0.0;
+	ratio = 0.0;
 	// độ trong suốt
-	 alpha = 255;
+	alpha = 255;
 	// có tồn tại hay không
-	 exist = false;
+    exist = false;
 	// mot so tinh chat
-	 center_x= 0;
-	 center_y= 0;
-	 center_start_x = 0;
-	 center_start_y = 0;
-	 center_finish_x = 0;
-	 center_finish_y = 0;
-	 center_delta_x = 0;
-	 center_delta_y = 0;
-	 slope = 0;
-	 angle = 0;
-	//Texture
-	 dem = 0;
+	center_x = 0;
+	center_y = 0;
+	center_start_x = 0;
+	center_start_y = 0;
+	center_finish_x = 0;
+	center_finish_y = 0;
+	center_delta_x = 0;
+	center_delta_y = 0;
+	//chieu ngang và doc
+	dem = 0;
 	//Texture
 }
 Object::Object()
@@ -87,22 +95,24 @@ bool Object::loadFromFile(string path, int frame1) {
 void Object :: render(SDL_Point* a){
 	setAlpha(alpha);
 	if (a == NULL) {
-		center = { width / 2,height / 2 };
+		center = { int(width / 2 ),int(height / 2) };
 	}
-	else {
-		center = *a;
-	}
-	put = { int(center_x - center.x), int(center_y - center.y),int(width),int(height) };
+	else center = *a;
+	put = { center_x - center.x, center_y - center.y,width,height };
 	SDL_RenderCopyEx(gRenderer, Texture, &cut[frameth], &put, angle, &center, flip);
 }
 void Object::renderRatio(SDL_Point* a) {
 	setAlpha(alpha);
 	if (a == NULL) {
-		center = { int(width / 2 * ratio),int(height / 2 * ratio) };
+		center = { int(width / 2 * ratio),int(height / 2 * ratio)};
 	}
 	else center = *a;
 	put = { int(center_x - center.x ), int(center_y - center.y ),int(width * ratio),int(height * ratio) };
 	SDL_RenderCopyEx(gRenderer, Texture, &cut[frameth], &put, angle, &center, flip);
+}
+void Object::renderFlexible(SDL_Rect* cut1, SDL_Rect* put1) {
+
+	SDL_RenderCopyEx(gRenderer, Texture,cut1, put1, angle, &center, flip);
 }
 void Object::renderbackground()
 {

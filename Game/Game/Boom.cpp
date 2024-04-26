@@ -45,3 +45,14 @@ void Boom::SetBoom() {
 		warning_around[i].center_y = player.center_y ;
 	}
 }
+void Boom::free() {
+	explode_bool = 0;
+	warning_bool = 0;
+	thwarning_around = 0;
+	warning_around_dem = 0;
+	warning.free();
+    explode.free();
+	for (int i = 0; i < 5; i++) {
+		warning_around[i].free();
+	}
+}

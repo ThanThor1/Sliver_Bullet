@@ -13,7 +13,7 @@ bool Ennemies_typeA::checkExist() {
 	return exist;
 }
 void Ennemies_typeA::moveEnnemies() {
-	if (load_bullet_ennemies_A_time == 1000) {
+	if (load_bullet_ennemies_A_time == DELAY_BULLET_ENNEMIES_B) {
 		frameth = 2;
 	}
 	else if (load_bullet_ennemies_A_time >= 150) {
@@ -32,11 +32,11 @@ void Ennemies_typeA::moveEnnemies() {
 }
 //sạc đạn
 void Ennemies_typeA::loadShoot() {
-	load_bullet_ennemies_A_time = (load_bullet_ennemies_A_time + 1) % 1001;
+	load_bullet_ennemies_A_time = (load_bullet_ennemies_A_time + 1) % (DELAY_BULLET_ENNEMIES_A+1);
 	if (bullet_ennemies_A_index == NUMBER_BULLET) {
 		bullet_ennemies_A_index = 0;
 	}
-	if (load_bullet_ennemies_A_time == 1000) {
+	if (load_bullet_ennemies_A_time == (DELAY_BULLET_ENNEMIES_A)) {
 		bullet_ennemies_A[bullet_ennemies_A_index].center_start_x = bullet_ennemies_A[bullet_ennemies_A_index].center_x =center_x+ width / 2 + (height + 10) * sin(-angle * PI / 180) - bullet_ennemies_A[bullet_ennemies_A_index].width / 2;
 		bullet_ennemies_A[bullet_ennemies_A_index].center_start_y = bullet_ennemies_A[bullet_ennemies_A_index].center_y =center_y+ (height + 10) * cos(-angle * PI / 180);
 		bullet_ennemies_A[bullet_ennemies_A_index].angle = angle;
@@ -55,9 +55,8 @@ void Ennemies_typeA::free() {
 	slope = 0;
 	angle = 0;
 	exist = false;
-	health = 10;
-	load_bullet_ennemies_A_time = Rand(0, 1000);
-	speed = 1;
+	health = HEALTH_ENNEMIES_A;
+	load_bullet_ennemies_A_time = Rand(0, DELAY_BULLET_ENNEMIES_A);
 	direction = 1;
 	photo = 0;
 	death.free();

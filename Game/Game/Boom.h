@@ -13,5 +13,6 @@ public:
 	void RenderExplode();
 	void RenderWarning();
 	void SetBoom();
+	void free();
 };
 

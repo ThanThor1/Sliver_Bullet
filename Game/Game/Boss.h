@@ -3,6 +3,8 @@
 class Boss : public Ennemies
 {
 public:
+	Object death[20];
+	int dem_death = 0;
 	int score= 1000000;
 	int load_turn_fight = 0;
 	// star
@@ -10,6 +12,7 @@ public:
 	int star_dem_time = 0;
 	//bullet_level
 	bool start_load_shoot_bullet_level_time = false;
+	
 	double bullet_level_ratio[3];
 	bool  bool_load_bullet_level[3];
 	int load_bullet_level_time = 0;
@@ -23,15 +26,22 @@ public:
 	int load_bullet_triangle_time = 0;
 	// boom
 	int load_boom_time = 0;
-	int health = 1000;
-
+	int health = 2000;
+	bool TurnBulletLevel= false;
+	bool TurnLazer = false;
+	bool TurnBoom = false;
+	bool TurnBulletTriangle = false;
+	bool TurnStar = false;
 	bool checkExist();
 	// di chuyển 
 	void moveEnnemies();
-	void free();
 	//sạc đạn
-	void loadShoot();
-	void RenderMiniBoss();
+	void loadTurnBulletLevel();
+	void loadTurnLazer();
+	void loadTurnBoom();
+	void loadTurnBulletTriangle();
+	void loadTurnStar();
+	void free();
 };
 
 

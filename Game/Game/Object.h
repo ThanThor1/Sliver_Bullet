@@ -6,6 +6,7 @@
 class Object
 {
 public:
+	int direction = 1;
 	SDL_Rect cut[10];
 	SDL_Rect put;
 	SDL_Point center;
@@ -49,6 +50,7 @@ public:
 	void setAlpha(Uint8 alpha);
 	void render(SDL_Point* a  = NULL);
 	void renderRatio(SDL_Point* a = NULL);
+	void renderFlexible(SDL_Rect* cut, SDL_Rect* put);
 	Object();
 	void free();
 	void renderbackground();
