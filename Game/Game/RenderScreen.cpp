@@ -189,6 +189,7 @@ void loadCreditGame() {
 	credit_win_screen.photo =( credit_win_screen.photo+1) % 1000000;
 	if (credit_win_screen.photo == 3400) {
 		screen_status = HOME;
+		credit_win_screen.photo = 0;
 	}
 	credit_win_screen.renderFlexible(&b, &a);
 	SDL_RenderPresent(gRenderer);

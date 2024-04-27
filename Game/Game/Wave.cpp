@@ -10,10 +10,12 @@ void Wave() {
 		loadmap_bool = true;
 	}
 	bool win = false;
+	cout << MAP << endl;
 	win = checkWin();
 	if (MAP < 7) {
 		if (win == true) {
 			if (currentime >= timewave) {
+				
 				wave_number++;
 				MAP++;
 				loadmap_bool = false;

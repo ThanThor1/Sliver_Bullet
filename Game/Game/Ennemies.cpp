@@ -192,11 +192,11 @@ void Ennemies::loadExplode(Bullet_Straight& b) {
 }
 void Ennemies::loadBuff() {
 	int a;
-	a = Rand(0, 10000) % 100;
-	if (a <= 94) {
+	a = Rand(0, 10000) % 20;
+	if (a <= 14) {
 		a = 0;
 	}
-	else a -= 94;
+	else a -= 14;
 	if (item_index == NUMBER_ITEM) {
 		item_index = 0;
 	}
