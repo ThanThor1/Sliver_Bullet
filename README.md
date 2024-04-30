@@ -45,7 +45,7 @@ Sau khi chỉnh xong bạn nhấn continue để quay lại màn hình chính. B
 
 # 2. Cách chơi game
 
-Bạn phải lần lượt vượt qua tổng cộng 8 wave thường và một wave boss đặc biệt để dành chiến thắng.
+Bạn phải lần lượt vượt qua tổng cộng 6 wave thường và một wave boss đặc biệt để dành chiến thắng.
 Cách di chuyển: bạn nhấn giữ chuột và di chuyển nó  để tàu vũ trụ của bạn có thể di chuyển theo với tỉ lệ độ nhạy, ví dụ bạn nhấn giữ và dịch chuyển chuột 10 (pixel) thì tàu bạn dịch chuyển được 10 * độ nhạy(pixel).
 Với mức 0 bạn sẽ có độ nhạy là 0.7
 <div style="text-align: center;">
@@ -114,7 +114,7 @@ Có 6 loại cây, lần lượt theo thứ tự có thể nhận được trong
 
 # 5. Chiến thắng và thất bại
 
-- Bạn sẽ chiến thắng nếu vượt qua được 8 màn và đánh thắng được boss cuối của game
+- Bạn sẽ chiến thắng nếu vượt qua được 6 màn và đánh thắng được boss cuối của game
 bạn sẽ nhận được một lời chúc nếu chiến thắng (nên hãy cố gắng chiến thắng nhé)
 
 - Bạn sẽ thất bại nếu không còn chút máu nào:
