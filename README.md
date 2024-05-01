@@ -27,7 +27,7 @@ Chờ một chút thì màn hình sẽ hiện như sau.
 
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\1.png)
+![image](Game/Game/picture_readme/1.png)
 </div>
 Bạn có thể click vào hình răng cưa để chỉnh âm lượng, âm nhạc, độ nhạy di chuyển tàu vũ trụ.
   
