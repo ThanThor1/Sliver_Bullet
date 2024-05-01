@@ -33,14 +33,14 @@ Bạn có thể click vào hình răng cưa để chỉnh âm lượng, âm nh�
   
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\2.png)
+![image](Game/Game/picture_readme/2.png)
 </div>
 
 Sau khi chỉnh xong bạn nhấn continue để quay lại màn hình chính. Bạn nhấn vào nới bất kì để bắt đầu chơi game hình Start hiện ra.
 
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\3.png)
+![image](Game/Game/picture_readme/3.png)
 </div>
 
 # 2. Cách chơi game
@@ -50,22 +50,22 @@ Cách di chuyển: bạn nhấn giữ chuột và di chuyển nó  để tàu v�
 Với mức 0 bạn sẽ có độ nhạy là 0.7
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\4.png)
+![image](Game/Game/picture_readme/4.png)
 </div>
 với mức 1 bạn sẽ có độ nhạy là 1
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\5.png)
+![image](Game/Game/picture_readme/5.png)
 </div>
 với mức 2 bạn sẽ có độ nhạy là 1.3
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\6.png)
+![image](Game/Game/picture_readme/6.png)
 </div>
 
 # 3. Các thành phần trong game:
 ## a. Các giao diện tương tác trong game
--    Nút Pause ![image](Game\Game\picture_readme\7.png)
+-    Nút Pause ![image](Game/Game/picture_readme/7.png)
      : là nút để dừng game khi bạn muốn tùy chỉnh hoặc muốn dừng lại để làm việc khác. Khi đó sẽ hiện ra màn hình Pause như sau.
 
 <div style="text-align: center;">
@@ -80,10 +80,10 @@ với mức 2 bạn sẽ có độ nhạy là 1.3
 ![image](Game\Game\picture_readme\11.png)
 </div>
 
--    Điểm số ![image](Game\Game\picture_readme\8.png)
+-    Điểm số ![image](Game/Game/picture_readme/8.png)
      : là nơi đếm số điểm mà bạn đang có
 
--    Máu của bạn ![image](Game\Game\picture_readme\9.png)
+-    Máu của bạn ![image](Game/Game/picture_readme/9.png)
      : là máu của bạn hiện có, nhiều nhất là 3 máu, và khi bị mất máu thì hình trái tim sẽ bị mờ dần đi.
 
 
@@ -121,13 +121,13 @@ bạn sẽ nhận được một lời chúc nếu chiến thắng (nên hãy c�
 
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\22.png)
+![image](Game/Game/picture_readme/22.png)
 </div>
   
   và khi đó màn hình sẽ cho ra kết quả bạn đạt được:
 <div style="text-align: center;">
 
-![image](Game\Game\picture_readme\23.png)
+![image](Game/Game/picture_readme/23.png)
 </div>
 
 ---
